@@ -10,6 +10,9 @@ namespace FFStudio
 #region Fields (Settings)
     // Info: Use Title() attribute ONCE for every game-specific group of settings.
 
+    // Info: Game related settings
+        [ FoldoutGroup( "Input" ) ] public float input_holdDuration = 1f;
+
     // Info: 3 groups below (coming from template project) are foldout by design: They should remain hidden.
 		[ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
         [ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_Components;
