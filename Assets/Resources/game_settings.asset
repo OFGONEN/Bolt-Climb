@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  launch_speed: 5
-  acceleration_duration: 1
-  falldown_acceleration: 1
-  fallDown_speed_max: 2
-  rotation_cofactor: 1
+  movement_rotation_cofactor: 3
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
   maxLevelCount: 1

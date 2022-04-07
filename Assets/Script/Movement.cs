@@ -12,11 +12,12 @@ public class Movement : MonoBehaviour
 #region Fields
   [ Title( "Shared Variables" ) ]
 	public MovementPath_Set path_Set;
+	public IncrementalMovement incremental_movement;
 
   [ Title( "Setup" ) ]
 	public Transform rotate_transform;
 	// Private Fields
-	[ ShowInInspector, ReadOnly ] float speed_max;
+	[ ShowInInspector, ReadOnly ] IncrementalMovementData movement_data;
 	[ ShowInInspector, ReadOnly ] float speed_current;
 	float falldown_position;
 
@@ -31,6 +32,8 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
 		updateMethod = ExtensionMethods.EmptyMethod;
+
+		movement_data = incremental_movement.ReturnIncremental( PlayerPrefs.GetInt( "movement", 0 ) );
 	}
 
     private void Update()
@@ -42,8 +45,6 @@ public class Movement : MonoBehaviour
 #region Unity API
     public void StartAcceleration( float fallDownPosition )
     {
-		speed_max = 5f;
-
 		falldown_position = fallDownPosition;
 		speed_current     = Mathf.Max( 0, speed_current );
 		updateMethod      = OnAcceleration;
@@ -89,8 +90,8 @@ public class Movement : MonoBehaviour
     void OnAcceleration()
     {
 		speed_current = Mathf.Min( 
-			speed_max, 
-			speed_current + Time.deltaTime * speed_max / GameSettings.Instance.acceleration_duration 
+			movement_data.incremental_speed_max, 
+			speed_current + Time.deltaTime * movement_data.incremental_speed_max / movement_data.incremental_speed_max_duration 
 		);
 
 		OnMovement();
@@ -99,8 +100,8 @@ public class Movement : MonoBehaviour
     void OnGravity()
     {
 		speed_current = Mathf.Max( 
-            speed_current - Time.deltaTime * GameSettings.Instance.falldown_acceleration,
-            -GameSettings.Instance.fallDown_speed_max
+            speed_current - Time.deltaTime * movement_data.incremental_speed_min_duration,
+            -movement_data.incremental_speed_min
         );
 
 		OnMovement();
@@ -117,13 +118,13 @@ public class Movement : MonoBehaviour
 		else
 		{
 			transform.position = position;
-			rotate_transform.Rotate( Vector3.up * speed_current * GameSettings.Instance.rotation_cofactor, Space.Self );
+			rotate_transform.Rotate( Vector3.up * speed_current * GameSettings.Instance.movement_rotation_cofactor, Space.Self );
 		}
 	}
 
 	void DoRotate()
 	{
-		rotate_transform.Rotate( Vector3.up * speed_current * GameSettings.Instance.rotation_cofactor, Space.Self );
+		rotate_transform.Rotate( Vector3.up * speed_current * GameSettings.Instance.movement_rotation_cofactor, Space.Self );
 	}
 
 	void OnPathComplete()
