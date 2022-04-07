@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89738205080024d219d8fdc429645052, type: 3}
+  m_Name: incremental_movement
+  m_EditorClassIdentifier: 
+  incremental_data:
+  - incremental_cost: 10
+    incremental_speed_max: 5
+    incremental_speed_max_duration: 1.25
+    incremental_speed_min: -2
+    incremental_speed_min_duration: 2
