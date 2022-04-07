@@ -757,6 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path_Set: {fileID: 11400000, guid: 28e3faea870b84807b2df86acc92e09b, type: 2}
+  incremental_movement: {fileID: 11400000, guid: 6b8daa1d848ee4b59a3c3d628379ea53, type: 2}
   rotate_transform: {fileID: 1608072200}
 --- !u!114 &2128534932
 MonoBehaviour:

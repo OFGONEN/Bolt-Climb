@@ -93,6 +93,6 @@ namespace FFStudio
 		public float incremental_speed_max;
 		public float incremental_speed_max_duration;
 		public float incremental_speed_min;
-		public float incremental_speed_min_duration;
+		public float incremental_speed_falldown;
 	}
 }

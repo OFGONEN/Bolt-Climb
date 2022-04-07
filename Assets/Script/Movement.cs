@@ -100,8 +100,8 @@ public class Movement : MonoBehaviour
     void OnGravity()
     {
 		speed_current = Mathf.Max( 
-            speed_current - Time.deltaTime * movement_data.incremental_speed_min_duration,
-            -movement_data.incremental_speed_min
+            speed_current - Time.deltaTime * movement_data.incremental_speed_falldown,
+            movement_data.incremental_speed_min
         );
 
 		OnMovement();

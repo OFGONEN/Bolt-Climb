@@ -17,4 +17,4 @@ MonoBehaviour:
     incremental_speed_max: 5
     incremental_speed_max_duration: 1.25
     incremental_speed_min: -2
-    incremental_speed_min_duration: 2
+    incremental_speed_falldown: 4
