@@ -20,9 +20,14 @@ public class MovementPath : MonoBehaviour
 #endregion
 
 #region Unity API
-	private void Awake()
+	private void OnEnable()
 	{
 		path_set.AddDictionary( path_index, path_points );
+	}
+
+	private void OnDisable()
+	{
+		path_set.RemoveDictionary( path_index );
 	}
 #endregion
 
