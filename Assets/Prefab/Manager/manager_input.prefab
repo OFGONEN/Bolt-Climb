@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 961601380926824723}
   - component: {fileID: 961601380926824722}
   - component: {fileID: 961601380926824720}
-  - component: {fileID: 6643536366754950581}
+  - component: {fileID: 1590188396667875720}
   - component: {fileID: 5538618287892845756}
   m_Layer: 0
   m_Name: manager_input
@@ -54,7 +54,6 @@ MonoBehaviour:
   event_input_finger_down: {fileID: 11400000, guid: 93e8e68aa17a04b06ba2d543d724e179, type: 2}
   event_input_finger_up: {fileID: 11400000, guid: 97fd6ea7286af46c9bc394f294ff291c, type: 2}
   notifier_reference_camera_main: {fileID: 11400000, guid: 488e798dd6f140e4a84fa7485b885dd3, type: 2}
-  notifier_input: {fileID: 11400000, guid: ab91aec9d80a2454b912959d63dc2716, type: 2}
 --- !u!114 &961601380926824722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +128,7 @@ MonoBehaviour:
   onScreen:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6643536366754950581
+--- !u!114 &1590188396667875720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,22 +137,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 961601380926824724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca05b4057f181e4db28ff62498d46b1, type: 3}
+  m_Script: {fileID: 11500000, guid: bbb097c07812299498915a0a3e793843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreStartedOverGui: 1
-  ignoreIsOverGui: 0
-  ignoreIfStatic: 0
-  ignoreIfDown: 0
-  ignoreIfUp: 0
-  ignoreIfHover: 1
   requiredSelectable: {fileID: 0}
   onFinger:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 961601380926824723}
         m_TargetAssemblyTypeName: FFStudio.InputManager, Assembly-CSharp
-        m_MethodName: FingerUpdate
+        m_MethodName: FingerDown
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -163,14 +157,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  coordinate: 0
-  multiplier: 1
-  onDelta:
-    m_PersistentCalls:
-      m_Calls: []
-  onDistance:
-    m_PersistentCalls:
-      m_Calls: []
   ScreenDepth:
     Conversion: 1
     Camera: {fileID: 0}
@@ -179,16 +165,10 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 4294967291
     Distance: 0
-  onWorldFrom:
+  onWorld:
     m_PersistentCalls:
       m_Calls: []
-  onWorldTo:
-    m_PersistentCalls:
-      m_Calls: []
-  onWorldDelta:
-    m_PersistentCalls:
-      m_Calls: []
-  onWorldFromTo:
+  onScreen:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5538618287892845756
