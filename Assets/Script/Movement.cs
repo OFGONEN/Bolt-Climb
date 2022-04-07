@@ -9,18 +9,20 @@ using Sirenix.OdinInspector;
 public class Movement : MonoBehaviour
 {
 #region Fields
+  [ Title( "Setup" ) ]
+	public Transform rotate_transform;
     //todo get this info from Incremental
-    [ ShowInInspector ] float maxSpeed;
+    [ ShowInInspector ] float maxSpeed = 5;
 
 	// Private Fields
-	[ ShowInInspector, ReadOnly ] float speed_current;
+	[ ShowInInspector, ReadOnly ] float currentSpeed;
 	float falldown_position;
 
 	// Delegates
 	UnityMessage updateMethod;
 
     // Properties
-    public float CurrentSpeed => speed_current;
+    public float CurrentSpeed => currentSpeed;
 #endregion
 
 #region Properties
@@ -36,23 +38,22 @@ public class Movement : MonoBehaviour
 #endregion
 
 #region Unity API
-    public void Idle()
-    {
-		updateMethod  = ExtensionMethods.EmptyMethod;
-		speed_current = 0;
-	}
-
     public void StartAcceleration( float fallDownPosition )
     {
 		falldown_position = fallDownPosition;
-		speed_current     = 0;
+		currentSpeed      = 0;
 		updateMethod      = OnAcceleration;
 	}
 
     public void StopAcceleration()
     {
-		speed_current = 0;
 		updateMethod  = OnGravity;
+	}
+
+	public void DoIdle()
+	{
+		currentSpeed = 0;
+		updateMethod = ExtensionMethods.EmptyMethod;
 	}
 #endregion
 
@@ -62,31 +63,37 @@ public class Movement : MonoBehaviour
 #region Implementation
     void OnAcceleration()
     {
-		speed_current = Mathf.Min( 
+		currentSpeed = Mathf.Min( 
 			maxSpeed, 
-			speed_current + Time.deltaTime * maxSpeed / GameSettings.Instance.acceleration_duration 
+			currentSpeed + Time.deltaTime * maxSpeed / GameSettings.Instance.acceleration_duration 
 		);
 
-		ChangePosition();
+		OnMovement();
 	}
 
     void OnGravity()
     {
-		speed_current = Mathf.Max( 
-            speed_current - Time.deltaTime * GameSettings.Instance.falldown_gravity,
+		currentSpeed = Mathf.Max( 
+            currentSpeed - Time.deltaTime * GameSettings.Instance.falldown_acceleration,
             -GameSettings.Instance.fallDown_speed_max
         );
 
-		ChangePosition();
+		OnMovement();
 	}
 
-	void ChangePosition()
+	void OnMovement()
 	{
 		var position = transform.position;
-		position   += Vector3.up * speed_current * Time.deltaTime;
+		position   += Vector3.up * currentSpeed * Time.deltaTime;
 		position.y  = Mathf.Max( falldown_position, position.y );
 
-		transform.position = position;
+		if( Mathf.Approximately( position.y, falldown_position ) )
+			DoIdle();
+		else
+		{
+			transform.position = position;
+			rotate_transform.Rotate( Vector3.up * currentSpeed * GameSettings.Instance.rotation_cofactor, Space.Self );
+		}
 	}
 #endregion
 

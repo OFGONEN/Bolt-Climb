@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: game_settings
   m_EditorClassIdentifier: 
   acceleration_duration: 1
-  falldown_gravity: 5
+  falldown_acceleration: 1
   fallDown_speed_max: 2
+  rotation_cofactor: 1
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
   maxLevelCount: 1
