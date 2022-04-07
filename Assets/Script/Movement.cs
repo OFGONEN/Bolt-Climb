@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour
 		speed_max = 5f;
 
 		falldown_position = fallDownPosition;
-		speed_current      = 0;
+		speed_current     = 0;
 		updateMethod      = OnAcceleration;
 	}
 
@@ -128,7 +128,6 @@ public class Movement : MonoBehaviour
 
 	void OnPathComplete()
 	{
-		speed_current = GameSettings.Instance.launch_speed;
 		updateMethod  = OnMovement;
 	}
 #endregion
