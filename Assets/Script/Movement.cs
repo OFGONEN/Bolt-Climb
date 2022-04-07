@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour
 		speed_max = 5f;
 
 		falldown_position = fallDownPosition;
-		speed_current     = 0;
+		speed_current     = Mathf.Max( 0, speed_current );
 		updateMethod      = OnAcceleration;
 	}
 
