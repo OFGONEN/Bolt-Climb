@@ -11,18 +11,16 @@ public class Movement : MonoBehaviour
 #region Fields
   [ Title( "Setup" ) ]
 	public Transform rotate_transform;
-    //todo get this info from Incremental
-    [ ShowInInspector ] float maxSpeed = 5;
-
 	// Private Fields
-	[ ShowInInspector, ReadOnly ] float currentSpeed;
+	[ ShowInInspector, ReadOnly ] float speed_max;
+	[ ShowInInspector, ReadOnly ] float speed_current;
 	float falldown_position;
 
 	// Delegates
 	UnityMessage updateMethod;
 
     // Properties
-    public float CurrentSpeed => currentSpeed;
+    public float CurrentSpeed => speed_current;
 #endregion
 
 #region Properties
@@ -40,8 +38,10 @@ public class Movement : MonoBehaviour
 #region Unity API
     public void StartAcceleration( float fallDownPosition )
     {
+		speed_max = 5f;
+
 		falldown_position = fallDownPosition;
-		currentSpeed      = 0;
+		speed_current      = 0;
 		updateMethod      = OnAcceleration;
 	}
 
@@ -52,7 +52,7 @@ public class Movement : MonoBehaviour
 
 	public void DoIdle()
 	{
-		currentSpeed = 0;
+		speed_current = 0;
 		updateMethod = ExtensionMethods.EmptyMethod;
 	}
 #endregion
@@ -63,9 +63,9 @@ public class Movement : MonoBehaviour
 #region Implementation
     void OnAcceleration()
     {
-		currentSpeed = Mathf.Min( 
-			maxSpeed, 
-			currentSpeed + Time.deltaTime * maxSpeed / GameSettings.Instance.acceleration_duration 
+		speed_current = Mathf.Min( 
+			speed_max, 
+			speed_current + Time.deltaTime * speed_max / GameSettings.Instance.acceleration_duration 
 		);
 
 		OnMovement();
@@ -73,8 +73,8 @@ public class Movement : MonoBehaviour
 
     void OnGravity()
     {
-		currentSpeed = Mathf.Max( 
-            currentSpeed - Time.deltaTime * GameSettings.Instance.falldown_acceleration,
+		speed_current = Mathf.Max( 
+            speed_current - Time.deltaTime * GameSettings.Instance.falldown_acceleration,
             -GameSettings.Instance.fallDown_speed_max
         );
 
@@ -84,7 +84,7 @@ public class Movement : MonoBehaviour
 	void OnMovement()
 	{
 		var position = transform.position;
-		position   += Vector3.up * currentSpeed * Time.deltaTime;
+		position   += Vector3.up * speed_current * Time.deltaTime;
 		position.y  = Mathf.Max( falldown_position, position.y );
 
 		if( Mathf.Approximately( position.y, falldown_position ) )
@@ -92,7 +92,7 @@ public class Movement : MonoBehaviour
 		else
 		{
 			transform.position = position;
-			rotate_transform.Rotate( Vector3.up * currentSpeed * GameSettings.Instance.rotation_cofactor, Space.Self );
+			rotate_transform.Rotate( Vector3.up * speed_current * GameSettings.Instance.rotation_cofactor, Space.Self );
 		}
 	}
 #endregion
