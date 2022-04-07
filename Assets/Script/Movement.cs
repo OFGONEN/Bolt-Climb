@@ -4,11 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 public class Movement : MonoBehaviour
 {
 #region Fields
+  [ Title( "Shared Variables" ) ]
+	public MovementPath_Set path_Set;
+
   [ Title( "Setup" ) ]
 	public Transform rotate_transform;
 	// Private Fields
@@ -55,6 +59,27 @@ public class Movement : MonoBehaviour
 		speed_current = 0;
 		updateMethod = ExtensionMethods.EmptyMethod;
 	}
+
+	[ Button() ]
+	public void DoPath( int index )
+	{
+		updateMethod = DoRotate;
+
+		Vector3[] pathPoints;
+
+		path_Set.itemDictionary.TryGetValue( index, out pathPoints );
+#if UNITY_EDITOR
+		if( pathPoints == null )
+		{
+			FFLogger.LogError( $"Path Index {index} is NULL" );
+			DoIdle();
+		}
+#endif
+		transform.DOPath( pathPoints, speed_current, PathType.Linear )
+		.SetLookAt( 0, -Vector3.up )
+		.SetSpeedBased()
+		.OnComplete( OnPathComplete );
+	}
 #endregion
 
 #region API
@@ -94,6 +119,17 @@ public class Movement : MonoBehaviour
 			transform.position = position;
 			rotate_transform.Rotate( Vector3.up * speed_current * GameSettings.Instance.rotation_cofactor, Space.Self );
 		}
+	}
+
+	void DoRotate()
+	{
+		rotate_transform.Rotate( Vector3.up * speed_current * GameSettings.Instance.rotation_cofactor, Space.Self );
+	}
+
+	void OnPathComplete()
+	{
+		speed_current = GameSettings.Instance.launch_speed;
+		updateMethod  = OnMovement;
 	}
 #endregion
 
