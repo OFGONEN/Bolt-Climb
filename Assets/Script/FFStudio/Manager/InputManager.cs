@@ -13,9 +13,12 @@ namespace FFStudio
 		public SwipeInputEvent event_input_swipe;
 		public ScreenPressEvent event_input_screenPress;
 		public IntGameEvent event_input_tap;
+		public GameEvent event_input_finger_down;
+		public GameEvent event_input_finger_up;
 
 	[ Title( "Shared Variables" ) ]
 		public SharedReferenceNotifier notifier_reference_camera_main;
+		public SharedFloatNotifier notifier_input;
 #endregion
 
 #region Fields (Private)
@@ -24,6 +27,8 @@ namespace FFStudio
 		private Transform transform_camera_main;
 		private Camera camera_main;
 		private LeanTouch leanTouch;
+
+		private UnityMessage fingerUpdateMethod;
 #endregion
 
 #region Unity API
@@ -43,6 +48,8 @@ namespace FFStudio
 
 			leanTouch         = GetComponent< LeanTouch >();
 			leanTouch.enabled = false;
+
+			fingerUpdateMethod = OnFingerDown;
 		}
 #endregion
 		
@@ -58,9 +65,30 @@ namespace FFStudio
 
 			event_input_tap.Raise();
 		}
+
+		public void FingerUpdate( LeanFinger finger )
+		{
+			fingerUpdateMethod();
+		}
+
+		public void FingerUp( LeanFinger finger )
+		{
+			fingerUpdateMethod = OnFingerDown;
+		}
 #endregion
 
 #region Implementation
+		void OnFingerDown()
+		{
+			notifier_input.SharedValue = 0;
+			fingerUpdateMethod = OnFingerUpdate;
+		}
+
+		void OnFingerUpdate()
+		{
+			notifier_input.SharedValue = Mathf.Min( 1, notifier_input.SharedValue + Time.deltaTime * 1 / GameSettings.Instance.input_holdDuration);
+		}
+
 		private void OnCameraReferenceChange()
 		{
 			var value = notifier_reference_camera_main.SharedValue;
