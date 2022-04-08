@@ -85,4 +85,14 @@ namespace FFStudio
 		public UnityEvent event_complete;
 		public bool event_complete_alwaysInvoke;
 	}
+
+	[ Serializable ]
+	public struct IncrementalMovementData
+	{
+		public float incremental_cost;
+		public float incremental_speed_max;
+		public float incremental_speed_max_duration;
+		public float incremental_speed_min;
+		public float incremental_speed_falldown;
+	}
 }
