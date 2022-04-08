@@ -7,11 +7,11 @@ using FFStudio;
 using Sirenix.OdinInspector;
 
 [ CreateAssetMenu( fileName = "incremental_movement", menuName = "FF/Data/Incremental/Movement" ) ]
-public class IncrementalMovement : ScriptableObject
+public class IncrementalVelocity : ScriptableObject
 {
-	[ SerializeField ] IncrementalMovementData[] incremental_data;
+	[ SerializeField ] IncrementalVelocityData[] incremental_data;
 
-    public IncrementalMovementData ReturnIncremental( int index )
+    public IncrementalVelocityData ReturnIncremental( int index )
     {
 		return incremental_data[ index ];
 	}

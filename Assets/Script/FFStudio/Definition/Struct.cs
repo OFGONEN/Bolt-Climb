@@ -87,12 +87,12 @@ namespace FFStudio
 	}
 
 	[ Serializable ]
-	public struct IncrementalMovementData
+	public struct IncrementalVelocityData
 	{
 		public float incremental_cost;
-		public float incremental_speed_max;
-		public float incremental_speed_max_duration;
-		public float incremental_speed_min;
-		public float incremental_speed_falldown;
+		public float incremental_velocity_max;
+		public float incremental_velocity_max_duration;
+		public float incremental_velocity_min;
+		public float incremental_velocity_decrease;
 	}
 }

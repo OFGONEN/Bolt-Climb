@@ -12,12 +12,12 @@ public class Movement : MonoBehaviour
 #region Fields
   [ Title( "Shared Variables" ) ]
 	public MovementPath_Set path_Set;
-	public IncrementalMovement incremental_movement;
+	public IncrementalVelocity incremental_movement;
 
   [ Title( "Setup" ) ]
 	public Transform rotate_transform;
 	// Private Fields
-	[ ShowInInspector, ReadOnly ] IncrementalMovementData movement_data;
+	[ ShowInInspector, ReadOnly ] IncrementalVelocityData movement_data;
 	[ ShowInInspector, ReadOnly ] float speed_current;
 	float falldown_position;
 
@@ -90,8 +90,8 @@ public class Movement : MonoBehaviour
     void OnAcceleration()
     {
 		speed_current = Mathf.Min( 
-			movement_data.incremental_speed_max, 
-			speed_current + Time.deltaTime * movement_data.incremental_speed_max / movement_data.incremental_speed_max_duration 
+			movement_data.incremental_velocity_max, 
+			speed_current + Time.deltaTime * movement_data.incremental_velocity_max / movement_data.incremental_velocity_max_duration 
 		);
 
 		OnMovement();
@@ -100,8 +100,8 @@ public class Movement : MonoBehaviour
     void OnGravity()
     {
 		speed_current = Mathf.Max( 
-            speed_current - Time.deltaTime * movement_data.incremental_speed_falldown,
-            movement_data.incremental_speed_min
+            speed_current - Time.deltaTime * movement_data.incremental_velocity_decrease,
+            movement_data.incremental_velocity_min
         );
 
 		OnMovement();
