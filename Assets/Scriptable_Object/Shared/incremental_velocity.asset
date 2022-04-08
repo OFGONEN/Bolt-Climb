@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89738205080024d219d8fdc429645052, type: 3}
-  m_Name: incremental_movement
+  m_Name: incremental_velocity
   m_EditorClassIdentifier: 
   incremental_data:
   - incremental_cost: 10
-    incremental_speed_max: 5
-    incremental_speed_max_duration: 1.25
-    incremental_speed_min: -2
-    incremental_speed_falldown: 4
+    incremental_velocity_max: 10
+    incremental_velocity_max_duration: 1.25
+    incremental_velocity_min: -3
+    incremental_velocity_decrease: 2
