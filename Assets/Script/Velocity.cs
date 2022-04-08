@@ -16,7 +16,6 @@ public class Velocity : ScriptableObject
 
     // Properties
     public float CurrentSpeed => velocity_current;
-
 #endregion
 
 #region Properties
