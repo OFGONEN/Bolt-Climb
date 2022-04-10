@@ -95,4 +95,14 @@ namespace FFStudio
 		public float incremental_velocity_min;
 		public float incremental_velocity_decrease;
 	}
+
+	[ Serializable ]
+	public struct IncrementalDurabilityData
+	{
+		public float incremental_cost;
+		public float incremental_durability_capacity;
+		public float incremental_durability_speed_capacity_decrease;
+		public float incremental_durability_speed_decrease;
+		public float incremental_durability_speed_increase;
+	}
 }
