@@ -10,6 +10,7 @@ using Sirenix.OdinInspector;
 public class Bolt : MonoBehaviour
 {
 #region Fields
+    [ SerializeField, ReadOnly, BoxGroup( "Setup" ) ] SkinnedMeshRenderer[] bolt_renderers;
 #endregion
 
 #region Properties
@@ -31,15 +32,26 @@ public class Bolt : MonoBehaviour
     [ ShowInInspector, BoxGroup( "EditorOnly" ) ] private float bolt_height;
 
     [ Button() ]
-    public void PlaceBolts()
+    private void CacheRenderers()
     {
-        for( var i = 0; i < bolt_count; i++ )
+		bolt_renderers = transform.GetComponentsInChildren< SkinnedMeshRenderer >();
+	}
+
+    [ Button() ]
+    private void PlaceBolts()
+    {
+		transform.DestoryAllChildren();
+
+		for( var i = 0; i < bolt_count; i++ )
         {
 		    var prefab = PrefabUtility.InstantiatePrefab( bolt_prefab, transform ) as GameObject;
 			var position = transform.position;
 			position.y += bolt_height * i;
 			prefab.transform.position = position;
+			prefab.name = prefab.name + "_" + ( i + 1 );
 		}
+
+		CacheRenderers();
 	}
 #endif
 #endregion
