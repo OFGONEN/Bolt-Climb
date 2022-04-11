@@ -11,7 +11,8 @@ namespace FFStudio
     // Info: Use Title() attribute ONCE for every game-specific group of settings.
 
     // Info: Game related settings
-        [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor = 1f;
+        [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
+        [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
 
     // Info: 3 groups below (coming from template project) are foldout by design: They should remain hidden.
 		[ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
