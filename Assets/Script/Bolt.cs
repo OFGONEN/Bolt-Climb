@@ -11,6 +11,9 @@ public class Bolt : MonoBehaviour
 {
 #region Fields
     [ SerializeField, BoxGroup( "Setup" ) ] Transform transform_gfx;
+    [ SerializeField, BoxGroup( "Setup" ) ] BoxCollider collider_upper_out;
+    [ SerializeField, BoxGroup( "Setup" ) ] BoxCollider collider_upper_in;
+    [ SerializeField, BoxGroup( "Setup" ) ] BoxCollider collider_bottom;
 
     [ SerializeField, ReadOnly, BoxGroup( "Info" ) ] SkinnedMeshRenderer[] bolt_renderers;
     [ ShowInInspector, ReadOnly, Range( 0f, 1f ), BoxGroup( "Info" ) ] float bolt_carve_progress;
@@ -69,6 +72,9 @@ public class Bolt : MonoBehaviour
 			prefab.name = prefab.name + "_" + ( i + 1 );
 		}
 
+		collider_bottom.transform.localPosition    = Vector3.up * -1f * collider_bottom.size.y / 2f;
+		collider_upper_out.transform.localPosition = Vector3.up * bolt_count * bolt_height - Vector3.up * collider_bottom.size.y / 2f;
+		collider_upper_in.transform.localPosition  = Vector3.up * bolt_count * bolt_height + Vector3.up * collider_bottom.size.y / 2f;
 		CacheRenderers();
 	}
 
