@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: game_settings
   m_EditorClassIdentifier: 
   movement_rotation_cofactor: 3
+  movement_launchSpeed_minumum: 1
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
   maxLevelCount: 1
