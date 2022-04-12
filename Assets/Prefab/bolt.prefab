@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3054304784346877354}
   - component: {fileID: 2593507616941417416}
+  - component: {fileID: 2756924835914111813}
   m_Layer: 30
   m_Name: collider_bottom
   m_TagString: Untagged
@@ -129,6 +130,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.5, z: 1.73}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2756924835914111813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6761190257432760986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067d7caa83c818f4dac4b763d4b32ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedComponent: {fileID: 0}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7690035595845755347
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5601619628082299337}
   - component: {fileID: 3159180893542725272}
+  - component: {fileID: 3198453011289881677}
   m_Layer: 30
   m_Name: collider_up_out
   m_TagString: Untagged
@@ -174,6 +192,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.5, z: 1.73}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3198453011289881677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690035595845755347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067d7caa83c818f4dac4b763d4b32ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedComponent: {fileID: 0}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8381755519300239809
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5644420364568917515}
   - component: {fileID: 8243835881855154954}
+  - component: {fileID: 7825708540238167072}
   m_Layer: 30
   m_Name: collider_up_in
   m_TagString: Untagged
@@ -219,3 +254,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.5, z: 1.73}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7825708540238167072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381755519300239809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067d7caa83c818f4dac4b763d4b32ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedComponent: {fileID: 0}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
