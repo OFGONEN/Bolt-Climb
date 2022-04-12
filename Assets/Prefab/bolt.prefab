@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a88d8d897d44cc5a806bbd8542786f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notifier_nut_fallDown: {fileID: 11400000, guid: 12edf675dad2448698c28fa586941867, type: 2}
   transform_gfx: {fileID: 8103919501080544271}
   collider_upper_out: {fileID: 3159180893542725272}
   collider_upper_in: {fileID: 8243835881855154954}

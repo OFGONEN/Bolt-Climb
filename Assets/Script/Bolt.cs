@@ -10,13 +10,15 @@ using Sirenix.OdinInspector;
 public class Bolt : MonoBehaviour
 {
 #region Fields
-    [ SerializeField, BoxGroup( "Setup" ) ] Transform transform_gfx;
-    [ SerializeField, BoxGroup( "Setup" ) ] BoxCollider collider_upper_out;
-    [ SerializeField, BoxGroup( "Setup" ) ] BoxCollider collider_upper_in;
-    [ SerializeField, BoxGroup( "Setup" ) ] BoxCollider collider_bottom;
+    [ SerializeField, Title( "Shared Variables" ) ] SharedFloatNotifier notifier_nut_fallDown;
 
-    [ SerializeField, ReadOnly, BoxGroup( "Info" ) ] SkinnedMeshRenderer[] bolt_renderers;
-    [ ShowInInspector, ReadOnly, Range( 0f, 1f ), BoxGroup( "Info" ) ] float bolt_carve_progress;
+    [ SerializeField, Title( "Setup" ) ] Transform transform_gfx;
+    [ SerializeField ] BoxCollider collider_upper_out;
+    [ SerializeField ] BoxCollider collider_upper_in;
+    [ SerializeField ] BoxCollider collider_bottom;
+
+    [ SerializeField, ReadOnly, FoldoutGroup( "Info" ) ] SkinnedMeshRenderer[] bolt_renderers;
+    [ ShowInInspector, ReadOnly, Range( 0f, 1f ), FoldoutGroup( "Info" ) ] float bolt_carve_progress;
 #endregion
 
 #region Properties
@@ -28,8 +30,9 @@ public class Bolt : MonoBehaviour
 #region API
     public void StartTrackingNut()
     {
-
-    }
+		notifier_nut_fallDown.SharedValue = transform.position.y;
+        // track the nut & carve the bolt
+	}
 
     public void StopTrackingNut()
     {
