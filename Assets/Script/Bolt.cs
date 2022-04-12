@@ -10,7 +10,9 @@ using Sirenix.OdinInspector;
 public class Bolt : MonoBehaviour
 {
 #region Fields
-    [ SerializeField, ReadOnly, BoxGroup( "Setup" ) ] SkinnedMeshRenderer[] bolt_renderers;
+    [ SerializeField, BoxGroup( "Setup" ) ] Transform transform_gfx;
+
+    [ SerializeField, ReadOnly, BoxGroup( "Info" ) ] SkinnedMeshRenderer[] bolt_renderers;
     [ ShowInInspector, ReadOnly, Range( 0f, 1f ), BoxGroup( "Info" ) ] float bolt_carve_progress;
 #endregion
 
@@ -56,31 +58,31 @@ public class Bolt : MonoBehaviour
     [ Button() ]
     private void PlaceBolts()
     {
-		transform.DestoryAllChildren();
+		transform_gfx.DestoryAllChildren();
 
 		for( var i = 0; i < bolt_count; i++ )
         {
-		    var prefab = PrefabUtility.InstantiatePrefab( bolt_prefab, transform ) as GameObject;
-			var position = transform.position;
+		    var prefab = PrefabUtility.InstantiatePrefab( bolt_prefab, transform_gfx ) as GameObject;
+			var position = transform_gfx.localPosition;
 			position.y += bolt_height * i;
-			prefab.transform.position = position;
+			prefab.transform.localPosition = position;
 			prefab.name = prefab.name + "_" + ( i + 1 );
 		}
 
 		CacheRenderers();
 	}
 
-    [ Button() ]
-    private void TestCarveProgress( float progress )
-    {
-        for( var i = 0; i < bolt_renderers.Length; i++ )
-        {
-			bolt_renderers[ i ].SetBlendShapeWeight( 0, 0 );
-		}
+    // [ Button() ]
+    // private void TestCarveProgress( float progress )
+    // {
+    //     for( var i = 0; i < bolt_renderers.Length; i++ )
+    //     {
+	// 		bolt_renderers[ i ].SetBlendShapeWeight( 0, 0 );
+	// 	}
 
-		bolt_carve_progress = progress;
-		UpdateCarveProgress();
-	}
+	// 	bolt_carve_progress = progress;
+	// 	UpdateCarveProgress();
+	// }
 #endif
 #endregion
 }
