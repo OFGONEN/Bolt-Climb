@@ -19,24 +19,32 @@ public class Bolt : MonoBehaviour
 
     [ SerializeField, ReadOnly, FoldoutGroup( "Info" ) ] SkinnedMeshRenderer[] bolt_renderers;
     [ ShowInInspector, ReadOnly, Range( 0f, 1f ), FoldoutGroup( "Info" ) ] float bolt_carve_progress;
+
+	// Private
+	float point_bottom;
+	float point_up;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+    private void Awake()
+    {
+		point_bottom = transform.position.y;
+		point_up     = collider_upper_out.transform.position.y + collider_upper_out.size.y / 2f;
+	}
 #endregion
 
 #region API
-    public void StartTrackingNut()
+    public void OnStartTrackingNut()
     {
 		notifier_nut_fallDown.SharedValue = transform.position.y;
         // track the nut & carve the bolt
 	}
 
-    public void StopTrackingNut()
+    public void OnStopTrackingNut()
     {
-        
     }
 #endregion
 

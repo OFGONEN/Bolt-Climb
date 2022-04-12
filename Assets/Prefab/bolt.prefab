@@ -174,7 +174,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1498656901261213332}
         m_TargetAssemblyTypeName: Bolt, Assembly-CSharp
-        m_MethodName: StartTrackingNut
+        m_MethodName: OnStartTrackingNut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -285,7 +285,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1498656901261213332}
         m_TargetAssemblyTypeName: Bolt, Assembly-CSharp
-        m_MethodName: StopTrackingNut
+        m_MethodName: OnStopTrackingNut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
