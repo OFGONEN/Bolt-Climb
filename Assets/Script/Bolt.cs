@@ -11,6 +11,7 @@ public class Bolt : MonoBehaviour
 {
 #region Fields
     [ SerializeField, ReadOnly, BoxGroup( "Setup" ) ] SkinnedMeshRenderer[] bolt_renderers;
+    [ ShowInInspector, ReadOnly, Range( 0f, 1f ), BoxGroup( "Info" ) ] float bolt_carve_progress;
 #endregion
 
 #region Properties
@@ -23,6 +24,22 @@ public class Bolt : MonoBehaviour
 #endregion
 
 #region Implementation
+    void UpdateCarveProgress()
+    {
+		var step      = 1f / bolt_renderers.Length;
+		var stepCount = bolt_carve_progress / step;
+
+		var childCount = Mathf.FloorToInt( stepCount );
+		var remaining = stepCount - childCount;
+
+		for( var i = 0; i < childCount; i++ )
+        {
+			bolt_renderers[ i ].SetBlendShapeWeight( 0, 100 );
+		}
+
+        if( !Mathf.Approximately( remaining, 0 ) )
+            bolt_renderers[ childCount ].SetBlendShapeWeight( 0, remaining * 100 );
+	}
 #endregion
 
 #region Editor Only
@@ -31,7 +48,6 @@ public class Bolt : MonoBehaviour
     [ ShowInInspector, BoxGroup( "EditorOnly" ) ] private int bolt_count;
     [ ShowInInspector, BoxGroup( "EditorOnly" ) ] private float bolt_height;
 
-    [ Button() ]
     private void CacheRenderers()
     {
 		bolt_renderers = transform.GetComponentsInChildren< SkinnedMeshRenderer >();
@@ -52,6 +68,18 @@ public class Bolt : MonoBehaviour
 		}
 
 		CacheRenderers();
+	}
+
+    [ Button() ]
+    private void TestCarveProgress( float progress )
+    {
+        for( var i = 0; i < bolt_renderers.Length; i++ )
+        {
+			bolt_renderers[ i ].SetBlendShapeWeight( 0, 0 );
+		}
+
+		bolt_carve_progress = progress;
+		UpdateCarveProgress();
 	}
 #endif
 #endregion
