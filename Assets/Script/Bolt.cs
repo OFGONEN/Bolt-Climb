@@ -10,19 +10,27 @@ using Sirenix.OdinInspector;
 public class Bolt : MonoBehaviour
 {
 #region Fields
-    [ SerializeField, Title( "Shared Variables" ) ] SharedFloatNotifier notifier_nut_fallDown;
+  [ Title( "Shared Variables" ) ]
+    [ SerializeField ] SharedReferenceNotifier notifier_nut_reference;
+    [ SerializeField ] SharedFloatNotifier notifier_nut_fallDown;
 
-    [ SerializeField, Title( "Setup" ) ] Transform transform_gfx;
+  [ Title( "Setup" ) ]
+    [ SerializeField ] Transform transform_gfx;
     [ SerializeField ] BoxCollider collider_upper_out;
     [ SerializeField ] BoxCollider collider_upper_in;
     [ SerializeField ] BoxCollider collider_bottom;
 
     [ SerializeField, ReadOnly, FoldoutGroup( "Info" ) ] SkinnedMeshRenderer[] bolt_renderers;
-    [ ShowInInspector, ReadOnly, Range( 0f, 1f ), FoldoutGroup( "Info" ) ] float bolt_carve_progress;
+    [ ShowInInspector, ReadOnly, ProgressBar( 0, 1 ), FoldoutGroup( "Info" ) ] float bolt_carve_progress;
 
 	// Private
+	Transform transform_nut;
 	float point_bottom;
 	float point_up;
+
+    // Delegate
+    UnityMessage onStartTrackingNut;
+    UnityMessage onUpdateMethod;
 #endregion
 
 #region Properties
@@ -33,22 +41,40 @@ public class Bolt : MonoBehaviour
     {
 		point_bottom = transform.position.y;
 		point_up     = collider_upper_out.transform.position.y + collider_upper_out.size.y / 2f;
+
+		onStartTrackingNut = StartTrackingNut;
+		onUpdateMethod     = ExtensionMethods.EmptyMethod;
 	}
 #endregion
 
 #region API
     public void OnStartTrackingNut()
     {
-		notifier_nut_fallDown.SharedValue = transform.position.y;
-        // track the nut & carve the bolt
+		onStartTrackingNut();
 	}
 
     public void OnStopTrackingNut()
     {
-    }
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+	}
 #endregion
 
 #region Implementation
+    void StartTrackingNut()
+    {
+		onStartTrackingNut = ExtensionMethods.EmptyMethod;
+		onUpdateMethod     = OnTrackNut;
+
+		notifier_nut_fallDown.SharedValue = transform.position.y;
+		transform_nut                     = notifier_nut_reference.SharedValue as Transform;
+	}
+
+    void OnTrackNut()
+    {
+		bolt_carve_progress = Mathf.Max( bolt_carve_progress, ( point_up - transform_nut.position.y ) / ( point_up - point_bottom ) );
+		UpdateCarveProgress();
+	}
+
     void UpdateCarveProgress()
     {
 		var step      = 1f / bolt_renderers.Length;
