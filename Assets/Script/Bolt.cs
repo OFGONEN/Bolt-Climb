@@ -26,6 +26,15 @@ public class Bolt : MonoBehaviour
 #endregion
 
 #region API
+    public void StartTrackingNut()
+    {
+
+    }
+
+    public void StopTrackingNut()
+    {
+        
+    }
 #endregion
 
 #region Implementation
