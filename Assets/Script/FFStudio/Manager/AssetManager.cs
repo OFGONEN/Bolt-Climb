@@ -16,6 +16,7 @@ namespace FFStudio
 
 	[ Title( "Pool" ) ]
 		public Pool_UIPopUpText pool_UIPopUpText;
+		public ShatterPool[] pool_shatter_array;
 
 	[ Title( "Setup" ) ]
 		public UnityEvent onEnable;
@@ -38,6 +39,11 @@ namespace FFStudio
 		private void Awake()
 		{
 			pool_UIPopUpText.InitPool( transform, false );
+
+			for( var i = 0; i < pool_shatter_array.Length; i++ )
+			{
+				pool_shatter_array[ i ].InitPool( transform, false );
+			}
 
 			onAwake.Invoke();
 		}
