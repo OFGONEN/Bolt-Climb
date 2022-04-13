@@ -105,4 +105,12 @@ namespace FFStudio
 		public float incremental_durability_speed_decrease;
 		public float incremental_durability_speed_increase;
 	}
+
+	[ Serializable ]
+	public struct IncrementalCurrencyData
+	{
+		public float incremental_cost;
+		public float incremental_currency_value;
+		public float incremental_currency_rate;
+	}
 }
