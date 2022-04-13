@@ -375,6 +375,11 @@ namespace FFStudio
 			return array[ Random.Range( 0, array.Length ) ];
 		}
 
+		public static float ReturnRandom( this Vector2 vector )
+		{
+			return Random.Range( vector.x, vector.y );
+		}
+
 		public static void DestoryAllChildren( this Transform transform )
 		{
 			var childCount = transform.childCount;
