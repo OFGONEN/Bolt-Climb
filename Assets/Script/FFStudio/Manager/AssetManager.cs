@@ -1,5 +1,6 @@
 /* Created by and for usage of FF Studios (2021). */
 using UnityEngine;
+using UnityEngine.Events;
 using Sirenix.OdinInspector;
 
 namespace FFStudio
@@ -15,12 +16,35 @@ namespace FFStudio
 
 	[ Title( "Pool" ) ]
 		public Pool_UIPopUpText pool_UIPopUpText;
+
+	[ Title( "Setup" ) ]
+		public UnityEvent onEnable;
+		public UnityEvent onDisable;
+		public UnityEvent onAwake;
+		public UnityEvent onStart;
 #endregion
 
-#region Implementation
+#region UnityAPI
+		private void OnEnable()
+		{
+			onEnable.Invoke();
+		}
+
+		private void OnDisable()
+		{
+			onDisable.Invoke();
+		}
+
 		private void Awake()
 		{
 			pool_UIPopUpText.InitPool( transform, false );
+
+			onAwake.Invoke();
+		}
+
+		private void Start()
+		{
+			onStart.Invoke();
 		}
 #endregion
 	}
