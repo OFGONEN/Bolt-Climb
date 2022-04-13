@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2248796838634546266}
+  - component: {fileID: -295691702656330653}
   m_Layer: 0
   m_Name: nut_shattered_3
   m_TagString: Untagged
@@ -32,6 +33,93 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-295691702656330653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089741747585629196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908d63ddedf2d4ee8ba05d0098941fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shatter_rigidbodies:
+  - {fileID: 3562010533361515771}
+  - {fileID: 5574762540295524461}
+  - {fileID: 4484592999651674890}
+  - {fileID: 237140203541163710}
+  - {fileID: 7432611213213081137}
+  - {fileID: 2112837187821252144}
+  - {fileID: 2899002518414919502}
+  - {fileID: 6825540346603873921}
+  - {fileID: 6753464445016208175}
+  - {fileID: 3982211878216421213}
+  - {fileID: 5855462340720309365}
+  - {fileID: 352088219204021560}
+  - {fileID: 8393312939763099456}
+  - {fileID: 3838999654542237413}
+  - {fileID: 2435392694591343966}
+  - {fileID: 2457114564626952061}
+  - {fileID: 6777555001563764991}
+  - {fileID: 68729830361568974}
+  - {fileID: 1133605597543856096}
+  - {fileID: 5602487181594230264}
+  - {fileID: 6446890925534566426}
+  - {fileID: 1144912111378911942}
+  - {fileID: 3994828320384813133}
+  - {fileID: 873347201782508928}
+  shatter_positions:
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  shatter_rotations:
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
 --- !u!1001 &913655480982365026
 PrefabInstance:
   m_ObjectHideFlags: 0

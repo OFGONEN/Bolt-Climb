@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2248796838634546266}
+  - component: {fileID: -9035820367089799951}
   m_Layer: 0
   m_Name: nut_shattered_1
   m_TagString: Untagged
@@ -32,6 +33,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-9035820367089799951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089741747585629196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 908d63ddedf2d4ee8ba05d0098941fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shatter_rigidbodies:
+  - {fileID: 7376371869653868994}
+  - {fileID: 3729728774156678388}
+  - {fileID: 3709000579412187900}
+  - {fileID: 1239767880058655319}
+  - {fileID: 393084104585177729}
+  - {fileID: 2410987409713050965}
+  - {fileID: 5811925329995432253}
+  - {fileID: 9107303913376185900}
+  shatter_positions:
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
+  shatter_rotations:
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
+  - {x: -0, y: -0, z: -0}
 --- !u!1001 &1007530214214437998
 PrefabInstance:
   m_ObjectHideFlags: 0
