@@ -374,6 +374,22 @@ namespace FFStudio
 		{
 			return array[ Random.Range( 0, array.Length ) ];
 		}
+
+		public static void DestoryAllChildren( this Transform transform )
+		{
+			var childCount = transform.childCount;
+			var childs = new List< Transform >( transform.childCount );
+
+			for( var i = 0; i < childCount; i++ )
+			{
+				childs.Add( transform.GetChild( i ) );
+			}
+			
+			for( var i = 0; i < childCount; i++ )
+			{
+				GameObject.DestroyImmediate( childs[ i ].gameObject );
+			}
+		}
 	}
 }
 
