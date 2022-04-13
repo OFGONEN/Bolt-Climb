@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 908d63ddedf2d4ee8ba05d0098941fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool_shatter: {fileID: 11400000, guid: 4dcaeea5ab3b54e69a2b2ff7c1a3a0a4, type: 2}
   shatter_rigidbodies:
   - {fileID: 3562010533361515771}
   - {fileID: 5574762540295524461}
