@@ -9,6 +9,9 @@ using Sirenix.OdinInspector;
 public class Shatter : MonoBehaviour
 {
 #region Fields
+  [ Title( "Setup" ) ]
+    [ SerializeField ] ShatterPool pool_shatter;
+
   [ Title( "Info" ) ]
     [ SerializeField, ReadOnly ] public Rigidbody[] shatter_rigidbodies;
     [ SerializeField, ReadOnly ] public Vector3[] shatter_positions;
