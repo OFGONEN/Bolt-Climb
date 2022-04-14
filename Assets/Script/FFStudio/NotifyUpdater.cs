@@ -12,7 +12,7 @@ namespace FFStudio
 #region Fields
 	[ Title( "Setup" ) ]
 		[ SerializeField ] protected SharedDataNotifierType sharedDataNotifier;
-		[ SerializeField ] protected UnityEvent notify_event;
+		[ SerializeField ] protected UnityEvent< SharedDataType > notify_event;
 #endregion
 
 #region Unity API
@@ -30,7 +30,7 @@ namespace FFStudio
 #region Base Class API
 		protected virtual void OnSharedDataChange()
 		{
-			notify_event.Invoke();
+			notify_event.Invoke( sharedDataNotifier.SharedValue );
 		}
 #endregion
 	}
