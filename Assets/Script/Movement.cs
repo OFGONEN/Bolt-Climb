@@ -23,7 +23,6 @@ public class Movement : MonoBehaviour
 #endregion
 
 #region Unity API
-	[ Button() ]
 	public void DoPath( int index, TweenCallback onPathComplete )
 	{
 		Vector3[] pathPoints;
