@@ -52,9 +52,8 @@ namespace FFStudio
         private void LevelLoadedResponse()
         {
 			levelProgress.SetValue_NotifyAlways( 0 );
-
-			notif_nut_is_onBolt.SharedValue      = true;
-			notif_nut_point_fallDown.SharedValue = 0;
+			notif_nut_is_onBolt.SetValue_DontNotify( true );
+			notif_nut_point_fallDown.SetValue_DontNotify( 0 );
 
 			var levelData = CurrentLevelData.Instance.levelData;
 
