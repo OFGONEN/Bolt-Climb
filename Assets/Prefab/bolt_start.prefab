@@ -61,3 +61,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66345a6b8558e4eed8fe462275939e1d, type: 3}
+--- !u!114 &4751812608787619928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1498656901261213332, guid: 66345a6b8558e4eed8fe462275939e1d, type: 3}
+  m_PrefabInstance: {fileID: 6142233584001261260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790097260034345890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a88d8d897d44cc5a806bbd8542786f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8790097260034345890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3224905004853089646, guid: 66345a6b8558e4eed8fe462275939e1d, type: 3}
+  m_PrefabInstance: {fileID: 6142233584001261260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &314217801784330381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790097260034345890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245dc21cc9428744fa28ad2d6ce7d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPairs:
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: be5502ede7f194b4cad32082aa9196eb, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4751812608787619928}
+          m_TargetAssemblyTypeName: Bolt, Assembly-CSharp
+          m_MethodName: OnStartTrackingNut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
