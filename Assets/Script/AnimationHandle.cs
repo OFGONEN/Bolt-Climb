@@ -20,6 +20,8 @@ public class AnimationHandle : MonoBehaviour
 // Private
     RecycledSequence animation_sequence_scale = new RecycledSequence();
     RecycledSequence animation_sequence_color = new RecycledSequence();
+
+    int animation_index;
 #endregion
 
 #region Properties
@@ -31,16 +33,21 @@ public class AnimationHandle : MonoBehaviour
 #region API
     public void PlayAnimation( float progress )
     {
+        var index = -1;
+
         for( var i = 0; i < animationDatas.Length; i++ )
         {
             if( progress <  animationDatas[ i ].data_percentage / 100f )
             {
-				PlayAnimation( i );
+				index = i;
 				return;
 			}
         }
 
-		ReturnDefault();
+        if( index == -1 && animation_index != -1 )
+		    ReturnDefault();
+        else if( index != animation_index )
+			PlayAnimation( index );
 	}
 #endregion
 
