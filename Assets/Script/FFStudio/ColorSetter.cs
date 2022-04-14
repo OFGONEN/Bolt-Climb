@@ -20,6 +20,7 @@ namespace FFStudio
 #endregion
 
 #region Properties
+		public Color Color => color;
 #endregion
 
 #region Unity API
