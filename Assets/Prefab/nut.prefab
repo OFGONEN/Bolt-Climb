@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: -6898695181098901142}
   - component: {fileID: 4375852389534718817}
   - component: {fileID: -5209316146565418335}
+  - component: {fileID: 5520294727583239052}
+  - component: {fileID: 6707009314610384943}
   m_Layer: 31
   m_Name: nut
   m_TagString: Untagged
@@ -94,9 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677b7adcd300f461c8c918006963e104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notif_nut_point_fallDown: {fileID: 11400000, guid: 12edf675dad2448698c28fa586941867, type: 2}
-  notif_nut_is_onBolt: {fileID: 11400000, guid: d401f21baeb4e4064a7da03f6fbb0777, type: 2}
   component_movement: {fileID: -5209316146565418335}
+  component_animation: {fileID: 0}
+  property_velocity: {fileID: 0}
+  property_durability: {fileID: 0}
+  property_currency: {fileID: 0}
 --- !u!114 &4375852389534718817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +166,62 @@ MonoBehaviour:
   velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
   transform_movement: {fileID: 5919801855808585662}
   transform_rotate: {fileID: 4863237911859625749}
+--- !u!114 &5520294727583239052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728729464609688002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9557b8a7a7145128983af475aa9446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedDataNotifier: {fileID: 11400000, guid: d401f21baeb4e4064a7da03f6fbb0777, type: 2}
+  notify_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6898695181098901142}
+        m_TargetAssemblyTypeName: Nut, Assembly-CSharp
+        m_MethodName: OnIsNutOnBoltChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6707009314610384943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728729464609688002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9219576df7464de785786c2fa6ff447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedDataNotifier: {fileID: 11400000, guid: 12edf675dad2448698c28fa586941867, type: 2}
+  notify_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6898695181098901142}
+        m_TargetAssemblyTypeName: Nut, Assembly-CSharp
+        m_MethodName: OnFallDownPointChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &638156688759733901
 PrefabInstance:
   m_ObjectHideFlags: 0
