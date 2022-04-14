@@ -23,6 +23,9 @@ public class Movement : MonoBehaviour
 #endregion
 
 #region Unity API
+#endregion
+
+#region API
 	public void DoPath( int index, TweenCallback onPathComplete )
 	{
 		Vector3[] pathPoints;
@@ -42,13 +45,8 @@ public class Movement : MonoBehaviour
 		.OnUpdate( DoRotate )
 		.OnComplete( onPathComplete );
 	}
-#endregion
 
-#region API
-#endregion
-
-#region Implementation
-	void OnMovement( float minPosition )
+	public void OnMovement( float minPosition )
 	{
 		var position = transform_movement.position;
 		position   += Vector3.up * velocity.CurrentSpeed * Time.deltaTime;
@@ -56,7 +54,9 @@ public class Movement : MonoBehaviour
 
 		transform_movement.position = position;
 	}
+#endregion
 
+#region Implementation
 	void DoRotate()
 	{
 		transform_rotate.Rotate( Vector3.up * velocity.CurrentSpeed * Time.deltaTime * GameSettings.Instance.movement_rotation_cofactor , Space.Self );

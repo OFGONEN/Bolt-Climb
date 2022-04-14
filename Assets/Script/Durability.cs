@@ -18,6 +18,7 @@ public class Durability : ScriptableObject
 #region Properties
     // Properties
     public float CurrentDurability => durability_current;
+    public float DurabilityRatio => durability_current / durability_data.incremental_durability_capacity;
 #endregion
 
 #region Unity API
