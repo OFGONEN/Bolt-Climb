@@ -14,10 +14,12 @@ namespace FFStudio
         [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
         [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
 
+        [ BoxGroup( "Animation" ) ] public float animation_default_size = 1;
+        [ BoxGroup( "Animation" ) ] public Color animation_default_color = Color.white;
+
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force;
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_torque;
         [ BoxGroup( "Nut" ) ] public float nut_shatter_waitDuration = 2f;
-
     // Info: 3 groups below (coming from template project) are foldout by design: They should remain hidden.
 		[ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
         [ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_Components;
@@ -60,6 +62,15 @@ namespace FFStudio
         {
             return instance;
         }
+#endregion
+
+#region Editor Only
+#if UNITY_EDITOR
+	private void OnValidate()
+	{
+		animation_default_color = animation_default_color.SetAlpha( 1 );
+	}
+#endif
 #endregion
     }
 }

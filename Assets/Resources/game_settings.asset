@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement_rotation_cofactor: 3
   movement_launchSpeed_minumum: 1
+  animation_default_size: 1
+  animation_default_color: {r: 1, g: 1, b: 1, a: 1}
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
   nut_shatter_torque: {x: 6.6980996, y: 15.23205}
   nut_shatter_waitDuration: 2
