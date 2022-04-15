@@ -55,6 +55,8 @@ public class Movement : MonoBehaviour
 
 		transform_movement.position = position;
 
+		DoRotate();
+
 		return Mathf.Approximately( position.y, minPosition );
 	}
 
@@ -64,6 +66,7 @@ public class Movement : MonoBehaviour
 		position   += Vector3.up * velocity.CurrentSpeed * Time.deltaTime;
 
 		transform_movement.position = position;
+		DoRotate();
 	}
 #endregion
 
