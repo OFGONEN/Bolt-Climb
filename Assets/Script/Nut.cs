@@ -10,8 +10,8 @@ using Sirenix.OdinInspector;
 public class Nut : MonoBehaviour
 {
 #region Fields
-  [ Title( "Components" ) ]
-    [ SerializeField ] Movement component_movement;
+  [ Title( "Components" )]
+	[ SerializeField ] Movement component_movement;
 	[ SerializeField ] AnimationHandle component_animation;
 	[ SerializeField ] Velocity property_velocity;
 	[ SerializeField ] Durability property_durability;
@@ -20,7 +20,7 @@ public class Nut : MonoBehaviour
 	float point_fallDown = 0;
 
 // Delegates
-    UnityMessage onUpdate;
+	UnityMessage onUpdate;
 	UnityMessage onFingerDown;
 	UnityMessage onFingerUp;
 #endregion
@@ -29,35 +29,38 @@ public class Nut : MonoBehaviour
 #endregion
 
 #region Unity API
-    private void Awake()
-    {
+	private void Awake()
+	{
 		onUpdate     = ExtensionMethods.EmptyMethod;
 		onFingerDown = ExtensionMethods.EmptyMethod;
 		onFingerUp   = ExtensionMethods.EmptyMethod;
 	}
 
-    private void Update()
-    {
+	private void Update()
+	{
 		onUpdate();
 	}
 #endregion
 
 #region API
-    public void Input_OnFingerDown()
-    {
+	public void Input_OnFingerDown()
+	{
 		onFingerDown();
 	}
 
-    public void Input_OnFingerUp()
-    {
+	public void Input_OnFingerUp()
+	{
 		onFingerUp();
 	}
 
 	public void OnLevelStarted()
 	{
-		//todo: Set Properties( Velocity, Durability, Currency ) Up
+		// Set properties up
+		property_currency.SetCurrencyData();
+		property_velocity.SetVelocityData();
+		property_durability.SetDurabilityData();
 
-		onFingerDown = OnInput_StraightBolt;
+		onFingerDown = OnFingerDown_StraightBolt;
 	}
 #endregion
 
@@ -76,26 +79,53 @@ public class Nut : MonoBehaviour
 
 	void OnUpdate_Acceleration()
 	{
-		property_velocity.OnAcceleration();
-		component_movement.OnMovement( point_fallDown );
+		if( Mathf.Approximately( 0, property_durability.CurrentDurability ) )
+		{
+			onUpdate     = ExtensionMethods.EmptyMethod;
+			onFingerDown = ExtensionMethods.EmptyMethod;
+			onFingerUp   = ExtensionMethods.EmptyMethod;
+			FFLogger.Log( "Level Failed" );
+			// gameObject.SetActive( false );
+			// spawn shatter nut
+		}
+		else
+		{
+			property_velocity.OnAcceleration();
+			component_movement.OnMovement();
+			property_durability.OnDecrease();
+			component_animation.PlayAnimation( property_durability.DurabilityRatio );
+			property_currency.OnIncrease();
+		}
 	}
 
 	void OnUpdate_Deceleration()
 	{
+		property_velocity.OnDeceleration();
+		var isIdle = component_movement.OnMovement( point_fallDown );
+
+		property_durability.OnIncrease();
+		component_animation.PlayAnimation( property_durability.DurabilityRatio );
+
+		if( isIdle )
+			onUpdate = OnUpdate_Idle;
 	}
 
-	void OnInput_StraightBolt()
+	void OnFingerDown_StraightBolt()
 	{
+		onUpdate   = OnUpdate_Acceleration;
+		onFingerUp = OnFingerUp;
 	}
 
-	void OnInput_ShapedBolt()
+	void OnFingerUp()
 	{
+		onUpdate = OnUpdate_Deceleration;
+		onFingerUp = ExtensionMethods.EmptyMethod;
 	}
 
 	public void OnIsNutOnBoltChange( bool value )
 	{
 		if( value )
-			onFingerDown = OnInput_StraightBolt;
+			onFingerDown = OnFingerDown_StraightBolt;
 		else
 			onFingerDown = ExtensionMethods.EmptyMethod;
 	}
