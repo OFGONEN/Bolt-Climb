@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: currency
   m_EditorClassIdentifier: 
   sharedValue: 0
-  currency_incremental: {fileID: 0}
+  currency_incremental: {fileID: 11400000, guid: 42985a7b07d294f11a1a6efd18604daa, type: 2}

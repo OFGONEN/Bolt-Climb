@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfcbb93ab0d17746a1fc0c7a6061624, type: 3}
   m_Name: nut_durability
   m_EditorClassIdentifier: 
-  durability_incremental: {fileID: 0}
+  durability_incremental: {fileID: 11400000, guid: 75067c71baed4df4eb69e96378f2bf95, type: 2}
