@@ -46,11 +46,22 @@ public class Movement : MonoBehaviour
 		.OnComplete( onPathComplete );
 	}
 
-	public void OnMovement( float minPosition )
+ // Return true if this is on the fall down point
+	public bool OnMovement( float minPosition )
 	{
 		var position = transform_movement.position;
 		position   += Vector3.up * velocity.CurrentSpeed * Time.deltaTime;
 		position.y  = Mathf.Max( minPosition, position.y );
+
+		transform_movement.position = position;
+
+		return Mathf.Approximately( position.y, minPosition );
+	}
+
+	public void OnMovement()
+	{
+		var position = transform_movement.position;
+		position   += Vector3.up * velocity.CurrentSpeed * Time.deltaTime;
 
 		transform_movement.position = position;
 	}
