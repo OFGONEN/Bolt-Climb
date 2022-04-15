@@ -40,7 +40,7 @@ public class Velocity : ScriptableObject
 		);
 	}
 
-    public void Deceleration()
+    public void OnDeceleration()
     {
 		velocity_current = Mathf.Max( 
             velocity_current - Time.deltaTime * velocity_data.incremental_velocity_decrease,
