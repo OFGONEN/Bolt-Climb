@@ -11,7 +11,7 @@ public class Currency : SharedFloatNotifier
 {
 #region Fields
     [ SerializeField ] IncrementalCurrency currency_incremental;
-    [ SerializeField, ReadOnly ] IncrementalCurrencyData currency_data;
+    [ ShowInInspector, ReadOnly ] IncrementalCurrencyData currency_data;
     [ ShowInInspector, ReadOnly ] float currency_cooldown = 0;
 #endregion
 

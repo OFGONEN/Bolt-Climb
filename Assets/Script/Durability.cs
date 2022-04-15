@@ -11,9 +11,9 @@ public class Durability : ScriptableObject
 {
 #region Fields
     [ SerializeField ] IncrementalDurability durability_incremental;
-    [ SerializeField, ReadOnly ] IncrementalDurabilityData durability_data;
-    [ SerializeField, ReadOnly ] float durability_current_capacity;
-    [ SerializeField, ReadOnly ] float durability_current;
+    [ ShowInInspector, ReadOnly ] IncrementalDurabilityData durability_data;
+    [ ShowInInspector, ReadOnly ] float durability_current_capacity;
+    [ ShowInInspector, ReadOnly ] float durability_current;
 #endregion
 
 #region Properties

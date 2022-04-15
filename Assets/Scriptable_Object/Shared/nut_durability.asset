@@ -12,11 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfcbb93ab0d17746a1fc0c7a6061624, type: 3}
   m_Name: nut_durability
   m_EditorClassIdentifier: 
-  durability_data:
-    incremental_cost: 0
-    incremental_durability_capacity: 0
-    incremental_durability_speed_capacity_decrease: 0
-    incremental_durability_speed_decrease: 0
-    incremental_durability_speed_increase: 0
-  durability_current_capacity: 0
-  durability_current: 0
+  durability_incremental: {fileID: 0}

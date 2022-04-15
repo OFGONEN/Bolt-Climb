@@ -11,7 +11,7 @@ public class Velocity : ScriptableObject
 {
 #region Fields
     // Private
-	[ ShowInInspector ] IncrementalVelocity velocity_incremental;
+	[ SerializeField ] IncrementalVelocity velocity_incremental;
 	[ ShowInInspector, ReadOnly ] IncrementalVelocityData velocity_data;
 	[ ShowInInspector, ReadOnly ] float velocity_current;
 
