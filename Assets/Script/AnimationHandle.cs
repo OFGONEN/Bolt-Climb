@@ -28,6 +28,11 @@ public class AnimationHandle : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		animation_sequence_scale.Kill();
+		animation_sequence_color.Kill();
+	}
 #endregion
 
 #region API
