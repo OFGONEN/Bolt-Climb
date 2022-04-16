@@ -63,11 +63,11 @@ public class AnimationHandle : MonoBehaviour
 
 		animation_scale.Append( transform_animation.DOScale( data.data_scale_out, data.data_scale_duration_out ).SetEase( data.data_scale_ease_out ) );
 		animation_scale.Append( transform_animation.DOScale( data.data_scale_in, data.data_scale_duration_in ).SetEase( data.data_scale_ease_in ) );
-		animation_scale.SetLoops( -1 );
+		animation_scale.SetLoops( -1, LoopType.Yoyo );
 
 		animation_color.Append( DOTween.To( GetColor, SetColor, data.data_color_out, data.data_color_duration_out ).SetEase( data.data_color_ease_out ) );
 		animation_color.Append( DOTween.To( GetColor, SetColor, data.data_color_in, data.data_color_duration_in ).SetEase( data.data_color_ease_in ) );
-		animation_color.SetLoops( -1 );
+		animation_color.SetLoops( -1, LoopType.Yoyo );
 	}
 
     void ReturnDefault()
