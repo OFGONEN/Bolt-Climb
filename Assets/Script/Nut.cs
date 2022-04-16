@@ -79,10 +79,14 @@ public class Nut : MonoBehaviour
 	{
 		point_fallDown = value;
 	}
+
+	public void OnShapedBolt( IntGameEvent gameEvent )
+	{
+		//todo handle shaped bolt
+	}
 #endregion
 
 #region Implementation
-//! Nut Shatter - Level Fail
 	void OnUpdate_Idle()
 	{
 		property_durability.OnIncrease();
