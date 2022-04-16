@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour
 		}
 #endif
 
-		transform_movement.DOPath( pathPoints, velocity.CurrentSpeed, PathType.Linear )
+		transform_movement.DOPath( pathPoints, velocity.CurrentVelocity, PathType.Linear )
 		.SetLookAt( 0, -Vector3.up )
 		.SetSpeedBased()
 		.OnUpdate( DoRotate )
@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour
 	public bool OnMovement( float minPosition )
 	{
 		var position = transform_movement.position;
-		position   += Vector3.up * velocity.CurrentSpeed * Time.deltaTime;
+		position   += Vector3.up * velocity.CurrentVelocity * Time.deltaTime;
 		position.y  = Mathf.Max( minPosition, position.y );
 
 		transform_movement.position = position;
@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour
 	public void OnMovement()
 	{
 		var position = transform_movement.position;
-		position   += Vector3.up * velocity.CurrentSpeed * Time.deltaTime;
+		position   += Vector3.up * velocity.CurrentVelocity * Time.deltaTime;
 
 		transform_movement.position = position;
 		DoRotate();
@@ -73,7 +73,7 @@ public class Movement : MonoBehaviour
 #region Implementation
 	void DoRotate()
 	{
-		transform_rotate.Rotate( Vector3.up * velocity.CurrentSpeed * Time.deltaTime * GameSettings.Instance.movement_rotation_cofactor , Space.Self );
+		transform_rotate.Rotate( Vector3.up * velocity.CurrentVelocity * Time.deltaTime * GameSettings.Instance.movement_rotation_cofactor , Space.Self );
 	}
 #endregion
 
