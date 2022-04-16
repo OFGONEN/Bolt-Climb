@@ -82,11 +82,18 @@ public class Nut : MonoBehaviour
 
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
-		//todo handle shaped bolt
+		EmptyDelegates();
+		component_movement.DoPath( gameEvent.eventValue, OnPathComplete );
 	}
 #endregion
 
 #region Implementation
+	void OnPathComplete()
+	{
+		transform.position.SetX( 0 ).SetZ( 0 );
+		onUpdateMethod = OnUpdate_Deceleration;
+	}
+
 	void OnUpdate_Idle()
 	{
 		property_durability.OnIncrease();
