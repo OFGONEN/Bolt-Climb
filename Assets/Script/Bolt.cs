@@ -27,9 +27,10 @@ public class Bolt : MonoBehaviour
 	Transform transform_nut;
 	float point_bottom;
 	float point_up;
+	float point_gap;
 
-    // Delegate
-    UnityMessage onStartTrackingNut;
+	// Delegate
+	UnityMessage onStartTrackingNut;
     UnityMessage onUpdateMethod;
 #endregion
 
@@ -41,9 +42,15 @@ public class Bolt : MonoBehaviour
     {
 		point_bottom = transform.position.y;
 		point_up     = collider_upper_out.transform.position.y + collider_upper_out.size.y / 2f;
+		point_gap    = point_up - point_bottom;
 
 		onStartTrackingNut = StartTrackingNut;
 		onUpdateMethod     = ExtensionMethods.EmptyMethod;
+	}
+
+	private void Update()
+	{
+		onUpdateMethod();
 	}
 #endregion
 
@@ -71,7 +78,7 @@ public class Bolt : MonoBehaviour
 
     void OnTrackNut()
     {
-		bolt_carve_progress = Mathf.Max( bolt_carve_progress, ( point_up - transform_nut.position.y ) / ( point_up - point_bottom ) );
+		bolt_carve_progress = Mathf.Clamp( ( transform_nut.position.y - point_bottom ) / point_gap, 0, 1 );
 		UpdateCarveProgress();
 	}
 
