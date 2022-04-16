@@ -42,13 +42,15 @@ public class Shatter : MonoBehaviour
 			rb.useGravity  = true;
 
 			rb.AddForce( GameSettings.Instance.nut_shatter_force.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
-			rb.AddForce( GameSettings.Instance.nut_shatter_torque.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
+			// rb.AddTorque( GameSettings.Instance.nut_shatter_torque.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
 		}
 
 		recycledTween.Recycle( DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, ReturnDefault ) );
 	}
+#endregion
 
-	public void ReturnDefault()
+#region Implementation
+	void ReturnDefault()
 	{
 		for( var i = 0; i < shatter_rigidbodies.Length; i++ )
 		{
@@ -63,9 +65,6 @@ public class Shatter : MonoBehaviour
 
 		pool_shatter.ReturnEntity( this );
 	}
-#endregion
-
-#region Implementation
 #endregion
 
 #region Editor Only
