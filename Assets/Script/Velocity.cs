@@ -11,6 +11,7 @@ public class Velocity : ScriptableObject
 {
 #region Fields
     // Private
+	[ SerializeField ] IncrementalVelocity velocity_incremental;
 	[ ShowInInspector, ReadOnly ] IncrementalVelocityData velocity_data;
 	[ ShowInInspector, ReadOnly ] float velocity_current;
 
@@ -25,9 +26,9 @@ public class Velocity : ScriptableObject
 #endregion
 
 #region API
-    public void SetVelocityData( IncrementalVelocityData data )
+    public void SetVelocityData()
     {
-		velocity_data = data;
+		velocity_data = velocity_incremental.ReturnIncremental( PlayerPrefs.GetInt( "velocity_index", 0 ) );
 	}
 
     public void OnAcceleration()
@@ -40,7 +41,7 @@ public class Velocity : ScriptableObject
 		);
 	}
 
-    public void Deceleration()
+    public void OnDeceleration()
     {
 		velocity_current = Mathf.Max( 
             velocity_current - Time.deltaTime * velocity_data.incremental_velocity_decrease,

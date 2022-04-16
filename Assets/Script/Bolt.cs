@@ -27,9 +27,10 @@ public class Bolt : MonoBehaviour
 	Transform transform_nut;
 	float point_bottom;
 	float point_up;
+	float point_gap;
 
-    // Delegate
-    UnityMessage onStartTrackingNut;
+	// Delegate
+	UnityMessage onStartTrackingNut;
     UnityMessage onUpdateMethod;
 #endregion
 
@@ -41,9 +42,15 @@ public class Bolt : MonoBehaviour
     {
 		point_bottom = transform.position.y;
 		point_up     = collider_upper_out.transform.position.y + collider_upper_out.size.y / 2f;
+		point_gap    = point_up - point_bottom;
 
 		onStartTrackingNut = StartTrackingNut;
 		onUpdateMethod     = ExtensionMethods.EmptyMethod;
+	}
+
+	private void Update()
+	{
+		onUpdateMethod();
 	}
 #endregion
 
@@ -71,33 +78,36 @@ public class Bolt : MonoBehaviour
 
     void OnTrackNut()
     {
-		bolt_carve_progress = Mathf.Max( bolt_carve_progress, ( point_up - transform_nut.position.y ) / ( point_up - point_bottom ) );
+		bolt_carve_progress = Mathf.Clamp( ( transform_nut.position.y - point_bottom ) / point_gap, bolt_carve_progress, 1 );
 		UpdateCarveProgress();
 	}
 
     void UpdateCarveProgress()
     {
-		var step      = 1f / bolt_renderers.Length;
-		var stepCount = bolt_carve_progress / step;
+		var step     = 1f / bolt_renderers.Length;
+		var progress = bolt_carve_progress;
 
-		var childCount = Mathf.FloorToInt( stepCount );
-		var remaining = stepCount - childCount;
-
-		for( var i = 0; i < childCount; i++ )
+		for( var i = 0; i < bolt_renderers.Length; i++ )
         {
-			bolt_renderers[ i ].SetBlendShapeWeight( 0, 100 );
+			if( progress >= step )
+			{
+				bolt_renderers[ i ].SetBlendShapeWeight( 0, 100 );
+				progress -= step;
+			}
+			else
+			{
+				bolt_renderers[ i ].SetBlendShapeWeight( 0, progress / step * 100 );
+				progress = Mathf.Max( progress - step, 0 );
+			}
 		}
-
-        if( !Mathf.Approximately( remaining, 0 ) )
-            bolt_renderers[ childCount ].SetBlendShapeWeight( 0, remaining * 100 );
 	}
 #endregion
 
 #region Editor Only
 #if UNITY_EDITOR
-    [ ShowInInspector, BoxGroup( "EditorOnly" ) ] private GameObject bolt_prefab;
+    [ ShowInInspector, BoxGroup( "EditorOnly" ), AssetSelector( Paths = "Assets/Prefab/GFX"  ) ] private GameObject bolt_prefab;
     [ ShowInInspector, BoxGroup( "EditorOnly" ) ] private int bolt_count;
-    [ ShowInInspector, BoxGroup( "EditorOnly" ) ] private float bolt_height;
+    [ ShowInInspector, BoxGroup( "EditorOnly" ) ] private float bolt_height = 0.5f;
 
     private void CacheRenderers()
     {

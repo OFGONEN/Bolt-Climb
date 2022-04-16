@@ -23,7 +23,9 @@ public class Movement : MonoBehaviour
 #endregion
 
 #region Unity API
-	[ Button() ]
+#endregion
+
+#region API
 	public void DoPath( int index, TweenCallback onPathComplete )
 	{
 		Vector3[] pathPoints;
@@ -43,21 +45,32 @@ public class Movement : MonoBehaviour
 		.OnUpdate( DoRotate )
 		.OnComplete( onPathComplete );
 	}
-#endregion
 
-#region API
-#endregion
-
-#region Implementation
-	void OnMovement( float minPosition )
+ // Return true if this is on the fall down point
+	public bool OnMovement( float minPosition )
 	{
 		var position = transform_movement.position;
 		position   += Vector3.up * velocity.CurrentSpeed * Time.deltaTime;
 		position.y  = Mathf.Max( minPosition, position.y );
 
 		transform_movement.position = position;
+
+		DoRotate();
+
+		return Mathf.Approximately( position.y, minPosition );
 	}
 
+	public void OnMovement()
+	{
+		var position = transform_movement.position;
+		position   += Vector3.up * velocity.CurrentSpeed * Time.deltaTime;
+
+		transform_movement.position = position;
+		DoRotate();
+	}
+#endregion
+
+#region Implementation
 	void DoRotate()
 	{
 		transform_rotate.Rotate( Vector3.up * velocity.CurrentSpeed * Time.deltaTime * GameSettings.Instance.movement_rotation_cofactor , Space.Self );
