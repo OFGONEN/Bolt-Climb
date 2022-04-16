@@ -99,11 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677b7adcd300f461c8c918006963e104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool_randomShatter: {fileID: 11400000, guid: c561ad2ca61414f04ab5dc5eadffa68c, type: 2}
+  event_level_failed: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   component_movement: {fileID: -5209316146565418335}
   component_animation: {fileID: 7951004504424403168}
   property_velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
   property_durability: {fileID: 11400000, guid: 559a1ceb3fc238a4cbe24c988c1e575d, type: 2}
   property_currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  isNutOnBolt: {fileID: 11400000, guid: d401f21baeb4e4064a7da03f6fbb0777, type: 2}
 --- !u!114 &4375852389534718817
 MonoBehaviour:
   m_ObjectHideFlags: 0

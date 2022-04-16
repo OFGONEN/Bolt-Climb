@@ -10,6 +10,10 @@ using Sirenix.OdinInspector;
 public class Nut : MonoBehaviour
 {
 #region Fields
+  [ Title( "Shared Variables" )]
+	[ SerializeField ] ShatterRandomPool pool_randomShatter;
+	[ SerializeField ] GameEvent event_level_failed;
+
   [ Title( "Components" )]
 	[ SerializeField ] Movement component_movement;
 	[ SerializeField ] AnimationHandle component_animation;
@@ -20,7 +24,7 @@ public class Nut : MonoBehaviour
 	float point_fallDown = 0;
 
 // Delegates
-	UnityMessage onUpdate;
+	UnityMessage onUpdateMethod;
 	UnityMessage onFingerDown;
 	UnityMessage onFingerUp;
 #endregion
@@ -31,14 +35,14 @@ public class Nut : MonoBehaviour
 #region Unity API
 	private void Awake()
 	{
-		onUpdate     = ExtensionMethods.EmptyMethod;
-		onFingerDown = ExtensionMethods.EmptyMethod;
-		onFingerUp   = ExtensionMethods.EmptyMethod;
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+		onFingerDown   = ExtensionMethods.EmptyMethod;
+		onFingerUp     = ExtensionMethods.EmptyMethod;
 	}
 
 	private void Update()
 	{
-		onUpdate();
+		onUpdateMethod();
 	}
 #endregion
 
@@ -62,14 +66,22 @@ public class Nut : MonoBehaviour
 
 		onFingerDown = OnFingerDown_StraightBolt;
 	}
+
+	public void OnIsNutOnBoltChange( bool value )
+	{
+		if( value )
+			onFingerDown = OnFingerDown_StraightBolt;
+		else
+			onFingerDown = ExtensionMethods.EmptyMethod;
+	}
+
+	public void OnFallDownPointChange( float value )
+	{
+		point_fallDown = value;
+	}
 #endregion
 
 #region Implementation
-//! Velocity
-//! Movement
-//! Durability
-//! Animation
-//! Currency
 //! Nut Shatter - Level Fail
 	void OnUpdate_Idle()
 	{
@@ -81,12 +93,15 @@ public class Nut : MonoBehaviour
 	{
 		if( Mathf.Approximately( 0, property_durability.CurrentDurability ) )
 		{
-			onUpdate     = ExtensionMethods.EmptyMethod;
-			onFingerDown = ExtensionMethods.EmptyMethod;
-			onFingerUp   = ExtensionMethods.EmptyMethod;
-			FFLogger.Log( "Level Failed" );
-			// gameObject.SetActive( false );
-			// spawn shatter nut
+			EmptyDelegates();
+			gameObject.SetActive( false );
+
+			var shatter                    = pool_randomShatter.GetEntity();
+			    shatter.transform.position = transform.position;
+
+			shatter.DoShatter();
+
+			DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, event_level_failed.Raise );
 		}
 		else
 		{
@@ -107,32 +122,26 @@ public class Nut : MonoBehaviour
 		component_animation.PlayAnimation( property_durability.DurabilityRatio );
 
 		if( isIdle )
-			onUpdate = OnUpdate_Idle;
+			onUpdateMethod = OnUpdate_Idle;
 	}
 
 	void OnFingerDown_StraightBolt()
 	{
-		onUpdate   = OnUpdate_Acceleration;
-		onFingerUp = OnFingerUp;
+		onUpdateMethod = OnUpdate_Acceleration;
+		onFingerUp     = OnFingerUp;
 	}
 
 	void OnFingerUp()
 	{
-		onUpdate = OnUpdate_Deceleration;
-		onFingerUp = ExtensionMethods.EmptyMethod;
+		onUpdateMethod = OnUpdate_Deceleration;
+		onFingerUp     = ExtensionMethods.EmptyMethod;
 	}
 
-	public void OnIsNutOnBoltChange( bool value )
+	void EmptyDelegates()
 	{
-		if( value )
-			onFingerDown = OnFingerDown_StraightBolt;
-		else
-			onFingerDown = ExtensionMethods.EmptyMethod;
-	}
-
-	public void OnFallDownPointChange( float value )
-	{
-		point_fallDown = value;
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+		onFingerUp     = ExtensionMethods.EmptyMethod;
+		onFingerDown   = ExtensionMethods.EmptyMethod;
 	}
 #endregion
 
