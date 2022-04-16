@@ -6,13 +6,13 @@ using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
 
-[ CreateAssetMenu( fileName = "currency", menuName = "FF/Data/Game/Currency" ) ]
+[ InlineEditor, CreateAssetMenu( fileName = "currency", menuName = "FF/Data/Game/Currency" ) ]
 public class Currency : SharedFloatNotifier
 {
 #region Fields
     [ SerializeField ] IncrementalCurrency currency_incremental;
     [ ShowInInspector, ReadOnly ] IncrementalCurrencyData currency_data;
-    [ ShowInInspector, ReadOnly ] float currency_cooldown = 0;
+    float currency_cooldown = 0;
 #endregion
 
 #region Properties

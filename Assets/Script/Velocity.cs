@@ -6,7 +6,7 @@ using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
 
-[ CreateAssetMenu( fileName = "velocity", menuName = "FF/Data/Game/Velocity" ) ]
+[ InlineEditor, CreateAssetMenu( fileName = "velocity", menuName = "FF/Data/Game/Velocity" ) ]
 public class Velocity : ScriptableObject
 {
 #region Fields

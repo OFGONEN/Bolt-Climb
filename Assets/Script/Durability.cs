@@ -6,7 +6,7 @@ using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
 
-[ CreateAssetMenu( fileName = "durability", menuName = "FF/Data/Game/Durability" ) ]
+[ InlineEditor, CreateAssetMenu( fileName = "durability", menuName = "FF/Data/Game/Durability" ) ]
 public class Durability : ScriptableObject
 {
 #region Fields
