@@ -138,6 +138,20 @@ public class Nut : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
+//! todo remove this variable before build
+	[ SerializeField ] SharedBoolNotifier isNutOnBolt;
+
+	private void OnGUI() 
+	{
+		var style = new GUIStyle();
+		style.fontSize = 25;
+
+		GUI.Label( new Rect( 25, 50 , 250, 250 ), "Is Nut On Bolt: " + isNutOnBolt.SharedValue  , style);
+		GUI.Label( new Rect( 25, 75 , 250, 250 ), "Nut Durability: " + property_durability.CurrentDurability , style);
+		GUI.Label( new Rect( 25, 100, 250, 250 ), "Nut %Durability: " + property_durability.DurabilityRatio , style);
+		GUI.Label( new Rect( 25, 125, 250, 250 ), "Nut Velocity: " + property_velocity.CurrentVelocity , style);
+		GUI.Label( new Rect( 25, 150, 250, 250 ), "Curreny: " + property_currency.SharedValue , style);
+	}
 #endif
 #endregion
 }
