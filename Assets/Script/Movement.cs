@@ -43,6 +43,7 @@ public class Movement : MonoBehaviour
 		.SetLookAt( 0, -Vector3.up )
 		.SetSpeedBased()
 		.OnUpdate( DoRotate )
+		.SetEase( Ease.Linear )
 		.OnComplete( onPathComplete );
 	}
 
