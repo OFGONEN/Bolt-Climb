@@ -13,6 +13,7 @@ public class Nut : MonoBehaviour
   [ Title( "Shared Variables" )]
 	[ SerializeField ] ShatterRandomPool pool_randomShatter;
 	[ SerializeField ] GameEvent event_level_failed;
+	[ SerializeField ] GameEvent event_level_completed;
 
   [ Title( "Components" )]
 	[ SerializeField ] Movement component_movement;
@@ -85,13 +86,25 @@ public class Nut : MonoBehaviour
 		EmptyDelegates();
 		component_movement.DoPath( gameEvent.eventValue, OnPathComplete );
 	}
+
+	public void OnLevelEndBolt( IntGameEvent gameEvent )
+	{
+		EmptyDelegates();
+		component_movement.DoPath( gameEvent.eventValue, OnLevelEndPathComplete );
+	}
 #endregion
 
 #region Implementation
 	void OnPathComplete()
 	{
-		transform.position.SetX( 0 ).SetZ( 0 );
+		transform.position.SetX( 0 ).SetZ( 0 ); // todo remove this after path points are corrected
 		onUpdateMethod = OnUpdate_Deceleration;
+	}
+
+	void OnLevelEndPathComplete()
+	{
+		transform.position.SetX( 0 ).SetZ( 0 );
+		event_level_completed.Raise();
 	}
 
 	void OnUpdate_Idle()

@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool_randomShatter: {fileID: 11400000, guid: c561ad2ca61414f04ab5dc5eadffa68c, type: 2}
   event_level_failed: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
+  event_level_completed: {fileID: 0}
   component_movement: {fileID: -5209316146565418335}
   component_animation: {fileID: 7951004504424403168}
   property_velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
@@ -186,6 +187,24 @@ MonoBehaviour:
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 11400000, guid: ac97fbe748a77ed41b02e43b9eba8d12, type: 2}
+            m_ObjectArgumentAssemblyTypeName: FFStudio.IntGameEvent, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: 34e7cbb39e3e25e49b4d19ad35c405b9, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -6898695181098901142}
+          m_TargetAssemblyTypeName: Nut, Assembly-CSharp
+          m_MethodName: OnLevelEndBolt
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 34e7cbb39e3e25e49b4d19ad35c405b9, type: 2}
             m_ObjectArgumentAssemblyTypeName: FFStudio.IntGameEvent, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
