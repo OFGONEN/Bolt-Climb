@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &465559225314545601
 Transform:
@@ -414,6 +414,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4769256524964166010, guid: b10ba721744339d49afab28c532d84ff, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5919359984134162697, guid: b10ba721744339d49afab28c532d84ff, type: 3}
       propertyPath: m_Name
       value: gfx_bolt_shaped
@@ -421,6 +425,10 @@ PrefabInstance:
     - target: {fileID: 5919359984134162697, guid: b10ba721744339d49afab28c532d84ff, type: 3}
       propertyPath: m_Layer
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919359984134162697, guid: b10ba721744339d49afab28c532d84ff, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b10ba721744339d49afab28c532d84ff, type: 3}
