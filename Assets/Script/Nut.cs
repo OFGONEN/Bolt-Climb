@@ -97,13 +97,23 @@ public class Nut : MonoBehaviour
 #region Implementation
 	void OnPathComplete()
 	{
-		transform.position.SetX( 0 ).SetZ( 0 ); // todo remove this after path points are corrected
+		var position   = transform.position;
+		    position.x = 0;
+		    position.z = 0;
+
+		transform.position = position; // todo remove this after path points are corrected
+
 		onUpdateMethod = OnUpdate_Deceleration;
 	}
 
 	void OnLevelEndPathComplete()
 	{
-		transform.position.SetX( 0 ).SetZ( 0 );
+		var position   = transform.position;
+		    position.x = 0;
+		    position.z = 0;
+
+		transform.position = position; // todo remove this after path points are corrected
+
 		event_level_completed.Raise();
 	}
 
