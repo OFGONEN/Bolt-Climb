@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool_randomShatter: {fileID: 11400000, guid: c561ad2ca61414f04ab5dc5eadffa68c, type: 2}
   event_level_failed: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
-  event_level_completed: {fileID: 0}
+  event_level_completed: {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
   component_movement: {fileID: -5209316146565418335}
   component_animation: {fileID: 7951004504424403168}
   property_velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
