@@ -26,22 +26,12 @@ public class Movement : MonoBehaviour
 #endregion
 
 #region API
-	public void DoPath( int index, TweenCallback onPathComplete )
+	public void DoPath( Vector3[] pathPoints, TweenCallback onPathComplete )
 	{
-		Vector3[] pathPoints;
-		path_Set.itemDictionary.TryGetValue( index, out pathPoints );
-
-#if UNITY_EDITOR
-		if( pathPoints == null )
-		{
-			FFLogger.LogError( $"Path Index {index} is NULL" );
-			return;
-		}
-#endif
-
 		transform_movement.DOPath( pathPoints, velocity.CurrentVelocity, PathType.Linear )
 		.SetLookAt( 0, -Vector3.up )
 		.SetSpeedBased()
+		.SetRelative()
 		.OnUpdate( DoRotate )
 		.SetEase( Ease.Linear )
 		.OnComplete( onPathComplete );

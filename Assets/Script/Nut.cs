@@ -84,13 +84,13 @@ public class Nut : MonoBehaviour
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
 		EmptyDelegates();
-		component_movement.DoPath( gameEvent.eventValue, OnPathComplete );
+		component_movement.DoPath( GameSettings.Instance.movement_path_shaped, OnPathComplete );
 	}
 
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
 	{
 		EmptyDelegates();
-		component_movement.DoPath( gameEvent.eventValue, OnLevelEndPathComplete );
+		component_movement.DoPath( GameSettings.Instance.movement_path_end, OnLevelEndPathComplete );
 	}
 #endregion
 
@@ -108,12 +108,6 @@ public class Nut : MonoBehaviour
 
 	void OnLevelEndPathComplete()
 	{
-		var position   = transform.position;
-		    position.x = 0;
-		    position.z = 0;
-
-		transform.position = position; // todo remove this after path points are corrected
-
 		event_level_completed.Raise();
 	}
 
