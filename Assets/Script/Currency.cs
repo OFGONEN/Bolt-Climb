@@ -10,6 +10,7 @@ using Sirenix.OdinInspector;
 public class Currency : SharedFloatNotifier
 {
 #region Fields
+    [ SerializeField ] UICurrencyPool pool_currency_ui;
     [ SerializeField ] IncrementalCurrency currency_incremental;
     [ ShowInInspector, ReadOnly ] IncrementalCurrencyData currency_data;
     float currency_cooldown = 0;
@@ -34,6 +35,8 @@ public class Currency : SharedFloatNotifier
         {
 			SharedValue       += currency_data.incremental_currency_value;
 			currency_cooldown  = Time.time + currency_data.incremental_currency_rate;
+
+			pool_currency_ui.GetEntity().Spawn(); // Spawn currency ui
 		}
     }
 
