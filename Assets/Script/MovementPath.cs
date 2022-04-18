@@ -28,7 +28,6 @@ public class MovementPath : MonoBehaviour
 
 	private void Start()
 	{
-		ModifyPath();
 		path_set.AddDictionary( path_index, path_points );
 	}
 #endregion
@@ -41,17 +40,19 @@ public class MovementPath : MonoBehaviour
 #endregion
 
 #region Implementation
-	void ModifyPath()
-	{
-		for( var i = 0; i < path_points.Length; i++ )
-		{
-			path_points[ i ] += transform.position;
-		}
-	}
 #endregion
 
 #region Editor Only
 #if UNITY_EDITOR
+	[ Button() ]
+	void ModifyPoints()
+	{
+		for( var i = 0; i < path_points.Length; i++ )
+		{
+			path_points[ i ] = Quaternion.AngleAxis( transform.eulerAngles.y, Vector3.up ) * path_points[ i ];
+		}
+	}
+
 	[ Button() ]
 	void ImportPath()
 	{
