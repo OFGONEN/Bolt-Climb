@@ -208,6 +208,7 @@ public class Nut : MonoBehaviour
 		GUI.Label( new Rect( 25, 100, 250, 250 ), "Nut %Durability: " + property_durability.DurabilityRatio , style);
 		GUI.Label( new Rect( 25, 125, 250, 250 ), "Nut Velocity: " + property_velocity.CurrentVelocity , style);
 		GUI.Label( new Rect( 25, 150, 250, 250 ), "Curreny: " + property_currency.SharedValue , style);
+		GUI.Label( new Rect( 25, 170, 250, 250 ), "Height: " + transform.position.y , style);
 	}
 #endif
 #endregion
