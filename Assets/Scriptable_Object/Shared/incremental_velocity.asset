@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: incremental_velocity
   m_EditorClassIdentifier: 
   incremental_data:
-  - incremental_cost: 10
+  - incremental_cost: 0
     incremental_velocity_max: 10
     incremental_velocity_max_duration: 1.25
     incremental_velocity_min: -3
