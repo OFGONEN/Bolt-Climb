@@ -43,7 +43,30 @@ public class LevelCreator : ScriptableObject
 	StringBuilder stringBuilder = new StringBuilder( 128 );
 #endregion
 
-#region Properties
+#region PlayerPrefs
+	[ Button() ]
+	public void SetIncremental_Velocity( int index )
+	{
+		PlayerPrefs.SetInt( "velocity_index", Mathf.Max( index, 0 ) );
+	}
+
+	[ Button() ]
+	public void SetIncremental_Durability( int index )
+	{
+		PlayerPrefs.SetInt( "velocity_index", Mathf.Max( index, 0 ) );
+	}
+
+	[ Button() ]
+	public void SetIncremental_Currency( int index )
+	{
+		PlayerPrefs.SetInt( "velocity_index", Mathf.Max( index, 0 ) );
+	}
+	
+	[ Button() ]
+	public void SetCurrency( float value )
+	{
+		PlayerPrefs.SetFloat( "currency", value );
+	}
 #endregion
 
 #region Unity API
