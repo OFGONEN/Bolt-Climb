@@ -13,8 +13,6 @@ namespace FFStudio
     // Info: Game related settings
         [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
         [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
-        [ BoxGroup( "Movement" ) ] public Vector3[] movement_path_shaped;
-        [ BoxGroup( "Movement" ) ] public Vector3[] movement_path_end;
 
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force;
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_torque;

@@ -43,7 +43,30 @@ public class LevelCreator : ScriptableObject
 	StringBuilder stringBuilder = new StringBuilder( 128 );
 #endregion
 
-#region Properties
+#region PlayerPrefs
+	[ Button() ]
+	public void SetIncremental_Velocity( int index )
+	{
+		PlayerPrefs.SetInt( "velocity_index", Mathf.Max( index, 0 ) );
+	}
+
+	[ Button() ]
+	public void SetIncremental_Durability( int index )
+	{
+		PlayerPrefs.SetInt( "velocity_index", Mathf.Max( index, 0 ) );
+	}
+
+	[ Button() ]
+	public void SetIncremental_Currency( int index )
+	{
+		PlayerPrefs.SetInt( "velocity_index", Mathf.Max( index, 0 ) );
+	}
+	
+	[ Button() ]
+	public void SetCurrency( float value )
+	{
+		PlayerPrefs.SetFloat( "currency", value );
+	}
 #endregion
 
 #region Unity API
@@ -87,8 +110,12 @@ public class LevelCreator : ScriptableObject
         // Place Level End Bolt
 		var bolt_end = PrefabUtility.InstantiatePrefab( prefab_bolt_end ) as GameObject;
 		bolt_end.transform.position = Vector3.up * create_position;
-        // bolt_end.GetComponent< MovementPath >().path_index = create_path_index;
 		bolt_end.transform.SetParent( spawnTransform );
+
+		var path = bolt_end.GetComponent< MovementPath >();
+        path.path_index = create_path_index;
+        path.MovePoints();
+
 			
 		EditorSceneManager.SaveOpenScenes();
 	}
@@ -146,8 +173,12 @@ public class LevelCreator : ScriptableObject
     {
 		var bolt_shaped = PrefabUtility.InstantiatePrefab( prefab_bolt_shaped ) as GameObject;
 		bolt_shaped.transform.position = Vector3.up * create_position;
-        // bolt_shaped.GetComponent< MovementPath >().path_index = create_path_index;
 		bolt_shaped.transform.SetParent( spawnTransform );
+
+		var path = bolt_shaped.GetComponent< MovementPath >();
+        path.path_index = create_path_index;
+        path.MovePoints();
+
 
 		create_path_index++;
 		create_position += bolt_shaped_model_height;
