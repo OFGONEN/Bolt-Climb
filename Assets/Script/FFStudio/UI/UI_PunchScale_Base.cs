@@ -11,7 +11,10 @@ namespace FFStudio
     {
 #region Fields (Inspector Interface)
     [ Title( "Parameters" ) ]
-        [ SerializeField ] private float punchScale;
+        [ SerializeField ] float punch_power = 1f;
+        [ SerializeField ] float punch_duration = 0.5f;
+        [ SerializeField ] int punch_vibrato = 10;
+        [ SerializeField ] float punch_elasticity = 1;
 
     [ Title( "Observed Shared Data" ) ]
         [ SerializeField ] private SharedDataNotifier< NotifierType > notifier_count;
@@ -20,7 +23,6 @@ namespace FFStudio
 #region Fields (Private)
         private Vector3 originalScale;
         private RecycledTween punchScaleTween;
-        private float duration;
 #endregion
 
 #region Properties
@@ -41,11 +43,8 @@ namespace FFStudio
         
         private void Awake()
         {
-            originalScale = uiTransform.localScale;
-
+            originalScale   = uiTransform.localScale;
             punchScaleTween = new RecycledTween();
-
-            duration = GameSettings.Instance.ui_Entity_Scale_TweenDuration;
         }
 #endregion
 
@@ -54,7 +53,7 @@ namespace FFStudio
         {
             punchScaleTween.Kill();
             uiTransform.localScale = originalScale;
-            punchScaleTween.Recycle( uiTransform.DOPunchScale( Vector3.one * punchScale, duration, 1, 1 ), OnPunchScaleComplete );
+            punchScaleTween.Recycle( uiTransform.DOPunchScale( Vector3.one * punch_power, punch_duration, punch_vibrato, punch_elasticity ), OnPunchScaleComplete );
 
     #if UNITY_EDITOR
             punchScaleTween.Tween.SetId( name + "_ff_UIPunchScale" );
@@ -65,7 +64,7 @@ namespace FFStudio
         {
             punchScaleTween.Kill();
             uiTransform.localScale = originalScale;
-            punchScaleTween.Recycle( uiTransform.DOPunchScale( Vector3.one * strength, duration, 1, 1 ), OnPunchScaleComplete );
+            punchScaleTween.Recycle( uiTransform.DOPunchScale( Vector3.one * strength, punch_duration, punch_vibrato, punch_elasticity ), OnPunchScaleComplete );
 
     #if UNITY_EDITOR
             punchScaleTween.Tween.SetId( name + "_ff_UIPunchScale" );
