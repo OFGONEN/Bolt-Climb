@@ -17,6 +17,7 @@ namespace FFStudio
         [ Title( "Fired Events" ) ]
         public GameEvent levelFailedEvent;
         public GameEvent levelCompleted;
+        public GameEvent event_level_started;
 
         [ Title( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
@@ -66,8 +67,8 @@ namespace FFStudio
 
         private void LevelRevealedResponse()
         {
-
-        }
+			event_level_started.Raise();
+		}
 
         private void LevelStartedResponse()
         {
