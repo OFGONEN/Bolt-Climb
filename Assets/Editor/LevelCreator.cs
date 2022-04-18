@@ -241,6 +241,10 @@ public class LevelCreator : ScriptableObject
 
 #region Editor Only
 #if UNITY_EDITOR
+	private void OnValidate()
+	{
+    	level_start_bolt_length = Mathf.Max( 2, level_start_bolt_length );
+	}
 #endif
 #endregion
 }
