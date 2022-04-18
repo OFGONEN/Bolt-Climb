@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10fe72393c44d354b9a17cc1ba52195e, type: 3}
+  m_Name: level_creator
+  m_EditorClassIdentifier: 
+  level_code: b4s2.5b4s0.512cs1.5
+  level_start_bolt_length: 3
+  level_start_bolt_space: 1
+  prefab_bolt: {fileID: 3224905004853089646, guid: 66345a6b8558e4eed8fe462275939e1d, type: 3}
+  prefab_bolt_start: {fileID: 8790097260034345890, guid: d1e0b511b41eb4b4f9c8cf7e96e2c59c, type: 3}
+  prefab_bolt_shaped: {fileID: 5111738701764704344, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
+  prefab_bolt_end: {fileID: 9094376356477548414, guid: d897b79f0f3fbb3419b6fa574a116db7, type: 3}
+  prefab_bolt_model: {fileID: 1063151217951837440, guid: 0e7785d29aa454ad19d728a5fb2f37de, type: 3}
+  bolt_model_height: 0.5
+  bolt_shaped_model_height: 28

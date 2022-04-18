@@ -106,12 +106,22 @@ public class Bolt : MonoBehaviour
 #region Editor Only
 #if UNITY_EDITOR
     [ ShowInInspector, BoxGroup( "EditorOnly" ), AssetSelector( Paths = "Assets/Prefab/GFX"  ) ] private GameObject bolt_prefab;
-    [ ShowInInspector, BoxGroup( "EditorOnly" ) ] private int bolt_count;
-    [ ShowInInspector, BoxGroup( "EditorOnly" ) ] private float bolt_height = 0.5f;
+    [ ShowInInspector, BoxGroup( "EditorOnly" ) ] public int bolt_count;
+    [ ShowInInspector, BoxGroup( "EditorOnly" ) ] public float bolt_height = 0.5f;
 
     private void CacheRenderers()
     {
 		bolt_renderers = transform.GetComponentsInChildren< SkinnedMeshRenderer >();
+	}
+
+    [ Button() ]
+    public void PlaceBolts( int count, float height, GameObject prefab )
+    {
+		bolt_count  = count;
+		bolt_height = height;
+		bolt_prefab = prefab;
+
+		PlaceBolts();
 	}
 
     [ Button() ]
