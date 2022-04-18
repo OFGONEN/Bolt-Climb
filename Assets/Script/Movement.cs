@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
 		transform_movement.DOPath( pathPoints, velocity.CurrentVelocity, PathType.Linear )
 		.SetLookAt( 0, -Vector3.up )
 		.SetSpeedBased()
-		.SetRelative()
+		// .SetRelative()
 		.OnUpdate( DoRotate )
 		.SetEase( Ease.Linear )
 		.OnComplete( onPathComplete );

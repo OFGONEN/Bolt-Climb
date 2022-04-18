@@ -110,8 +110,12 @@ public class LevelCreator : ScriptableObject
         // Place Level End Bolt
 		var bolt_end = PrefabUtility.InstantiatePrefab( prefab_bolt_end ) as GameObject;
 		bolt_end.transform.position = Vector3.up * create_position;
-        bolt_end.GetComponent< MovementPath >().path_index = create_path_index;
 		bolt_end.transform.SetParent( spawnTransform );
+
+		var path = bolt_end.GetComponent< MovementPath >();
+        path.path_index = create_path_index;
+        path.MovePoints();
+
 			
 		EditorSceneManager.SaveOpenScenes();
 	}
@@ -169,8 +173,12 @@ public class LevelCreator : ScriptableObject
     {
 		var bolt_shaped = PrefabUtility.InstantiatePrefab( prefab_bolt_shaped ) as GameObject;
 		bolt_shaped.transform.position = Vector3.up * create_position;
-        bolt_shaped.GetComponent< MovementPath >().path_index = create_path_index;
 		bolt_shaped.transform.SetParent( spawnTransform );
+
+		var path = bolt_shaped.GetComponent< MovementPath >();
+        path.path_index = create_path_index;
+        path.MovePoints();
+
 
 		create_path_index++;
 		create_position += bolt_shaped_model_height;

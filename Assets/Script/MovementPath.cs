@@ -45,11 +45,19 @@ public class MovementPath : MonoBehaviour
 #region Editor Only
 #if UNITY_EDITOR
 	[ Button() ]
-	void ModifyPoints()
+	public void RotatePoints()
 	{
 		for( var i = 0; i < path_points.Length; i++ )
 		{
 			path_points[ i ] = Quaternion.AngleAxis( transform.eulerAngles.y, Vector3.up ) * path_points[ i ];
+		}
+	}
+
+	public void MovePoints()
+	{
+		for( var i = 0; i < path_points.Length; i++ )
+		{
+			path_points[ i ] += transform.position;
 		}
 	}
 
