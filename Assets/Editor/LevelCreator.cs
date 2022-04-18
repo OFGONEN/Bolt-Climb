@@ -32,6 +32,8 @@ public class LevelCreator : ScriptableObject
     const char prefab_bolt_shaped_char = 'c';
     const char space_char = 's';
 
+	Transform spawnTransform;
+
 	int create_index = 0;
 	float create_length = 0;
 	float create_position = 0;
@@ -47,10 +49,12 @@ public class LevelCreator : ScriptableObject
 #endregion
 
 #region API
+    [ Button() ]
     public void CreateLevel()
     {
-		var spawnObject = GameObject.FindWithTag( "Respawn" );
-		spawnObject.transform.DestoryAllChildren();
+		spawnTransform = GameObject.FindWithTag( "Respawn" ).transform;
+		spawnTransform.DestoryAllChildren();
+
 		int errorIdex;
 
 		if( !IsCodeValid( out errorIdex ) )
@@ -65,8 +69,12 @@ public class LevelCreator : ScriptableObject
 		create_path_index = 0;
 
 		// Place Start Bolt first
-		PlaceBolt();
-		create_position = level_start_bolt_space + level_start_bolt_length * bolt_model_height;
+		var bolt_start = PrefabUtility.InstantiatePrefab( prefab_bolt_start ) as GameObject;
+		bolt_start.transform.position = Vector3.up * create_position;
+		bolt_start.GetComponent< Bolt >().PlaceBolts( Mathf.FloorToInt( create_length ), bolt_model_height, prefab_bolt_model );
+		bolt_start.transform.SetParent( spawnTransform );
+
+		create_position += create_length * bolt_model_height + level_start_bolt_space;
 
 		while( create_index < level_code.Length - 1 )
         {
@@ -77,6 +85,7 @@ public class LevelCreator : ScriptableObject
 		var bolt_end = PrefabUtility.InstantiatePrefab( prefab_bolt_end ) as GameObject;
 		bolt_end.transform.position = Vector3.up * create_position;
         bolt_end.GetComponent< MovementPath >().path_index = create_path_index;
+		bolt_end.transform.SetParent( spawnTransform );
 	}
 #endregion
 
@@ -123,6 +132,7 @@ public class LevelCreator : ScriptableObject
 		var bolt_start = PrefabUtility.InstantiatePrefab( prefab_bolt ) as GameObject;
 		bolt_start.transform.position = Vector3.up * create_position;
 		bolt_start.GetComponent< Bolt >().PlaceBolts( Mathf.FloorToInt( create_length ), bolt_model_height, prefab_bolt_model );
+		bolt_start.transform.SetParent( spawnTransform );
 
 		create_position += create_length * bolt_model_height;
 	}
@@ -132,6 +142,8 @@ public class LevelCreator : ScriptableObject
 		var bolt_shaped = PrefabUtility.InstantiatePrefab( prefab_bolt_shaped ) as GameObject;
 		bolt_shaped.transform.position = Vector3.up * create_position;
         bolt_shaped.GetComponent< MovementPath >().path_index = create_path_index;
+		bolt_shaped.transform.SetParent( spawnTransform );
+
 		create_path_index++;
 		create_position += bolt_shaped_model_height;
 	}
@@ -165,7 +177,9 @@ public class LevelCreator : ScriptableObject
 						return false;
 					}
 				}
-            }
+
+				i--;
+			}
             else
             {
                 FFLogger.LogError( "INVALID CODE: " + errorIdex );
