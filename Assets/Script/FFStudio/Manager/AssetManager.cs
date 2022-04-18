@@ -16,6 +16,7 @@ namespace FFStudio
 
 	[ Title( "Pool" ) ]
 		public Pool_UIPopUpText pool_UIPopUpText;
+		public UICurrencyPool pool_ui_currency;
 		public ShatterPool[] pool_shatter_array;
 
 	[ Title( "Setup" ) ]
@@ -39,6 +40,7 @@ namespace FFStudio
 		private void Awake()
 		{
 			pool_UIPopUpText.InitPool( transform, false );
+			pool_ui_currency.InitPool( transform, false );
 
 			for( var i = 0; i < pool_shatter_array.Length; i++ )
 			{
