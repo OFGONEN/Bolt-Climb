@@ -12,8 +12,10 @@ public class Nut : MonoBehaviour
 #region Fields
   [ Title( "Shared Variables" )]
 	[ SerializeField ] ShatterRandomPool pool_randomShatter;
+	[ SerializeField ] SharedReferenceNotifier notif_bolt_end;
 	[ SerializeField ] GameEvent event_level_failed;
 	[ SerializeField ] GameEvent event_level_completed;
+	[ SerializeField ] SharedFloatNotifier level_progress;
 
   [ Title( "Components" )]
 	[ SerializeField ] Movement component_movement;
@@ -23,11 +25,12 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] Currency property_currency;
 // Private
 	float point_fallDown = 0;
-
+	float point_levelEnd;
 // Delegates
 	UnityMessage onUpdateMethod;
 	UnityMessage onFingerDown;
 	UnityMessage onFingerUp;
+	UnityMessage onLevelProgress;
 #endregion
 
 #region Properties
@@ -36,14 +39,22 @@ public class Nut : MonoBehaviour
 #region Unity API
 	private void Awake()
 	{
-		onUpdateMethod = ExtensionMethods.EmptyMethod;
-		onFingerDown   = ExtensionMethods.EmptyMethod;
-		onFingerUp     = ExtensionMethods.EmptyMethod;
+		onUpdateMethod  = ExtensionMethods.EmptyMethod;
+		onFingerDown    = ExtensionMethods.EmptyMethod;
+		onFingerUp      = ExtensionMethods.EmptyMethod;
+		onLevelProgress = UpdateLevelProgress;
+	}
+
+	private void Start()
+	{
+		point_levelEnd = ( notif_bolt_end.SharedValue as Transform ).position.y;
+		UpdateLevelProgress();
 	}
 
 	private void Update()
 	{
 		onUpdateMethod();
+		onLevelProgress();
 	}
 #endregion
 
@@ -90,6 +101,7 @@ public class Nut : MonoBehaviour
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
 	{
 		EmptyDelegates();
+		onLevelProgress = ExtensionMethods.EmptyMethod;
 		component_movement.DoPath( gameEvent.eventValue, OnLevelEndPathComplete );
 	}
 #endregion
@@ -171,6 +183,14 @@ public class Nut : MonoBehaviour
 		onFingerUp     = ExtensionMethods.EmptyMethod;
 		onFingerDown   = ExtensionMethods.EmptyMethod;
 	}
+
+	void UpdateLevelProgress()
+	{
+		var baseProgress = ( CurrentLevelData.Instance.currentLevel_Shown - 1 ) / ( float )GameSettings.Instance.game_level_count;
+		var currentProgress = transform.position.y / point_levelEnd;
+
+		level_progress.SharedValue = baseProgress + currentProgress / GameSettings.Instance.game_level_count;
+	}
 #endregion
 
 #region Editor Only
@@ -188,6 +208,7 @@ public class Nut : MonoBehaviour
 		GUI.Label( new Rect( 25, 100, 250, 250 ), "Nut %Durability: " + property_durability.DurabilityRatio , style);
 		GUI.Label( new Rect( 25, 125, 250, 250 ), "Nut Velocity: " + property_velocity.CurrentVelocity , style);
 		GUI.Label( new Rect( 25, 150, 250, 250 ), "Curreny: " + property_currency.SharedValue , style);
+		GUI.Label( new Rect( 25, 170, 250, 250 ), "Height: " + transform.position.y , style);
 	}
 #endif
 #endregion
