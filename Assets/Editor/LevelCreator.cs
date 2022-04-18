@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using Sirenix.OdinInspector;
 using FFEditor;
 using FFStudio;
@@ -52,6 +53,8 @@ public class LevelCreator : ScriptableObject
     [ Button() ]
     public void CreateLevel()
     {
+		EditorSceneManager.MarkAllScenesDirty();
+
 		spawnTransform = GameObject.FindWithTag( "Respawn" ).transform;
 		spawnTransform.DestoryAllChildren();
 
@@ -86,6 +89,8 @@ public class LevelCreator : ScriptableObject
 		bolt_end.transform.position = Vector3.up * create_position;
         bolt_end.GetComponent< MovementPath >().path_index = create_path_index;
 		bolt_end.transform.SetParent( spawnTransform );
+			
+		EditorSceneManager.SaveOpenScenes();
 	}
 #endregion
 
