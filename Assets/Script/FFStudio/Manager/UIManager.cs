@@ -69,7 +69,7 @@ namespace FFStudio
 			var sequence = DOTween.Sequence()
 								.Append( level_loadingBar_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 								.Append( loadingScreenImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
-								.Append( foreGroundImage.DOFade( fade, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) );
+								.Join( foreGroundImage.DOFade( fade, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) );
                                 IncrementalButtons_GoUp( sequence );
 								sequence.AppendCallback( () => tapInputListener.response = StartLevel );
 
@@ -185,9 +185,7 @@ namespace FFStudio
 
         private void IncrementalButtons_GoUp( Sequence sequence )
         {
-			sequence.Append( incrementalButtons[ 0 ].GoToTargetPosition() );
-
-			for( var i = 1; i < incrementalButtons.Length; i++ )
+			for( var i = 0; i < incrementalButtons.Length; i++ )
             {
 				sequence.Join( incrementalButtons[ i ].GoToTargetPosition() );
 			}
@@ -195,7 +193,7 @@ namespace FFStudio
 
         private void IncrementalButtons_GoDown()
         {
-			for( var i = 1; i < incrementalButtons.Length; i++ )
+			for( var i = 0; i < incrementalButtons.Length; i++ )
             {
 				incrementalButtons[ i ].GoToStartPosition();
 			}

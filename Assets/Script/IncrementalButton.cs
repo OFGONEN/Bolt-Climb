@@ -43,7 +43,7 @@ public class IncrementalButton : UIEntity
 
     public void Configure( bool available, Color color, float cost, int level )
     {
-		ui_button.interactable = false;
+		ui_button.interactable = available;
 		this.available         = available;
 		ui_text_cost.text           = cost.ToString();
 		ui_text_cost.color          = color;

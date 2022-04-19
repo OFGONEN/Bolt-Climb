@@ -1621,7 +1621,7 @@ PrefabInstance:
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
       propertyPath: destinationTransform
       value: 
-      objectReference: {fileID: 2284257775562547614}
+      objectReference: {fileID: 7283121772368627107}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
       propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
@@ -1774,7 +1774,7 @@ PrefabInstance:
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
       propertyPath: destinationTransform
       value: 
-      objectReference: {fileID: 2284257775562547614}
+      objectReference: {fileID: 18928391963118403}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
       propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
