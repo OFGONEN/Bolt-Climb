@@ -25,7 +25,7 @@ public class Currency : SharedFloatNotifier
 #region API
     public void SetCurrencyData()
     {
-		currency_data     = currency_incremental.ReturnIncremental( PlayerPrefs.GetInt( "currency_index", 0 ) );
+		currency_data     = currency_incremental.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 ) );
 		currency_cooldown = 0;
 	}
 
@@ -47,12 +47,12 @@ public class Currency : SharedFloatNotifier
 
     public void SaveCurrency()
     {
-		PlayerPrefs.SetFloat( "currency", SharedValue );
+		PlayerPrefs.SetFloat( ExtensionMethods.currency, SharedValue );
     }
 
     public void LoadCurrency()
     {
-		SharedValue =  PlayerPrefs.GetFloat( "currency", 0 );
+		SharedValue =  PlayerPrefs.GetFloat( ExtensionMethods.currency, 0 );
     }
 #endregion
 
