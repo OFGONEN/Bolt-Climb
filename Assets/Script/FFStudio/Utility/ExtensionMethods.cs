@@ -10,6 +10,12 @@ namespace FFStudio
 {
 	public static class ExtensionMethods
 	{
+		//PlayerPrefs
+		public static string currency         = "currency";
+		public static string currency_index   = "currency_index";
+		public static string durability_index = "durability_index";
+		public static string velocity_index   = "velocity_index";
+
 		//Static Variables
 		private static List< Transform > baseModelBones = new List< Transform >( 96 );
 		private static List< Transform > targetModelBones = new List< Transform >( 96 );
