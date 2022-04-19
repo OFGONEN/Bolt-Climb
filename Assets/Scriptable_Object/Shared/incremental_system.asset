@@ -15,4 +15,4 @@ MonoBehaviour:
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   incremental_durability: {fileID: 11400000, guid: 75067c71baed4df4eb69e96378f2bf95, type: 2}
   incremental_velocity: {fileID: 11400000, guid: 6b8daa1d848ee4b59a3c3d628379ea53, type: 2}
-  incremental_curreny: {fileID: 11400000, guid: 42985a7b07d294f11a1a6efd18604daa, type: 2}
+  incremental_currency: {fileID: 11400000, guid: 42985a7b07d294f11a1a6efd18604daa, type: 2}

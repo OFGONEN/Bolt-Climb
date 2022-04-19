@@ -13,7 +13,7 @@ public class UpgradeSystem : ScriptableObject
     [ SerializeField ] Currency currency;
     [ SerializeField ] IncrementalDurability incremental_durability;
     [ SerializeField ] IncrementalVelocity incremental_velocity;
-    [ SerializeField ] IncrementalCurrency incremental_curreny;
+    [ SerializeField ] IncrementalCurrency incremental_currency;
 #endregion
 
 #region Properties
@@ -42,9 +42,36 @@ public class UpgradeSystem : ScriptableObject
     public void UnlockIncremental_Currency()
     {
 		var currentIndex = PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 );
-		currency.SharedValue -= incremental_curreny.ReturnIncremental( currentIndex ).incremental_cost;
+		currency.SharedValue -= incremental_currency.ReturnIncremental( currentIndex ).incremental_cost;
 
-		PlayerPrefs.SetInt( ExtensionMethods.currency_index, Mathf.Min( currentIndex + 1, incremental_curreny.IncrementalCount ) );
+		PlayerPrefs.SetInt( ExtensionMethods.currency_index, Mathf.Min( currentIndex + 1, incremental_currency.IncrementalCount ) );
+	}
+
+	public void SetUpIncrementalButton_Durability( IncrementalButton incrementalButton )
+	{
+		var available = CanAfford_Durability() && CanShow_Durability();
+		var color     = available ? Color.green : Color.red;
+		var cost      = incremental_durability.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.durability_index, 0 ) ).incremental_cost;
+
+		incrementalButton.Configure( available, color, cost );
+	}
+
+	public void SetUpIncrementalButton_Velocity( IncrementalButton incrementalButton )
+	{
+		var available = CanAfford_Velocity() && CanShow_Velocity();
+		var color     = available ? Color.green : Color.red;
+		var cost      = incremental_velocity.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.velocity_index, 0 ) ).incremental_cost;
+
+		incrementalButton.Configure( available, color, cost );
+	}
+
+	public void SetUpIncrementalButton_Currency( IncrementalButton incrementalButton )
+	{
+		var available = CanAfford_Currency() && CanShow_Currency();
+		var color     = available ? Color.green : Color.red;
+		var cost      = incremental_currency.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 ) ).incremental_cost;
+
+		incrementalButton.Configure( available, color, cost );
 	}
 #endregion
 
@@ -62,7 +89,7 @@ public class UpgradeSystem : ScriptableObject
 
     bool CanAfford_Currency()
     {
-		return currency.SharedValue >= incremental_curreny.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 ) ).incremental_cost;
+		return currency.SharedValue >= incremental_currency.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 ) ).incremental_cost;
     }
 
     bool CanShow_Durability()
@@ -77,7 +104,7 @@ public class UpgradeSystem : ScriptableObject
 
     bool CanShow_Currency()
     {
-		return PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 ) < incremental_curreny.IncrementalCount - 1;
+		return PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 ) < incremental_currency.IncrementalCount - 1;
     }
 #endregion
 
