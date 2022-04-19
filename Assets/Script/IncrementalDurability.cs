@@ -11,7 +11,9 @@ public class IncrementalDurability : ScriptableObject
 {
 	[ SerializeField ] IncrementalDurabilityData[] incremental_data;
 
-    public IncrementalDurabilityData ReturnIncremental( int index )
+	public int IncrementalCount => incremental_data.Length;
+
+	public IncrementalDurabilityData ReturnIncremental( int index )
     {
 		return incremental_data[ index ];
 	}
