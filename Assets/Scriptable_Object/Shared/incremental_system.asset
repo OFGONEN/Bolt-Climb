@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e097835a2240e6749b827831de6882b9, type: 3}
+  m_Name: incremental_system
+  m_EditorClassIdentifier: 
+  currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  incremental_durability: {fileID: 11400000, guid: 75067c71baed4df4eb69e96378f2bf95, type: 2}
+  incremental_velocity: {fileID: 11400000, guid: 6b8daa1d848ee4b59a3c3d628379ea53, type: 2}
+  incremental_curreny: {fileID: 11400000, guid: 42985a7b07d294f11a1a6efd18604daa, type: 2}
