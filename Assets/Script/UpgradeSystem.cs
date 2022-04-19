@@ -26,25 +26,25 @@ public class UpgradeSystem : ScriptableObject
     public void UnlockIncremental_Durability()
     {
 		var currentIndex = PlayerPrefs.GetInt( ExtensionMethods.durability_index, 0 );
-		currency.SharedValue -= incremental_durability.ReturnIncremental( currentIndex ).incremental_cost;
+		PlayerPrefs.SetInt( ExtensionMethods.durability_index, Mathf.Min( currentIndex + 1, incremental_durability.IncrementalCount - 1 ) );
 
-		PlayerPrefs.SetInt( ExtensionMethods.durability_index, Mathf.Min( currentIndex + 1, incremental_durability.IncrementalCount ) );
+		currency.SharedValue -= incremental_durability.ReturnIncremental( currentIndex ).incremental_cost;
 	}
 
     public void UnlockIncremental_Velocity()
     {
 		var currentIndex = PlayerPrefs.GetInt( ExtensionMethods.velocity_index, 0 );
-		currency.SharedValue -= incremental_velocity.ReturnIncremental( currentIndex ).incremental_cost;
+		PlayerPrefs.SetInt( ExtensionMethods.velocity_index, Mathf.Min( currentIndex + 1, incremental_velocity.IncrementalCount - 1 ) );
 
-		PlayerPrefs.SetInt( ExtensionMethods.velocity_index, Mathf.Min( currentIndex + 1, incremental_velocity.IncrementalCount ) );
+		currency.SharedValue -= incremental_velocity.ReturnIncremental( currentIndex ).incremental_cost;
 	}
 
     public void UnlockIncremental_Currency()
     {
 		var currentIndex = PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 );
-		currency.SharedValue -= incremental_currency.ReturnIncremental( currentIndex ).incremental_cost;
+		PlayerPrefs.SetInt( ExtensionMethods.currency_index, Mathf.Min( currentIndex + 1, incremental_currency.IncrementalCount - 1 ) );
 
-		PlayerPrefs.SetInt( ExtensionMethods.currency_index, Mathf.Min( currentIndex + 1, incremental_currency.IncrementalCount ) );
+		currency.SharedValue -= incremental_currency.ReturnIncremental( currentIndex ).incremental_cost;
 	}
 
 	public void SetUpIncrementalButton_Durability( IncrementalButton incrementalButton )
