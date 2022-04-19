@@ -49,29 +49,32 @@ public class UpgradeSystem : ScriptableObject
 
 	public void SetUpIncrementalButton_Durability( IncrementalButton incrementalButton )
 	{
+		var index     = PlayerPrefs.GetInt( ExtensionMethods.durability_index, 0 );
 		var available = CanAfford_Durability() && CanShow_Durability();
 		var color     = available ? Color.green : Color.red;
-		var cost      = incremental_durability.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.durability_index, 0 ) ).incremental_cost;
+		var cost      = incremental_durability.ReturnIncremental( index  ).incremental_cost;
 
-		incrementalButton.Configure( available, color, cost );
+		incrementalButton.Configure( available, color, cost, index );
 	}
 
 	public void SetUpIncrementalButton_Velocity( IncrementalButton incrementalButton )
 	{
+		var index     = PlayerPrefs.GetInt( ExtensionMethods.velocity_index, 0 );
 		var available = CanAfford_Velocity() && CanShow_Velocity();
 		var color     = available ? Color.green : Color.red;
-		var cost      = incremental_velocity.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.velocity_index, 0 ) ).incremental_cost;
+		var cost      = incremental_velocity.ReturnIncremental( index ).incremental_cost;
 
-		incrementalButton.Configure( available, color, cost );
+		incrementalButton.Configure( available, color, cost, index );
 	}
 
 	public void SetUpIncrementalButton_Currency( IncrementalButton incrementalButton )
 	{
+		var index     = PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 );
 		var available = CanAfford_Currency() && CanShow_Currency();
 		var color     = available ? Color.green : Color.red;
-		var cost      = incremental_currency.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 ) ).incremental_cost;
+		var cost      = incremental_currency.ReturnIncremental( index ).incremental_cost;
 
-		incrementalButton.Configure( available, color, cost );
+		incrementalButton.Configure( available, color, cost, index );
 	}
 #endregion
 

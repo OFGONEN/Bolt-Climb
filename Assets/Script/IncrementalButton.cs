@@ -14,7 +14,8 @@ public class IncrementalButton : UIEntity
 #region Fields
   [ Title( "Setup" ) ]
     [ SerializeField ] Button ui_button;
-    [ SerializeField ] TextMeshProUGUI ui_text;
+    [ SerializeField ] TextMeshProUGUI ui_text_cost;
+    [ SerializeField ] TextMeshProUGUI ui_text_level;
     [ SerializeField ] UnityEvent ui_event_onLevelLoaded;
 
 // Private
@@ -35,17 +36,18 @@ public class IncrementalButton : UIEntity
 
 #region API
     [ Button() ]
-    public void OnLevelLoaded()
+    public void Configure()
     {
 		ui_event_onLevelLoaded.Invoke();
 	}
 
-    public void Configure( bool available, Color color, float cost )
+    public void Configure( bool available, Color color, float cost, int level )
     {
 		ui_button.interactable = false;
 		this.available         = available;
-		ui_text.text           = cost.ToString();
-		ui_text.color          = color;
+		ui_text_cost.text           = cost.ToString();
+		ui_text_cost.color          = color;
+
 	}
 #endregion
 

@@ -179,7 +179,7 @@ namespace FFStudio
         {
             for( var i = 0; i < incrementalButtons.Length; i++ )
             {
-				incrementalButtons[ i ].OnLevelLoaded();
+				incrementalButtons[ i ].Configure();
 			}
         }
 
