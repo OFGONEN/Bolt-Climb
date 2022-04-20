@@ -16,6 +16,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] GameEvent event_level_failed;
 	[ SerializeField ] GameEvent event_level_completed;
 	[ SerializeField ] SharedFloatNotifier level_progress;
+	[ SerializeField ] SharedFloatNotifier notif_nut_height;
 
   [ Title( "Components" )]
 	[ SerializeField ] Movement component_movement;
@@ -186,10 +187,12 @@ public class Nut : MonoBehaviour
 
 	void UpdateLevelProgress()
 	{
-		var baseProgress = ( CurrentLevelData.Instance.currentLevel_Shown - 1 ) / ( float )GameSettings.Instance.game_level_count;
-		var currentProgress = transform.position.y / point_levelEnd;
+		var height          = transform.position.y;
+		var baseProgress    = ( CurrentLevelData.Instance.currentLevel_Shown - 1 ) / ( float )GameSettings.Instance.game_level_count;
+		var currentProgress = height / point_levelEnd;
 
-		level_progress.SharedValue = baseProgress + currentProgress / GameSettings.Instance.game_level_count;
+		level_progress.SharedValue   = baseProgress + currentProgress / GameSettings.Instance.game_level_count;
+		notif_nut_height.SharedValue = height;
 	}
 #endregion
 
