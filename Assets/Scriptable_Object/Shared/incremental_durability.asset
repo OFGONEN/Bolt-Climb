@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: incremental_durability
   m_EditorClassIdentifier: 
   incremental_data:
-  - incremental_cost: 0
+  - incremental_cost: 25
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 8
     incremental_durability_speed_decrease: 10
     incremental_durability_speed_increase: 5
-  - incremental_cost: 25
+  - incremental_cost: 28
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 7.39
     incremental_durability_speed_decrease: 9.23
