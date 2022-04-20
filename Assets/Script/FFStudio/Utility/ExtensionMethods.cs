@@ -15,6 +15,7 @@ namespace FFStudio
 		public static string currency_index   = "currency_index";
 		public static string durability_index = "durability_index";
 		public static string velocity_index   = "velocity_index";
+		public static string nut_height       = "height";
 
 		//Static Variables
 		private static List< Transform > baseModelBones = new List< Transform >( 96 );
