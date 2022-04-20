@@ -16,75 +16,75 @@ MonoBehaviour:
   - incremental_cost: 0
     incremental_currency_value: 0.5
     incremental_currency_rate: 0.2
-  - incremental_cost: 1
+  - incremental_cost: 25
     incremental_currency_value: 0.55
     incremental_currency_rate: 0.2
-  - incremental_cost: 2
+  - incremental_cost: 30
     incremental_currency_value: 0.6
     incremental_currency_rate: 0.2
-  - incremental_cost: 3
+  - incremental_cost: 60
     incremental_currency_value: 0.65
     incremental_currency_rate: 0.2
-  - incremental_cost: 4
+  - incremental_cost: 80
     incremental_currency_value: 0.75
     incremental_currency_rate: 0.2
-  - incremental_cost: 5
+  - incremental_cost: 90
     incremental_currency_value: 0.85
     incremental_currency_rate: 0.2
-  - incremental_cost: 6
+  - incremental_cost: 120
     incremental_currency_value: 0.95
     incremental_currency_rate: 0.2
-  - incremental_cost: 7
+  - incremental_cost: 170
     incremental_currency_value: 1.1
     incremental_currency_rate: 0.2
-  - incremental_cost: 8
+  - incremental_cost: 240
     incremental_currency_value: 1.25
     incremental_currency_rate: 0.2
-  - incremental_cost: 9
+  - incremental_cost: 310
     incremental_currency_value: 1.4
     incremental_currency_rate: 0.2
-  - incremental_cost: 10
+  - incremental_cost: 400
     incremental_currency_value: 1.6
     incremental_currency_rate: 0.2
-  - incremental_cost: 11
+  - incremental_cost: 490
     incremental_currency_value: 1.8
     incremental_currency_rate: 0.2
-  - incremental_cost: 12
+  - incremental_cost: 600
     incremental_currency_value: 2
     incremental_currency_rate: 0.2
-  - incremental_cost: 13
+  - incremental_cost: 710
     incremental_currency_value: 2.3
     incremental_currency_rate: 0.2
-  - incremental_cost: 14
+  - incremental_cost: 850
     incremental_currency_value: 2.6
     incremental_currency_rate: 0.2
-  - incremental_cost: 15
+  - incremental_cost: 1000
     incremental_currency_value: 2.9
     incremental_currency_rate: 0.2
-  - incremental_cost: 16
+  - incremental_cost: 1200
     incremental_currency_value: 3.4
     incremental_currency_rate: 0.2
-  - incremental_cost: 17
+  - incremental_cost: 1400
     incremental_currency_value: 3.9
     incremental_currency_rate: 0.2
-  - incremental_cost: 18
+  - incremental_cost: 1600
     incremental_currency_value: 4.4
     incremental_currency_rate: 0.2
-  - incremental_cost: 19
+  - incremental_cost: 2000
     incremental_currency_value: 5.4
     incremental_currency_rate: 0.2
-  - incremental_cost: 20
+  - incremental_cost: 2400
     incremental_currency_value: 6.4
     incremental_currency_rate: 0.2
-  - incremental_cost: 21
+  - incremental_cost: 2800
     incremental_currency_value: 7.4
     incremental_currency_rate: 0.2
-  - incremental_cost: 22
+  - incremental_cost: 3800
     incremental_currency_value: 9
     incremental_currency_rate: 0.2
-  - incremental_cost: 23
+  - incremental_cost: 5000
     incremental_currency_value: 11
     incremental_currency_rate: 0.2
-  - incremental_cost: 24
+  - incremental_cost: 8000
     incremental_currency_value: 14
     incremental_currency_rate: 0.2
