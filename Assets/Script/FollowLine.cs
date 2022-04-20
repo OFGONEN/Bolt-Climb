@@ -1,7 +1,6 @@
 /* Created by and for usage of FF Studios (2021). */
 
-using System.Collections;
-using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using FFStudio;
 using Shapes;
@@ -16,6 +15,9 @@ public class FollowLine : MonoBehaviour
     [ SerializeField ] TextMeshProUGUI target_text;
     [ SerializeField ] Line target_line;
     [ SerializeField ] float target_offset;
+
+ // Private
+	StringBuilder stringBuilder = new StringBuilder( 8 );
 #endregion
 
 #region Properties
@@ -34,8 +36,12 @@ public class FollowLine : MonoBehaviour
     {
 		var height = notif_target_height.SharedValue;
 
+		stringBuilder.Clear();
+		stringBuilder.Append( notif_target_height.SharedValue.ToString( "F2" ) );
+		stringBuilder.Append( 'm' );
+
 		target_ui.transform.localPosition = Vector3.right * ( height + target_offset );
-		target_text.text                  = notif_target_height.SharedValue.ToString( "F2");
+		target_text.text                  = stringBuilder.ToString();
 		target_line.End                   = Vector3.right * height;
 	}
 #endregion

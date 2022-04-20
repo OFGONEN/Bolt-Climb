@@ -13,6 +13,7 @@ namespace FFStudio
 	[ Title( "Setup" ) ]
 		public GameSettings gameSettings;
 		public CurrentLevelData currentLevelData;
+		public SharedFloatNotifier notif_nut_height_last;
 
 	[ Title( "Pool" ) ]
 		public Pool_UIPopUpText pool_UIPopUpText;
@@ -48,6 +49,8 @@ namespace FFStudio
 			}
 
 			onAwake.Invoke();
+
+			notif_nut_height_last.SharedValue = PlayerPrefs.GetFloat( ExtensionMethods.nut_height, 0 );
 		}
 
 		private void Start()
