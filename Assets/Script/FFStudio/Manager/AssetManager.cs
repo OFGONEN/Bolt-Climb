@@ -13,9 +13,11 @@ namespace FFStudio
 	[ Title( "Setup" ) ]
 		public GameSettings gameSettings;
 		public CurrentLevelData currentLevelData;
+		public SharedFloatNotifier notif_nut_height_last;
 
 	[ Title( "Pool" ) ]
 		public Pool_UIPopUpText pool_UIPopUpText;
+		public UICurrencyPool pool_ui_currency;
 		public ShatterPool[] pool_shatter_array;
 
 	[ Title( "Setup" ) ]
@@ -39,6 +41,7 @@ namespace FFStudio
 		private void Awake()
 		{
 			pool_UIPopUpText.InitPool( transform, false );
+			pool_ui_currency.InitPool( transform, false );
 
 			for( var i = 0; i < pool_shatter_array.Length; i++ )
 			{
@@ -46,6 +49,8 @@ namespace FFStudio
 			}
 
 			onAwake.Invoke();
+
+			notif_nut_height_last.SharedValue = PlayerPrefs.GetFloat( ExtensionMethods.nut_height, 0 );
 		}
 
 		private void Start()

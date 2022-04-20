@@ -11,6 +11,9 @@ namespace FFStudio
     // Info: Use Title() attribute ONCE for every game-specific group of settings.
 
     // Info: Game related settings
+        [ BoxGroup( "Game" ) ] public int game_level_count = 20;
+
+
         [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
         [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
 

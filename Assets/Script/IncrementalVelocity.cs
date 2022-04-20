@@ -11,6 +11,8 @@ public class IncrementalVelocity : ScriptableObject
 {
 	[ SerializeField ] IncrementalVelocityData[] incremental_data;
 
+	public int IncrementalCount => incremental_data.Length;
+
     public IncrementalVelocityData ReturnIncremental( int index )
     {
 		return incremental_data[ index ];

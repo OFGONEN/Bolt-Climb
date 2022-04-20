@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c0496484a580480b9d2f8fa640bd9b8, type: 3}
-  m_Name: currency
+  m_Script: {fileID: 11500000, guid: 0675320d48f328543b3c42d4b9994b9b, type: 3}
+  m_Name: notif_bolt_end_reference
   m_EditorClassIdentifier: 
-  sharedValue: 0
-  pool_currency_ui: {fileID: 11400000, guid: af6f2fc5310f9409d9fb3a3664cff55b, type: 2}
-  currency_incremental: {fileID: 11400000, guid: 42985a7b07d294f11a1a6efd18604daa, type: 2}
