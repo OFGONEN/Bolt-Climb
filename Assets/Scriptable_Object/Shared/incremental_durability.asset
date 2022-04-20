@@ -21,120 +21,120 @@ MonoBehaviour:
   - incremental_cost: 28
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 7.39
-    incremental_durability_speed_decrease: 9.23
+    incremental_durability_speed_decrease: 8.33
     incremental_durability_speed_increase: 5
   - incremental_cost: 30
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 6.86
-    incremental_durability_speed_decrease: 8.58
+    incremental_durability_speed_decrease: 7.14
     incremental_durability_speed_increase: 5
   - incremental_cost: 60
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 6.41
-    incremental_durability_speed_decrease: 8.01
+    incremental_durability_speed_decrease: 6.25
     incremental_durability_speed_increase: 5
   - incremental_cost: 80
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 6.01
-    incremental_durability_speed_decrease: 7.51
+    incremental_durability_speed_decrease: 6.11
     incremental_durability_speed_increase: 5
   - incremental_cost: 90
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 5.65
-    incremental_durability_speed_decrease: 7.07
+    incremental_durability_speed_decrease: 5
     incremental_durability_speed_increase: 5
   - incremental_cost: 120
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 5.34
-    incremental_durability_speed_decrease: 6.68
+    incremental_durability_speed_decrease: 3.33
     incremental_durability_speed_increase: 5
   - incremental_cost: 170
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 5.06
-    incremental_durability_speed_decrease: 6.33
+    incremental_durability_speed_decrease: 3.16
     incremental_durability_speed_increase: 5
   - incremental_cost: 240
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 4.81
-    incremental_durability_speed_decrease: 6.01
+    incremental_durability_speed_decrease: 3
     incremental_durability_speed_increase: 5
   - incremental_cost: 310
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 4.58
-    incremental_durability_speed_decrease: 5.72
+    incremental_durability_speed_decrease: 2.86
     incremental_durability_speed_increase: 5
   - incremental_cost: 400
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 4.37
-    incremental_durability_speed_decrease: 5.46
+    incremental_durability_speed_decrease: 2.73
     incremental_durability_speed_increase: 5
   - incremental_cost: 490
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 4.18
-    incremental_durability_speed_decrease: 5.23
+    incremental_durability_speed_decrease: 2.61
     incremental_durability_speed_increase: 5
   - incremental_cost: 600
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 4.01
-    incremental_durability_speed_decrease: 5.01
+    incremental_durability_speed_decrease: 2.5
     incremental_durability_speed_increase: 5
   - incremental_cost: 710
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 3.85
-    incremental_durability_speed_decrease: 4.81
+    incremental_durability_speed_decrease: 2.4
     incremental_durability_speed_increase: 5
   - incremental_cost: 850
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 3.7
-    incremental_durability_speed_decrease: 4.63
+    incremental_durability_speed_decrease: 2.31
     incremental_durability_speed_increase: 5
   - incremental_cost: 1000
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 3.56
-    incremental_durability_speed_decrease: 4.45
+    incremental_durability_speed_decrease: 2.23
     incremental_durability_speed_increase: 5
   - incremental_cost: 1200
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 3.44
-    incremental_durability_speed_decrease: 4.3
+    incremental_durability_speed_decrease: 2.15
     incremental_durability_speed_increase: 5
   - incremental_cost: 1400
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 3.32
-    incremental_durability_speed_decrease: 4.15
+    incremental_durability_speed_decrease: 2.07
     incremental_durability_speed_increase: 5
   - incremental_cost: 1600
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 3.21
-    incremental_durability_speed_decrease: 4.01
+    incremental_durability_speed_decrease: 2
     incremental_durability_speed_increase: 5
   - incremental_cost: 2000
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 3.1
-    incremental_durability_speed_decrease: 3.88
+    incremental_durability_speed_decrease: 1.94
     incremental_durability_speed_increase: 5
   - incremental_cost: 2400
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 3.01
-    incremental_durability_speed_decrease: 3.76
+    incremental_durability_speed_decrease: 1.88
     incremental_durability_speed_increase: 5
   - incremental_cost: 2800
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 2.92
-    incremental_durability_speed_decrease: 3.65
+    incremental_durability_speed_decrease: 1.82
     incremental_durability_speed_increase: 5
   - incremental_cost: 3800
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 2.83
-    incremental_durability_speed_decrease: 3.54
+    incremental_durability_speed_decrease: 1.77
     incremental_durability_speed_increase: 5
   - incremental_cost: 5000
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 2.75
-    incremental_durability_speed_decrease: 3.44
+    incremental_durability_speed_decrease: 1.72
     incremental_durability_speed_increase: 5
   - incremental_cost: 8000
     incremental_durability_capacity: 100
     incremental_durability_speed_capacity_decrease: 2.67
-    incremental_durability_speed_decrease: 3.34
+    incremental_durability_speed_decrease: 1.67
     incremental_durability_speed_increase: 5
