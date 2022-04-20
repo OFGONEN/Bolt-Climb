@@ -28,7 +28,7 @@ public class Durability : ScriptableObject
 #region API
     public void SetDurabilityData()
     {
-		durability_data             = durability_incremental.ReturnIncremental( PlayerPrefs.GetInt( "durability_index", 0 ) );
+		durability_data             = durability_incremental.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.durability_index, 0 ) );
 		durability_current_capacity = durability_data.incremental_durability_capacity;
 		durability_current          = durability_data.incremental_durability_capacity;
 	}

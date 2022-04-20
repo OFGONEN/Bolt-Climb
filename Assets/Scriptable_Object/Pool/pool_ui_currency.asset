@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c0496484a580480b9d2f8fa640bd9b8, type: 3}
-  m_Name: currency
+  m_Script: {fileID: 11500000, guid: 2ca9c45a8c57546edb5b455c50016865, type: 3}
+  m_Name: pool_ui_currency
   m_EditorClassIdentifier: 
-  sharedValue: 0
-  pool_currency_ui: {fileID: 11400000, guid: af6f2fc5310f9409d9fb3a3664cff55b, type: 2}
-  currency_incremental: {fileID: 11400000, guid: 42985a7b07d294f11a1a6efd18604daa, type: 2}
+  stackSize: 10
+  pool_entity: {fileID: 5906253002116297803, guid: 80a414f41d9c9491ebc5fdd087ad56c3, type: 3}

@@ -10,6 +10,8 @@ public class IncrementalCurrency : ScriptableObject
 {
 	[ SerializeField ] IncrementalCurrencyData[] incremental_data;
 
+	public int IncrementalCount => incremental_data.Length;
+
     public IncrementalCurrencyData ReturnIncremental( int index )
     {
 		return incremental_data[ index ];
