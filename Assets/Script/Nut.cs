@@ -28,6 +28,11 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] Currency property_currency;
 	[ SerializeField ] Rigidbody component_rigidbody;
 	[ SerializeField ] Collider component_collider;
+
+
+  [ Title( "Components" )]
+	[ SerializeField ] ParticleSystem particle_nut_lowDurability;
+	[ SerializeField ] ParticleSystem particle_nut_carving;
 // Private
 	float point_fallDown = 0;
 	float point_levelEnd;
@@ -93,6 +98,8 @@ public class Nut : MonoBehaviour
 			onFingerDown   = ExtensionMethods.EmptyMethod;
 			onFingerUp     = ExtensionMethods.EmptyMethod;
 			onUpdateMethod = OnUpdate_Deceleration;
+
+			particle_nut_carving.Stop();
 		}
 	}
 
@@ -147,7 +154,7 @@ public class Nut : MonoBehaviour
 	void OnUpdate_Idle()
 	{
 		property_durability.OnIncrease();
-		component_animation.PlayAnimation( property_durability.DurabilityRatio );
+		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
 	}
 
 	void OnUpdate_Acceleration()
@@ -173,7 +180,7 @@ public class Nut : MonoBehaviour
 			property_velocity.OnAcceleration();
 			component_movement.OnMovement();
 			property_durability.OnDecrease();
-			component_animation.PlayAnimation( property_durability.DurabilityRatio );
+			component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
 			property_currency.OnIncrease();
 		}
 	}
@@ -184,7 +191,7 @@ public class Nut : MonoBehaviour
 		var isIdle = component_movement.OnMovement( point_fallDown );
 
 		property_durability.OnIncrease();
-		component_animation.PlayAnimation( property_durability.DurabilityRatio );
+		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
 
 		if( isIdle )
 			onUpdateMethod = OnUpdate_Idle;
@@ -192,6 +199,7 @@ public class Nut : MonoBehaviour
 
 	void OnFingerDown_StraightBolt()
 	{
+		particle_nut_carving?.Play();
 		onUpdateMethod = OnUpdate_Acceleration;
 		onFingerUp     = OnFingerUp;
 	}
@@ -200,6 +208,8 @@ public class Nut : MonoBehaviour
 	{
 		onUpdateMethod = OnUpdate_Deceleration;
 		onFingerUp     = ExtensionMethods.EmptyMethod;
+
+		particle_nut_carving.Stop();
 	}
 
 	void EmptyDelegates()
