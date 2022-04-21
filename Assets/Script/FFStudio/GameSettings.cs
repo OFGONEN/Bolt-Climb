@@ -19,6 +19,7 @@ namespace FFStudio
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force;
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_torque;
         [ BoxGroup( "Nut" ) ] public float nut_shatter_waitDuration = 2f;
+        [ BoxGroup( "Nut" ) ] public float nut_levelEnd_force_cofactor = 1f;
         [ BoxGroup( "Nut" ) ] public float nut_levelEnd_torque_cofactor = 1f;
         [ BoxGroup( "Nut" ) ] public float nut_levelEnd_waitDuration = 2f;
 

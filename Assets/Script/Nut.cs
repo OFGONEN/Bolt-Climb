@@ -143,7 +143,7 @@ public class Nut : MonoBehaviour
 		// component_rigidbody.useGravity  = true;
 		component_collider.isTrigger    = false;
 
-		component_rigidbody.AddForce( Vector3.forward * property_velocity.CurrentVelocity, ForceMode.Impulse );
+		component_rigidbody.AddForce( Vector3.forward * property_velocity.CurrentVelocity * GameSettings.Instance.nut_levelEnd_force_cofactor, ForceMode.Impulse );
 		component_rigidbody.AddTorque( Random.onUnitSphere * property_velocity.CurrentVelocity * GameSettings.Instance.nut_levelEnd_torque_cofactor, ForceMode.Impulse );
 
 		event_path_end.Raise();
