@@ -86,7 +86,11 @@ public class Nut : MonoBehaviour
 		if( value )
 			onFingerDown = OnFingerDown_StraightBolt;
 		else
-			onFingerDown = ExtensionMethods.EmptyMethod;
+		{
+			onFingerDown   = ExtensionMethods.EmptyMethod;
+			onFingerUp     = ExtensionMethods.EmptyMethod;
+			onUpdateMethod = OnUpdate_Deceleration;
+		}
 	}
 
 	public void OnFallDownPointChange( float value )
