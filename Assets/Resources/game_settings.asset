@@ -18,6 +18,7 @@ MonoBehaviour:
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
   nut_shatter_torque: {x: 6.6980996, y: 15.23205}
   nut_shatter_waitDuration: 2
+  nut_levelEnd_force_cofactor: 1
   nut_levelEnd_torque_cofactor: 0.1
   nut_levelEnd_waitDuration: 2
   useRemoteConfig_GameSettings: 0
