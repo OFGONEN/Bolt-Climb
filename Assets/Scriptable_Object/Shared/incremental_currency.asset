@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: incremental_currency
   m_EditorClassIdentifier: 
   incremental_data:
-  - incremental_cost: 25
+  - incremental_cost: 27
     incremental_currency_value: 0.5
     incremental_currency_rate: 0.2
   - incremental_cost: 28
