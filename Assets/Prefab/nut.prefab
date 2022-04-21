@@ -111,6 +111,8 @@ MonoBehaviour:
   property_velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
   property_durability: {fileID: 11400000, guid: 559a1ceb3fc238a4cbe24c988c1e575d, type: 2}
   property_currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  component_rigidbody: {fileID: 7047402463236877961}
+  component_collider: {fileID: 4430853468833506475}
 --- !u!114 &4375852389534718817
 MonoBehaviour:
   m_ObjectHideFlags: 0
