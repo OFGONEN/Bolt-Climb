@@ -20,13 +20,15 @@ public class LevelCreator : ScriptableObject
     public int level_start_bolt_length;
     public float level_start_bolt_space;
 
-    [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt; 
+	[ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt; 
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt_start; 
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt_shaped; 
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt_end; 
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt_model; 
+    [ FoldoutGroup( "Setup" ) ] public GameObject prefab_finishLine; 
     [ FoldoutGroup( "Setup" ) ] public float bolt_model_height = 0.5f; 
     [ FoldoutGroup( "Setup" ) ] public float bolt_shaped_model_height = 28f; 
+    [ FoldoutGroup( "Setup" ) ] public Vector3 finishLine_offset; 
     
 
     const char prefab_bolt_char = 'b';
@@ -116,7 +118,10 @@ public class LevelCreator : ScriptableObject
         path.path_index = create_path_index;
         path.MovePoints();
 
-			
+		var finishLine = PrefabUtility.InstantiatePrefab( prefab_finishLine ) as GameObject;
+		finishLine.transform.position = bolt_end.transform.position + finishLine_offset;
+		finishLine.transform.SetParent( spawnTransform );
+
 		EditorSceneManager.SaveOpenScenes();
 	}
 #endregion

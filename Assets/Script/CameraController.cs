@@ -44,6 +44,18 @@ public class CameraController : MonoBehaviour
 		target_transform = notif_target_transform.SharedValue as Transform;
 		onUpdateMethod   = FollowTarget;
 	}
+
+    public void OnLevelEndPath_Start()
+    {
+		// target_offset  = target_transform.position - transform.position;
+		// onUpdateMethod = FollowTargetWithOffset;
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+	}
+
+    public void OnLevelEndPath_End()
+    {
+		// onUpdateMethod = LookAtTarget;
+    }
 #endregion
 
 #region Implementation

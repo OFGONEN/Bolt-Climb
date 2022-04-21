@@ -103,6 +103,7 @@ MonoBehaviour:
   notif_bolt_end: {fileID: 11400000, guid: 157c677f8f78e49e881fd13209b9e0c2, type: 2}
   event_level_failed: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   event_level_completed: {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
+  event_path_end: {fileID: 11400000, guid: 9072076031ec445cf8390f6cf25167c5, type: 2}
   level_progress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
   notif_nut_height: {fileID: 11400000, guid: 3cfa3a506ce234608a278dcdb17f3691, type: 2}
   notif_nut_height_last: {fileID: 11400000, guid: 3f87014a0b8f84245bf040204bbf63a9, type: 2}
@@ -111,6 +112,8 @@ MonoBehaviour:
   property_velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
   property_durability: {fileID: 11400000, guid: 559a1ceb3fc238a4cbe24c988c1e575d, type: 2}
   property_currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  component_rigidbody: {fileID: 7047402463236877961}
+  component_collider: {fileID: 4430853468833506475}
 --- !u!114 &4375852389534718817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +232,7 @@ MonoBehaviour:
   path_Set: {fileID: 11400000, guid: 28e3faea870b84807b2df86acc92e09b, type: 2}
   velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
   transform_movement: {fileID: 5919801855808585662}
-  transform_rotate: {fileID: 4863237911859625749}
+  transform_rotate: {fileID: 2803611756271641150}
 --- !u!114 &5520294727583239052
 MonoBehaviour:
   m_ObjectHideFlags: 0
