@@ -41,7 +41,6 @@ public class CameraController : MonoBehaviour
 #region API
     public void OnLevelStart()
     {
-        FFLogger.Log( "On Level Start" );
 		target_transform = notif_target_transform.SharedValue as Transform;
 		onUpdateMethod   = FollowTarget;
 	}
