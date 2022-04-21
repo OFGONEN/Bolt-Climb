@@ -19,8 +19,7 @@ namespace FFStudio
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force;
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_torque;
         [ BoxGroup( "Nut" ) ] public float nut_shatter_waitDuration = 2f;
-        [ BoxGroup( "Nut" ) ] public float nut_levelEnd_force = 75f;
-        [ BoxGroup( "Nut" ) ] public float nut_levelEnd_torque = 25f;
+        [ BoxGroup( "Nut" ) ] public float nut_levelEnd_torque_cofactor = 1f;
         [ BoxGroup( "Nut" ) ] public float nut_levelEnd_waitDuration = 2f;
 
     // Info: 3 groups below (coming from template project) are foldout by design: They should remain hidden.
