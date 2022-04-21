@@ -15,6 +15,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] SharedReferenceNotifier notif_bolt_end;
 	[ SerializeField ] GameEvent event_level_failed;
 	[ SerializeField ] GameEvent event_level_completed;
+	[ SerializeField ] GameEvent event_path_end;
 	[ SerializeField ] SharedFloatNotifier level_progress;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height_last;
@@ -137,6 +138,8 @@ public class Nut : MonoBehaviour
 
 		component_rigidbody.AddForce( Vector3.forward * GameSettings.Instance.nut_levelEnd_force, ForceMode.Impulse );
 		component_rigidbody.AddTorque( Random.onUnitSphere * GameSettings.Instance.nut_levelEnd_torque, ForceMode.Impulse );
+
+		event_path_end.Raise();
 
 		DOVirtual.DelayedCall( GameSettings.Instance.nut_levelEnd_waitDuration, event_level_completed.Raise );
 	}
