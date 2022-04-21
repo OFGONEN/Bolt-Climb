@@ -71,6 +71,15 @@ public class MovementPath : MonoBehaviour
 			path_points[ i ] = transform.GetChild( i ).localPosition;
 		}
 	}
+
+	[ Button() ]
+	void ZeroOutDepth()
+	{
+		for( var i = 0; i < path_points.Length; i++ )
+		{
+			path_points[ i ] = path_points[ i ].SetZ( 0 );
+		}
+	}
 #endif
 #endregion
 }

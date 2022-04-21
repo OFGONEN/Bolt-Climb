@@ -41,7 +41,6 @@ public class CameraController : MonoBehaviour
 #region API
     public void OnLevelStart()
     {
-        FFLogger.Log( "On Level Start" );
 		target_transform = notif_target_transform.SharedValue as Transform;
 		onUpdateMethod   = FollowTarget;
 	}
@@ -51,7 +50,7 @@ public class CameraController : MonoBehaviour
     void FollowTarget()
     {
 		var position   = transform.position;
-		    position.y = Mathf.Lerp( position.y, target_transform.position.y, Time.deltaTime * target_velocity.CurrentVelocity );
+		    position.y = Mathf.Lerp( position.y, target_transform.position.y, Time.deltaTime * Mathf.Abs( target_velocity.CurrentVelocity ) );
 
 		transform.position = position;
 	}
