@@ -69,6 +69,7 @@ public class Bolt : MonoBehaviour
 #region Implementation
     void StartTrackingNut()
     {
+		FFLogger.Log( "Start Tracking Nut", gameObject );
 		onStartTrackingNut = ExtensionMethods.EmptyMethod;
 		onUpdateMethod     = OnTrackNut;
 
