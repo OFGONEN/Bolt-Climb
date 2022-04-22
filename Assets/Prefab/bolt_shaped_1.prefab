@@ -51,8 +51,6 @@ MonoBehaviour:
   path_index: 0
   path_set: {fileID: 11400000, guid: 28e3faea870b84807b2df86acc92e09b, type: 2}
   path_points:
-  - {x: 0.000052839518, y: 0.28154203, z: 0}
-  - {x: 0.00006350875, y: 0.33862814, z: 0}
   - {x: 0.000093788374, y: 0.49987146, z: 0}
   - {x: 0.017684728, y: 0.65549916, z: 0}
   - {x: 0.045416594, y: 0.80964345, z: 0}
@@ -165,7 +163,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 0.5, z: 1.73}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.2, z: 0}
 --- !u!1001 &2689783451919288921
 PrefabInstance:
   m_ObjectHideFlags: 0
