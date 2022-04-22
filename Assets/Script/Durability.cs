@@ -6,30 +6,31 @@ using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
 
-[ CreateAssetMenu( fileName = "durability", menuName = "FF/Data/Game/Durability" ) ]
+[ InlineEditor, CreateAssetMenu( fileName = "durability", menuName = "FF/Data/Game/Durability" ) ]
 public class Durability : ScriptableObject
 {
 #region Fields
-    [ SerializeField, ReadOnly ] IncrementalDurabilityData durability_data;
-    [ SerializeField, ReadOnly ] float durability_current_capacity;
-    [ SerializeField, ReadOnly ] float durability_current;
+    [ SerializeField ] IncrementalDurability durability_incremental;
+    [ ShowInInspector, ReadOnly ] IncrementalDurabilityData durability_data;
+    [ ShowInInspector, ReadOnly ] float durability_current_capacity;
+    [ ShowInInspector, ReadOnly ] float durability_current;
 #endregion
 
 #region Properties
     // Properties
     public float CurrentDurability => durability_current;
+    public float DurabilityRatio => durability_current / durability_data.incremental_durability_capacity;
 #endregion
 
 #region Unity API
 #endregion
 
 #region API
-    public void SetDurabilityData( IncrementalDurabilityData data )
+    public void SetDurabilityData()
     {
-		durability_data = data;
-
-		durability_current_capacity = data.incremental_durability_capacity;
-		durability_current          = data.incremental_durability_capacity;
+		durability_data             = durability_incremental.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.durability_index, 0 ) );
+		durability_current_capacity = durability_data.incremental_durability_capacity;
+		durability_current          = durability_data.incremental_durability_capacity;
 	}
 
     public void OnIncrease()

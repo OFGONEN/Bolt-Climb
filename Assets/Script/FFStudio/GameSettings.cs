@@ -11,8 +11,17 @@ namespace FFStudio
     // Info: Use Title() attribute ONCE for every game-specific group of settings.
 
     // Info: Game related settings
+        [ BoxGroup( "Game" ) ] public int game_level_count = 20;
+
         [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
         [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
+
+        [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force;
+        [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_torque;
+        [ BoxGroup( "Nut" ) ] public float nut_shatter_waitDuration = 2f;
+        [ BoxGroup( "Nut" ) ] public float nut_levelEnd_force_cofactor = 1f;
+        [ BoxGroup( "Nut" ) ] public float nut_levelEnd_torque_cofactor = 1f;
+        [ BoxGroup( "Nut" ) ] public float nut_levelEnd_waitDuration = 2f;
 
     // Info: 3 groups below (coming from template project) are foldout by design: They should remain hidden.
 		[ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
@@ -56,6 +65,11 @@ namespace FFStudio
         {
             return instance;
         }
+#endregion
+
+#region Editor Only
+#if UNITY_EDITOR
+#endif
 #endregion
     }
 }

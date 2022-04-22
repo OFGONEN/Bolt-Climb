@@ -11,7 +11,7 @@ namespace FFStudio
 #region Fields
 		public int stackSize;
 		
-		[ ShowInInspector ]
+		[ ShowInInspector, ReadOnly ]
 		protected Stack< T > stack;
 
         public Stack< T > Stack

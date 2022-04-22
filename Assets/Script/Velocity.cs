@@ -6,16 +6,17 @@ using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
 
-[ CreateAssetMenu( fileName = "velocity", menuName = "FF/Data/Game/Velocity" ) ]
+[ InlineEditor, CreateAssetMenu( fileName = "velocity", menuName = "FF/Data/Game/Velocity" ) ]
 public class Velocity : ScriptableObject
 {
 #region Fields
     // Private
+	[ SerializeField ] IncrementalVelocity velocity_incremental;
 	[ ShowInInspector, ReadOnly ] IncrementalVelocityData velocity_data;
 	[ ShowInInspector, ReadOnly ] float velocity_current;
 
     // Properties
-    public float CurrentSpeed => velocity_current;
+    public float CurrentVelocity => velocity_current;
 #endregion
 
 #region Properties
@@ -25,9 +26,10 @@ public class Velocity : ScriptableObject
 #endregion
 
 #region API
-    public void SetVelocityData( IncrementalVelocityData data )
+    public void SetVelocityData()
     {
-		velocity_data = data;
+		velocity_data    = velocity_incremental.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.velocity_index, 0 ) );
+		velocity_current = 0;
 	}
 
     public void OnAcceleration()
@@ -40,7 +42,7 @@ public class Velocity : ScriptableObject
 		);
 	}
 
-    public void Deceleration()
+    public void OnDeceleration()
     {
 		velocity_current = Mathf.Max( 
             velocity_current - Time.deltaTime * velocity_data.incremental_velocity_decrease,

@@ -24,8 +24,9 @@ namespace FFStudio
         public Image loadingScreenImage;
         public Image foreGroundImage;
         public RectTransform tutorialObjects;
+		public IncrementalButton[] incrementalButtons;
 
-        [ Header( "Fired Events" ) ]
+		[ Header( "Fired Events" ) ]
         public GameEvent levelRevealedEvent;
         public GameEvent loadNewLevelEvent;
         public GameEvent resetLevelEvent;
@@ -63,14 +64,36 @@ namespace FFStudio
 #region Implementation
         private void LevelLoadedResponse()
         {
+			IncrementalButtons_SetUp();
+			float fade = IncrementalButtons_Available() ? 0 : 0.5f;
 			var sequence = DOTween.Sequence()
 								.Append( level_loadingBar_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 								.Append( loadingScreenImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
-								.AppendCallback( () => tapInputListener.response = StartLevel );
+								.Join( foreGroundImage.DOFade( fade, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) );
+                                IncrementalButtons_GoUp( sequence );
+								sequence.AppendCallback( () => tapInputListener.response = StartLevel );
 
-			level_count_text.text = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
+			level_count_text.text        = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
+			levelLoadedResponse.response = NewLevelLoaded;
+        }
 
-            levelLoadedResponse.response = NewLevelLoaded;
+        private void NewLevelLoaded()
+        {
+			level_count_text.text       = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
+			level_information_text.text = "Tap to Start";
+
+			var sequence = DOTween.Sequence();
+
+			IncrementalButtons_SetUp();
+			float fade = IncrementalButtons_Available() ? 0 : 0.5f;
+			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) );
+                    IncrementalButtons_GoUp( sequence );
+					sequence.AppendCallback( () => tapInputListener.response = StartLevel );
+
+            // elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
+            // elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
+            // elephantLevelEvent.Raise();
         }
 
         private void LevelCompleteResponse()
@@ -108,28 +131,10 @@ namespace FFStudio
             elephantLevelEvent.Raise();
         }
 
-        private void NewLevelLoaded()
-        {
-			level_count_text.text = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
-
-			level_information_text.text = "Tap to Start";
-
-			var sequence = DOTween.Sequence();
-
-			// Tween tween = null;
-
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
-					// .Append( tween ) // TODO: UIElements tween.
-					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
-					.AppendCallback( () => tapInputListener.response = StartLevel );
-
-            // elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
-            // elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
-            // elephantLevelEvent.Raise();
-        }
-
 		private void StartLevel()
 		{
+			IncrementalButtons_GoDown();
+
 			foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
 
 			level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration );
@@ -168,6 +173,42 @@ namespace FFStudio
 			elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
 			elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
 			elephantLevelEvent.Raise();
+		}
+
+        private void IncrementalButtons_SetUp()
+        {
+            for( var i = 0; i < incrementalButtons.Length; i++ )
+            {
+				incrementalButtons[ i ].Configure();
+			}
+        }
+
+        private void IncrementalButtons_GoUp( Sequence sequence )
+        {
+			for( var i = 0; i < incrementalButtons.Length; i++ )
+            {
+				sequence.Join( incrementalButtons[ i ].GoToTargetPosition() );
+			}
+        }
+
+        private void IncrementalButtons_GoDown()
+        {
+			for( var i = 0; i < incrementalButtons.Length; i++ )
+            {
+				incrementalButtons[ i ].GoToStartPosition();
+			}
+        }
+
+        private bool IncrementalButtons_Available()
+        {
+			bool available = false;
+
+            for( var i = 0; i < incrementalButtons.Length; i++ )
+            {
+				available = available || incrementalButtons[ i ].Availability;
+			}
+
+			return available;
 		}
 #endregion
     }

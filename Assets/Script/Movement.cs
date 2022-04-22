@@ -23,7 +23,9 @@ public class Movement : MonoBehaviour
 #endregion
 
 #region Unity API
-	[ Button() ]
+#endregion
+
+#region API
 	public void DoPath( int index, TweenCallback onPathComplete )
 	{
 		Vector3[] pathPoints;
@@ -37,30 +39,43 @@ public class Movement : MonoBehaviour
 		}
 #endif
 
-		transform_movement.DOPath( pathPoints, velocity.CurrentSpeed, PathType.Linear )
+		transform_movement.DOPath( pathPoints, velocity.CurrentVelocity, PathType.Linear )
 		.SetLookAt( 0, -Vector3.up )
 		.SetSpeedBased()
+		// .SetRelative()
 		.OnUpdate( DoRotate )
+		.SetEase( Ease.Linear )
 		.OnComplete( onPathComplete );
 	}
-#endregion
 
-#region API
-#endregion
-
-#region Implementation
-	void OnMovement( float minPosition )
+ // Return true if this is on the fall down point
+	public bool OnMovement( float minPosition )
 	{
 		var position = transform_movement.position;
-		position   += Vector3.up * velocity.CurrentSpeed * Time.deltaTime;
+		position   += Vector3.up * velocity.CurrentVelocity * Time.deltaTime;
 		position.y  = Mathf.Max( minPosition, position.y );
 
 		transform_movement.position = position;
+
+		DoRotate();
+
+		return Mathf.Approximately( position.y, minPosition );
 	}
 
+	public void OnMovement()
+	{
+		var position = transform_movement.position;
+		position   += Vector3.up * velocity.CurrentVelocity * Time.deltaTime;
+
+		transform_movement.position = position;
+		DoRotate();
+	}
+#endregion
+
+#region Implementation
 	void DoRotate()
 	{
-		transform_rotate.Rotate( Vector3.up * velocity.CurrentSpeed * Time.deltaTime * GameSettings.Instance.movement_rotation_cofactor , Space.Self );
+		transform_rotate.Rotate( Vector3.up * velocity.CurrentVelocity * Time.deltaTime * GameSettings.Instance.movement_rotation_cofactor , Space.Self );
 	}
 #endregion
 
