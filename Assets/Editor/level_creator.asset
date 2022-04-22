@@ -26,7 +26,11 @@ MonoBehaviour:
   - 22.6
   prefab_bolt_end:
   - {fileID: 9094376356477548414, guid: d897b79f0f3fbb3419b6fa574a116db7, type: 3}
+  - {fileID: 9094376356477548414, guid: 35f38a3259b459f478957f9d5383a521, type: 3}
+  - {fileID: 9094376356477548414, guid: 890df0433f1872a48a8df11c4746ac4b, type: 3}
   prefab_finishLine_offset:
-  - {x: 0, y: 32, z: 30}
+  - {x: 0, y: 8, z: 15}
+  - {x: 0, y: 18, z: 25}
+  - {x: 0, y: 28, z: 35}
   prefab_finishLine: {fileID: 2340585009260439847, guid: b98a8a8b73e9447ce9b8cc3b1224938b, type: 3}
   bolt_model_height: 0.5
