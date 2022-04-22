@@ -36,7 +36,7 @@ public class AnimationHandle : MonoBehaviour
 #endregion
 
 #region API
-    public void PlayAnimation( float progress )
+    public void PlayAnimation( float progress, ParticleSystem particle )
     {
         var index = -1;
 
@@ -50,9 +50,15 @@ public class AnimationHandle : MonoBehaviour
         }
 
         if( index == -1 && animation_index != -1 )
+		{
 		    ReturnDefault();
+			particle.Stop();
+		}
         else if( index != animation_index )
+		{
 			PlayAnimation( index );
+			particle.Play();
+		}
 
 		animation_index = index;
 	}

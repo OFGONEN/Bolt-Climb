@@ -44,6 +44,8 @@ public class MovementPath : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
+	[ ShowInInspector ] float height = 11.3f;
+
 	[ Button() ]
 	public void RotatePoints()
 	{
@@ -79,6 +81,22 @@ public class MovementPath : MonoBehaviour
 		{
 			path_points[ i ] = path_points[ i ].SetZ( 0 );
 		}
+	}
+
+	[ Button() ]
+	void MultipyZones( int count )
+	{
+		var newPath = new List< Vector3 >();
+
+		for( var i = 0; i < count; i++ )
+		{
+			for( var x = 0; x < path_points.Length; x++ )
+			{
+				newPath.Add( path_points[ x ] + Vector3.up * i * height );
+			}
+		}
+
+		path_points = newPath.ToArray();
 	}
 #endif
 #endregion

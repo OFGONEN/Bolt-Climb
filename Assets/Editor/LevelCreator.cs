@@ -20,17 +20,16 @@ public class LevelCreator : ScriptableObject
     public int level_start_bolt_length;
     public float level_start_bolt_space;
 
+    [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt_model; 
 	[ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt; 
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt_start; 
-    [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt_shaped; 
-    [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt_end; 
-    [ FoldoutGroup( "Setup" ) ] public GameObject prefab_bolt_model; 
+    [ FoldoutGroup( "Setup" ) ] public GameObject[] prefab_bolt_shaped; 
+    [ FoldoutGroup( "Setup" ) ] public float[] bolt_shaped_model_height; // 28 
+    [ FoldoutGroup( "Setup" ) ] public GameObject[] prefab_bolt_end; 
+    [ FoldoutGroup( "Setup" ) ] public Vector3[] prefab_finishLine_offset; 
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_finishLine; 
     [ FoldoutGroup( "Setup" ) ] public float bolt_model_height = 0.5f; 
-    [ FoldoutGroup( "Setup" ) ] public float bolt_shaped_model_height = 28f; 
-    [ FoldoutGroup( "Setup" ) ] public Vector3 finishLine_offset; 
     
-
     const char prefab_bolt_char = 'b';
     const char prefab_bolt_shaped_char = 'c';
     const char space_char = 's';
@@ -83,13 +82,13 @@ public class LevelCreator : ScriptableObject
 		spawnTransform = GameObject.FindWithTag( "Respawn" ).transform;
 		spawnTransform.DestoryAllChildren();
 
-		int errorIdex;
+		// int errorIdex;
 
-		if( !IsCodeValid( out errorIdex ) )
-        {
-            FFLogger.LogError( "CODE IS NOT VALID: " + errorIdex );
-			return;
-		}
+		// if( !IsCodeValid( out errorIdex ) )
+        // {
+        //     FFLogger.LogError( "CODE IS NOT VALID: " + errorIdex );
+		// 	return;
+		// }
 
 		create_index = 0;
 		create_length = level_start_bolt_length;
@@ -109,19 +108,6 @@ public class LevelCreator : ScriptableObject
 			PlaceObject();
 		}
 
-        // Place Level End Bolt
-		var bolt_end = PrefabUtility.InstantiatePrefab( prefab_bolt_end ) as GameObject;
-		bolt_end.transform.position = Vector3.up * create_position;
-		bolt_end.transform.SetParent( spawnTransform );
-
-		var path = bolt_end.GetComponent< MovementPath >();
-        path.path_index = create_path_index;
-        path.MovePoints();
-
-		var finishLine = PrefabUtility.InstantiatePrefab( prefab_finishLine ) as GameObject;
-		finishLine.transform.position = bolt_end.transform.position + finishLine_offset;
-		finishLine.transform.SetParent( spawnTransform );
-
 		EditorSceneManager.SaveOpenScenes();
 	}
 #endregion
@@ -129,6 +115,7 @@ public class LevelCreator : ScriptableObject
 #region Implementation
     void PlaceObject()
     {
+		FFLogger.Log( $"Char {create_index}: " + level_code[ create_index ] );
         if( level_code[ create_index ] == 's' ) // Place Space
         {
 			create_index++;
@@ -146,6 +133,25 @@ public class LevelCreator : ScriptableObject
 			PlaceShapedBolt();
 			create_index++;
 		}
+        else if( level_code[ create_index ] == 'e' ) // Place End Level Bolt
+		{
+			FFLogger.Log( "Place End Level" );
+			create_index = create_index + 1;
+			var bolt_end_index = int.Parse( level_code[ create_index ].ToString() );
+
+			// Place Level End Bolt
+			var bolt_end = PrefabUtility.InstantiatePrefab( prefab_bolt_end[ bolt_end_index ] ) as GameObject;
+			bolt_end.transform.position = Vector3.up * create_position;
+			bolt_end.transform.SetParent( spawnTransform );
+
+			var path = bolt_end.GetComponent<MovementPath>();
+			path.path_index = create_path_index;
+			path.MovePoints();
+
+			var finishLine = PrefabUtility.InstantiatePrefab( prefab_finishLine ) as GameObject;
+			finishLine.transform.position = bolt_end.transform.position + prefab_finishLine_offset[ bolt_end_index ];
+			finishLine.transform.SetParent( spawnTransform );
+		}
     }
 
     void FindLength()
@@ -154,8 +160,8 @@ public class LevelCreator : ScriptableObject
 
 		for( var i = create_index; i < level_code.Length; i++ )
         {
-			create_index = i + 1;
 			stringBuilder.Append( level_code[ i ] );
+			create_index = i + 1;
 
             if( i < level_code.Length - 1 && IsSpecial( i + 1 ) )
 				break;
@@ -176,7 +182,9 @@ public class LevelCreator : ScriptableObject
 
     void PlaceShapedBolt()
     {
-		var bolt_shaped = PrefabUtility.InstantiatePrefab( prefab_bolt_shaped ) as GameObject;
+		create_index = create_index + 1;
+		var bolt_shaped_index = int.Parse( level_code[ create_index ].ToString() );
+		var bolt_shaped = PrefabUtility.InstantiatePrefab( prefab_bolt_shaped[ bolt_shaped_index] ) as GameObject;
 		bolt_shaped.transform.position = Vector3.up * create_position;
 		bolt_shaped.transform.SetParent( spawnTransform );
 
@@ -184,9 +192,8 @@ public class LevelCreator : ScriptableObject
         path.path_index = create_path_index;
         path.MovePoints();
 
-
 		create_path_index++;
-		create_position += bolt_shaped_model_height;
+		create_position += bolt_shaped_model_height[ bolt_shaped_index ];
 	}
 
     bool IsCodeValid( out int errorIdex )
@@ -195,12 +202,6 @@ public class LevelCreator : ScriptableObject
 
 		     errorIdex        = -1;
 		bool result           = true;
-
-        if( IsSpecial( level_code.Length - 1 ) )
-        {
-            FFLogger.LogError( "INVALID CODE: Must finish with number" );
-			return false;
-		}
 
 		for( var i = 0; i < level_code.Length; i++ )
         {
@@ -240,7 +241,7 @@ public class LevelCreator : ScriptableObject
     bool IsSpecial( int index )
     {
 		var codeChar = level_code[ index ];
-		return codeChar == 'b' || codeChar == 'c' || codeChar == 's';
+		return codeChar == 'b' || codeChar == 'c' || codeChar == 's' || codeChar == 'e';
     }
 #endregion
 
