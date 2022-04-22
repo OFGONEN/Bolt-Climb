@@ -134,6 +134,7 @@ public class Nut : MonoBehaviour
 
 		transform.position = position; // todo remove this after path points are corrected
 
+		property_velocity.SetMinimumVelocity();
 		onUpdateMethod = OnUpdate_Deceleration;
 	}
 
