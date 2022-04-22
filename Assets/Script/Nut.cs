@@ -32,7 +32,6 @@ public class Nut : MonoBehaviour
 
   [ Title( "Components" )]
 	[ SerializeField ] ParticleSystem particle_nut_lowDurability;
-	[ SerializeField ] ParticleSystem particle_nut_carving;
 // Private
 	float point_fallDown = 0;
 	float point_levelEnd;
@@ -98,8 +97,6 @@ public class Nut : MonoBehaviour
 			onFingerDown   = ExtensionMethods.EmptyMethod;
 			onFingerUp     = ExtensionMethods.EmptyMethod;
 			onUpdateMethod = OnUpdate_Deceleration;
-
-			particle_nut_carving.Stop();
 		}
 	}
 
@@ -200,7 +197,6 @@ public class Nut : MonoBehaviour
 
 	void OnFingerDown_StraightBolt()
 	{
-		particle_nut_carving?.Play();
 		onUpdateMethod = OnUpdate_Acceleration;
 		onFingerUp     = OnFingerUp;
 	}
@@ -209,8 +205,6 @@ public class Nut : MonoBehaviour
 	{
 		onUpdateMethod = OnUpdate_Deceleration;
 		onFingerUp     = ExtensionMethods.EmptyMethod;
-
-		particle_nut_carving.Stop();
 	}
 
 	void EmptyDelegates()
