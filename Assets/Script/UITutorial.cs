@@ -52,7 +52,6 @@ public class UITutorial : MonoBehaviour
 		ui_image.enabled = true;
 		ui_text.enabled  = true;
 
-        FFLogger.Log( "Width: " + Screen.width );
 		var image_size_start = Screen.width / image_size_cofactor_start;
 		var image_size_end   = Screen.width / image_size_cofactor_end;
 
@@ -60,11 +59,13 @@ public class UITutorial : MonoBehaviour
 		ui_image.rectTransform.position  = screenPosition;
 		ui_image.rectTransform.sizeDelta = new Vector2( image_size_start, image_size_start );
 
-		var sequence = recycledSequence.Recycle( OnSequenceComplete );
+		var sequence           = recycledSequence.Recycle( OnSequenceComplete );
 
 		sequence.Append( ui_image.rectTransform.DOSizeDelta( new Vector2( image_size_end, image_size_end ), sequence_duration ).SetEase( Ease.Linear ) )
 				.Join( ui_image.DOColor( Color.red, sequence_duration ) )
 				.Join( ui_text.rectTransform.DOShakeScale( shake_duration, 1, 10, 90, false ).SetLoops( int.MaxValue, LoopType.Yoyo ) );
+
+		sequence.SetUpdate( true );
 	}
 
     public void OnInput()
