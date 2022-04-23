@@ -19,6 +19,7 @@ public class Bolt : MonoBehaviour
     [ SerializeField ] BoxCollider collider_upper_out;
     [ SerializeField ] BoxCollider collider_upper_in;
     [ SerializeField ] BoxCollider collider_bottom;
+    [ SerializeField ] ParticleSystem particle_nut_carving;
 
     [ SerializeField, ReadOnly, FoldoutGroup( "Info" ) ] SkinnedMeshRenderer[] bolt_renderers;
     [ ShowInInspector, ReadOnly, ProgressBar( 0, 1 ), FoldoutGroup( "Info" ) ] float bolt_carve_progress;
@@ -40,9 +41,10 @@ public class Bolt : MonoBehaviour
 #region Unity API
     private void Awake()
     {
-		point_bottom = transform.position.y;
-		point_up     = collider_upper_out.transform.position.y + collider_upper_out.size.y / 2f;
-		point_gap    = point_up - point_bottom;
+		point_bottom        = transform.position.y;
+		point_up            = collider_upper_out.transform.position.y + collider_upper_out.size.y / 2f;
+		point_gap           = point_up - point_bottom;
+		bolt_carve_progress = -1f;
 
 		onStartTrackingNut = StartTrackingNut;
 		onUpdateMethod     = ExtensionMethods.EmptyMethod;
@@ -62,6 +64,7 @@ public class Bolt : MonoBehaviour
 
     public void OnStopTrackingNut()
     {
+		particle_nut_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
 	}
 #endregion
@@ -79,7 +82,19 @@ public class Bolt : MonoBehaviour
 
     void OnTrackNut()
     {
+		var progress = bolt_carve_progress;
 		bolt_carve_progress = Mathf.Clamp( ( transform_nut.position.y - point_bottom ) / point_gap, bolt_carve_progress, 1 );
+
+
+		if( bolt_carve_progress > progress )
+		{
+			particle_nut_carving.Play( true );
+			particle_nut_carving.transform.position = particle_nut_carving.transform.position.SetY( Mathf.Lerp( point_bottom, point_up, bolt_carve_progress ) );
+		}
+		else
+			particle_nut_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
+
+
 		UpdateCarveProgress();
 	}
 

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: game_settings
   m_EditorClassIdentifier: 
   game_level_count: 100
-  movement_rotation_cofactor: 80
+  game_tutorial_timeScale: 0.05
+  movement_rotation_cofactor: 3
   movement_launchSpeed_minumum: 1
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
   nut_shatter_torque: {x: 6.6980996, y: 15.23205}

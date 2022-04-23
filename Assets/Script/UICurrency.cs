@@ -26,7 +26,6 @@ public class UICurrency : MonoBehaviour
     [ BoxGroup( "Scale" ), SerializeField ] Ease spawn_scale_ease;
     [ BoxGroup( "Fade" ), SerializeField ] float fade_duration;
     [ BoxGroup( "Fade" ), SerializeField ] Ease spawn_fade_ease;
-
 // Private
 	Transform nut_transform;
 

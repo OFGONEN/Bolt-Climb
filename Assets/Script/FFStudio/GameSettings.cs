@@ -12,6 +12,7 @@ namespace FFStudio
 
     // Info: Game related settings
         [ BoxGroup( "Game" ) ] public int game_level_count = 20;
+        [ BoxGroup( "Game" ) ] public float game_tutorial_timeScale = 0.25f;
 
         [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
         [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;

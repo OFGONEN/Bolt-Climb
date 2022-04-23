@@ -32,10 +32,10 @@ public class Nut : MonoBehaviour
 
   [ Title( "Components" )]
 	[ SerializeField ] ParticleSystem particle_nut_lowDurability;
-	[ SerializeField ] ParticleSystem particle_nut_carving;
 // Private
 	float point_fallDown = 0;
 	float point_levelEnd;
+	bool onPath;
 // Delegates
 	UnityMessage onUpdateMethod;
 	UnityMessage onFingerDown;
@@ -95,11 +95,15 @@ public class Nut : MonoBehaviour
 			onFingerDown = OnFingerDown_StraightBolt;
 		else
 		{
+			FFLogger.Log( "Nut Exit Bolt" );
+
 			onFingerDown   = ExtensionMethods.EmptyMethod;
 			onFingerUp     = ExtensionMethods.EmptyMethod;
-			onUpdateMethod = OnUpdate_Deceleration;
 
-			particle_nut_carving.Stop();
+			if( onPath )
+				onUpdateMethod = ExtensionMethods.EmptyMethod;
+			else
+				onUpdateMethod = OnUpdate_Deceleration;
 		}
 	}
 
@@ -110,13 +114,17 @@ public class Nut : MonoBehaviour
 
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
-		FFLogger.Log( "On Path Start" );
+		FFLogger.Log( "Start Shaped Bolt" );
+		onPath = true;
 		EmptyDelegates();
 		component_movement.DoPath( gameEvent.eventValue, OnPathComplete );
 	}
 
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
 	{
+		FFLogger.Log( "End Bolt" );
+
+		onPath = true;
 		EmptyDelegates();
 		onLevelProgress = ExtensionMethods.EmptyMethod;
 		component_movement.DoPath( gameEvent.eventValue, OnLevelEndPathComplete );
@@ -129,7 +137,7 @@ public class Nut : MonoBehaviour
 #region Implementation
 	void OnPathComplete()
 	{
-		FFLogger.Log( "On Path End" );
+		onPath = false;
 
 		var position   = transform.position;
 		    position.x = 0;
@@ -137,11 +145,13 @@ public class Nut : MonoBehaviour
 
 		transform.position = position; // todo remove this after path points are corrected
 
+		property_velocity.SetMinimumVelocity();
 		onUpdateMethod = OnUpdate_Deceleration;
 	}
 
 	void OnLevelEndPathComplete()
 	{
+		onPath = false;
 		component_rigidbody.isKinematic = false;
 		// component_rigidbody.useGravity  = true;
 		component_collider.isTrigger    = false;
@@ -202,7 +212,6 @@ public class Nut : MonoBehaviour
 
 	void OnFingerDown_StraightBolt()
 	{
-		particle_nut_carving?.Play();
 		onUpdateMethod = OnUpdate_Acceleration;
 		onFingerUp     = OnFingerUp;
 	}
@@ -211,8 +220,6 @@ public class Nut : MonoBehaviour
 	{
 		onUpdateMethod = OnUpdate_Deceleration;
 		onFingerUp     = ExtensionMethods.EmptyMethod;
-
-		particle_nut_carving.Stop();
 	}
 
 	void EmptyDelegates()
@@ -236,14 +243,14 @@ public class Nut : MonoBehaviour
 #region Editor Only
 #if UNITY_EDITOR
 //! todo remove this variable before build
-	[ SerializeField ] SharedBoolNotifier isNutOnBolt;
+	// [ SerializeField ] SharedBoolNotifier isNutOnBolt;
 
 	private void OnGUI() 
 	{
 		var style = new GUIStyle();
 		style.fontSize = 25;
 
-		GUI.Label( new Rect( 25, 50 , 250, 250 ), "Is Nut On Bolt: " + isNutOnBolt.SharedValue  , style);
+		// GUI.Label( new Rect( 25, 50 , 250, 250 ), "Is Nut On Bolt: " + isNutOnBolt.SharedValue  , style);
 		GUI.Label( new Rect( 25, 75 , 250, 250 ), "Nut Durability: " + property_durability.CurrentDurability , style);
 		GUI.Label( new Rect( 25, 100, 250, 250 ), "Nut %Durability: " + property_durability.DurabilityRatio , style);
 		GUI.Label( new Rect( 25, 125, 250, 250 ), "Nut Velocity: " + property_velocity.CurrentVelocity , style);
