@@ -387,6 +387,16 @@ namespace FFStudio
 			return Random.Range( vector.x, vector.y );
 		}
 
+		public static float ReturnProgress( this Vector2 vector, float progress )
+		{
+			return Mathf.Lerp( vector.x, vector.y, progress );
+		}
+
+		public static float ReturnProgressInverse( this Vector2 vector, float progress )
+		{
+			return Mathf.Lerp( vector.y, vector.x, progress );
+		}
+
 		public static void DestoryAllChildren( this Transform transform )
 		{
 			var childCount = transform.childCount;
