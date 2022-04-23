@@ -43,10 +43,17 @@ public class UITutorial : MonoBehaviour
     [ Button() ]
     public void StartTutorial()
     {
+		var targetTransform = ui_target.SharedValue as Transform;
+
+		if( PlayerPrefs.GetInt( targetTransform.name , 0 ) == 0 )
+			PlayerPrefs.SetInt( targetTransform.name, 1 );
+		else
+			return;
+
 		Time.timeScale = GameSettings.Instance.game_tutorial_timeScale;
 		onInputMethod  = FinishTutorial;
 
-		var position       = ( ui_target.SharedValue as Transform ).position;
+		var position       = targetTransform.position;
 		var screenPosition = Camera.main.WorldToScreenPoint( position );
 
 		ui_image.enabled = true;
@@ -59,11 +66,12 @@ public class UITutorial : MonoBehaviour
 		ui_image.rectTransform.position  = screenPosition;
 		ui_image.rectTransform.sizeDelta = new Vector2( image_size_start, image_size_start );
 
-		var sequence           = recycledSequence.Recycle( OnSequenceComplete );
+		var sequence = recycledSequence.Recycle();
 
-		sequence.Append( ui_image.rectTransform.DOSizeDelta( new Vector2( image_size_end, image_size_end ), sequence_duration ).SetEase( Ease.Linear ) )
+		sequence.Join( ui_text.rectTransform.DOShakeScale( shake_duration, 1, 10, 90, false ).SetLoops( int.MaxValue, LoopType.Yoyo ) )
+				.Join( ui_image.rectTransform.DOSizeDelta( new Vector2( image_size_end, image_size_end ), sequence_duration ).SetEase( Ease.Linear ) )
 				.Join( ui_image.DOColor( Color.red, sequence_duration ) )
-				.Join( ui_text.rectTransform.DOShakeScale( shake_duration, 1, 10, 90, false ).SetLoops( int.MaxValue, LoopType.Yoyo ) );
+				.InsertCallback( sequence_duration, OnSequenceComplete );
 
 		sequence.SetUpdate( true );
 	}
