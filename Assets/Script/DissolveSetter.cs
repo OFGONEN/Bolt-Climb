@@ -17,6 +17,8 @@ public class DissolveSetter : MonoBehaviour
 
 	static int SHADER_ID_COLOR = Shader.PropertyToID( "_threshold" );
 	MaterialPropertyBlock propertyBlock;
+
+	UnityMessage onProgressUpdate;
 #endregion
 
 #region Properties
@@ -27,10 +29,30 @@ public class DissolveSetter : MonoBehaviour
     {
 		propertyBlock          = new MaterialPropertyBlock();
 		bolt_dissolve_progress = 0;
+
+		onProgressUpdate = ExtensionMethods.EmptyMethod;
 	}
 #endregion
 
 #region API
+	public void StartTracking()
+	{
+		onProgressUpdate = UpdateDissolveProgress;
+	}
+
+	public void StopTracking()
+	{
+		onProgressUpdate = ExtensionMethods.EmptyMethod;
+	}
+
+	public void UpdateProgress( float progress )
+	{
+		bolt_dissolve_progress = progress;
+		onProgressUpdate();
+	}
+#endregion
+
+#region Implementation
     void UpdateDissolveProgress()
     {
 		var step     = 1f / bolt_renderers.Length;
@@ -50,9 +72,7 @@ public class DissolveSetter : MonoBehaviour
 			}
 		}
 	}
-#endregion
 
-#region Implementation
 	void SetDissolve( Renderer renderer, float value )
 	{
 		renderer.GetPropertyBlock( propertyBlock );
@@ -63,12 +83,6 @@ public class DissolveSetter : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
-	[ Button() ]
-	void SetProgress( float value )
-	{
-		bolt_dissolve_progress = value;
-		UpdateDissolveProgress();
-	}
 #endif
 #endregion
 }

@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a78e029e6824d466ab2701876b645e96, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fb30f857cbd238f46a42682d918e42de, type: 2}
     - target: {fileID: 919132149155446097, guid: a78e029e6824d466ab2701876b645e96, type: 3}
       propertyPath: m_Name
       value: prop_s_shaped_bolt_v4_2
@@ -61,10 +65,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a78e029e6824d466ab2701876b645e96, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a78e029e6824d466ab2701876b645e96, type: 3}
+--- !u!23 &5090235305944968757 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a78e029e6824d466ab2701876b645e96, type: 3}
+  m_PrefabInstance: {fileID: 5865291638630445745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7847955800296784820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -624,9 +633,21 @@ PrefabInstance:
       propertyPath: path_points.Array.data[122].y
       value: 22.567524
       objectReference: {fileID: 0}
+    - target: {fileID: 2233694452233181731, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889640906557740358, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
+      propertyPath: bolt_renderers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889640906557740358, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
+      propertyPath: bolt_renderers.Array.data[1]
+      value: 
+      objectReference: {fileID: 5090235305944968757}
     - target: {fileID: 5111738701764704344, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: m_Name
-      value: bolt_shaped_2_v
+      value: bolt_shaped_2
       objectReference: {fileID: 0}
     - target: {fileID: 7456776010364384035, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: m_Name

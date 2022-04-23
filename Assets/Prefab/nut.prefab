@@ -117,8 +117,6 @@ MonoBehaviour:
   component_rigidbody: {fileID: 7047402463236877961}
   component_collider: {fileID: 4430853468833506475}
   particle_nut_lowDurability: {fileID: 2644714413687933006}
-  particle_nut_carving: {fileID: 759388581590007072}
-  isNutOnBolt: {fileID: 11400000, guid: d401f21baeb4e4064a7da03f6fbb0777, type: 2}
 --- !u!114 &4375852389534718817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path_Set: {fileID: 11400000, guid: 28e3faea870b84807b2df86acc92e09b, type: 2}
   velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
+  notif_dissolve_progress: {fileID: 11400000, guid: 8012114beda944ee3a22fb8cb9f5b8a0, type: 2}
   transform_movement: {fileID: 5919801855808585662}
   transform_rotate: {fileID: 2803611756271641150}
 --- !u!114 &5520294727583239052
@@ -419,11 +418,6 @@ PrefabInstance:
 --- !u!4 &596050884220051564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1115718086801960910, guid: a74ebd90e017e44f5983b7e15e858e46, type: 3}
-  m_PrefabInstance: {fileID: 521936723587977122}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &759388581590007072 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 988444784707875458, guid: a74ebd90e017e44f5983b7e15e858e46, type: 3}
   m_PrefabInstance: {fileID: 521936723587977122}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &638156688759733901
