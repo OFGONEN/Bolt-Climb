@@ -30,7 +30,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] Collider component_collider;
 
 
-  [ Title( "Components" )]
+  [ Title( "Particle" )]
 	[ SerializeField ] ParticleSystem particle_nut_lowDurability;
 // Private
 	float point_fallDown = 0;

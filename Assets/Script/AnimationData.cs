@@ -21,24 +21,10 @@ public class AnimationData : ScriptableObject
     public float data_scale_in; 
     public float data_scale_duration_in; 
     public Ease  data_scale_ease_in; 
-  [ Title( "Color Data" ) ]
-// Out Color
-    public Color data_color_out = Color.white; 
-    public float data_color_duration_out; 
-    public Ease  data_color_ease_out; 
-// In Color
-    public Color data_color_in = Color.white; 
-    public float data_color_duration_in; 
-    public Ease  data_color_ease_in; 
 #endregion
 
 #region Editor Only
 #if UNITY_EDITOR
-	private void OnValidate()
-	{
-		data_color_out = data_color_out.SetAlpha( 1 );
-		data_color_in  = data_color_in.SetAlpha( 1 );
-	}
 #endif
 #endregion
 }
