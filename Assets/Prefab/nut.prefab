@@ -118,6 +118,7 @@ MonoBehaviour:
   component_collider: {fileID: 4430853468833506475}
   particle_nut_lowDurability: {fileID: 2644714413687933006}
   particle_nut_carving: {fileID: 759388581590007072}
+  isNutOnBolt: {fileID: 11400000, guid: d401f21baeb4e4064a7da03f6fbb0777, type: 2}
 --- !u!114 &4375852389534718817
 MonoBehaviour:
   m_ObjectHideFlags: 0
