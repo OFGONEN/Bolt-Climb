@@ -49,6 +49,11 @@ public class Velocity : ScriptableObject
             velocity_data.incremental_velocity_min
         );
     }
+
+    public void SetMinimumVelocity()
+    {
+		velocity_current = Mathf.Max( GameSettings.Instance.movement_launchSpeed_minumum , velocity_current );
+	}
 #endregion
 
 #region Implementation

@@ -17,12 +17,19 @@ public class Movement : MonoBehaviour
   [ Title( "Setup" ) ]
 	[ SerializeField ] private Transform transform_movement;
 	[ SerializeField ] private Transform transform_rotate;
+
+	// Private
+	Tween pathTween;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		pathTween.KillProper();
+	}
 #endregion
 
 #region API
@@ -39,7 +46,7 @@ public class Movement : MonoBehaviour
 		}
 #endif
 
-		transform_movement.DOPath( pathPoints, velocity.CurrentVelocity, PathType.Linear )
+		pathTween = transform_movement.DOPath( pathPoints, velocity.CurrentVelocity, PathType.Linear )
 		.SetLookAt( 0, -Vector3.up )
 		.SetSpeedBased()
 		// .SetRelative()
