@@ -20,14 +20,14 @@ MonoBehaviour:
   prefab_bolt_start: {fileID: 8790097260034345890, guid: d1e0b511b41eb4b4f9c8cf7e96e2c59c, type: 3}
   prefab_bolt_shaped:
   - {fileID: 5111738701764704344, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
-  - {fileID: 5111738701764704344, guid: c4b07a32238dd1d49af66e821adcf90a, type: 3}
+  - {fileID: 3033457457287740396, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
   bolt_shaped_model_height:
   - 11.3
   - 22.6
   prefab_bolt_end:
-  - {fileID: 9094376356477548414, guid: d897b79f0f3fbb3419b6fa574a116db7, type: 3}
-  - {fileID: 9094376356477548414, guid: 35f38a3259b459f478957f9d5383a521, type: 3}
-  - {fileID: 9094376356477548414, guid: 890df0433f1872a48a8df11c4746ac4b, type: 3}
+  - {fileID: 4670572250515966050, guid: e25640050333cd2439c12d04f714c1b5, type: 3}
+  - {fileID: 4492639980709009203, guid: 33b01fc7b7729c041928e6207a5eec57, type: 3}
+  - {fileID: 2271575799513193403, guid: 2931cc081b0995a4cbedd5c6effd7731, type: 3}
   prefab_finishLine_offset:
   - {x: 0, y: 8, z: 15}
   - {x: 0, y: 18, z: 25}
