@@ -35,6 +35,7 @@ public class Nut : MonoBehaviour
 // Private
 	float point_fallDown = 0;
 	float point_levelEnd;
+	bool onPath;
 // Delegates
 	UnityMessage onUpdateMethod;
 	UnityMessage onFingerDown;
@@ -94,9 +95,15 @@ public class Nut : MonoBehaviour
 			onFingerDown = OnFingerDown_StraightBolt;
 		else
 		{
+			FFLogger.Log( "Nut Exit Bolt" );
+
 			onFingerDown   = ExtensionMethods.EmptyMethod;
 			onFingerUp     = ExtensionMethods.EmptyMethod;
-			onUpdateMethod = OnUpdate_Deceleration;
+
+			if( onPath )
+				onUpdateMethod = ExtensionMethods.EmptyMethod;
+			else
+				onUpdateMethod = OnUpdate_Deceleration;
 		}
 	}
 
@@ -107,12 +114,17 @@ public class Nut : MonoBehaviour
 
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
+		FFLogger.Log( "Start Shaped Bolt" );
+		onPath = true;
 		EmptyDelegates();
 		component_movement.DoPath( gameEvent.eventValue, OnPathComplete );
 	}
 
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
 	{
+		FFLogger.Log( "End Bolt" );
+
+		onPath = true;
 		EmptyDelegates();
 		onLevelProgress = ExtensionMethods.EmptyMethod;
 		component_movement.DoPath( gameEvent.eventValue, OnLevelEndPathComplete );
@@ -125,6 +137,8 @@ public class Nut : MonoBehaviour
 #region Implementation
 	void OnPathComplete()
 	{
+		onPath = false;
+
 		var position   = transform.position;
 		    position.x = 0;
 		    position.z = 0;
@@ -137,6 +151,7 @@ public class Nut : MonoBehaviour
 
 	void OnLevelEndPathComplete()
 	{
+		onPath = false;
 		component_rigidbody.isKinematic = false;
 		// component_rigidbody.useGravity  = true;
 		component_collider.isTrigger    = false;
