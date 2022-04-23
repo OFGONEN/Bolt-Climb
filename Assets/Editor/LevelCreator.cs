@@ -48,25 +48,25 @@ public class LevelCreator : ScriptableObject
 	[ Button() ]
 	public void SetIncremental_Velocity( int index )
 	{
-		PlayerPrefs.SetInt( "velocity_index", Mathf.Max( index, 0 ) );
+		PlayerPrefs.SetInt( ExtensionMethods.velocity_index, Mathf.Max( index, 0 ) );
 	}
 
 	[ Button() ]
 	public void SetIncremental_Durability( int index )
 	{
-		PlayerPrefs.SetInt( "velocity_index", Mathf.Max( index, 0 ) );
+		PlayerPrefs.SetInt( ExtensionMethods.durability_index, Mathf.Max( index, 0 ) );
 	}
 
 	[ Button() ]
 	public void SetIncremental_Currency( int index )
 	{
-		PlayerPrefs.SetInt( "velocity_index", Mathf.Max( index, 0 ) );
+		PlayerPrefs.SetInt( ExtensionMethods.currency_index, Mathf.Max( index, 0 ) );
 	}
 	
 	[ Button() ]
 	public void SetCurrency( float value )
 	{
-		PlayerPrefs.SetFloat( "currency", value );
+		PlayerPrefs.SetFloat( ExtensionMethods.currency, value );
 	}
 #endregion
 
