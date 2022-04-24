@@ -36,6 +36,10 @@ public class UICurrency : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		recycledSequence.Kill();
+	}
 #endregion
 
 #region API
