@@ -14,9 +14,12 @@ public class RustSetter : MonoBehaviour
 // Private
 	static int SHADER_ID_COLOR = Shader.PropertyToID( "_threshold" );
 	MaterialPropertyBlock propertyBlock;
+
+	float rust_progress;
 #endregion
 
 #region Properties
+	public float Rust => rust_progress;
 #endregion
 
 #region Unity API
@@ -31,6 +34,7 @@ public class RustSetter : MonoBehaviour
     [ Button() ]
 	public void SetRust( float value )
 	{
+		rust_progress = value;
 		_renderer.GetPropertyBlock( propertyBlock );
 		propertyBlock.SetFloat( SHADER_ID_COLOR, value );
 		_renderer.SetPropertyBlock( propertyBlock );
@@ -42,6 +46,13 @@ public class RustSetter : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
+	private void OnValidate()
+	{
+		var renderer = GetComponent< Renderer >();
+
+		if( renderer && !_renderer )
+			_renderer = renderer;
+	}
 #endif
 #endregion
 }

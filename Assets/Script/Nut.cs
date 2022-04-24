@@ -182,7 +182,7 @@ public class Nut : MonoBehaviour
 			var shatter                    = pool_randomShatter.GetEntity();
 			    shatter.transform.position = transform.position;
 
-			shatter.DoShatter();
+			shatter.DoShatter( component_rust_setter.Rust );
 
 			var height = transform.position.y;
 			notif_nut_height_last.SharedValue = height;
