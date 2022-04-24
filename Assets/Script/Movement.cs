@@ -13,7 +13,6 @@ public class Movement : MonoBehaviour
   [ Title( "Shared Variables" ) ]
 	[ SerializeField ] private MovementPath_Set path_Set;
 	[ SerializeField ] private Velocity velocity;
-	[ SerializeField ] private SharedFloatNotifier notif_dissolve_progress;
 
   [ Title( "Setup" ) ]
 	[ SerializeField ] private Transform transform_movement;
@@ -46,13 +45,11 @@ public class Movement : MonoBehaviour
 			return;
 		}
 #endif
-		notif_dissolve_progress.SetValue_NotifyAlways( 0 );
-
 		pathTween = transform_movement.DOPath( pathPoints, velocity.CurrentVelocity, PathType.Linear )
 		.SetLookAt( 0, -Vector3.up )
 		.SetSpeedBased()
 		// .SetRelative()
-		.OnUpdate( OnPathUpdate )
+		.OnUpdate( DoRotate )
 		.SetEase( Ease.Linear )
 		.OnComplete( onPathComplete );
 	}
@@ -82,11 +79,6 @@ public class Movement : MonoBehaviour
 #endregion
 
 #region Implementation
-	void OnPathUpdate()
-	{
-		DoRotate();
-		notif_dissolve_progress.SharedValue = pathTween.ElapsedPercentage();
-	}
 	void DoRotate()
 	{
 		transform_rotate.Rotate( Vector3.up * velocity.CurrentVelocity * Time.deltaTime * GameSettings.Instance.movement_rotation_cofactor , Space.Self );

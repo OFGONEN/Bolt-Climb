@@ -9,16 +9,17 @@ using Sirenix.OdinInspector;
 public class DissolveSetter : MonoBehaviour
 {
 #region Fields
+    [ SerializeField ] MovementPath movementPath;
     [ SerializeField ] Renderer[] bolt_renderers;
 	[ SerializeField ] Vector2 bolt_dissolve_range;
 
 // Private
-	float bolt_dissolve_progress;
+	[ ShowInInspector, ReadOnly ] float bolt_dissolve_progress;
 
 	static int SHADER_ID_COLOR = Shader.PropertyToID( "_threshold" );
 	MaterialPropertyBlock propertyBlock;
 
-	UnityMessage onProgressUpdate;
+	UnityMessage onUpdateMethod;
 #endregion
 
 #region Properties
@@ -30,29 +31,34 @@ public class DissolveSetter : MonoBehaviour
 		propertyBlock          = new MaterialPropertyBlock();
 		bolt_dissolve_progress = 0;
 
-		onProgressUpdate = ExtensionMethods.EmptyMethod;
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+	}
+
+	private void Update()
+	{
+		onUpdateMethod();
 	}
 #endregion
 
 #region API
 	public void StartTracking()
 	{
-		onProgressUpdate = UpdateDissolveProgress;
+		onUpdateMethod = UpdateProgress;
 	}
 
 	public void StopTracking()
 	{
-		onProgressUpdate = ExtensionMethods.EmptyMethod;
-	}
-
-	public void UpdateProgress( float progress )
-	{
-		bolt_dissolve_progress = progress;
-		onProgressUpdate();
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
 	}
 #endregion
 
 #region Implementation
+	void UpdateProgress()
+	{
+		bolt_dissolve_progress = movementPath.ReturnPathProgress();
+		UpdateDissolveProgress();
+	}
+
     void UpdateDissolveProgress()
     {
 		var step     = 1f / bolt_renderers.Length;
