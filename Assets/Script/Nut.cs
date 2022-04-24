@@ -138,6 +138,7 @@ public class Nut : MonoBehaviour
 #region Implementation
 	void OnPathComplete()
 	{
+		FFLogger.Log( "On Shaped Path Complete" );
 		onPath = false;
 
 		var position   = transform.position;
