@@ -226,7 +226,7 @@ MonoBehaviour:
   dashStyle:
     type: 2
     space: -1
-    snap: 2
+    snap: 0
     size: 2
     spacing: 2
     offset: 0
