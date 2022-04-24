@@ -29,7 +29,7 @@ public class RustSetter : MonoBehaviour
 
 #region API
     [ Button() ]
-	void SetRust( float value )
+	public void SetRust( float value )
 	{
 		_renderer.GetPropertyBlock( propertyBlock );
 		propertyBlock.SetFloat( SHADER_ID_COLOR, value );
