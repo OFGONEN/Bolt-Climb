@@ -275,7 +275,7 @@ MonoBehaviour:
   ui_event_onLevelLoaded:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5428478214564517321}
+      - m_Target: {fileID: 6661193540432067533}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -302,7 +302,7 @@ MonoBehaviour:
   ui_event_onGoStartPosition:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5428478214564517321}
+      - m_Target: {fileID: 6661193540432067533}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
