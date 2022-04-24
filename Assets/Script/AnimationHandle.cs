@@ -15,12 +15,9 @@ public class AnimationHandle : MonoBehaviour
     [ SerializeField ] AnimationData[] animationDatas;
     [ SerializeField ] AnimationData animation_default;
     [ SerializeField ] Transform transform_animation;
-    [ SerializeField ] ColorSetter colorSetter_animation;
 
 // Private
     RecycledSequence animation_sequence_scale = new RecycledSequence();
-    RecycledSequence animation_sequence_color = new RecycledSequence();
-
     int animation_index = -1;
 #endregion
 
@@ -31,18 +28,18 @@ public class AnimationHandle : MonoBehaviour
 	private void OnDisable()
 	{
 		animation_sequence_scale.Kill();
-		animation_sequence_color.Kill();
 	}
 #endregion
 
 #region API
-    public void PlayAnimation( float progress, ParticleSystem particle )
+    public float PlayAnimation( float progress, ParticleSystem particle )
     {
         var index = -1;
+		var initialPercentage = animationDatas[ 0 ].data_percentage / 100f;
 
-        for( var i = 0; i < animationDatas.Length; i++ )
+		for( var i = 0; i < animationDatas.Length; i++ )
         {
-            if( progress <=  animationDatas[ i ].data_percentage / 100f )
+            if( progress <=  initialPercentage )
             {
 				index = i;
 				break;
@@ -61,6 +58,8 @@ public class AnimationHandle : MonoBehaviour
 		}
 
 		animation_index = index;
+
+		return 1f - ( Mathf.Min( progress, initialPercentage ) / initialPercentage );
 	}
 #endregion
 
@@ -70,34 +69,17 @@ public class AnimationHandle : MonoBehaviour
 		var data = animationDatas[ index ];
 
 		var animation_scale = animation_sequence_scale.Recycle();
-		var animation_color = animation_sequence_color.Recycle();
 
 		animation_scale.Append( transform_animation.DOScale( data.data_scale_out, data.data_scale_duration_out ).SetEase( data.data_scale_ease_out ) );
 		animation_scale.Append( transform_animation.DOScale( data.data_scale_in, data.data_scale_duration_in ).SetEase( data.data_scale_ease_in ) );
 		animation_scale.SetLoops( -1, LoopType.Yoyo );
-
-		animation_color.Append( DOTween.To( GetColor, SetColor, data.data_color_out, data.data_color_duration_out ).SetEase( data.data_color_ease_out ) );
-		animation_color.Append( DOTween.To( GetColor, SetColor, data.data_color_in, data.data_color_duration_in ).SetEase( data.data_color_ease_in ) );
-		animation_color.SetLoops( -1, LoopType.Yoyo );
 	}
 
     void ReturnDefault()
     {
 		var sequence = animation_sequence_scale.Recycle();
-		animation_sequence_color.Kill();
 
 		sequence.Append( transform_animation.DOScale( animation_default.data_scale_out, animation_default.data_scale_duration_out ).SetEase( animation_default.data_scale_ease_out ) );
-		sequence.Join( DOTween.To( GetColor, SetColor, animation_default.data_color_out, animation_default.data_color_duration_out ).SetEase( animation_default.data_color_ease_out ) );
-	}
-
-    Color GetColor()
-    {
-		return colorSetter_animation.Color;
-	}
-
-    void SetColor( Color color )
-    {
-		colorSetter_animation.SetColor( color );
 	}
 #endregion
 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game_level_count: 100
   game_tutorial_timeScale: 0.05
-  movement_rotation_cofactor: 3
+  movement_rotation_cofactor: 80
   movement_launchSpeed_minumum: 1
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
   nut_shatter_torque: {x: 6.6980996, y: 15.23205}
@@ -24,7 +24,7 @@ MonoBehaviour:
   nut_levelEnd_waitDuration: 2
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
-  maxLevelCount: 1
+  maxLevelCount: 5
   ui_Entity_Move_TweenDuration: 0.5
   ui_Entity_Fade_TweenDuration: 0.5
   ui_Entity_Scale_TweenDuration: 0.5

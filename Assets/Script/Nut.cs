@@ -28,9 +28,11 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] Currency property_currency;
 	[ SerializeField ] Rigidbody component_rigidbody;
 	[ SerializeField ] Collider component_collider;
+	[ SerializeField ] RustSetter component_rust_setter;
+	[ SerializeField ] TrailRenderer component_trail;
 
 
-  [ Title( "Components" )]
+  [ Title( "Particle" )]
 	[ SerializeField ] ParticleSystem particle_nut_lowDurability;
 // Private
 	float point_fallDown = 0;
@@ -137,6 +139,7 @@ public class Nut : MonoBehaviour
 #region Implementation
 	void OnPathComplete()
 	{
+		FFLogger.Log( "On Shaped Path Complete" );
 		onPath = false;
 
 		var position   = transform.position;
@@ -167,7 +170,8 @@ public class Nut : MonoBehaviour
 	void OnUpdate_Idle()
 	{
 		property_durability.OnIncrease();
-		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		component_rust_setter.SetRust( animationProgress );
 	}
 
 	void OnUpdate_Acceleration()
@@ -180,7 +184,7 @@ public class Nut : MonoBehaviour
 			var shatter                    = pool_randomShatter.GetEntity();
 			    shatter.transform.position = transform.position;
 
-			shatter.DoShatter();
+			shatter.DoShatter( component_rust_setter.Rust );
 
 			var height = transform.position.y;
 			notif_nut_height_last.SharedValue = height;
@@ -193,8 +197,9 @@ public class Nut : MonoBehaviour
 			property_velocity.OnAcceleration();
 			component_movement.OnMovement();
 			property_durability.OnDecrease();
-			component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+			var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
 			property_currency.OnIncrease();
+			component_rust_setter.SetRust( animationProgress );
 		}
 	}
 
@@ -204,14 +209,21 @@ public class Nut : MonoBehaviour
 		var isIdle = component_movement.OnMovement( point_fallDown );
 
 		property_durability.OnIncrease();
-		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		component_rust_setter.SetRust( animationProgress );
 
 		if( isIdle )
 			onUpdateMethod = OnUpdate_Idle;
+		
+		if( property_velocity.CurrentVelocity < 0 )
+			component_trail.enabled = false;
 	}
 
 	void OnFingerDown_StraightBolt()
 	{
+		component_trail.Clear();
+		component_trail.enabled = true;
+
 		onUpdateMethod = OnUpdate_Acceleration;
 		onFingerUp     = OnFingerUp;
 	}

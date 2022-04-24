@@ -38,46 +38,46 @@ MonoBehaviour:
     incremental_currency_value: 1.1
     incremental_currency_rate: 0.2
   - incremental_cost: 240
-    incremental_currency_value: 1.25
-    incremental_currency_rate: 0.2
-  - incremental_cost: 310
     incremental_currency_value: 1.4
     incremental_currency_rate: 0.2
-  - incremental_cost: 400
-    incremental_currency_value: 1.6
-    incremental_currency_rate: 0.2
-  - incremental_cost: 490
+  - incremental_cost: 310
     incremental_currency_value: 1.8
     incremental_currency_rate: 0.2
-  - incremental_cost: 600
+  - incremental_cost: 400
     incremental_currency_value: 2
     incremental_currency_rate: 0.2
+  - incremental_cost: 490
+    incremental_currency_value: 2.4
+    incremental_currency_rate: 0.2
+  - incremental_cost: 600
+    incremental_currency_value: 2.7
+    incremental_currency_rate: 0.2
   - incremental_cost: 710
-    incremental_currency_value: 2.3
+    incremental_currency_value: 3
     incremental_currency_rate: 0.2
   - incremental_cost: 850
-    incremental_currency_value: 2.6
+    incremental_currency_value: 3.5
     incremental_currency_rate: 0.2
   - incremental_cost: 1000
-    incremental_currency_value: 2.9
+    incremental_currency_value: 4
     incremental_currency_rate: 0.2
   - incremental_cost: 1200
-    incremental_currency_value: 3.4
+    incremental_currency_value: 4.6
     incremental_currency_rate: 0.2
   - incremental_cost: 1400
-    incremental_currency_value: 3.9
+    incremental_currency_value: 5.2
     incremental_currency_rate: 0.2
   - incremental_cost: 1600
-    incremental_currency_value: 4.4
+    incremental_currency_value: 6
     incremental_currency_rate: 0.2
   - incremental_cost: 2000
-    incremental_currency_value: 5.4
+    incremental_currency_value: 6.7
     incremental_currency_rate: 0.2
   - incremental_cost: 2400
-    incremental_currency_value: 6.4
+    incremental_currency_value: 7.4
     incremental_currency_rate: 0.2
   - incremental_cost: 2800
-    incremental_currency_value: 7.4
+    incremental_currency_value: 8
     incremental_currency_rate: 0.2
   - incremental_cost: 3800
     incremental_currency_value: 9

@@ -1791,23 +1791,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2284257775562547614}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetUpIncrementalButton_Durability
       objectReference: {fileID: 0}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UpgradeSystem, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 4850540471887482463}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: IncrementalButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5810386616659378374, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
@@ -1944,23 +1944,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7283121772368627107}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetUpIncrementalButton_Currency
       objectReference: {fileID: 0}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UpgradeSystem, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 7355357902936437994}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: IncrementalButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5810386616659378374, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
@@ -2097,23 +2097,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 18928391963118403}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetUpIncrementalButton_Velocity
       objectReference: {fileID: 0}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UpgradeSystem, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 7417414561757883733}
     - target: {fileID: 5428478214564517321, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}
-      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: ui_event_onLevelLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: IncrementalButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5810386616659378374, guid: ab220122c56463643a3b60f4b478cd2b, type: 3}

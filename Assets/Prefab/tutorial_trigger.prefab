@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9129800651064136865}
   - component: {fileID: 9129800651064136866}
   - component: {fileID: 6629231701971744339}
+  - component: {fileID: 507304340769544539}
   m_Layer: 30
   m_Name: tutorial_trigger
   m_TagString: Untagged
@@ -88,3 +89,17 @@ MonoBehaviour:
         m_CallState: 2
   directional: 0
   direction: 1
+--- !u!114 &507304340769544539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9129800651064136869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8b9286af946534c832e5352b9db9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedReferenceProperty: {fileID: 11400000, guid: 96d6a29b5dc5f4a9c9df576e6bf6dc51, type: 2}
+  referenceComponent: {fileID: 9129800651064136865}

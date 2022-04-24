@@ -51,6 +51,7 @@ MonoBehaviour:
   path_index: 0
   path_set: {fileID: 11400000, guid: 28e3faea870b84807b2df86acc92e09b, type: 2}
   path_points: []
+  notif_nut_transform: {fileID: 11400000, guid: 6de5a72449482470fa3b8e24c6185d8b, type: 2}
 --- !u!114 &1281734598124058752
 MonoBehaviour:
   m_ObjectHideFlags: 0

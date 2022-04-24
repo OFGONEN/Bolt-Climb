@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using FFStudio;
+using DG.Tweening;
 using TMPro;
 using Sirenix.OdinInspector;
 
@@ -17,6 +18,7 @@ public class IncrementalButton : UIEntity
     [ SerializeField ] TextMeshProUGUI ui_text_cost;
     [ SerializeField ] TextMeshProUGUI ui_text_level;
     [ SerializeField ] UnityEvent ui_event_onLevelLoaded;
+    [ SerializeField ] UnityEvent ui_event_onGoStartPosition;
 
 // Private
     bool available = false;
@@ -48,6 +50,13 @@ public class IncrementalButton : UIEntity
 		ui_text_cost.text      = cost.ToString();
 		ui_text_cost.color     = color;
 		ui_text_level.text     = "Level " + ( level + 1 );
+	}
+
+	public override Tween GoToStartPosition()
+	{
+		ui_event_onGoStartPosition.Invoke();
+
+		return base.GoToStartPosition();
 	}
 #endregion
 
