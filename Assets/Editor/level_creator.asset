@@ -34,3 +34,5 @@ MonoBehaviour:
   - {x: 0, y: 28, z: 35}
   prefab_finishLine: {fileID: 2340585009260439847, guid: b98a8a8b73e9447ce9b8cc3b1224938b, type: 3}
   bolt_model_height: 0.5
+  prefab_environment_ground: {fileID: 919132149155446097, guid: 71c047543327640d687d0d9fd3db7e58, type: 3}
+  prefab_environment_background: {fileID: 919132149155446097, guid: 4173af67754644183aecf32b1bf8c954, type: 3}

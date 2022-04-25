@@ -29,6 +29,10 @@ public class LevelCreator : ScriptableObject
     [ FoldoutGroup( "Setup" ) ] public Vector3[] prefab_finishLine_offset; 
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_finishLine; 
     [ FoldoutGroup( "Setup" ) ] public float bolt_model_height = 0.5f; 
+
+
+	[ FoldoutGroup( "Environment Setup" ) ] public GameObject prefab_environment_ground; 
+	[ FoldoutGroup( "Environment Setup" ) ] public GameObject prefab_environment_background; 
     
     const char prefab_bolt_char = 'b';
     const char prefab_bolt_shaped_char = 'c';
@@ -74,6 +78,35 @@ public class LevelCreator : ScriptableObject
 #endregion
 
 #region API
+	[ Button() ]
+	public void CreateEnvironment( int backgroundCount )
+	{
+		EditorSceneManager.MarkAllScenesDirty();
+
+		var parent = GameObject.Find( "environment_parent" ).transform;
+		parent.DestoryAllChildren();
+
+		Camera.main.transform.position = Camera.main.transform.position.SetY( 1.6f );
+
+		// Spawn Ground
+		var ground = PrefabUtility.InstantiatePrefab( prefab_environment_ground ) as GameObject;
+		ground.transform.position = new Vector3( 0, -4.5f, -5f );
+		ground.transform.SetParent( parent );
+		ground.isStatic = true;
+
+		for( var i = 0; i < backgroundCount; i++ )
+		{
+			var background = PrefabUtility.InstantiatePrefab( prefab_environment_background ) as GameObject;
+			background.transform.position = new Vector3( 0, -3f, 2.5f ) + Vector3.up * 50 * i;
+			background.transform.SetParent( parent );
+			background.isStatic = true;
+		}
+
+
+		EditorSceneManager.SaveOpenScenes();
+	}
+
+
     [ Button() ]
     public void CreateLevel()
     {
