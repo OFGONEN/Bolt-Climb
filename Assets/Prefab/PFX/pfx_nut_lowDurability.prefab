@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1557744890896468, guid: 78c477095ccae3b479fc79a61c1db591, type: 3}
       propertyPath: m_Name
-      value: pfx_nut_carving
+      value: pfx_nut_lowDurability
       objectReference: {fileID: 0}
     - target: {fileID: 4970147848954312, guid: 78c477095ccae3b479fc79a61c1db591, type: 3}
       propertyPath: m_RootOrder
@@ -64,6 +64,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198965787788255098, guid: 78c477095ccae3b479fc79a61c1db591, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531171059592551196, guid: 78c477095ccae3b479fc79a61c1db591, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
