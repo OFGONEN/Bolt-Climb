@@ -4376,7 +4376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.size
-      value: 119
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.data[0].y
@@ -5100,11 +5100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.data[119].x
-      value: 0.00088468194
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.data[119].y
-      value: 83.84306
+      value: 84.6
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.data[120].y
@@ -12902,7 +12902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.size
-      value: 119
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.data[0].y
@@ -13626,11 +13626,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.data[119].x
-      value: 0.00088468194
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.data[119].y
-      value: 202.94307
+      value: 203.7
       objectReference: {fileID: 0}
     - target: {fileID: 7399847633711784861, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
       propertyPath: path_points.Array.data[120].y

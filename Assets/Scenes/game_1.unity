@@ -7738,6 +7738,10 @@ PrefabInstance:
       propertyPath: path_points.Array.data[57].y
       value: 63.267525
       objectReference: {fileID: 0}
+    - target: {fileID: 745345803405484073, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
+      propertyPath: path_points.Array.data[58].y
+      value: 63.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5111738701764704344, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: m_Name
       value: bolt_shaped_1
@@ -9797,6 +9801,10 @@ PrefabInstance:
     - target: {fileID: 745345803405484073, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: path_points.Array.data[57].y
       value: 92.06753
+      objectReference: {fileID: 0}
+    - target: {fileID: 745345803405484073, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
+      propertyPath: path_points.Array.data[58].y
+      value: 92.6
       objectReference: {fileID: 0}
     - target: {fileID: 5111738701764704344, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: m_Name
