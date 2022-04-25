@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour
 		}
 #endif
 		pathTween = transform_movement.DOPath( pathPoints, velocity.CurrentVelocity, PathType.Linear )
-		.SetLookAt( 0, -Vector3.up )
+		.SetLookAt( 0 )
 		.SetSpeedBased()
 		// .SetRelative()
 		.OnUpdate( DoRotate )
