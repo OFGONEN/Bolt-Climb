@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1051744728739674, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
       propertyPath: m_Name
-      value: pfx_nut_lowDurabiity
+      value: pfx_nut_carving
       objectReference: {fileID: 0}
     - target: {fileID: 4200366655922332, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
       propertyPath: m_RootOrder
@@ -58,6 +58,30 @@ PrefabInstance:
     - target: {fileID: 198887141502451152, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198887141502451152, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198887141502451152, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198887141502451152, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
+      propertyPath: RotationModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198887141502451152, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 198887141502451152, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198887141502451152, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
