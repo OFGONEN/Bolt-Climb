@@ -29,7 +29,6 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] Rigidbody component_rigidbody;
 	[ SerializeField ] Collider component_collider;
 	[ SerializeField ] RustSetter component_rust_setter;
-	[ SerializeField ] TrailRenderer component_trail;
 
 
   [ Title( "Particle" )]
@@ -214,16 +213,10 @@ public class Nut : MonoBehaviour
 
 		if( isIdle )
 			onUpdateMethod = OnUpdate_Idle;
-		
-		if( property_velocity.CurrentVelocity < 0 )
-			component_trail.enabled = false;
 	}
 
 	void OnFingerDown_StraightBolt()
 	{
-		component_trail.Clear();
-		component_trail.enabled = true;
-
 		onUpdateMethod = OnUpdate_Acceleration;
 		onFingerUp     = OnFingerUp;
 	}
