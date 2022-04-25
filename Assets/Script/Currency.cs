@@ -36,7 +36,7 @@ public class Currency : SharedFloatNotifier
 			SharedValue       += currency_data.incremental_currency_value;
 			currency_cooldown  = Time.time + currency_data.incremental_currency_rate;
 
-			pool_currency_ui.GetEntity().Spawn(); // Spawn currency ui
+			pool_currency_ui.GetEntity().Spawn( $"+${currency_data.incremental_currency_value}"); // Spawn currency ui
 		}
     }
 

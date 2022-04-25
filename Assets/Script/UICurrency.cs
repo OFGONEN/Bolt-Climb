@@ -43,6 +43,12 @@ public class UICurrency : MonoBehaviour
 #endregion
 
 #region API
+	public void Spawn( string value )
+	{
+		text_currency.text = value;
+		Spawn();
+	}
+
 	[ Button() ]
 	public void Spawn()
 	{
