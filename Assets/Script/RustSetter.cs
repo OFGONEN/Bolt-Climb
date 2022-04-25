@@ -34,9 +34,9 @@ public class RustSetter : MonoBehaviour
     [ Button() ]
 	public void SetRust( float value )
 	{
-		rust_progress = value;
+		rust_progress = GameSettings.Instance.shader_range_rust.ReturnProgress( value );
 		_renderer.GetPropertyBlock( propertyBlock );
-		propertyBlock.SetFloat( SHADER_ID_COLOR, value );
+		propertyBlock.SetFloat( SHADER_ID_COLOR, rust_progress );
 		_renderer.SetPropertyBlock( propertyBlock );
 	}
 #endregion
