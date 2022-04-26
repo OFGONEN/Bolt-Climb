@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  game_level_count: 100
+  game_level_count: 50
   game_tutorial_timeScale: 0.05
   shader_range_rust: {x: -0.1, y: 1}
-  shader_range_dissolve: {x: 0, y: 0}
   movement_rotation_cofactor: 80
   movement_launchSpeed_minumum: 1
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
