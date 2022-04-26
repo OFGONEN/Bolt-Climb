@@ -1,7 +1,5 @@
 /* Created by and for usage of FF Studios (2021). */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
@@ -12,7 +10,7 @@ public class RustSetter : MonoBehaviour
     [ SerializeField ] Renderer _renderer;
 
 // Private
-	static int SHADER_ID_COLOR = Shader.PropertyToID( "_threshold" );
+	static int SHADER_ID_COLOR = Shader.PropertyToID( "_BaseColor" );
 	MaterialPropertyBlock propertyBlock;
 
 	float rust_progress;
@@ -36,7 +34,8 @@ public class RustSetter : MonoBehaviour
 	{
 		rust_progress = GameSettings.Instance.shader_range_rust.ReturnProgress( value );
 		_renderer.GetPropertyBlock( propertyBlock );
-		propertyBlock.SetFloat( SHADER_ID_COLOR, rust_progress );
+		propertyBlock.SetColor( SHADER_ID_COLOR, Color.Lerp( GameSettings.Instance.shader_range_color_start, GameSettings.Instance.shader_range_color_end,
+															 rust_progress ) );
 		_renderer.SetPropertyBlock( propertyBlock );
 	}
 #endregion

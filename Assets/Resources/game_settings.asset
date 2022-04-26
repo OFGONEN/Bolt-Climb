@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game_level_count: 50
   game_tutorial_timeScale: 0.05
-  shader_range_rust: {x: -0.1, y: 1}
+  shader_range_rust: {x: 0, y: 1}
+  shader_range_color_start: {r: 0.33333334, g: 0.36078432, b: 0.40000004, a: 1}
+  shader_range_color_end: {r: 0.7254902, g: 0, b: 0, a: 1}
   movement_rotation_cofactor: 80
   movement_launchSpeed_minumum: 1
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
