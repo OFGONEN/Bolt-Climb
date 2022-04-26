@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7e6260550a346ec92b388212b15f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineType: 0
   notif_target_height: {fileID: 11400000, guid: 3cfa3a506ce234608a278dcdb17f3691, type: 2}
   target_ui: {fileID: 294638368442294262}
   target_text: {fileID: 294638366795100850}
@@ -300,7 +301,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 294638366827941778}
         m_TargetAssemblyTypeName: FollowLine, Assembly-CSharp
-        m_MethodName: UpdateLine
+        m_MethodName: UpdateLineVertical
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

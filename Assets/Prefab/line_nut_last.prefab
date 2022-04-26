@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7e6260550a346ec92b388212b15f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineType: 1
   notif_target_height: {fileID: 11400000, guid: 3f87014a0b8f84245bf040204bbf63a9, type: 2}
   target_ui: {fileID: 294638368442294262}
   target_text: {fileID: 294638366795100850}

@@ -10,6 +10,7 @@ using Sirenix.OdinInspector;
 public class FollowLine : MonoBehaviour
 {
 #region Fields
+    [ SerializeField ] LineType lineType;
     [ SerializeField ] SharedFloatNotifier notif_target_height;
     [ SerializeField ] RectTransform target_ui;
     [ SerializeField ] TextMeshProUGUI target_text;
@@ -26,13 +27,16 @@ public class FollowLine : MonoBehaviour
 #region Unity API
     private void Start()
     {
-		UpdateLine();
+		if( lineType == LineType.Vertical )
+			UpdateLineVertical();
+		else
+			UpdateLineHorizontal();
 	}
 #endregion
 
 #region API
     [ Button() ]
-    public void UpdateLine()
+    public void UpdateLineVertical()
     {
 		var height = notif_target_height.SharedValue;
 
@@ -44,6 +48,21 @@ public class FollowLine : MonoBehaviour
 		target_text.text                  = stringBuilder.ToString();
 		target_line.End                   = Vector3.right * height;
 	}
+
+    [ Button() ]
+    public void UpdateLineHorizontal()
+    {
+		var height = notif_target_height.SharedValue;
+
+		stringBuilder.Clear();
+		stringBuilder.Append( notif_target_height.SharedValue.ToString( "F2" ) );
+		stringBuilder.Append( 'm' );
+
+		target_ui.transform.localPosition = Vector3.right * ( height + target_offset );
+		target_text.text                  = stringBuilder.ToString();
+		target_line.Start = new Vector3( height, transform.position.x, 0 );
+		target_line.End   = new Vector3( height, 0, 0 );
+	}
 #endregion
 
 #region Implementation
@@ -53,4 +72,10 @@ public class FollowLine : MonoBehaviour
 #if UNITY_EDITOR
 #endif
 #endregion
+}
+
+public enum LineType
+{
+	Vertical,
+	Horizontal
 }
