@@ -53,7 +53,7 @@ public class CameraController : MonoBehaviour
 
     public void OnLevelEndPath_End()
     {
-		onUpdateMethod = ExtensionMethods.EmptyMethod;
+		onUpdateMethod = LookAtTarget;
     }
 #endregion
 
@@ -68,11 +68,18 @@ public class CameraController : MonoBehaviour
 
 	void FollowTargetWithOffset()
 	{
+		var targetPosition = target_transform.TransformPoint( target_offset );
 		var position = transform.position;
-		position.y = Mathf.Lerp( position.y, target_transform.TransformPoint( target_offset ).y, Time.deltaTime * Mathf.Abs( target_velocity.CurrentVelocity ) );
+		position.y = Mathf.Lerp( position.y, targetPosition.y, Time.deltaTime * Mathf.Abs( target_velocity.CurrentVelocity ) );
+		position.z = Mathf.Lerp( position.z, targetPosition.z, Time.deltaTime * Mathf.Abs( target_velocity.CurrentVelocity ) );
 
 		transform.position = position;
-		transform.LookAtAxis( target_transform.position, Vector3.right );
+		transform.LookAtAxis( target_transform.position, new Vector3( 1, 1, 0 ) );
+	}
+
+	void LookAtTarget()
+	{
+		transform.LookAtAxis( target_transform.position, new Vector3( 1, 1, 0 ) );
 	}
 #endregion
 
