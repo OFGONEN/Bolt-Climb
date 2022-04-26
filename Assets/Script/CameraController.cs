@@ -79,7 +79,7 @@ public class CameraController : MonoBehaviour
 
 	void LookAtTarget()
 	{
-		transform.LookAtAxis( target_transform.position, new Vector3( 1, 1, 0 ) );
+		transform.LookAtAxis( target_transform.position, new Vector3( 1, 0, 0 ) );
 	}
 #endregion
 
