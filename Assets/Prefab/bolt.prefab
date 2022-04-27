@@ -82,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notifier_nut_reference: {fileID: 11400000, guid: 6de5a72449482470fa3b8e24c6185d8b, type: 2}
   notifier_nut_fallDown: {fileID: 11400000, guid: 12edf675dad2448698c28fa586941867, type: 2}
+  property_currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   transform_gfx: {fileID: 8103919501080544271}
   collider_upper_out: {fileID: 3159180893542725272}
   collider_upper_in: {fileID: 8243835881855154954}

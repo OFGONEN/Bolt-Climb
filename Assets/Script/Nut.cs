@@ -208,7 +208,6 @@ public class Nut : MonoBehaviour
 			component_movement.OnMovement();
 			property_durability.OnDecrease();
 			var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-			property_currency.OnIncrease();
 			component_rust_setter.SetRust( animationProgress );
 		}
 	}

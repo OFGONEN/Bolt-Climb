@@ -13,6 +13,7 @@ public class Bolt : MonoBehaviour
   [ Title( "Shared Variables" ) ]
     [ SerializeField ] SharedReferenceNotifier notifier_nut_reference;
     [ SerializeField ] SharedFloatNotifier notifier_nut_fallDown;
+    [ SerializeField ] Currency property_currency;
 
   [ Title( "Setup" ) ]
     [ SerializeField ] Transform transform_gfx;
@@ -90,6 +91,7 @@ public class Bolt : MonoBehaviour
 		{
 			particle_nut_carving.Play( true );
 			particle_nut_carving.transform.position = particle_nut_carving.transform.position.SetY( Mathf.Lerp( point_bottom, point_up, bolt_carve_progress ) );
+			property_currency.OnIncrease();
 		}
 		else
 			particle_nut_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
