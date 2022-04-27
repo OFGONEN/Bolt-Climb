@@ -3,6 +3,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using FFStudio;
 using Sirenix.OdinInspector;
 
@@ -11,9 +13,13 @@ public class Durability : ScriptableObject
 {
 #region Fields
     [ SerializeField ] IncrementalDurability durability_incremental;
+    [ SerializeField ] SharedReferenceNotifier notif_reference_volume;
     [ ShowInInspector, ReadOnly ] IncrementalDurabilityData durability_data;
     [ ShowInInspector, ReadOnly ] float durability_current_capacity;
     [ ShowInInspector, ReadOnly ] float durability_current;
+
+    [ ShowInInspector, ReadOnly ] Volume volume;
+    [ ShowInInspector, ReadOnly ] Vignette volume_vignette;
 #endregion
 
 #region Properties
@@ -28,9 +34,12 @@ public class Durability : ScriptableObject
 #region API
     public void SetDurabilityData()
     {
+		volume                      = notif_reference_volume.SharedValue as Volume;
 		durability_data             = durability_incremental.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.durability_index, 0 ) );
 		durability_current_capacity = durability_data.incremental_durability_capacity;
 		durability_current          = durability_data.incremental_durability_capacity;
+
+        volume.profile.TryGet< Vignette >( out volume_vignette );
 	}
 
     public void OnIncrease()
