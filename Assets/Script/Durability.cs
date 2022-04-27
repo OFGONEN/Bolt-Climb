@@ -47,6 +47,8 @@ public class Durability : ScriptableObject
 		durability_current = Mathf.Min( 
             durability_current + Time.deltaTime * durability_data.incremental_durability_speed_increase, 
             durability_current_capacity );
+
+		volume_vignette.intensity.value = GameSettings.Instance.postProcess_vignette_intencity.ReturnProgressInverse( DurabilityRatio );
 	}
 
     public void OnDecrease()
@@ -59,6 +61,8 @@ public class Durability : ScriptableObject
 			durability_current_capacity - Time.deltaTime * durability_data.incremental_durability_speed_capacity_decrease,
 			0
 		);
+
+		volume_vignette.intensity.value = GameSettings.Instance.postProcess_vignette_intencity.ReturnProgressInverse( DurabilityRatio );
 	}
 #endregion
 
