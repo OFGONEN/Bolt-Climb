@@ -12,6 +12,7 @@ public class Bolt : MonoBehaviour
 #region Fields
   [ Title( "Shared Variables" ) ]
     [ SerializeField ] SharedReferenceNotifier notifier_nut_reference;
+    [ SerializeField ] SharedReferenceNotifier notifier_particle_reference;
     [ SerializeField ] SharedFloatNotifier notifier_nut_fallDown;
     [ SerializeField ] Currency property_currency;
 
@@ -20,7 +21,6 @@ public class Bolt : MonoBehaviour
     [ SerializeField ] BoxCollider collider_upper_out;
     [ SerializeField ] BoxCollider collider_upper_in;
     [ SerializeField ] BoxCollider collider_bottom;
-    [ SerializeField ] ParticleSystem particle_nut_carving;
 
     [ SerializeField, ReadOnly, FoldoutGroup( "Info" ) ] SkinnedMeshRenderer[] bolt_renderers;
     [ ShowInInspector, ReadOnly, ProgressBar( 0, 1 ), FoldoutGroup( "Info" ) ] float bolt_carve_progress;
@@ -30,6 +30,8 @@ public class Bolt : MonoBehaviour
 	float point_bottom;
 	float point_up;
 	float point_gap;
+
+    ParticleSystem particle_nut_carving;
 
 	// Delegate
 	UnityMessage onStartTrackingNut;
@@ -60,6 +62,7 @@ public class Bolt : MonoBehaviour
 #region API
     public void OnStartTrackingNut()
     {
+		particle_nut_carving = notifier_particle_reference.SharedValue as ParticleSystem;
 		onStartTrackingNut();
 	}
 

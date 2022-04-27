@@ -121,3 +121,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
+--- !u!198 &988444784707875458 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198887141502451152, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
+  m_PrefabInstance: {fileID: 1113866329132945234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1114222029240770568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1051744728739674, guid: e6d3dce970b4efb4b8a3c31f6727c45e, type: 3}
+  m_PrefabInstance: {fileID: 1113866329132945234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-1593666574191771272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114222029240770568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8b9286af946534c832e5352b9db9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedReferenceProperty: {fileID: 11400000, guid: 52f275fdff9964b47893bba726967f7b, type: 2}
+  referenceComponent: {fileID: 988444784707875458}
