@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 1
+  - 1036253700623118
   appLabels:
-  - beni degistir
+  - Bolt Climb
   cookie: 1
   logging: 1
   status: 1
