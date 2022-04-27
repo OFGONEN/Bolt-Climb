@@ -71,6 +71,11 @@ public class Nut : MonoBehaviour
 #endregion
 
 #region API
+	public void OnLevel_Failed()
+	{
+		EmptyDelegates();
+	}
+
 	public void Input_OnFingerDown()
 	{
 		onFingerDown();
