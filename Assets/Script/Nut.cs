@@ -29,7 +29,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] Rigidbody component_rigidbody;
 	[ SerializeField ] Collider component_collider;
 	[ SerializeField ] RustSetter component_rust_setter;
-	[ SerializeField ] TrailRenderer component_trail;
+	[ SerializeField ] ParticleSystem particle_carving;
 
 
   [ Title( "Particle" )]
@@ -117,6 +117,9 @@ public class Nut : MonoBehaviour
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
 		FFLogger.Log( "Start Shaped Bolt" );
+
+		particle_carving.Play( true );
+
 		onPath = true;
 		EmptyDelegates();
 		component_movement.DoPath( gameEvent.eventValue, OnPathComplete );
@@ -141,6 +144,8 @@ public class Nut : MonoBehaviour
 	{
 		FFLogger.Log( "On Shaped Path Complete" );
 		onPath = false;
+
+		particle_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
 
 		var position   = transform.position;
 		    position.x = 0;
@@ -214,16 +219,10 @@ public class Nut : MonoBehaviour
 
 		if( isIdle )
 			onUpdateMethod = OnUpdate_Idle;
-		
-		if( property_velocity.CurrentVelocity < 0 )
-			component_trail.enabled = false;
 	}
 
 	void OnFingerDown_StraightBolt()
 	{
-		component_trail.Clear();
-		component_trail.enabled = true;
-
 		onUpdateMethod = OnUpdate_Acceleration;
 		onFingerUp     = OnFingerUp;
 	}

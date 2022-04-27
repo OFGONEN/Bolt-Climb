@@ -48,7 +48,7 @@ public class IncrementalButton : UIEntity
 		ui_button.interactable = available;
 		this.available         = available;
 		ui_text_cost.text      = cost.ToString();
-		ui_text_cost.color     = color;
+		// ui_text_cost.color     = color;
 		ui_text_level.text     = "Level " + ( level + 1 );
 	}
 

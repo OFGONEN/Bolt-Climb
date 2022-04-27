@@ -42,7 +42,8 @@ public class Shatter : MonoBehaviour
 			rb.isKinematic = false;
 			rb.useGravity  = true;
 
-			rb.AddForce( GameSettings.Instance.nut_shatter_force.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
+			rb.AddForce( GameSettings.Instance.nut_shatter_force_up.ReturnRandom() * Vector3.up + GameSettings.Instance.nut_shatter_force.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
+			//Info: Shatter objects pivots must be on their on center, Enable this if models are correct
 			// rb.AddTorque( GameSettings.Instance.nut_shatter_torque.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
 		}
 

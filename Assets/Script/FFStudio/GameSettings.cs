@@ -13,10 +13,14 @@ namespace FFStudio
     // Info: Game related settings
         [ BoxGroup( "Game" ) ] public int game_level_count = 20;
         [ BoxGroup( "Game" ) ] public float game_tutorial_timeScale = 0.25f;
+        [ BoxGroup( "Game" ) ] public Vector2 shader_range_rust;
+        [ BoxGroup( "Game" ) ] public Color shader_range_color_start;
+        [ BoxGroup( "Game" ) ] public Color shader_range_color_end;
 
         [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
         [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
 
+        [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force_up;
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force;
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_torque;
         [ BoxGroup( "Nut" ) ] public float nut_shatter_waitDuration = 2f;

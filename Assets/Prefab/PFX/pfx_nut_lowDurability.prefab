@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1549818571754378, guid: 78c477095ccae3b479fc79a61c1db591, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1557744890896468, guid: 78c477095ccae3b479fc79a61c1db591, type: 3}
       propertyPath: m_Name
       value: pfx_nut_lowDurability
