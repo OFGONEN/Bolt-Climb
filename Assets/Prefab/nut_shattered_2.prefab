@@ -47,52 +47,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool_shatter: {fileID: 11400000, guid: 40bb81a0da0e44e3ab4a363d94f08ad7, type: 2}
   shatter_rigidbodies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5993260977508313234}
+  - {fileID: 6584564204165728764}
+  - {fileID: 7469220671910754239}
+  - {fileID: 8187063237878153093}
+  - {fileID: 7523364099585772084}
   shatter_rust_setters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 568160316691125591}
+  - {fileID: 7282455799355371063}
+  - {fileID: 3920520606514721935}
+  - {fileID: 2542766906447304079}
+  - {fileID: 581293271404100199}
   shatter_positions:
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
+  - {x: 0.43972033, y: 0, z: -0.040519807}
+  - {x: -0.09375, y: 0, z: -0.55765814}
+  - {x: 0.12972432, y: 0, z: 0.5403489}
+  - {x: -0.5392377, y: 0, z: 0.05378637}
+  - {x: -0.23463432, y: 0, z: 0.14809263}
   shatter_rotations:
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
   - {x: -0, y: -0, z: -0}
   - {x: -0, y: -0, z: -0}
   - {x: -0, y: -0, z: -0}

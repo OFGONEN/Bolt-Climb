@@ -47,98 +47,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool_shatter: {fileID: 11400000, guid: 4dcaeea5ab3b54e69a2b2ff7c1a3a0a4, type: 2}
   shatter_rigidbodies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4976540889040105835}
+  - {fileID: 1415322581585000956}
+  - {fileID: 7020575777980716886}
+  - {fileID: 519588208700969530}
+  - {fileID: 10746286037655749}
+  - {fileID: 1866016899820513023}
+  - {fileID: 7734822098356581840}
   shatter_rust_setters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9174616400020358197}
+  - {fileID: 2474056994034904368}
+  - {fileID: 3672330907877333383}
+  - {fileID: 8287102454531468411}
+  - {fileID: 288260291726934355}
+  - {fileID: 4421713987776645333}
+  - {fileID: 6273787142154308866}
   shatter_positions:
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
-  - {x: -0, y: 0, z: 0}
+  - {x: -0.53572685, y: 0, z: 0.09840006}
+  - {x: -0.1875, y: 0, z: -0.49714366}
+  - {x: -0.1875, y: 0, z: -0.48205003}
+  - {x: 0.50003004, y: 0, z: 0.18976803}
+  - {x: 0.50325584, y: 0, z: -0.33409992}
+  - {x: 0.18750003, y: 0, z: 0.6014776}
+  - {x: -0.24527563, y: 0, z: 0.59938484}
   shatter_rotations:
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
-  - {x: -0, y: -0, z: -0}
   - {x: -0, y: -0, z: -0}
   - {x: -0, y: -0, z: -0}
   - {x: -0, y: -0, z: -0}
