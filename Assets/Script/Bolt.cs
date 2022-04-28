@@ -26,13 +26,14 @@ public class Bolt : MonoBehaviour
     [ ShowInInspector, ReadOnly, ProgressBar( 0, 1 ), FoldoutGroup( "Info" ) ] float bolt_carve_progress;
 
 	// Private
+	[ SerializeField, ReadOnly ] Bolt bolt_connected;
+
 	Transform transform_nut;
 	float point_bottom;
 	float point_up;
 	float point_gap;
 
     ParticleSystem particle_nut_carving;
-
 	// Delegate
 	UnityMessage onStartTrackingNut;
     UnityMessage onUpdateMethod;
@@ -42,6 +43,11 @@ public class Bolt : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+	}
+
     private void Awake()
     {
 		point_bottom        = transform.position.y;
@@ -71,6 +77,14 @@ public class Bolt : MonoBehaviour
 		particle_nut_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
 	}
+
+	public void Detach()
+	{
+		OnStopTrackingNut();
+
+		//todo don't disable it
+		gameObject.SetActive( false );
+	}
 #endregion
 
 #region Implementation
@@ -79,6 +93,8 @@ public class Bolt : MonoBehaviour
 		FFLogger.Log( "Start Tracking Nut", gameObject );
 		onStartTrackingNut = ExtensionMethods.EmptyMethod;
 		onUpdateMethod     = OnTrackNut;
+
+		bolt_connected?.Detach();
 
 		notifier_nut_fallDown.SharedValue = transform.position.y;
 		transform_nut                     = notifier_nut_reference.SharedValue as Transform;
@@ -129,6 +145,21 @@ public class Bolt : MonoBehaviour
     [ ShowInInspector, BoxGroup( "EditorOnly" ), AssetSelector( Paths = "Assets/Prefab/GFX"  ) ] private GameObject bolt_prefab;
     [ ShowInInspector, BoxGroup( "EditorOnly" ) ] public int bolt_count;
     [ ShowInInspector, BoxGroup( "EditorOnly" ) ] public float bolt_height = 0.5f;
+
+    public void ConnectBolt( Bolt value, bool consecutive )
+	{
+		bolt_connected = value;
+
+		if( consecutive )
+			value?.DisableUpperColliders();
+	}
+
+	public void DisableUpperColliders()
+	{
+		collider_upper_in.gameObject.SetActive( false );
+		collider_upper_out.gameObject.SetActive( false );
+
+	}
 
     private void CacheRenderers()
     {

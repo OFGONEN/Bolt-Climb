@@ -39,6 +39,9 @@ public class LevelCreator : ScriptableObject
     const char space_char = 's';
 
 	Transform spawnTransform;
+	Bolt boltSpawn;
+	bool isSpawn_bolt;
+	bool isSpawn_consecutive;
 
 	int create_index = 0;
 	float create_length = 0;
@@ -131,10 +134,16 @@ public class LevelCreator : ScriptableObject
 		// Place Start Bolt first
 		var bolt_start = PrefabUtility.InstantiatePrefab( prefab_bolt_start ) as GameObject;
 		bolt_start.transform.position = Vector3.up * create_position;
-		bolt_start.GetComponent< Bolt >().PlaceBolts( Mathf.FloorToInt( create_length ), bolt_model_height, prefab_bolt_model );
 		bolt_start.transform.SetParent( spawnTransform );
 
+		var bolt = bolt_start.GetComponent< Bolt >();
+		bolt.PlaceBolts( Mathf.FloorToInt( create_length ), bolt_model_height, prefab_bolt_model );
+
 		create_position += create_length * bolt_model_height + level_start_bolt_space;
+
+		boltSpawn           = bolt;
+		isSpawn_bolt        = true;
+		isSpawn_consecutive = Mathf.Approximately( level_start_bolt_space, 0 );
 
 		while( create_index < level_code.Length - 1 )
         {
@@ -154,6 +163,8 @@ public class LevelCreator : ScriptableObject
 			create_index++;
 			FindLength();
 			create_position += create_length;
+
+			isSpawn_consecutive = Mathf.Approximately( 0, create_length );
 		}
         else if( level_code[ create_index ] == 'b' ) // Place Bolt
         {
@@ -165,6 +176,9 @@ public class LevelCreator : ScriptableObject
         {
 			PlaceShapedBolt();
 			create_index++;
+
+			isSpawn_bolt = false;
+			isSpawn_consecutive = false;
 		}
         else if( level_code[ create_index ] == 'e' ) // Place End Level Bolt
 		{
@@ -184,6 +198,12 @@ public class LevelCreator : ScriptableObject
 			var finishLine = PrefabUtility.InstantiatePrefab( prefab_finishLine ) as GameObject;
 			finishLine.transform.position = bolt_end.transform.position + prefab_finishLine_offset[ bolt_end_index ];
 			finishLine.transform.SetParent( spawnTransform );
+
+			if( isSpawn_bolt )
+				bolt_end.GetComponent< BoltDetach >().ConnectBolt( boltSpawn );
+
+			isSpawn_bolt = false;
+			isSpawn_consecutive = false;
 		}
     }
 
@@ -207,10 +227,21 @@ public class LevelCreator : ScriptableObject
     {
 		var bolt_start = PrefabUtility.InstantiatePrefab( prefab_bolt ) as GameObject;
 		bolt_start.transform.position = Vector3.up * create_position;
-		bolt_start.GetComponent< Bolt >().PlaceBolts( Mathf.FloorToInt( create_length ), bolt_model_height, prefab_bolt_model );
 		bolt_start.transform.SetParent( spawnTransform );
 
+		var bolt = bolt_start.GetComponent< Bolt >();
+		bolt.PlaceBolts( Mathf.FloorToInt( create_length ), bolt_model_height, prefab_bolt_model );
+
 		create_position += create_length * bolt_model_height;
+
+		if( isSpawn_bolt )
+		{
+			bolt.ConnectBolt( boltSpawn, isSpawn_consecutive );
+		}
+
+		boltSpawn           = bolt;
+		isSpawn_bolt        = true;
+		isSpawn_consecutive = true;
 	}
 
     void PlaceShapedBolt()
@@ -227,6 +258,9 @@ public class LevelCreator : ScriptableObject
 
 		create_path_index++;
 		create_position += bolt_shaped_model_height[ bolt_shaped_index ];
+
+		if( isSpawn_bolt )
+			bolt_shaped.GetComponent< BoltDetach >().ConnectBolt( boltSpawn );
 	}
 
     bool IsCodeValid( out int errorIdex )
