@@ -64,6 +64,12 @@ public class Durability : ScriptableObject
 
 		volume_vignette.intensity.value = GameSettings.Instance.postProcess_vignette_intencity.ReturnProgressInverse( DurabilityRatio );
 	}
+
+    public void DisableVignette()
+    {
+        FFLogger.Log( "Disable Vignette" );
+		volume_vignette.intensity.value = 0;
+	}
 #endregion
 
 #region Implementation
