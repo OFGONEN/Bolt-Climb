@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  game_level_count: 50
+  game_level_count: 5
   game_tutorial_timeScale: 0.05
   postProcess_vignette_intencity: {x: 0, y: 0.2}
   shader_range_rust: {x: 0, y: 1}
