@@ -27,10 +27,10 @@ MonoBehaviour:
   nut_shatter_force_up: {x: 0, y: 0}
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
   nut_shatter_torque: {x: 6.6980996, y: 15.23205}
-  nut_shatter_waitDuration: 2
+  nut_shatter_waitDuration: 0.75
   nut_levelEnd_force_cofactor: 1
   nut_levelEnd_torque_cofactor: 0.1
-  nut_levelEnd_waitDuration: 2
+  nut_levelEnd_waitDuration: 1
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
   maxLevelCount: 5
