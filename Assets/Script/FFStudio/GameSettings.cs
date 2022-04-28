@@ -18,6 +18,7 @@ namespace FFStudio
         [ BoxGroup( "Game" ) ] public Color shader_range_color_start;
         [ BoxGroup( "Game" ) ] public Color shader_range_color_end;
 
+        [ BoxGroup( "Bolt" ) ] public int bolt_batch = 3;
         [ BoxGroup( "Bolt" ) ] public float bolt_height = 0.5f;
         [ BoxGroup( "Bolt" ) ] public float bolt_detach_waitTime;
         [ BoxGroup( "Bolt" ) ] public Vector2 bolt_detach_force;
