@@ -6,6 +6,7 @@ using UnityEngine;
 using FFStudio;
 using UnityEditor;
 using Sirenix.OdinInspector;
+using DG.Tweening;
 
 public class Bolt : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Bolt : MonoBehaviour
 
   [ Title( "Setup" ) ]
     [ SerializeField ] Transform transform_gfx;
+    [ SerializeField ] Rigidbody rb;
     [ SerializeField ] BoxCollider collider_upper_out;
     [ SerializeField ] BoxCollider collider_upper_in;
     [ SerializeField ] BoxCollider collider_bottom;
@@ -29,11 +31,13 @@ public class Bolt : MonoBehaviour
 	[ SerializeField, ReadOnly ] Bolt bolt_connected;
 
 	Transform transform_nut;
+    ParticleSystem particle_nut_carving;
+	RecycledTween recycledTween = new RecycledTween();
+
 	float point_bottom;
 	float point_up;
 	float point_gap;
 
-    ParticleSystem particle_nut_carving;
 	// Delegate
 	UnityMessage onStartTrackingNut;
     UnityMessage onUpdateMethod;
@@ -46,6 +50,7 @@ public class Bolt : MonoBehaviour
 	private void OnDisable()
 	{
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
+		recycledTween.Kill();
 	}
 
     private void Awake()
@@ -57,6 +62,8 @@ public class Bolt : MonoBehaviour
 
 		onStartTrackingNut = StartTrackingNut;
 		onUpdateMethod     = ExtensionMethods.EmptyMethod;
+
+		rb.ToggleKinematic( true );
 	}
 
 	private void Update()
@@ -82,12 +89,26 @@ public class Bolt : MonoBehaviour
 	{
 		OnStopTrackingNut();
 
-		//todo don't disable it
-		gameObject.SetActive( false );
+		var length = bolt_renderers.Length * GameSettings.Instance.bolt_height;
+		var position = transform.position + Vector3.up * length;
+
+		rb.ToggleKinematic( false );
+
+		// rb.AddForceAtPosition( Random.insideUnitCircle * GameSettings.Instance.bolt_detach_force.ReturnRandom(), position, ForceMode.Impulse );
+		rb.AddForce( Random.insideUnitCircle * GameSettings.Instance.bolt_detach_force.ReturnRandom(), ForceMode.Impulse );
+		rb.AddTorque( Random.insideUnitCircle * GameSettings.Instance.bolt_detach_force.ReturnRandom(), ForceMode.Impulse );
+
+		recycledTween.Recycle( DOVirtual.DelayedCall( GameSettings.Instance.bolt_detach_waitTime, OnDetachComplete ) );
 	}
 #endregion
 
 #region Implementation
+	void OnDetachComplete()
+	{
+		rb.ToggleKinematic( true );
+		gameObject.SetActive( false );
+	}
+
     void StartTrackingNut()
     {
 		FFLogger.Log( "Start Tracking Nut", gameObject );

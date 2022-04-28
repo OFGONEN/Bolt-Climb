@@ -18,6 +18,10 @@ namespace FFStudio
         [ BoxGroup( "Game" ) ] public Color shader_range_color_start;
         [ BoxGroup( "Game" ) ] public Color shader_range_color_end;
 
+        [ BoxGroup( "Bolt" ) ] public float bolt_height = 0.5f;
+        [ BoxGroup( "Bolt" ) ] public float bolt_detach_waitTime;
+        [ BoxGroup( "Bolt" ) ] public Vector2 bolt_detach_force;
+
         [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
         [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
 

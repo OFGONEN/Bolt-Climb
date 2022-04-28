@@ -412,6 +412,12 @@ namespace FFStudio
 				GameObject.DestroyImmediate( childs[ i ].gameObject );
 			}
 		}
+
+		public static void ToggleKinematic( this Rigidbody rb, bool value )
+		{
+			rb.isKinematic = value;
+			rb.useGravity  = !value;
+		}
 	}
 }
 
