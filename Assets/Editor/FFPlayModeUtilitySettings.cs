@@ -17,6 +17,8 @@ namespace FFEditor
 
 		[ ShowIf( "useDefaultScene" ), ValueDropdown( "SceneList" ) ]
 		public int defaultSceneIndex = 0;
+
+		[ HideInInspector ] public string lastSceneIndex; 
 #endregion
 
 #region Unity API
