@@ -52,8 +52,13 @@ public class UICurrency : MonoBehaviour
 	[ Button() ]
 	public void Spawn()
 	{
-		var nutPosition = ( notif_nut_reference.SharedValue as Transform ).position;
-		nutPosition.z = spawn_depth;
+		var nutTransform  = notif_nut_reference.SharedValue as Transform;
+
+		if( !nutTransform )
+			OnSpawnComplete();
+
+		var nutPosition   = nutTransform.position;
+		    nutPosition.z = spawn_depth;
 
 		var random = new Vector3(
 			Random.Range( -spawn_random_lateral, spawn_random_lateral ),
