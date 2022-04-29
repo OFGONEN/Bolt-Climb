@@ -32,14 +32,13 @@ public class AnimationHandle : MonoBehaviour
 #endregion
 
 #region API
-    public float PlayAnimation( float progress, ParticleSystem particle )
+    public void PlayAnimation( float progress, ParticleSystem particle )
     {
         var index = -1;
-		var initialPercentage = animationDatas[ 0 ].data_percentage / 100f;
 
 		for( var i = 0; i < animationDatas.Length; i++ )
         {
-            if( progress <=  initialPercentage )
+            if( progress <=  animationDatas[ i ].data_percentage / 100 )
             {
 				index = i;
 				break;
@@ -58,16 +57,13 @@ public class AnimationHandle : MonoBehaviour
 		}
 
 		animation_index = index;
-
-		return 1f - ( Mathf.Min( progress, initialPercentage ) / initialPercentage );
 	}
 #endregion
 
 #region Implementation
     void PlayAnimation( int index )
     {
-		var data = animationDatas[ index ];
-
+		var data            = animationDatas[ index ];
 		var animation_scale = animation_sequence_scale.Recycle();
 
 		animation_scale.Append( transform_animation.DOScale( data.data_scale_out, data.data_scale_duration_out ).SetEase( data.data_scale_ease_out ) );
@@ -78,7 +74,6 @@ public class AnimationHandle : MonoBehaviour
     void ReturnDefault()
     {
 		var sequence = animation_sequence_scale.Recycle();
-
 		sequence.Append( transform_animation.DOScale( animation_default.data_scale_out, animation_default.data_scale_duration_out ).SetEase( animation_default.data_scale_ease_out ) );
 	}
 #endregion

@@ -92,7 +92,6 @@ public class Nut : MonoBehaviour
 		property_currency.SetCurrencyData();
 		property_velocity.SetVelocityData();
 		property_durability.SetDurabilityData();
-
 		onFingerDown = OnFingerDown_StraightBolt;
 	}
 
@@ -182,8 +181,8 @@ public class Nut : MonoBehaviour
 	void OnUpdate_Idle()
 	{
 		property_durability.OnIncrease();
-		var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-		component_rust_setter.SetRust( animationProgress );
+		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 	}
 
 	void OnUpdate_Acceleration()
@@ -209,8 +208,8 @@ public class Nut : MonoBehaviour
 			property_velocity.OnAcceleration();
 			component_movement.OnMovement();
 			property_durability.OnDecrease();
-			var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-			component_rust_setter.SetRust( animationProgress );
+			component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+			component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 		}
 	}
 
@@ -220,8 +219,8 @@ public class Nut : MonoBehaviour
 		var isIdle = component_movement.OnMovement( point_fallDown );
 
 		property_durability.OnIncrease();
-		var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-		component_rust_setter.SetRust( animationProgress );
+		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 
 		if( isIdle )
 			onUpdateMethod = OnUpdate_Idle;
