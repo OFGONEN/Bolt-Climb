@@ -418,6 +418,11 @@ namespace FFStudio
 			rb.isKinematic = value;
 			rb.useGravity  = !value;
 		}
+
+		public static float ReturnClamped( this Vector2 vector, float value )
+		{
+			return Mathf.Clamp( value, vector.x, vector.y );
+		}
 	}
 }
 
