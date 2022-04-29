@@ -261,9 +261,12 @@ public class Nut : MonoBehaviour
 #if UNITY_EDITOR
 //! todo remove this variable before build
 	// [ SerializeField ] SharedBoolNotifier isNutOnBolt;
+	[ ShowInInspector ] bool showGUI = false;
 
 	private void OnGUI() 
 	{
+		if( !showGUI ) return;
+
 		var style = new GUIStyle();
 		style.fontSize = 25;
 
