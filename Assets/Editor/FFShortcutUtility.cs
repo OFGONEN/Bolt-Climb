@@ -11,6 +11,7 @@ namespace FFEditor
 	public static class FFShortcutUtility
 	{
 		static private TransformData currentTransformData;
+		static private string path_playerPrefsTracker = "Assets/Editor/tracker_playerPrefs.asset";
 
 		[ MenuItem( "FFShortcut/TakeScreenShot #F12" ) ]
 		public static void TakeScreenShot()
@@ -29,11 +30,19 @@ namespace FFEditor
 
 			Debug.Log( "ScreenShot Taken: " + "ScreenShot_" + counter + ".png" );
 		}
+		
+		[ MenuItem( "FFShortcut/Select PlayerPrefsTracker _F8" ) ]
+		static private void SelectPlayerPrefsTracker()
+		{
+			var tracker = AssetDatabase.LoadAssetAtPath( path_playerPrefsTracker, typeof( ScriptableObject ) );
+			( tracker as PlayerPrefsTracker ).Refresh();
+			Selection.SetActiveObjectWithContext( tracker, tracker );
+		}
 
 		[ MenuItem( "FFShortcut/Delete PlayerPrefs _F9" ) ]
 		static private void ResetPlayerPrefs()
 		{
-			PlayerPrefs.DeleteAll();
+			PlayerPrefsUtility.Instance.DeleteAll();
 			Debug.Log( "PlayerPrefs Deleted" );
 		}
 

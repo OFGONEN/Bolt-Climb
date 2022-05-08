@@ -112,5 +112,52 @@ namespace FFStudio
 		public float incremental_cost;
 		public float incremental_currency_value;
 		public float incremental_currency_rate;
+	
+	[ Serializable ]
+	public struct PlayerPrefs_Int
+	{
+		[ ReadOnly ]
+		public string key;
+		[ OnValueChanged( "Save" ) ]
+		public int value;
+		
+		public void Refresh() => value = PlayerPrefs.GetInt( key, 0 );
+		public void Save()
+		{
+			PlayerPrefs.SetInt( key, value );
+			FFLogger.Log( $"PlayerPrefs: Saved value \"{value}\" for key \"{key}\"." );
+		}
+	}
+	
+	[ Serializable ]
+	public struct PlayerPrefs_Float
+	{
+		[ ReadOnly ]
+		public string key;
+		[ OnValueChanged( "Save" ) ]
+		public float value;
+		
+		public void Refresh() => value = PlayerPrefs.GetFloat( key, 0.0f );
+		public void Save()
+		{
+			PlayerPrefs.SetFloat( key, value );
+			FFLogger.Log( $"PlayerPrefs: Saved value \"{value}\" for key \"{key}\"." );
+		}
+	}
+	
+	[ Serializable ]
+	public struct PlayerPrefs_String
+	{
+		[ ReadOnly ]
+		public string key;
+		[ OnValueChanged( "Save" ) ]
+		public string value;
+		
+		public void Refresh() => value = PlayerPrefs.GetString( key, "" );
+		public void Save()
+		{
+			PlayerPrefs.SetString( key, value );
+			FFLogger.Log( $"PlayerPrefs: Saved value \"{value}\" for key \"{key}\"." );
+		}
 	}
 }
