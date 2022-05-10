@@ -12,27 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  game_level_count: 50
+  game_level_count: 5
   game_tutorial_timeScale: 0.05
+  postProcess_vignette_intencity: {x: 0, y: 0.3}
   shader_range_rust: {x: 0, y: 1}
   shader_range_color_start: {r: 0.33333334, g: 0.36078432, b: 0.40000004, a: 1}
   shader_range_color_end: {r: 0.7254902, g: 0, b: 0, a: 1}
+  bolt_batch: 10
+  bolt_height: 0.5
+  bolt_detach_waitTime: 3
+  bolt_detach_force: {x: 3, y: 7}
   movement_rotation_cofactor: 80
   movement_launchSpeed_minumum: 1
   nut_shatter_force_up: {x: 0, y: 0}
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
   nut_shatter_torque: {x: 6.6980996, y: 15.23205}
-  nut_shatter_waitDuration: 2
-  nut_levelEnd_force_cofactor: 1
-  nut_levelEnd_torque_cofactor: 0.1
-  nut_levelEnd_waitDuration: 2
+  nut_shatter_waitDuration: 0.75
+  nut_levelEnd_force: {x: 3, y: 9}
+  nut_levelEnd_waitDuration: 1
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
   maxLevelCount: 5
-  ui_Entity_Move_TweenDuration: 0.5
-  ui_Entity_Fade_TweenDuration: 0.5
-  ui_Entity_Scale_TweenDuration: 0.5
-  ui_Entity_FloatingMove_TweenDuration: 0.5
+  ui_Entity_Move_TweenDuration: 0.35
+  ui_Entity_Fade_TweenDuration: 0.35
+  ui_Entity_Scale_TweenDuration: 0.35
+  ui_Entity_FloatingMove_TweenDuration: 0.35
   ui_Entity_JoyStick_Gap: 50
   ui_PopUp_height: 1
   ui_PopUp_duration: 0.75

@@ -71,6 +71,11 @@ public class Nut : MonoBehaviour
 #endregion
 
 #region API
+	public void OnLevel_Failed()
+	{
+		EmptyDelegates();
+	}
+
 	public void Input_OnFingerDown()
 	{
 		onFingerDown();
@@ -87,7 +92,6 @@ public class Nut : MonoBehaviour
 		property_currency.SetCurrencyData();
 		property_velocity.SetVelocityData();
 		property_durability.SetDurabilityData();
-
 		onFingerDown = OnFingerDown_StraightBolt;
 	}
 
@@ -164,8 +168,10 @@ public class Nut : MonoBehaviour
 		// component_rigidbody.useGravity  = true;
 		component_collider.isTrigger    = false;
 
-		component_rigidbody.AddForce( Vector3.forward * property_velocity.CurrentVelocity * GameSettings.Instance.nut_levelEnd_force_cofactor, ForceMode.Impulse );
-		component_rigidbody.AddTorque( Random.onUnitSphere * property_velocity.CurrentVelocity * GameSettings.Instance.nut_levelEnd_torque_cofactor, ForceMode.Impulse );
+		var force = GameSettings.Instance.nut_levelEnd_force.ReturnClamped( property_velocity.CurrentVelocity );
+
+		component_rigidbody.AddForce( Vector3.forward * force, ForceMode.Impulse );
+		component_rigidbody.AddTorque( Random.onUnitSphere * force, ForceMode.Impulse );
 
 		event_path_end.Raise();
 
@@ -175,8 +181,8 @@ public class Nut : MonoBehaviour
 	void OnUpdate_Idle()
 	{
 		property_durability.OnIncrease();
-		var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-		component_rust_setter.SetRust( animationProgress );
+		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 	}
 
 	void OnUpdate_Acceleration()
@@ -202,9 +208,8 @@ public class Nut : MonoBehaviour
 			property_velocity.OnAcceleration();
 			component_movement.OnMovement();
 			property_durability.OnDecrease();
-			var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-			property_currency.OnIncrease();
-			component_rust_setter.SetRust( animationProgress );
+			component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+			component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 		}
 	}
 
@@ -214,8 +219,8 @@ public class Nut : MonoBehaviour
 		var isIdle = component_movement.OnMovement( point_fallDown );
 
 		property_durability.OnIncrease();
-		var animationProgress = component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-		component_rust_setter.SetRust( animationProgress );
+		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 
 		if( isIdle )
 			onUpdateMethod = OnUpdate_Idle;
@@ -255,9 +260,12 @@ public class Nut : MonoBehaviour
 #if UNITY_EDITOR
 //! todo remove this variable before build
 	// [ SerializeField ] SharedBoolNotifier isNutOnBolt;
+	[ ShowInInspector ] bool showGUI = false;
 
 	private void OnGUI() 
 	{
+		if( !showGUI ) return;
+
 		var style = new GUIStyle();
 		style.fontSize = 25;
 
