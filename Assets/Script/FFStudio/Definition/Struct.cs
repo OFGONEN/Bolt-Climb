@@ -85,4 +85,32 @@ namespace FFStudio
 		public UnityEvent event_complete;
 		public bool event_complete_alwaysInvoke;
 	}
+
+	[ Serializable ]
+	public struct IncrementalVelocityData
+	{
+		public float incremental_cost;
+		public float incremental_velocity_max;
+		public float incremental_velocity_max_duration;
+		public float incremental_velocity_min;
+		public float incremental_velocity_decrease;
+	}
+
+	[ Serializable ]
+	public struct IncrementalDurabilityData
+	{
+		public float incremental_cost;
+		public float incremental_durability_capacity;
+		public float incremental_durability_speed_capacity_decrease;
+		public float incremental_durability_speed_decrease;
+		public float incremental_durability_speed_increase;
+	}
+
+	[ Serializable ]
+	public struct IncrementalCurrencyData
+	{
+		public float incremental_cost;
+		public float incremental_currency_value;
+		public float incremental_currency_rate;
+	}
 }

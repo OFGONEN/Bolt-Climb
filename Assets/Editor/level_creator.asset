@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10fe72393c44d354b9a17cc1ba52195e, type: 3}
+  m_Name: level_creator
+  m_EditorClassIdentifier: 
+  level_code: b3s4c0s5c1s2e0
+  level_start_bolt_length: 3
+  level_start_bolt_space: 1
+  prefab_bolt_model: {fileID: 1063151217951837440, guid: 0e7785d29aa454ad19d728a5fb2f37de, type: 3}
+  prefab_bolt: {fileID: 3224905004853089646, guid: 66345a6b8558e4eed8fe462275939e1d, type: 3}
+  prefab_bolt_start: {fileID: 8790097260034345890, guid: d1e0b511b41eb4b4f9c8cf7e96e2c59c, type: 3}
+  prefab_bolt_shaped:
+  - {fileID: 5111738701764704344, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
+  - {fileID: 3033457457287740396, guid: 115870fa274aa984382446e34ae6f7a1, type: 3}
+  bolt_shaped_model_height:
+  - 11.3
+  - 22.6
+  prefab_bolt_end:
+  - {fileID: 4670572250515966050, guid: e25640050333cd2439c12d04f714c1b5, type: 3}
+  - {fileID: 4492639980709009203, guid: 33b01fc7b7729c041928e6207a5eec57, type: 3}
+  - {fileID: 2271575799513193403, guid: 2931cc081b0995a4cbedd5c6effd7731, type: 3}
+  prefab_finishLine_offset:
+  - {x: 0, y: 8, z: 15}
+  - {x: 0, y: 18, z: 25}
+  - {x: 0, y: 28, z: 35}
+  prefab_finishLine: {fileID: 2340585009260439847, guid: b98a8a8b73e9447ce9b8cc3b1224938b, type: 3}
+  bolt_model_height: 0.5
+  prefab_environment_ground: {fileID: 919132149155446097, guid: 71c047543327640d687d0d9fd3db7e58, type: 3}
+  prefab_environment_background: {fileID: 919132149155446097, guid: 4173af67754644183aecf32b1bf8c954, type: 3}

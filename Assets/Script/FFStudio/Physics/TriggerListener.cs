@@ -1,6 +1,7 @@
 /* Created by and for usage of FF Studios (2021). */
 
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace FFStudio
 {
@@ -8,6 +9,8 @@ namespace FFStudio
 	{
 #region Fields (Private)
 		private event TriggerMessage triggerEvent;
+		[ SerializeField ] bool directional;
+		[ SerializeField, ShowIf( "directional" ) ] float direction;
 #endregion
 
 #region Properties
@@ -73,9 +76,13 @@ namespace FFStudio
 #region Implementation
         protected override void InvokeEvent( Collider other )
 		{
-			triggerEvent?.Invoke( other );
+			var localPosition = transform.InverseTransformPoint( other.transform.position );
 
-			unityEvent.Invoke( other );
+			if( !directional || ( directional && Mathf.Sign( direction ) == Mathf.Sign( localPosition.y ) ) )
+			{
+				triggerEvent?.Invoke( other );
+				unityEvent.Invoke( other );
+			}
 		}
 #endregion
 

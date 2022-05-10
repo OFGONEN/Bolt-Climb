@@ -10,6 +10,29 @@ namespace FFStudio
 #region Fields (Settings)
     // Info: Use Title() attribute ONCE for every game-specific group of settings.
 
+    // Info: Game related settings
+        [ BoxGroup( "Game" ) ] public int game_level_count = 20;
+        [ BoxGroup( "Game" ) ] public float game_tutorial_timeScale = 0.25f;
+        [ BoxGroup( "Game" ) ] public Vector2 postProcess_vignette_intencity;
+        [ BoxGroup( "Game" ) ] public Vector2 shader_range_rust;
+        [ BoxGroup( "Game" ) ] public Color shader_range_color_start;
+        [ BoxGroup( "Game" ) ] public Color shader_range_color_end;
+
+        [ BoxGroup( "Bolt" ) ] public int bolt_batch = 3;
+        [ BoxGroup( "Bolt" ) ] public float bolt_height = 0.5f;
+        [ BoxGroup( "Bolt" ) ] public float bolt_detach_waitTime;
+        [ BoxGroup( "Bolt" ) ] public Vector2 bolt_detach_force;
+
+        [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
+        [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
+
+        [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force_up;
+        [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force;
+        [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_torque;
+        [ BoxGroup( "Nut" ) ] public float nut_shatter_waitDuration = 2f;
+        [ BoxGroup( "Nut" ) ] public Vector2 nut_levelEnd_force;
+        [ BoxGroup( "Nut" ) ] public float nut_levelEnd_waitDuration = 2f;
+
     // Info: 3 groups below (coming from template project) are foldout by design: They should remain hidden.
 		[ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
         [ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_Components;
@@ -52,6 +75,11 @@ namespace FFStudio
         {
             return instance;
         }
+#endregion
+
+#region Editor Only
+#if UNITY_EDITOR
+#endif
 #endregion
     }
 }

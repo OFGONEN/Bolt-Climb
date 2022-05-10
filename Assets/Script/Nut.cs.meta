@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 677b7adcd300f461c8c918006963e104
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - notif_nut_point_fallDown: {fileID: 11400000, guid: 12edf675dad2448698c28fa586941867, type: 2}
+  - notif_nut_is_onBolt: {fileID: 11400000, guid: d401f21baeb4e4064a7da03f6fbb0777, type: 2}
+  - component_movement: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

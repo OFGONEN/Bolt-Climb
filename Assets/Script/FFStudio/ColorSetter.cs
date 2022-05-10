@@ -13,13 +13,14 @@ namespace FFStudio
 #endregion
 
 #region Fields (Private)
-		private static int SHADER_ID_COLOR = Shader.PropertyToID( "_Color" );
+		private static int SHADER_ID_COLOR = Shader.PropertyToID( "_BaseColor" );
 
 		private Renderer _renderer;
 		private MaterialPropertyBlock propertyBlock;
 #endregion
 
 #region Properties
+		public Color Color => color;
 #endregion
 
 #region Unity API

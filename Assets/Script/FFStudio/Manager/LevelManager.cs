@@ -2,23 +2,28 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 
 namespace FFStudio
 {
     public class LevelManager : MonoBehaviour
     {
 #region Fields
-        [ Header( "Event Listeners" ) ]
+        [ Title( "Event Listeners" ) ]
         public EventListenerDelegateResponse levelLoadedListener;
         public EventListenerDelegateResponse levelRevealedListener;
         public EventListenerDelegateResponse levelStartedListener;
 
-        [ Header( "Fired Events" ) ]
+        [ Title( "Fired Events" ) ]
         public GameEvent levelFailedEvent;
         public GameEvent levelCompleted;
+        public GameEvent event_level_started;
 
-        [ Header( "Level Releated" ) ]
+        [ Title( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
+        public SharedFloatNotifier notif_nut_point_fallDown;
+        public SharedBoolNotifier notif_nut_is_onBolt;
+
 #endregion
 
 #region UnityAPI
@@ -48,6 +53,8 @@ namespace FFStudio
         private void LevelLoadedResponse()
         {
 			levelProgress.SetValue_NotifyAlways( 0 );
+			notif_nut_is_onBolt.SetValue_DontNotify( true );
+			notif_nut_point_fallDown.SetValue_DontNotify( 0 );
 
 			var levelData = CurrentLevelData.Instance.levelData;
 
@@ -60,8 +67,8 @@ namespace FFStudio
 
         private void LevelRevealedResponse()
         {
-
-        }
+			event_level_started.Raise();
+		}
 
         private void LevelStartedResponse()
         {

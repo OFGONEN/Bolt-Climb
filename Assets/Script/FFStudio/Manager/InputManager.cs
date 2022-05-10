@@ -13,6 +13,8 @@ namespace FFStudio
 		public SwipeInputEvent event_input_swipe;
 		public ScreenPressEvent event_input_screenPress;
 		public IntGameEvent event_input_tap;
+		public GameEvent event_input_finger_down;
+		public GameEvent event_input_finger_up;
 
 	[ Title( "Shared Variables" ) ]
 		public SharedReferenceNotifier notifier_reference_camera_main;
@@ -55,8 +57,17 @@ namespace FFStudio
 		public void Tapped( int count )
 		{
 			event_input_tap.eventValue = count;
-
 			event_input_tap.Raise();
+		}
+
+		public void FingerDown( LeanFinger finger )
+		{
+			event_input_finger_down.Raise();
+		}
+
+		public void FingerUp( LeanFinger finger )
+		{
+			event_input_finger_up.Raise();
 		}
 #endregion
 
