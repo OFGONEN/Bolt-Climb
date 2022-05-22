@@ -4,6 +4,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using FFStudio;
+using DG.Tweening;
 using System.Reflection;
 
 namespace FFEditor
@@ -121,6 +122,13 @@ namespace FFEditor
 		{
 			var gameObject = Selection.activeGameObject.transform;
 			gameObject.SetTransformData( currentTransformData );
+		}
+
+		[ MenuItem( "FFShortcut/Kill All Tweens %#t" ) ]
+		private static void KillAllTweens()
+		{
+			DOTween.KillAll();
+			FFLogger.Log( "[FF] DOTween: Kill All" );
 		}
 
 		[ MenuItem( "FFShortcut/Clear Console %#x" ) ]
