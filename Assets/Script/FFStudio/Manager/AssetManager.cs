@@ -40,6 +40,8 @@ namespace FFStudio
 
 		private void Awake()
 		{
+			Vibration.Init();
+
 			pool_UIPopUpText.InitPool( transform, false );
 			pool_ui_currency.InitPool( transform, false );
 
@@ -56,6 +58,27 @@ namespace FFStudio
 		private void Start()
 		{
 			onStart.Invoke();
+		}
+#endregion
+
+#region API
+		public void VibrateAPI( IntGameEvent vibrateEvent )
+		{
+			switch( vibrateEvent.eventValue )
+			{
+				case 0:
+					Vibration.VibratePeek();
+					break;
+				case 1:
+					Vibration.VibratePop();
+					break;
+				case 2:
+					Vibration.VibrateNope();
+					break;
+				default:
+					Vibration.Vibrate();
+					break;
+			}
 		}
 #endregion
 	}
