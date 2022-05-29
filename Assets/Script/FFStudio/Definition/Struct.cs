@@ -112,7 +112,8 @@ namespace FFStudio
 		public float incremental_cost;
 		public float incremental_currency_value;
 		public float incremental_currency_rate;
-	
+	}
+
 	[ Serializable ]
 	public struct PlayerPrefs_Int
 	{
