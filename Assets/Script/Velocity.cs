@@ -28,7 +28,7 @@ public class Velocity : ScriptableObject
 #region API
     public void SetVelocityData()
     {
-		velocity_data    = velocity_incremental.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.velocity_index, 0 ) );
+		velocity_data    = velocity_incremental.ReturnIncremental( PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.velocity_index, 0 ) );
 		velocity_current = 0;
 	}
 
