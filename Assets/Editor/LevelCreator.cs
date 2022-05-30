@@ -277,7 +277,7 @@ public class LevelCreator : ScriptableObject
     bool IsSpecial( int index )
     {
 		var codeChar = level_code[ index ];
-		return codeChar == 'b' || codeChar == 'c' || codeChar == 's' || codeChar == 'e';
+		return codeChar == 'b' || codeChar == 'c' || codeChar == 'g' || codeChar == 'e';
     }
 #endregion
 

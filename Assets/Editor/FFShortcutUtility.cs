@@ -113,6 +113,20 @@ namespace FFEditor
 			Selection.SetActiveObjectWithContext( playModeSettings, playModeSettings );
 		}
 
+		[ MenuItem( "FFShortcut/Select Level Creator &5" ) ]
+		static private void SelectLevelCreator()
+		{
+			var levelCreator = AssetDatabase.LoadAssetAtPath( "Assets/Editor/level_creator.asset", typeof( ScriptableObject ) );
+			Selection.SetActiveObjectWithContext( levelCreator, levelCreator );
+		}
+
+		[ MenuItem( "FFShortcut/Select Level Environment &6" ) ]
+		static private void SelectLevelEnvironmentCreator()
+		{
+			var levelEnvironmentCreator = AssetDatabase.LoadAssetAtPath( "Assets/Editor/level_creator_environment.asset", typeof( ScriptableObject ) );
+			Selection.SetActiveObjectWithContext( levelEnvironmentCreator, levelEnvironmentCreator );
+		}
+
 		[ MenuItem( "FFShortcut/Copy Global Transform &c" ) ]
 		static private void CopyTransform()
 		{
