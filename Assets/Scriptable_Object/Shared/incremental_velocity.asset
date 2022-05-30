@@ -18,12 +18,12 @@ MonoBehaviour:
     incremental_velocity_max_duration: 1
     incremental_velocity_min: -2
     incremental_velocity_decrease: 1
-  - incremental_cost: 28
+  - incremental_cost: 35
     incremental_velocity_max: 2.5
     incremental_velocity_max_duration: 1.09
     incremental_velocity_min: -2.5
     incremental_velocity_decrease: 1.5
-  - incremental_cost: 30
+  - incremental_cost: 45
     incremental_velocity_max: 3
     incremental_velocity_max_duration: 1.17
     incremental_velocity_min: -3
