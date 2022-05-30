@@ -34,6 +34,9 @@ namespace FFStudio
 		
 		private void Awake()
 		{
+			Application.targetFrameRate = 60;
+
+
 			loadNewLevelListener.response = LoadNewLevel;
 			resetLevelListener.response   = ResetLevel;
 		}
