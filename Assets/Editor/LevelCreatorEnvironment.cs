@@ -45,7 +45,7 @@ public class LevelCreatorEnvironment : ScriptableObject
 
         for( var i = 1; i <= environmentData.Length; i++ )
         {
-			EditorSceneManager.OpenScene( $"Assets/Scenes/scene_{i}.unity", OpenSceneMode.Single );
+			EditorSceneManager.OpenScene( EditorSceneManager.GetSceneByBuildIndex( i ).path, OpenSceneMode.Single );
 			CreateLevelEnvironment( i - 1 );
 		}
     }
