@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using System;
@@ -45,7 +46,7 @@ public class LevelCreatorEnvironment : ScriptableObject
 
         for( var i = 1; i <= environmentData.Length; i++ )
         {
-			EditorSceneManager.OpenScene( EditorSceneManager.GetSceneByBuildIndex( i ).path, OpenSceneMode.Single );
+			EditorSceneManager.OpenScene( EditorBuildSettings.scenes[ i ].path, OpenSceneMode.Single );
 			CreateLevelEnvironment( i - 1 );
 		}
     }
@@ -58,16 +59,12 @@ public class LevelCreatorEnvironment : ScriptableObject
 
 		// Destory Objects
 		environmentParent.DestoryAllChildren();
-		DestroyImmediate( GameObject.Find( prefab_ground.name ) );
 
 		var ground = PrefabUtility.InstantiatePrefab( prefab_ground ) as GameObject;
 		ground.GetComponentInChildren< Renderer >().sharedMaterial = environmentData[ index ].level_material_ground;
-		ground.transform.SetParent( null );
-		ground.transform.localPosition    = Vector3.up * environment_offset;
-		ground.transform.localEulerAngles = Vector3.zero;
-		ground.transform.SetSiblingIndex( environmentParent.GetSiblingIndex() );
+		ground.transform.SetParent( environmentParent );
 
-		var backgroundCount = environmentData[ index ].level_height / prefab_background_height;
+		var backgroundCount = GameObject.Find( "finishLine" ).transform.position.y / prefab_background_height + 1;
 
         for( var i = 0; i < backgroundCount; i++ )
         {
@@ -112,7 +109,6 @@ public class LevelCreatorEnvironment : ScriptableObject
 [ Serializable ]
 public struct EnvironmentData
 {
-    public float level_height;
 	public Material level_material_ground;
 	public Material level_material_background;
 }
