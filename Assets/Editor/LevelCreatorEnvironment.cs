@@ -63,8 +63,9 @@ public class LevelCreatorEnvironment : ScriptableObject
 		var ground = PrefabUtility.InstantiatePrefab( prefab_ground ) as GameObject;
 		ground.GetComponentInChildren< Renderer >().sharedMaterial = environmentData[ index ].level_material_ground;
 		ground.transform.SetParent( environmentParent );
+		ground.transform.localPosition = Vector3.zero;
 
-		var backgroundCount = GameObject.Find( "finishLine" ).transform.position.y / prefab_background_height + 1;
+		var backgroundCount = GameObject.Find( "finishLine" ).transform.position.y / prefab_background_height - 1;
 
         for( var i = 0; i < backgroundCount; i++ )
         {
