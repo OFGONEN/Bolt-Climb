@@ -2,8 +2,10 @@
 
 using System.IO;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using FFStudio;
+using DG.Tweening;
 using System.Reflection;
 
 namespace FFEditor
@@ -11,6 +13,7 @@ namespace FFEditor
 	public static class FFShortcutUtility
 	{
 		static private TransformData currentTransformData;
+		static private string path_playerPrefsTracker = "Assets/Editor/tracker_playerPrefs.asset";
 
 		[ MenuItem( "FFShortcut/TakeScreenShot #F12" ) ]
 		public static void TakeScreenShot()
@@ -29,11 +32,19 @@ namespace FFEditor
 
 			Debug.Log( "ScreenShot Taken: " + "ScreenShot_" + counter + ".png" );
 		}
+		
+		[ MenuItem( "FFShortcut/Select PlayerPrefsTracker _F8" ) ]
+		static private void SelectPlayerPrefsTracker()
+		{
+			var tracker = AssetDatabase.LoadAssetAtPath( path_playerPrefsTracker, typeof( ScriptableObject ) );
+			( tracker as PlayerPrefsTracker ).Refresh();
+			Selection.SetActiveObjectWithContext( tracker, tracker );
+		}
 
 		[ MenuItem( "FFShortcut/Delete PlayerPrefs _F9" ) ]
 		static private void ResetPlayerPrefs()
 		{
-			PlayerPrefs.DeleteAll();
+			PlayerPrefsUtility.Instance.DeleteAll();
 			Debug.Log( "PlayerPrefs Deleted" );
 		}
 
@@ -88,9 +99,10 @@ namespace FFEditor
 		[ MenuItem( "FFShortcut/Select App Scene &3" ) ]
 		static private void SelectAppScene()
 		{
+			EditorSceneManager.OpenScene( "Assets/Scenes/app.unity" );
 			var appScene = AssetDatabase.LoadAssetAtPath( "Assets/Scenes/app.unity", typeof( SceneAsset ) );
 
-			Selection.SetActiveObjectWithContext( appScene, appScene );
+			Selection.SetActiveObjectWithContext( appScene, appScene );		
 		}
 
 		[ MenuItem( "FFShortcut/Select Play Mode Settings &4" ) ]
@@ -99,6 +111,20 @@ namespace FFEditor
 			var playModeSettings = AssetDatabase.LoadAssetAtPath( "Assets/Editor/PlayModeUtilitySettings.asset", typeof( ScriptableObject ) );
 
 			Selection.SetActiveObjectWithContext( playModeSettings, playModeSettings );
+		}
+
+		[ MenuItem( "FFShortcut/Select Level Creator &5" ) ]
+		static private void SelectLevelCreator()
+		{
+			var levelCreator = AssetDatabase.LoadAssetAtPath( "Assets/Editor/level_creator.asset", typeof( ScriptableObject ) );
+			Selection.SetActiveObjectWithContext( levelCreator, levelCreator );
+		}
+
+		[ MenuItem( "FFShortcut/Select Level Environment &6" ) ]
+		static private void SelectLevelEnvironmentCreator()
+		{
+			var levelEnvironmentCreator = AssetDatabase.LoadAssetAtPath( "Assets/Editor/level_creator_environment.asset", typeof( ScriptableObject ) );
+			Selection.SetActiveObjectWithContext( levelEnvironmentCreator, levelEnvironmentCreator );
 		}
 
 		[ MenuItem( "FFShortcut/Copy Global Transform &c" ) ]
@@ -112,6 +138,13 @@ namespace FFEditor
 		{
 			var gameObject = Selection.activeGameObject.transform;
 			gameObject.SetTransformData( currentTransformData );
+		}
+
+		[ MenuItem( "FFShortcut/Kill All Tweens %#t" ) ]
+		private static void KillAllTweens()
+		{
+			DOTween.KillAll();
+			FFLogger.Log( "[FF] DOTween: Kill All" );
 		}
 
 		[ MenuItem( "FFShortcut/Clear Console %#x" ) ]
