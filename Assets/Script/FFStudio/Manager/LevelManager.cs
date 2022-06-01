@@ -52,6 +52,7 @@ namespace FFStudio
 #region Implementation
         private void LevelLoadedResponse()
         {
+            // Reset level related variables
 			levelProgress.SetValue_NotifyAlways( 0 );
 			notif_nut_is_onBolt.SetValue_DontNotify( true );
 			notif_nut_point_fallDown.SetValue_DontNotify( 0 );

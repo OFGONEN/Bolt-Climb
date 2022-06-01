@@ -27,6 +27,8 @@ public class UpgradeSystem : ScriptableObject
     {
 		var currentIndex = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.durability_index, 0 );
 		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.durability_index, Mathf.Min( currentIndex + 1, incremental_durability.IncrementalCount) );
+		PlayerPrefsUtility.Instance.AddInt( ExtensionMethods.durability_index_visual, 1 );
+
 
 		currency.SharedValue -= incremental_durability.ReturnIncremental( currentIndex + 1 ).incremental_cost;
 		currency.SaveCurrency();
@@ -36,6 +38,7 @@ public class UpgradeSystem : ScriptableObject
     {
 		var currentIndex = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.velocity_index, 0 );
 		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.velocity_index, Mathf.Min( currentIndex + 1, incremental_velocity.IncrementalCount ) );
+		PlayerPrefsUtility.Instance.AddInt( ExtensionMethods.velocity_index_visual, 1 );
 
 		currency.SharedValue -= incremental_velocity.ReturnIncremental( currentIndex + 1 ).incremental_cost;
 		currency.SaveCurrency();
@@ -57,7 +60,7 @@ public class UpgradeSystem : ScriptableObject
 		var color     = available ? Color.green : Color.red;
 		var cost      = incremental_durability.ReturnIncremental( Mathf.Min( index + 1, incremental_durability.IncrementalCount - 1 )  ).incremental_cost;
 
-		incrementalButton.Configure( available, color, cost, index );
+		incrementalButton.Configure( available, color, cost, PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.durability_index_visual, 0 ) );
 	}
 
 	public void SetUpIncrementalButton_Velocity( IncrementalButton incrementalButton )
@@ -67,7 +70,7 @@ public class UpgradeSystem : ScriptableObject
 		var color     = available ? Color.green : Color.red;
 		var cost      = incremental_velocity.ReturnIncremental( Mathf.Min( index + 1, incremental_velocity.IncrementalCount - 1 ) ).incremental_cost;
 
-		incrementalButton.Configure( available, color, cost, index );
+		incrementalButton.Configure( available, color, cost, PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.velocity_index_visual, 0 ) );
 	}
 
 	public void SetUpIncrementalButton_Currency( IncrementalButton incrementalButton )
