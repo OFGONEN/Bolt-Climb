@@ -19,6 +19,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] SharedFloatNotifier level_progress;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height_last;
+	[ SerializeField ] SkinLibrary library_skin;
 
   [ Title( "Components" )]
 	[ SerializeField ] Movement component_movement;
@@ -30,7 +31,8 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] Collider component_collider;
 	[ SerializeField ] RustSetter component_rust_setter;
 	[ SerializeField ] ParticleSystem particle_carving;
-
+	[ SerializeField ] MeshFilter component_mesh_filter;
+	[ SerializeField ] MeshRenderer component_mesh_renderer;
 
   [ Title( "Particle" )]
 	[ SerializeField ] ParticleSystem particle_nut_lowDurability;
@@ -55,6 +57,8 @@ public class Nut : MonoBehaviour
 		onFingerDown    = ExtensionMethods.EmptyMethod;
 		onFingerUp      = ExtensionMethods.EmptyMethod;
 		onLevelProgress = UpdateLevelProgress;
+
+		OnSkin_Changed();
 	}
 
 	private void Start()
@@ -71,6 +75,15 @@ public class Nut : MonoBehaviour
 #endregion
 
 #region API
+	[ Button() ]
+	public void OnSkin_Changed()
+	{
+		var skinIndex = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_skin_index, 0 );
+
+		component_mesh_filter.mesh             = library_skin.GetMesh( skinIndex );
+		component_mesh_renderer.sharedMaterial = library_skin.GetMaterial( skinIndex );
+	}
+
 	public void OnLevel_Failed()
 	{
 		EmptyDelegates();
