@@ -101,7 +101,6 @@ public class Nut : MonoBehaviour
 			onFingerDown = OnFingerDown_StraightBolt;
 		else
 		{
-			FFLogger.Log( "Nut Exit Bolt" );
 
 			onFingerDown   = ExtensionMethods.EmptyMethod;
 			onFingerUp     = ExtensionMethods.EmptyMethod;
@@ -120,7 +119,6 @@ public class Nut : MonoBehaviour
 
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
-		FFLogger.Log( "Start Shaped Bolt" );
 
 		particle_carving.Play( true );
 
@@ -131,7 +129,6 @@ public class Nut : MonoBehaviour
 
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
 	{
-		FFLogger.Log( "End Bolt" );
 
 		onPath = true;
 		EmptyDelegates();
@@ -146,7 +143,6 @@ public class Nut : MonoBehaviour
 #region Implementation
 	void OnPathComplete()
 	{
-		FFLogger.Log( "On Shaped Path Complete" );
 		onPath = false;
 
 		particle_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
@@ -258,24 +254,6 @@ public class Nut : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
-//! todo remove this variable before build
-	// [ SerializeField ] SharedBoolNotifier isNutOnBolt;
-	[ ShowInInspector ] bool showGUI = false;
-
-	private void OnGUI() 
-	{
-		if( !showGUI ) return;
-
-		var style = new GUIStyle();
-		style.fontSize = 25;
-
-		// GUI.Label( new Rect( 25, 50 , 250, 250 ), "Is Nut On Bolt: " + isNutOnBolt.SharedValue  , style);
-		GUI.Label( new Rect( 25, 75 , 250, 250 ), "Nut Durability: " + property_durability.CurrentDurability , style);
-		GUI.Label( new Rect( 25, 100, 250, 250 ), "Nut %Durability: " + property_durability.DurabilityRatio , style);
-		GUI.Label( new Rect( 25, 125, 250, 250 ), "Nut Velocity: " + property_velocity.CurrentVelocity , style);
-		GUI.Label( new Rect( 25, 150, 250, 250 ), "Curreny: " + property_currency.SharedValue , style);
-		GUI.Label( new Rect( 25, 170, 250, 250 ), "Height: " + transform.position.y , style);
-	}
 #endif
 #endregion
 }
