@@ -28,9 +28,11 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] Currency property_currency;
 	[ SerializeField ] Rigidbody component_rigidbody;
 	[ SerializeField ] Collider component_collider;
+	[ SerializeField ] RustSetter component_rust_setter;
+	[ SerializeField ] ParticleSystem particle_carving;
 
 
-  [ Title( "Components" )]
+  [ Title( "Particle" )]
 	[ SerializeField ] ParticleSystem particle_nut_lowDurability;
 // Private
 	float point_fallDown = 0;
@@ -69,6 +71,11 @@ public class Nut : MonoBehaviour
 #endregion
 
 #region API
+	public void OnLevel_Failed()
+	{
+		EmptyDelegates();
+	}
+
 	public void Input_OnFingerDown()
 	{
 		onFingerDown();
@@ -85,7 +92,6 @@ public class Nut : MonoBehaviour
 		property_currency.SetCurrencyData();
 		property_velocity.SetVelocityData();
 		property_durability.SetDurabilityData();
-
 		onFingerDown = OnFingerDown_StraightBolt;
 	}
 
@@ -95,7 +101,6 @@ public class Nut : MonoBehaviour
 			onFingerDown = OnFingerDown_StraightBolt;
 		else
 		{
-			FFLogger.Log( "Nut Exit Bolt" );
 
 			onFingerDown   = ExtensionMethods.EmptyMethod;
 			onFingerUp     = ExtensionMethods.EmptyMethod;
@@ -114,7 +119,9 @@ public class Nut : MonoBehaviour
 
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
-		FFLogger.Log( "Start Shaped Bolt" );
+
+		particle_carving.Play( true );
+
 		onPath = true;
 		EmptyDelegates();
 		component_movement.DoPath( gameEvent.eventValue, OnPathComplete );
@@ -122,7 +129,6 @@ public class Nut : MonoBehaviour
 
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
 	{
-		FFLogger.Log( "End Bolt" );
 
 		onPath = true;
 		EmptyDelegates();
@@ -130,7 +136,7 @@ public class Nut : MonoBehaviour
 		component_movement.DoPath( gameEvent.eventValue, OnLevelEndPathComplete );
 
 		notif_nut_height_last.SharedValue = 0;
-		PlayerPrefs.SetFloat( ExtensionMethods.nut_height, 0 );
+		PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, 0 );
 	}
 #endregion
 
@@ -138,6 +144,8 @@ public class Nut : MonoBehaviour
 	void OnPathComplete()
 	{
 		onPath = false;
+
+		particle_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
 
 		var position   = transform.position;
 		    position.x = 0;
@@ -156,8 +164,10 @@ public class Nut : MonoBehaviour
 		// component_rigidbody.useGravity  = true;
 		component_collider.isTrigger    = false;
 
-		component_rigidbody.AddForce( Vector3.forward * property_velocity.CurrentVelocity * GameSettings.Instance.nut_levelEnd_force_cofactor, ForceMode.Impulse );
-		component_rigidbody.AddTorque( Random.onUnitSphere * property_velocity.CurrentVelocity * GameSettings.Instance.nut_levelEnd_torque_cofactor, ForceMode.Impulse );
+		var force = GameSettings.Instance.nut_levelEnd_force.ReturnClamped( property_velocity.CurrentVelocity );
+
+		component_rigidbody.AddForce( Vector3.forward * force, ForceMode.Impulse );
+		component_rigidbody.AddTorque( Random.onUnitSphere * force, ForceMode.Impulse );
 
 		event_path_end.Raise();
 
@@ -168,6 +178,7 @@ public class Nut : MonoBehaviour
 	{
 		property_durability.OnIncrease();
 		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 	}
 
 	void OnUpdate_Acceleration()
@@ -180,11 +191,11 @@ public class Nut : MonoBehaviour
 			var shatter                    = pool_randomShatter.GetEntity();
 			    shatter.transform.position = transform.position;
 
-			shatter.DoShatter();
+			shatter.DoShatter( component_rust_setter.Rust );
 
 			var height = transform.position.y;
 			notif_nut_height_last.SharedValue = height;
-			PlayerPrefs.SetFloat( ExtensionMethods.nut_height, height );
+			PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, height );
 
 			DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, event_level_failed.Raise );
 		}
@@ -194,7 +205,7 @@ public class Nut : MonoBehaviour
 			component_movement.OnMovement();
 			property_durability.OnDecrease();
 			component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-			property_currency.OnIncrease();
+			component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 		}
 	}
 
@@ -205,6 +216,7 @@ public class Nut : MonoBehaviour
 
 		property_durability.OnIncrease();
 		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+		component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 
 		if( isIdle )
 			onUpdateMethod = OnUpdate_Idle;
@@ -242,21 +254,6 @@ public class Nut : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
-//! todo remove this variable before build
-	// [ SerializeField ] SharedBoolNotifier isNutOnBolt;
-
-	private void OnGUI() 
-	{
-		var style = new GUIStyle();
-		style.fontSize = 25;
-
-		// GUI.Label( new Rect( 25, 50 , 250, 250 ), "Is Nut On Bolt: " + isNutOnBolt.SharedValue  , style);
-		GUI.Label( new Rect( 25, 75 , 250, 250 ), "Nut Durability: " + property_durability.CurrentDurability , style);
-		GUI.Label( new Rect( 25, 100, 250, 250 ), "Nut %Durability: " + property_durability.DurabilityRatio , style);
-		GUI.Label( new Rect( 25, 125, 250, 250 ), "Nut Velocity: " + property_velocity.CurrentVelocity , style);
-		GUI.Label( new Rect( 25, 150, 250, 250 ), "Curreny: " + property_currency.SharedValue , style);
-		GUI.Label( new Rect( 25, 170, 250, 250 ), "Height: " + transform.position.y , style);
-	}
 #endif
 #endregion
 }

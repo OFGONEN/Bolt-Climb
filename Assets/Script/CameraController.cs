@@ -14,8 +14,8 @@ public class CameraController : MonoBehaviour
 
 // Private
     [ ShowInInspector, ReadOnly ] Transform target_transform;
-
     UnityMessage onUpdateMethod;
+	Vector3 target_offset;
 #endregion
 
 #region Properties
@@ -47,14 +47,13 @@ public class CameraController : MonoBehaviour
 
     public void OnLevelEndPath_Start()
     {
-		// target_offset  = target_transform.position - transform.position;
-		// onUpdateMethod = FollowTargetWithOffset;
-		onUpdateMethod = ExtensionMethods.EmptyMethod;
+		target_offset  = target_transform.InverseTransformPoint( transform.position );
+		onUpdateMethod = FollowTargetWithOffset;
 	}
 
     public void OnLevelEndPath_End()
     {
-		// onUpdateMethod = LookAtTarget;
+		onUpdateMethod = LookAtTarget;
     }
 #endregion
 
@@ -65,6 +64,22 @@ public class CameraController : MonoBehaviour
 		    position.y = Mathf.Lerp( position.y, target_transform.position.y, Time.deltaTime * Mathf.Abs( target_velocity.CurrentVelocity ) );
 
 		transform.position = position;
+	}
+
+	void FollowTargetWithOffset()
+	{
+		var targetPosition = target_transform.TransformPoint( target_offset );
+		var position = transform.position;
+		position.y = Mathf.Lerp( position.y, targetPosition.y, Time.deltaTime * Mathf.Abs( target_velocity.CurrentVelocity ) );
+		position.z = Mathf.Lerp( position.z, targetPosition.z, Time.deltaTime * Mathf.Abs( target_velocity.CurrentVelocity ) );
+
+		transform.position = position;
+		transform.LookAtAxis( target_transform.position, new Vector3( 1, 1, 0 ) );
+	}
+
+	void LookAtTarget()
+	{
+		transform.LookAtAxis( target_transform.position, new Vector3( 1, 0, 0 ) );
 	}
 #endregion
 

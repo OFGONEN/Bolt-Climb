@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1281734598124058752}
   - component: {fileID: 8003761836666991044}
   - component: {fileID: 7468054122208727039}
+  - component: {fileID: 7356251832148603345}
   m_Layer: 30
   m_Name: bolt_end
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   path_index: 0
   path_set: {fileID: 11400000, guid: 28e3faea870b84807b2df86acc92e09b, type: 2}
   path_points: []
+  notif_nut_transform: {fileID: 11400000, guid: 6de5a72449482470fa3b8e24c6185d8b, type: 2}
 --- !u!114 &1281734598124058752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +93,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7356251832148603345}
+        m_TargetAssemblyTypeName: BoltDetach, Assembly-CSharp
+        m_MethodName: DetachBolt
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   directional: 1
   direction: 1
 --- !u!65 &8003761836666991044
@@ -120,3 +134,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedReferenceProperty: {fileID: 11400000, guid: 157c677f8f78e49e881fd13209b9e0c2, type: 2}
   referenceComponent: {fileID: 4754492093186031520}
+--- !u!114 &7356251832148603345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9094376356477548414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fec88845a3d46428413e27b88c1712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bolt_connected: {fileID: 0}
