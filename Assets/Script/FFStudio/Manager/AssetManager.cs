@@ -52,7 +52,7 @@ namespace FFStudio
 
 			onAwake.Invoke();
 
-			notif_nut_height_last.SharedValue = PlayerPrefs.GetFloat( ExtensionMethods.nut_height, 0 );
+			notif_nut_height_last.SharedValue = PlayerPrefsUtility.Instance.GetFloat( ExtensionMethods.nut_height, 0 );
 		}
 
 		private void Start()

@@ -139,7 +139,7 @@ public class Nut : MonoBehaviour
 		component_movement.DoPath( gameEvent.eventValue, OnLevelEndPathComplete );
 
 		notif_nut_height_last.SharedValue = 0;
-		PlayerPrefs.SetFloat( ExtensionMethods.nut_height, 0 );
+		PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, 0 );
 	}
 #endregion
 
@@ -199,7 +199,7 @@ public class Nut : MonoBehaviour
 
 			var height = transform.position.y;
 			notif_nut_height_last.SharedValue = height;
-			PlayerPrefs.SetFloat( ExtensionMethods.nut_height, height );
+			PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, height );
 
 			DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, event_level_failed.Raise );
 		}

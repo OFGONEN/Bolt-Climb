@@ -34,6 +34,9 @@ namespace FFStudio
 		
 		private void Awake()
 		{
+			Application.targetFrameRate = 60;
+
+
 			loadNewLevelListener.response = LoadNewLevel;
 			resetLevelListener.response   = ResetLevel;
 		}
@@ -56,8 +59,8 @@ namespace FFStudio
 		
 		private IEnumerator LoadLevel()
 		{
-			CurrentLevelData.Instance.currentLevel_Real = PlayerPrefs.GetInt( "Level", 1 );
-			CurrentLevelData.Instance.currentLevel_Shown = PlayerPrefs.GetInt( "Consecutive Level", 1 );
+			CurrentLevelData.Instance.currentLevel_Real = PlayerPrefsUtility.Instance.GetInt( "Level", 1 );
+			CurrentLevelData.Instance.currentLevel_Shown = PlayerPrefsUtility.Instance.GetInt( "Consecutive Level", 1 );
 
 			CurrentLevelData.Instance.LoadCurrentLevelData();
 
@@ -80,8 +83,8 @@ namespace FFStudio
 		{
 			CurrentLevelData.Instance.currentLevel_Real++;
 			CurrentLevelData.Instance.currentLevel_Shown++;
-			PlayerPrefs.SetInt( "Level", CurrentLevelData.Instance.currentLevel_Real );
-			PlayerPrefs.SetInt( "Consecutive Level", CurrentLevelData.Instance.currentLevel_Shown );
+			PlayerPrefsUtility.Instance.SetInt( "Level", CurrentLevelData.Instance.currentLevel_Real );
+			PlayerPrefsUtility.Instance.SetInt( "Consecutive Level", CurrentLevelData.Instance.currentLevel_Shown );
 
 			var operation = SceneManager.UnloadSceneAsync( CurrentLevelData.Instance.levelData.scene_index );
 			operation.completed += ( AsyncOperation operation ) => StartCoroutine( LoadLevel() );
