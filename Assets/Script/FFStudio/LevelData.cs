@@ -14,7 +14,13 @@ namespace FFStudio
 	[ Title( "Setup" ) ]
 		[ ValueDropdown( "SceneList" ), LabelText( "Scene Index" ) ] public int scene_index;
         [ LabelText( "Override As Active Scene" ) ] public bool scene_overrideAsActiveScene;
-        [ LabelText( "Reset Incremental" ) ] public bool resetIncremental;
+
+	[ Title( "Incremental" ) ]
+		[ LabelText( "Velocity Incremental Cap" ) ] public int incremental_cap_velocity;
+		[ LabelText( "Durability Incremental Cap" ) ] public int incremental_cap_durability;
+        [ LabelText( "Set Incremental" ) ] public bool incremental_set;
+        [ LabelText( "Set Index of Velocity Incremental" ), ShowIf( "incremental_set" ) ] public int incremental_set_index_velocity;
+        [ LabelText( "Set Index of Durability Incremental" ), ShowIf( "incremental_set" ) ] public int incremental_set_index_durability;
 
 #if UNITY_EDITOR
 		private static IEnumerable SceneList()

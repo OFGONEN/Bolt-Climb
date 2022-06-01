@@ -63,12 +63,14 @@ namespace FFStudio
 			CurrentLevelData.Instance.currentLevel_Shown = PlayerPrefsUtility.Instance.GetInt( "Consecutive Level", 1 );
 
 			CurrentLevelData.Instance.LoadCurrentLevelData();
+
+			var levelData = CurrentLevelData.Instance.levelData;
 			
             // Reset incrementals
-            if( CurrentLevelData.Instance.levelData.resetIncremental && CurrentLevelData.Instance.currentLevel_Shown <= CurrentLevelData.Instance.currentLevel_Real )
+            if( levelData.incremental_set && CurrentLevelData.Instance.currentLevel_Shown <= CurrentLevelData.Instance.currentLevel_Real )
             {
-				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.velocity_index, 0 );
-				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.durability_index, 0 );
+				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.velocity_index, levelData.incremental_set_index_velocity  );
+				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.durability_index, levelData.incremental_set_index_durability );
 			}
 
 			// SceneManager.LoadScene( CurrentLevelData.Instance.levelData.sceneIndex, LoadSceneMode.Additive );

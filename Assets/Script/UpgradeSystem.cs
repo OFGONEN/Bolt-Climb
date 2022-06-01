@@ -102,12 +102,14 @@ public class UpgradeSystem : ScriptableObject
 
     bool CanShow_Durability()
     {
-		return PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.durability_index, 0 ) + 1 < incremental_durability.IncrementalCount;
+		var index = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.durability_index, 0 );
+		return index + 1 < incremental_durability.IncrementalCount && index + 1 < CurrentLevelData.Instance.levelData.incremental_cap_durability ;
 	}
 
     bool CanShow_Velocity()
     {
-		return PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.velocity_index, 0 ) + 1 < incremental_velocity.IncrementalCount;
+		var index = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.velocity_index, 0 );
+		return index + 1 < incremental_velocity.IncrementalCount && index + 1 < CurrentLevelData.Instance.levelData.incremental_cap_velocity;
     }
 
     bool CanShow_Currency()
