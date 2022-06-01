@@ -161,4 +161,11 @@ namespace FFStudio
 			FFLogger.Log( $"PlayerPrefs: Saved value \"{value}\" for key \"{key}\"." );
 		}
 	}
+
+	[ Serializable ]
+	public struct SkinData
+	{
+		public Mesh skin_mesh;
+		public Material skin_material;
+	}
 }
