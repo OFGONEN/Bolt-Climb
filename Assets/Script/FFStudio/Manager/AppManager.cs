@@ -63,6 +63,13 @@ namespace FFStudio
 			CurrentLevelData.Instance.currentLevel_Shown = PlayerPrefsUtility.Instance.GetInt( "Consecutive Level", 1 );
 
 			CurrentLevelData.Instance.LoadCurrentLevelData();
+			
+            // Reset incrementals
+            if( CurrentLevelData.Instance.levelData.resetIncremental && CurrentLevelData.Instance.currentLevel_Shown <= CurrentLevelData.Instance.currentLevel_Real )
+            {
+				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.velocity_index, 0 );
+				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.durability_index, 0 );
+			}
 
 			// SceneManager.LoadScene( CurrentLevelData.Instance.levelData.sceneIndex, LoadSceneMode.Additive );
 			var operation = SceneManager.LoadSceneAsync( CurrentLevelData.Instance.levelData.scene_index, LoadSceneMode.Additive );
