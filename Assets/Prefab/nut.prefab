@@ -97,6 +97,7 @@ MonoBehaviour:
   level_progress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
   notif_nut_height: {fileID: 11400000, guid: 3cfa3a506ce234608a278dcdb17f3691, type: 2}
   notif_nut_height_last: {fileID: 11400000, guid: 3f87014a0b8f84245bf040204bbf63a9, type: 2}
+  library_skin: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   component_movement: {fileID: -5209316146565418335}
   component_animation: {fileID: 7951004504424403168}
   property_velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
@@ -106,6 +107,8 @@ MonoBehaviour:
   component_collider: {fileID: 4430853468833506475}
   component_rust_setter: {fileID: 1581580750663043904}
   particle_carving: {fileID: 4276529786295941731}
+  component_mesh_filter: {fileID: 7140077399990340980}
+  component_mesh_renderer: {fileID: 4968123332150491582}
   particle_nut_lowDurability: {fileID: 2644714413687933006}
 --- !u!114 &5320940782767535230
 MonoBehaviour:
@@ -465,6 +468,11 @@ MeshRenderer:
 --- !u!4 &6105048232473592529 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6656968020946533468, guid: a1eb56c0731e04868a540b86bc6a0ab2, type: 3}
+  m_PrefabInstance: {fileID: 638156688759733901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &7140077399990340980 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 7768030616547243001, guid: a1eb56c0731e04868a540b86bc6a0ab2, type: 3}
   m_PrefabInstance: {fileID: 638156688759733901}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3824180896739422826
