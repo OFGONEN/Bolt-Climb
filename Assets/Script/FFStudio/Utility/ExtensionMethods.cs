@@ -14,7 +14,9 @@ namespace FFStudio
 		public static string currency         = "currency";
 		public static string currency_index   = "currency_index";
 		public static string durability_index = "durability_index";
+		public static string durability_index_visual = "durability_index_visual";
 		public static string velocity_index   = "velocity_index";
+		public static string velocity_index_visual = "velocity_index_visual";
 		public static string nut_height       = "height";
 
 		//Static Variables
