@@ -9,48 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/app.unity
     guid: ad0d37aebbbd4c54396618f1c151ebb7
   - enabled: 1
-    path: Assets/Scenes/game_1_a.unity
-    guid: 7a62858bc24e4f94985de55d651f56e8
+    path: Assets/Scenes/game_2_a.unity
+    guid: 70b53b34c4eb8d04f88fce2b33dd25ab
   - enabled: 1
-    path: Assets/Scenes/game_1_b.unity
-    guid: ddcbdd01ba1eaab47be96c99ca15b9cf
+    path: Assets/Scenes/game_2_b.unity
+    guid: 0977e13473743104597e97ca5109d027
   - enabled: 1
-    path: Assets/Scenes/game_1_c.unity
-    guid: be461303af2ede04b846b0652014aa22
+    path: Assets/Scenes/game_2_c.unity
+    guid: d759cf5a9b5718847a70519ae428a68e
   - enabled: 1
-    path: Assets/Scenes/game_1_d.unity
-    guid: d59d1a67228ae754cb2b8860d5390343
+    path: Assets/Scenes/game_2_d.unity
+    guid: b78a08956275e494db8365843c2c3691
   - enabled: 1
-    path: Assets/Scenes/game_1_e.unity
-    guid: aea4c578063483a49b10ce166ca2f204
+    path: Assets/Scenes/game_2_e.unity
+    guid: a7f019f925ed4d24fb7967d925a58f6e
   - enabled: 1
-    path: Assets/Scenes/game_1_f.unity
-    guid: 801ec8de6f244124e9f58420f0f9ac38
-  - enabled: 1
-    path: Assets/Scenes/game_1_g.unity
-    guid: a2a678ddc0132d340aa429c09f0b5a70
-  - enabled: 1
-    path: Assets/Scenes/game_1_h.unity
-    guid: fe3c72fc6771d24478dfd5b9157d3b4f
-  - enabled: 1
-    path: Assets/Scenes/game_1_i.unity
-    guid: dfeb67f330bfb464da54969c355fee63
-  - enabled: 1
-    path: Assets/Scenes/game_1_j.unity
-    guid: 079b04ae6950e8e4abd6c01871d4fb00
-  - enabled: 1
-    path: Assets/Scenes/game_1_k.unity
-    guid: 43efbccf593a266479fe41ab2cedcebe
-  - enabled: 1
-    path: Assets/Scenes/game_1_l.unity
-    guid: 8ee0f605a67297e4ab428eee3b08d90d
-  - enabled: 1
-    path: Assets/Scenes/game_1_m.unity
-    guid: 79dbc7da15121af42934af1c2b411e0d
-  - enabled: 1
-    path: Assets/Scenes/game_1_n.unity
-    guid: 17b1eef7c7574794ba6e6e7b2007eb09
-  - enabled: 1
-    path: Assets/Scenes/game_1_o.unity
-    guid: 98ccf274ba9f6184984e9b98df8ad9ed
+    path: Assets/Scenes/test.unity
+    guid: 99003f9f9eb5b0a409e7092a7a458105
   m_configObjects: {}
