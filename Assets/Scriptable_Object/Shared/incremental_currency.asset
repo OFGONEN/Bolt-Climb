@@ -14,37 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incremental_data:
   - incremental_cost: 27
-    incremental_currency_value: 0.5
+    incremental_currency_value: 0.8
     incremental_currency_rate: 0.2
-  - incremental_cost: 30
-    incremental_currency_value: 0.55
+  - incremental_cost: 25
+    incremental_currency_value: 1
     incremental_currency_rate: 0.2
-  - incremental_cost: 45
-    incremental_currency_value: 0.6
+  - incremental_cost: 40
+    incremental_currency_value: 1.25
     incremental_currency_rate: 0.2
   - incremental_cost: 60
-    incremental_currency_value: 0.65
+    incremental_currency_value: 1.5
     incremental_currency_rate: 0.2
   - incremental_cost: 80
-    incremental_currency_value: 0.75
-    incremental_currency_rate: 0.2
-  - incremental_cost: 90
-    incremental_currency_value: 0.85
-    incremental_currency_rate: 0.2
-  - incremental_cost: 120
-    incremental_currency_value: 0.95
-    incremental_currency_rate: 0.2
-  - incremental_cost: 150
-    incremental_currency_value: 1.1
-    incremental_currency_rate: 0.2
-  - incremental_cost: 210
-    incremental_currency_value: 1.4
-    incremental_currency_rate: 0.2
-  - incremental_cost: 270
     incremental_currency_value: 1.8
     incremental_currency_rate: 0.2
-  - incremental_cost: 350
+  - incremental_cost: 90
     incremental_currency_value: 2
+    incremental_currency_rate: 0.2
+  - incremental_cost: 120
+    incremental_currency_value: 1.4
+    incremental_currency_rate: 0.2
+  - incremental_cost: 150
+    incremental_currency_value: 1.6
+    incremental_currency_rate: 0.2
+  - incremental_cost: 210
+    incremental_currency_value: 1.8
+    incremental_currency_rate: 0.2
+  - incremental_cost: 270
+    incremental_currency_value: 2
+    incremental_currency_rate: 0.2
+  - incremental_cost: 350
+    incremental_currency_value: 2.2
     incremental_currency_rate: 0.2
   - incremental_cost: 425
     incremental_currency_value: 2.4
