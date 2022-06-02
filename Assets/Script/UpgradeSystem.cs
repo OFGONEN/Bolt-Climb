@@ -114,7 +114,8 @@ public class UpgradeSystem : ScriptableObject
 
     bool CanShow_Currency()
     {
-		return PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.currency_index, 0 ) + 1 < incremental_currency.IncrementalCount;
+		var index = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.currency_index, 0 );
+		return index + 1 < incremental_currency.IncrementalCount && index + 1 < CurrentLevelData.Instance.levelData.incremental_cap_currency;
     }
 #endregion
 
