@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10fe72393c44d354b9a17cc1ba52195e, type: 3}
   m_Name: level_creator
   m_EditorClassIdentifier: 
-  level_code: b3s4c0s5c1s2e0
-  level_start_bolt_length: 3
-  level_start_bolt_space: 1
+  level_code: e3
+  level_start_bolt_length: 60
+  level_start_bolt_space: 0
   prefab_bolt_model: {fileID: 1063151217951837440, guid: 0e7785d29aa454ad19d728a5fb2f37de, type: 3}
   prefab_bolt: {fileID: 3224905004853089646, guid: 66345a6b8558e4eed8fe462275939e1d, type: 3}
   prefab_bolt_start: {fileID: 8790097260034345890, guid: d1e0b511b41eb4b4f9c8cf7e96e2c59c, type: 3}
@@ -33,5 +33,5 @@ MonoBehaviour:
   - {x: 0, y: 8, z: 15}
   - {x: 0, y: 18, z: 25}
   - {x: 0, y: 28, z: 35}
-  - {x: 0, y: 2.5, z: 10}
+  - {x: 0, y: 2.25, z: 10}
   prefab_finishLine: {fileID: 2340585009260439847, guid: b98a8a8b73e9447ce9b8cc3b1224938b, type: 3}
