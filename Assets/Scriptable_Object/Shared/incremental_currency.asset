@@ -38,22 +38,22 @@ MonoBehaviour:
     incremental_currency_value: 3
     incremental_currency_rate: 0.2
   - incremental_cost: 420
-    incremental_currency_value: 3.3
-    incremental_currency_rate: 0.2
-  - incremental_cost: 475
-    incremental_currency_value: 3.5
-    incremental_currency_rate: 0.2
-  - incremental_cost: 550
-    incremental_currency_value: 3.75
-    incremental_currency_rate: 0.2
-  - incremental_cost: 425
     incremental_currency_value: 4
     incremental_currency_rate: 0.2
-  - incremental_cost: 500
-    incremental_currency_value: 2.7
+  - incremental_cost: 475
+    incremental_currency_value: 4.5
     incremental_currency_rate: 0.2
-  - incremental_cost: 600
-    incremental_currency_value: 3
+  - incremental_cost: 550
+    incremental_currency_value: 5
+    incremental_currency_rate: 0.2
+  - incremental_cost: 700
+    incremental_currency_value: 5.75
+    incremental_currency_rate: 0.2
+  - incremental_cost: 900
+    incremental_currency_value: 6.25
+    incremental_currency_rate: 0.2
+  - incremental_cost: 1200
+    incremental_currency_value: 7
     incremental_currency_rate: 0.2
   - incremental_cost: 700
     incremental_currency_value: 3.5
