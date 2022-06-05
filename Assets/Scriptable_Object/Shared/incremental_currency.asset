@@ -55,14 +55,14 @@ MonoBehaviour:
   - incremental_cost: 1200
     incremental_currency_value: 7
     incremental_currency_rate: 0.2
-  - incremental_cost: 700
-    incremental_currency_value: 3.5
+  - incremental_cost: 1500
+    incremental_currency_value: 8
     incremental_currency_rate: 0.2
-  - incremental_cost: 850
-    incremental_currency_value: 4
+  - incremental_cost: 1800
+    incremental_currency_value: 9
     incremental_currency_rate: 0.2
-  - incremental_cost: 1000
-    incremental_currency_value: 4.6
+  - incremental_cost: 2100
+    incremental_currency_value: 10
     incremental_currency_rate: 0.2
   - incremental_cost: 1200
     incremental_currency_value: 5.2

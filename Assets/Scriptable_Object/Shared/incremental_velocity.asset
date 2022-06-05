@@ -94,27 +94,27 @@ MonoBehaviour:
     incremental_velocity_min: -7.5
     incremental_velocity_decrease: 6.5
   - incremental_cost: 1000
-    incremental_velocity_max: 1
-    incremental_velocity_max_duration: 2.36
-    incremental_velocity_min: -10
-    incremental_velocity_decrease: 9
-  - incremental_cost: 1400
-    incremental_velocity_max: 10.5
-    incremental_velocity_max_duration: 2.45
-    incremental_velocity_min: -10.5
-    incremental_velocity_decrease: 9.5
+    incremental_velocity_max: 4.25
+    incremental_velocity_max_duration: 1.3
+    incremental_velocity_min: -4.25
+    incremental_velocity_decrease: 3.25
+  - incremental_cost: 1200
+    incremental_velocity_max: 5.5
+    incremental_velocity_max_duration: 1.7
+    incremental_velocity_min: -5.5
+    incremental_velocity_decrease: 4.5
   - incremental_cost: 1600
-    incremental_velocity_max: 11
-    incremental_velocity_max_duration: 2.53
-    incremental_velocity_min: -11
-    incremental_velocity_decrease: 10
+    incremental_velocity_max: 7
+    incremental_velocity_max_duration: 2
+    incremental_velocity_min: -7
+    incremental_velocity_decrease: 6
   - incremental_cost: 2000
-    incremental_velocity_max: 11.5
-    incremental_velocity_max_duration: 2.62
-    incremental_velocity_min: -11.5
-    incremental_velocity_decrease: 10.5
+    incremental_velocity_max: 9
+    incremental_velocity_max_duration: 3
+    incremental_velocity_min: -9
+    incremental_velocity_decrease: 8
   - incremental_cost: 2400
-    incremental_velocity_max: 12
+    incremental_velocity_max: 1
     incremental_velocity_max_duration: 2.7
     incremental_velocity_min: -12
     incremental_velocity_decrease: 11
