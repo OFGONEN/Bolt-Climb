@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d764a1d95d540a182654f7fd1c0bf2, type: 3}
   m_Name: skill_system
   m_EditorClassIdentifier: 
-  skill_currency_on_newBolt: {fileID: 0}
+  skill_currency_on_newBolt: {fileID: 11400000, guid: 227b03b0befc745598e099054479b80e, type: 2}
   skill_currency_on_maxSpeed: {fileID: 0}
   skill_currency_on_air: {fileID: 0}
-  skill_durability_on_newBolt: {fileID: 0}
+  skill_durability_on_newBolt: {fileID: 11400000, guid: 2d5669698d48247e7a94e1f17d8ed7fe, type: 2}
   skill_durability_on_maxSpeed: {fileID: 0}
   skill_durability_on_path: {fileID: 0}
-  skill_speed_on_newBolt: {fileID: 0}
-  skill_speed_gravity: {fileID: 0}
-  skill_speed_path: {fileID: 0}
+  skill_velocity_on_newBolt: {fileID: 11400000, guid: dbb23fdf78e984d55bbf7c93d990805a, type: 2}
+  skill_velocity_gravity: {fileID: 0}
+  skill_velocity_path: {fileID: 0}
   skill_lastChance_doubleJump: {fileID: 0}
   skill_lastChance_Shatter: {fileID: 0}
   property_currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   property_durability: {fileID: 11400000, guid: 559a1ceb3fc238a4cbe24c988c1e575d, type: 2}
   property_velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
+  skill_currency_on_newBolt_color: {r: 0.7924528, g: 0.508303, b: 0, a: 1}
+  skill_currency_on_newBolt_size: {x: 3, y: 5}

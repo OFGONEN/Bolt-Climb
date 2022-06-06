@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6071c5715ab604ff6a8b0fe31c5df446, type: 3}
-  m_Name: skill_currency_0
+  m_Name: skill_currency_on_newBolt
   m_EditorClassIdentifier: 
-  skill_values: []
+  skill_value_array:
+  - value: 100
+    cost: 1
+  skill_value_default: 0
   skill_texture: {fileID: 0}
   skill_description: 
-  skill_key: 
-  skill_OnUnlock:
-    m_PersistentCalls:
-      m_Calls: []
+  skill_key: skill_currency_on_newBolt
