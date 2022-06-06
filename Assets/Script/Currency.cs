@@ -41,6 +41,12 @@ public class Currency : SharedFloatNotifier
 		}
     }
 
+	public void OnIncrease( float value )
+	{
+		SharedValue += value;
+		pool_currency_ui.GetEntity().Spawn( $"+{value}"); // Spawn currency ui
+	}
+
     public void OnDecrease( float amount )
     {
 		SharedValue = Mathf.Max( 0, sharedValue - amount );
