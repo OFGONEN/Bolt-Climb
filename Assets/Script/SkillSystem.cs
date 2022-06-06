@@ -63,6 +63,15 @@ public class SkillSystem : ScriptableObject
         if( skill_velocity_on_newBolt.IsUnlocked )
 			property_velocity.OnAcceleration( skill_velocity_on_newBolt.Value );
 	}
+
+    public void OnMaxSpeed()
+    {
+        if( skill_currency_on_maxSpeed.IsUnlocked )
+			property_currency.OnIncrease( skill_currency_on_maxSpeed.Value, skill_currency_on_newBolt_color, skill_currency_on_newBolt_size );
+
+        if( skill_durability_on_maxSpeed.IsUnlocked )
+			property_durability.OnIncrease( skill_durability_on_maxSpeed.Value );
+	}
 #endregion
 
 #region Implementation
