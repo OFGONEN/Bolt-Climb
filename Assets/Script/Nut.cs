@@ -15,6 +15,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] SharedReferenceNotifier notif_bolt_end;
 	[ SerializeField ] GameEvent event_level_failed;
 	[ SerializeField ] GameEvent event_level_completed;
+	[ SerializeField ] GameEvent event_curvedPath_end;
 	[ SerializeField ] GameEvent event_path_end;
 	[ SerializeField ] SharedFloatNotifier level_progress;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height;
@@ -157,6 +158,7 @@ public class Nut : MonoBehaviour
 	void OnPathComplete()
 	{
 		onPath = false;
+		event_curvedPath_end.Raise();
 
 		particle_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
 
