@@ -52,6 +52,14 @@ public class Durability : ScriptableObject
 		volume_vignette.intensity.value = GameSettings.Instance.postProcess_vignette_intencity.ReturnProgressInverse( DurabilityRatio );
 	}
 
+    public void OnIncrease( float value )
+    {
+		durability_current          += value;
+		durability_current_capacity += value;
+
+		volume_vignette.intensity.value = GameSettings.Instance.postProcess_vignette_intencity.ReturnProgressInverse( DurabilityRatio );
+	}
+
     public void OnDecrease()
     {
 		durability_current = Mathf.Max( 

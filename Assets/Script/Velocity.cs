@@ -47,6 +47,16 @@ public class Velocity : ScriptableObject
 			event_velocity_maxSpeed.Raise();
 	}
 
+    public void OnAcceleration( float value )
+    {
+		velocity_current = Mathf.Max( 0, velocity_current );;
+
+		velocity_current = Mathf.Min( 
+			velocity_data.incremental_velocity_max, 
+			velocity_current + value 
+		);
+	}
+
     public void OnDeceleration()
     {
 		velocity_current = Mathf.Max( 
