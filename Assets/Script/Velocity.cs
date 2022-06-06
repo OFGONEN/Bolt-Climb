@@ -12,6 +12,7 @@ public class Velocity : ScriptableObject
 #region Fields
     // Private
 	[ SerializeField ] IncrementalVelocity velocity_incremental;
+	[ SerializeField ] SharedFloat shared_velocity_gravity;
 	[ SerializeField ] GameEvent event_velocity_maxSpeed;
 	[ ShowInInspector, ReadOnly ] IncrementalVelocityData velocity_data;
 	[ ShowInInspector, ReadOnly ] float velocity_current;
@@ -49,7 +50,7 @@ public class Velocity : ScriptableObject
     public void OnDeceleration()
     {
 		velocity_current = Mathf.Max( 
-            velocity_current - Time.deltaTime * velocity_data.incremental_velocity_decrease,
+            velocity_current - Time.deltaTime * velocity_data.incremental_velocity_decrease * shared_velocity_gravity.sharedValue,
             velocity_data.incremental_velocity_min
         );
     }

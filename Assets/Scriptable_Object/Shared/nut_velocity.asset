@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: nut_velocity
   m_EditorClassIdentifier: 
   velocity_incremental: {fileID: 11400000, guid: 6b8daa1d848ee4b59a3c3d628379ea53, type: 2}
+  shared_velocity_gravity: {fileID: 11400000, guid: 0f5c88fc849d643aa955acb7c39f4ff5, type: 2}
   event_velocity_maxSpeed: {fileID: 11400000, guid: d5da994803a0e4c10ab196c5829b58f0, type: 2}
