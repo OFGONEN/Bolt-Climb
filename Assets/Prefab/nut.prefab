@@ -278,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path_Set: {fileID: 11400000, guid: 28e3faea870b84807b2df86acc92e09b, type: 2}
   velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
+  shared_velocity_pathSpeed: {fileID: 11400000, guid: 7770dd20da92940f6912c69ab2aece50, type: 2}
   transform_movement: {fileID: 5919801855808585662}
   transform_rotate: {fileID: 2803611756271641150}
 --- !u!114 &5520294727583239052

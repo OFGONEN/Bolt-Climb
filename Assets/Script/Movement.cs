@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
   [ Title( "Shared Variables" ) ]
 	[ SerializeField ] private MovementPath_Set path_Set;
 	[ SerializeField ] private Velocity velocity;
+	[ SerializeField ] private SharedFloat shared_velocity_pathSpeed;
 
   [ Title( "Setup" ) ]
 	[ SerializeField ] private Transform transform_movement;
@@ -45,7 +46,7 @@ public class Movement : MonoBehaviour
 			return;
 		}
 #endif
-		pathTween = transform_movement.DOPath( pathPoints, velocity.CurrentVelocity, PathType.Linear )
+		pathTween = transform_movement.DOPath( pathPoints, Mathf.Max( GameSettings.Instance.movement_pathSpeed_minumum, velocity.CurrentVelocity * shared_velocity_pathSpeed.sharedValue ), PathType.Linear )
 		.SetLookAt( 0 )
 		.SetSpeedBased()
 		// .SetRelative()
