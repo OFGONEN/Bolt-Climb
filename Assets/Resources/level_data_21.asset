@@ -17,6 +17,6 @@ MonoBehaviour:
   incremental_cap_velocity: 100
   incremental_cap_durability: 100
   incremental_cap_currency: 100
-  incremental_set: 0
+  incremental_set: 1
   incremental_set_index_velocity: 20
   incremental_set_index_durability: 20

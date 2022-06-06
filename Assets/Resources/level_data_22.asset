@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea3c0b9fd00fd441b6cebc5941ee13b, type: 3}
-  m_Name: level_data_10
+  m_Name: level_data_22
   m_EditorClassIdentifier: 
-  scene_index: 10
+  scene_index: 22
   scene_overrideAsActiveScene: 0
-  incremental_cap_velocity: 12
-  incremental_cap_durability: 12
-  incremental_cap_currency: 12
+  incremental_cap_velocity: 24
+  incremental_cap_durability: 24
+  incremental_cap_currency: 24
   incremental_set: 0
-  incremental_set_index_velocity: 0
-  incremental_set_index_durability: 0
+  incremental_set_index_velocity: 20
+  incremental_set_index_durability: 20

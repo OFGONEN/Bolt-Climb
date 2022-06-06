@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene_index: 18
   scene_overrideAsActiveScene: 0
-  incremental_cap_velocity: 100
-  incremental_cap_durability: 100
-  incremental_cap_currency: 100
+  incremental_cap_velocity: 20
+  incremental_cap_durability: 20
+  incremental_cap_currency: 20
   incremental_set: 0
   incremental_set_index_velocity: 16
   incremental_set_index_durability: 16
