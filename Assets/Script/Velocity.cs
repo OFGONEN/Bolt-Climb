@@ -12,6 +12,7 @@ public class Velocity : ScriptableObject
 #region Fields
     // Private
 	[ SerializeField ] IncrementalVelocity velocity_incremental;
+	[ SerializeField ] GameEvent event_velocity_maxSpeed;
 	[ ShowInInspector, ReadOnly ] IncrementalVelocityData velocity_data;
 	[ ShowInInspector, ReadOnly ] float velocity_current;
 
@@ -40,6 +41,9 @@ public class Velocity : ScriptableObject
 			velocity_data.incremental_velocity_max, 
 			velocity_current + Time.deltaTime * velocity_data.incremental_velocity_max / velocity_data.incremental_velocity_max_duration 
 		);
+
+        if( Mathf.Approximately( velocity_current, velocity_data.incremental_velocity_max ) )
+			event_velocity_maxSpeed.Raise();
 	}
 
     public void OnDeceleration()

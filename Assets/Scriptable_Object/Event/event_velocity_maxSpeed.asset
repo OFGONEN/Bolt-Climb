@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c09a1a5dab6f841489959e2f09c0ecf4, type: 3}
-  m_Name: nut_velocity
+  m_Script: {fileID: 11500000, guid: a2c4e783e43fe4f4fa08e6785f264a60, type: 3}
+  m_Name: event_velocity_maxSpeed
   m_EditorClassIdentifier: 
-  velocity_incremental: {fileID: 11400000, guid: 6b8daa1d848ee4b59a3c3d628379ea53, type: 2}
-  event_velocity_maxSpeed: {fileID: 11400000, guid: d5da994803a0e4c10ab196c5829b58f0, type: 2}
+  canRaiseOtherEvents: 0
+  eventsThatWillAlsoBeRaised: []
