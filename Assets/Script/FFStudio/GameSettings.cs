@@ -14,9 +14,7 @@ namespace FFStudio
         [ BoxGroup( "Game" ) ] public int game_level_count = 20;
         [ BoxGroup( "Game" ) ] public float game_tutorial_timeScale = 0.25f;
         [ BoxGroup( "Game" ) ] public Vector2 postProcess_vignette_intencity;
-        [ BoxGroup( "Game" ) ] public Vector2 shader_range_rust;
-        [ BoxGroup( "Game" ) ] public Color shader_range_color_start;
-        [ BoxGroup( "Game" ) ] public Color shader_range_color_end;
+        [ BoxGroup( "Game" ) ] public Vector2 shader_range_crack = new Vector2( 0, 1 );
 
         [ BoxGroup( "Bolt" ) ] public int bolt_batch = 3;
         [ BoxGroup( "Bolt" ) ] public float bolt_height = 0.5f;
