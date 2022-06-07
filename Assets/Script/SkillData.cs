@@ -41,7 +41,7 @@ public class SkillData : ScriptableObject
 	[ Button() ]
 	public void Unlock()
 	{
-		skill_index = 0;
+		skill_index = Mathf.Clamp( skill_index + 1, 0, skill_value_array.Length - 1 );
 		PlayerPrefsUtility.Instance.SetInt( skill_key, skill_index );
 		currency.SharedValue -= Cost;
 	}
