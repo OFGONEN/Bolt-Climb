@@ -97,7 +97,7 @@ public class UICurrency : MonoBehaviour
 		sequence.OnComplete( OnSpawnComplete );
 	}
 
-	public void Spawn( Color color, Vector2 size )
+	public void Spawn( Color color, Vector2 size, float heightModifier = 1 )
 	{
 		var nutTransform  = notif_nut_reference.SharedValue as Transform;
 
@@ -112,7 +112,7 @@ public class UICurrency : MonoBehaviour
 
 		var random = new Vector3(
 			Random.Range( -spawn_random_lateral, spawn_random_lateral ),
-			Random.Range( 0, spawn_random_height ),
+			Random.Range( 0, spawn_random_height * heightModifier ),
 			0
 		);
 
