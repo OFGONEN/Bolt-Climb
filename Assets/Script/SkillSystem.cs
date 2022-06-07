@@ -39,6 +39,10 @@ public class SkillSystem : ScriptableObject
   [ FoldoutGroup( "Last Chance Skills" ) ]
     [ SerializeField ] SkillData skill_lastChance_doubleJump;
     [ SerializeField ] SkillData skill_lastChance_Shatter;
+
+
+// Delegates
+	UnityMessage onUpdate_NutPath;
 #endregion
 
 #region Properties
@@ -47,20 +51,27 @@ public class SkillSystem : ScriptableObject
 #region Unity API
     public void OnAwake()
     {
+		onUpdate_NutPath = ExtensionMethods.EmptyMethod;
+	}
 
-    }
 #endregion
 
 #region API
+	public void OnLevel_Finished()
+	{
+		onUpdate_NutPath = ExtensionMethods.EmptyMethod;
+	}
+
 	public void OnLevel_Revealed()
 	{
-		FFLogger.Log( "Revealed" );
-
 		if( skill_velocity_gravity.IsUnlocked )
 			shared_velocity_gravity.sharedValue = skill_velocity_gravity.Value;
 		
 		if( skill_velocity_path.IsUnlocked )
 			shared_velocity_pathSpeed.sharedValue = skill_velocity_path.Value;
+
+		if( skill_durability_on_path.IsUnlocked )
+			onUpdate_NutPath = Nut_PathUpdate;
 	}
 
     public void OnNutAttachedBolt()
@@ -69,7 +80,7 @@ public class SkillSystem : ScriptableObject
 			property_currency.OnIncrease( skill_currency_on_newBolt.Value, skill_currency_on_newBolt_color, skill_currency_on_newBolt_size );
 
         if( skill_durability_on_newBolt.IsUnlocked )
-			property_durability.OnIncrease( skill_durability_on_newBolt.Value );
+			property_durability.OnIncreaseCapacity( skill_durability_on_newBolt.Value );
 
         if( skill_velocity_on_newBolt.IsUnlocked )
 			property_velocity.OnAcceleration( skill_velocity_on_newBolt.Value );
@@ -81,11 +92,20 @@ public class SkillSystem : ScriptableObject
 			property_currency.OnIncrease( skill_currency_on_maxSpeed.Value, skill_currency_on_newBolt_color, skill_currency_on_newBolt_size );
 
         if( skill_durability_on_maxSpeed.IsUnlocked )
-			property_durability.OnIncrease( skill_durability_on_maxSpeed.Value );
+			property_durability.OnIncreaseCapacity( skill_durability_on_maxSpeed.Value );
+	}
+
+	public void OnNut_PathUpdate()
+	{
+		onUpdate_NutPath();
 	}
 #endregion
 
 #region Implementation
+	void Nut_PathUpdate()
+	{
+		property_durability.OnIncrease( skill_durability_on_path.Value );
+	}
 #endregion
 
 #region Editor Only

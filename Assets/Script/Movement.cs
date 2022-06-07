@@ -11,13 +11,14 @@ public class Movement : MonoBehaviour
 {
 #region Fields
   [ Title( "Shared Variables" ) ]
-	[ SerializeField ] private MovementPath_Set path_Set;
-	[ SerializeField ] private Velocity velocity;
-	[ SerializeField ] private SharedFloat shared_velocity_pathSpeed;
+	[ SerializeField ] MovementPath_Set path_Set;
+	[ SerializeField ] Velocity velocity;
+	[ SerializeField ] SharedFloat shared_velocity_pathSpeed;
+	[ SerializeField ] GameEvent event_nut_path_update;
 
   [ Title( "Setup" ) ]
-	[ SerializeField ] private Transform transform_movement;
-	[ SerializeField ] private Transform transform_rotate;
+	[ SerializeField ] Transform transform_movement;
+	[ SerializeField ] Transform transform_rotate;
 
 	// Private
 	Tween pathTween;
@@ -50,7 +51,7 @@ public class Movement : MonoBehaviour
 		.SetLookAt( 0 )
 		.SetSpeedBased()
 		// .SetRelative()
-		.OnUpdate( DoRotate )
+		.OnUpdate( OnPathUpdate )
 		.SetEase( Ease.Linear )
 		.OnComplete( onPathComplete );
 	}
@@ -80,6 +81,12 @@ public class Movement : MonoBehaviour
 #endregion
 
 #region Implementation
+	void OnPathUpdate()
+	{
+		DoRotate();
+		event_nut_path_update.Raise();
+	}
+
 	void DoRotate()
 	{
 		transform_rotate.Rotate( Vector3.up * velocity.CurrentVelocity * Time.deltaTime * GameSettings.Instance.movement_rotation_cofactor , Space.Self );
