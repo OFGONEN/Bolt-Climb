@@ -75,6 +75,11 @@ public class Velocity : ScriptableObject
     {
 		velocity_current = Mathf.Max( GameSettings.Instance.movement_launchSpeed_minumum , velocity_current );
 	}
+
+	public void ZeroOutVelocity()
+	{
+		velocity_current = 0;
+	}
 #endregion
 
 #region Implementation

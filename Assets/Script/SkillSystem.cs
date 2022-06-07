@@ -134,6 +134,7 @@ public class SkillSystem : ScriptableObject
 		if( skill_lastChance_Shatter.IsUnlocked )
 		{
 			FFLogger.Log( "Delay Shatter" );
+			property_velocity.ZeroOutVelocity();
 			property_velocity.OnAcceleration( skill_lastChance_Shatter.Value );
 			DOVirtual.DelayedCall( skill_lastChange_shatter_duration, event_nut_shatter.Raise );
 		}
