@@ -125,8 +125,8 @@ public class UICurrency : MonoBehaviour
 		var sequence = recycledSequence.Recycle();
 
 		sequence.Append( transform.DOMove( nutPosition, spawn_duration ).SetEase( spawn_movement_ease ) );
-		sequence.Join( transform.DOScale( Vector3.one * random_size_end.ReturnRandom(), spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
-		sequence.Append( transform.DOScale( Vector3.one , spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
+		// sequence.Join( transform.DOScale( Vector3.one * random_size_end.ReturnRandom(), spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
+		// sequence.Append( transform.DOScale( Vector3.one , spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
 		sequence.Append( text_currency.DOFade( 0, fade_duration ).SetEase( spawn_fade_ease ) );
 
 		sequence.OnComplete( OnSpawnComplete );
