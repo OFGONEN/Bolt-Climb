@@ -19,6 +19,8 @@ public class Velocity : ScriptableObject
 
     // Properties
     public float CurrentVelocity => velocity_current;
+
+	bool velocity_maxSpeed;
 #endregion
 
 #region Properties
@@ -43,8 +45,12 @@ public class Velocity : ScriptableObject
 			velocity_current + Time.deltaTime * velocity_data.incremental_velocity_max / velocity_data.incremental_velocity_max_duration 
 		);
 
-        if( Mathf.Approximately( velocity_current, velocity_data.incremental_velocity_max ) )
+		var maxSpeed = Mathf.Approximately( velocity_current, velocity_data.incremental_velocity_max );
+
+		if( maxSpeed && !velocity_maxSpeed )
 			event_velocity_maxSpeed.Raise();
+
+		velocity_maxSpeed = maxSpeed;
 	}
 
     public void OnAcceleration( float value )
