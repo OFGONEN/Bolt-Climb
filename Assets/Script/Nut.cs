@@ -15,7 +15,10 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] SharedReferenceNotifier notif_bolt_end;
 	[ SerializeField ] GameEvent event_level_failed;
 	[ SerializeField ] GameEvent event_level_completed;
+	[ SerializeField ] GameEvent event_curvedPath_end;
 	[ SerializeField ] GameEvent event_path_end;
+	[ SerializeField ] GameEvent event_nut_air_update;
+	[ SerializeField ] GameEvent event_durability_deplated;
 	[ SerializeField ] SharedFloatNotifier level_progress;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height_last;
@@ -45,17 +48,27 @@ public class Nut : MonoBehaviour
 	UnityMessage onFingerDown;
 	UnityMessage onFingerUp;
 	UnityMessage onLevelProgress;
+	UnityMessage onUpdate_Air;
+	UnityMessage_Bool onNut_IsOnBoltChange;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		onLevelProgress = ExtensionMethods.EmptyMethod;
+	}
+
 	private void Awake()
 	{
-		onUpdateMethod  = ExtensionMethods.EmptyMethod;
-		onFingerDown    = ExtensionMethods.EmptyMethod;
-		onFingerUp      = ExtensionMethods.EmptyMethod;
+		onUpdateMethod       = ExtensionMethods.EmptyMethod;
+		onFingerDown         = ExtensionMethods.EmptyMethod;
+		onFingerUp           = ExtensionMethods.EmptyMethod;
+		onUpdate_Air         = ExtensionMethods.EmptyMethod;
+		onNut_IsOnBoltChange = NutOnBoltChange;
+
 		onLevelProgress = UpdateLevelProgress;
 
 		OnSkin_Changed();
@@ -110,19 +123,7 @@ public class Nut : MonoBehaviour
 
 	public void OnIsNutOnBoltChange( bool value )
 	{
-		if( value )
-			onFingerDown = OnFingerDown_StraightBolt;
-		else
-		{
-
-			onFingerDown   = ExtensionMethods.EmptyMethod;
-			onFingerUp     = ExtensionMethods.EmptyMethod;
-
-			if( onPath )
-				onUpdateMethod = ExtensionMethods.EmptyMethod;
-			else
-				onUpdateMethod = OnUpdate_Deceleration;
-		}
+		onNut_IsOnBoltChange( value );
 	}
 
 	public void OnFallDownPointChange( float value )
@@ -132,7 +133,6 @@ public class Nut : MonoBehaviour
 
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
-
 		particle_carving.Play( true );
 
 		onPath = true;
@@ -142,7 +142,6 @@ public class Nut : MonoBehaviour
 
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
 	{
-
 		onPath = true;
 		EmptyDelegates();
 		onLevelProgress = ExtensionMethods.EmptyMethod;
@@ -151,12 +150,50 @@ public class Nut : MonoBehaviour
 		notif_nut_height_last.SharedValue = 0;
 		PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, 0 );
 	}
+
+	public void OnShatter()
+	{
+		EmptyDelegates();
+		gameObject.SetActive( false );
+
+		var shatter = pool_randomShatter.GetEntity();
+		shatter.transform.position = transform.position;
+
+		shatter.DoShatter( component_rust_setter.Rust );
+
+		var height = transform.position.y;
+		notif_nut_height_last.SharedValue = height;
+		PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, height );
+
+		DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, event_level_failed.Raise );
+	}
 #endregion
 
 #region Implementation
+	void NutOnBoltChange( bool value )
+	{
+		if( value )
+		{
+			onUpdate_Air = ExtensionMethods.EmptyMethod;
+			onFingerDown = OnFingerDown_StraightBolt;
+		}
+		else
+		{
+			onUpdate_Air = event_nut_air_update.Raise;
+			onFingerDown = ExtensionMethods.EmptyMethod;
+			onFingerUp   = ExtensionMethods.EmptyMethod;
+
+			if( onPath )
+				onUpdateMethod = ExtensionMethods.EmptyMethod;
+			else
+				onUpdateMethod = OnUpdate_Deceleration;
+		}
+	}
+
 	void OnPathComplete()
 	{
 		onPath = false;
+		event_curvedPath_end.Raise();
 
 		particle_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
 
@@ -199,18 +236,8 @@ public class Nut : MonoBehaviour
 		if( Mathf.Approximately( 0, property_durability.CurrentDurability ) )
 		{
 			EmptyDelegates();
-			gameObject.SetActive( false );
-
-			var shatter                    = pool_randomShatter.GetEntity();
-			    shatter.transform.position = transform.position;
-
-			shatter.DoShatter( component_rust_setter.Rust );
-
-			var height = transform.position.y;
-			notif_nut_height_last.SharedValue = height;
-			PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, height );
-
-			DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, event_level_failed.Raise );
+			onUpdateMethod = OnUpdate_LastChance;
+			event_durability_deplated.Raise();
 		}
 		else
 		{
@@ -222,8 +249,15 @@ public class Nut : MonoBehaviour
 		}
 	}
 
+	void OnUpdate_LastChance()
+	{
+		component_movement.OnMovement();
+		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
+	}
+
 	void OnUpdate_Deceleration()
 	{
+		onUpdate_Air();
 		property_velocity.OnDeceleration();
 		var isIdle = component_movement.OnMovement( point_fallDown );
 
@@ -249,9 +283,11 @@ public class Nut : MonoBehaviour
 
 	void EmptyDelegates()
 	{
-		onUpdateMethod = ExtensionMethods.EmptyMethod;
-		onFingerUp     = ExtensionMethods.EmptyMethod;
-		onFingerDown   = ExtensionMethods.EmptyMethod;
+		onUpdateMethod       = ExtensionMethods.EmptyMethod;
+		onFingerDown         = ExtensionMethods.EmptyMethod;
+		onFingerUp           = ExtensionMethods.EmptyMethod;
+		onUpdate_Air         = ExtensionMethods.EmptyMethod;
+		onNut_IsOnBoltChange = ExtensionMethods.EmptyMethod;
 	}
 
 	void UpdateLevelProgress()

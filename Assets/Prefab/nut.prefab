@@ -93,7 +93,10 @@ MonoBehaviour:
   notif_bolt_end: {fileID: 11400000, guid: 157c677f8f78e49e881fd13209b9e0c2, type: 2}
   event_level_failed: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   event_level_completed: {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
+  event_curvedPath_end: {fileID: 11400000, guid: d976dc93dd54b4bc58303ab202124686, type: 2}
   event_path_end: {fileID: 11400000, guid: 9072076031ec445cf8390f6cf25167c5, type: 2}
+  event_nut_air_update: {fileID: 11400000, guid: 192bbf3c9842d459383719c130ddef12, type: 2}
+  event_durability_deplated: {fileID: 11400000, guid: 4440abe7e797b45458119b7434009ca6, type: 2}
   level_progress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
   notif_nut_height: {fileID: 11400000, guid: 3cfa3a506ce234608a278dcdb17f3691, type: 2}
   notif_nut_height_last: {fileID: 11400000, guid: 3f87014a0b8f84245bf040204bbf63a9, type: 2}
@@ -263,6 +266,24 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: be005d3399d6c411faca1366b9ab755b, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -6898695181098901142}
+          m_TargetAssemblyTypeName: Nut, Assembly-CSharp
+          m_MethodName: OnShatter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &-5209316146565418335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +298,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path_Set: {fileID: 11400000, guid: 28e3faea870b84807b2df86acc92e09b, type: 2}
   velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
+  shared_velocity_pathSpeed: {fileID: 11400000, guid: 7770dd20da92940f6912c69ab2aece50, type: 2}
+  event_nut_path_update: {fileID: 11400000, guid: 0a36c868db0e64dfa8938a30baff52e8, type: 2}
   transform_movement: {fileID: 5919801855808585662}
   transform_rotate: {fileID: 2803611756271641150}
 --- !u!114 &5520294727583239052
