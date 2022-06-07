@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 [ CreateAssetMenu( fileName = "skill_system", menuName = "FF/Skill System" ) ]
@@ -17,30 +18,27 @@ public class SkillSystem : ScriptableObject
 	[ SerializeField ] SharedFloat shared_velocity_pathSpeed;
 	[ SerializeField ] SharedFloat shared_velocity_gravity;
 	[ SerializeField ] SharedBoolNotifier notif_nut_IsOnBolt;
+    [ SerializeField ] GameEvent event_nut_shatter;
 
   [ BoxGroup( "Setup" ) ]
     [ SerializeField ] Color skill_currency_on_newBolt_color;
     [ SerializeField ] Vector2 skill_currency_on_newBolt_size;
+    [ SerializeField ] float skill_lastChange_shatter_duration;
 
-  [ FoldoutGroup( "Currency Skills" ) ]
-    [ SerializeField ] SkillData skill_currency_on_newBolt;
-    [ SerializeField ] SkillData skill_currency_on_maxSpeed;
-    [ SerializeField ] SkillData skill_currency_on_air;
+    [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_newBolt;
+    [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_maxSpeed;
+    [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_air;
 
-  [ FoldoutGroup( "Durability Skills" ) ]
-    [ SerializeField ] SkillData skill_durability_on_newBolt;
-    [ SerializeField ] SkillData skill_durability_on_maxSpeed;
-    [ SerializeField ] SkillData skill_durability_on_path;
+    [ FoldoutGroup( "Durability Skills" ), SerializeField ] SkillData skill_durability_on_newBolt;
+    [ FoldoutGroup( "Durability Skills" ), SerializeField ] SkillData skill_durability_on_maxSpeed;
+    [ FoldoutGroup( "Durability Skills" ), SerializeField ] SkillData skill_durability_on_path;
 
-  [ FoldoutGroup( "Speed Skills" ) ]
-    [ SerializeField ] SkillData skill_velocity_on_newBolt;
-    [ SerializeField ] SkillData skill_velocity_gravity;
-    [ SerializeField ] SkillData skill_velocity_path;
+    [ FoldoutGroup( "Speed Skills" ), SerializeField ] SkillData skill_velocity_on_newBolt;
+    [ FoldoutGroup( "Speed Skills" ), SerializeField ] SkillData skill_velocity_gravity;
+    [ FoldoutGroup( "Speed Skills" ), SerializeField ] SkillData skill_velocity_path;
 
-  [ FoldoutGroup( "Last Chance Skills" ) ]
-    [ SerializeField ] SkillData skill_lastChance_doubleJump;
-    [ SerializeField ] SkillData skill_lastChance_Shatter;
-
+    [ FoldoutGroup( "Last Chance Skills" ), SerializeField ] SkillData skill_lastChance_doubleJump;
+    [ FoldoutGroup( "Last Chance Skills" ), SerializeField ] SkillData skill_lastChance_Shatter;
 // Delegates
 	UnityMessage onUpdate_NutPath;
 	UnityMessage onUpdate_NutAir;
@@ -129,6 +127,18 @@ public class SkillSystem : ScriptableObject
 	public void OnIsNutOnBoltChange( bool value )
 	{
 		canJump = canJump || value;
+	}
+
+	public void OnNut_DurabilityDeplate()
+	{
+		if( skill_lastChance_Shatter.IsUnlocked )
+		{
+			FFLogger.Log( "Delay Shatter" );
+			property_velocity.OnAcceleration( skill_lastChance_Shatter.Value );
+			DOVirtual.DelayedCall( skill_lastChange_shatter_duration, event_nut_shatter.Raise );
+		}
+		else
+			event_nut_shatter.Raise();
 	}
 #endregion
 

@@ -56,6 +56,11 @@ public class Nut : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		onLevelProgress = ExtensionMethods.EmptyMethod;
+	}
+
 	private void Awake()
 	{
 		onUpdateMethod       = ExtensionMethods.EmptyMethod;
@@ -137,7 +142,6 @@ public class Nut : MonoBehaviour
 
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
 	{
-
 		onPath = true;
 		EmptyDelegates();
 		onLevelProgress = ExtensionMethods.EmptyMethod;
@@ -149,6 +153,7 @@ public class Nut : MonoBehaviour
 
 	public void OnShatter()
 	{
+		EmptyDelegates();
 		gameObject.SetActive( false );
 
 		var shatter = pool_randomShatter.GetEntity();
@@ -231,6 +236,7 @@ public class Nut : MonoBehaviour
 		if( Mathf.Approximately( 0, property_durability.CurrentDurability ) )
 		{
 			EmptyDelegates();
+			onUpdateMethod = OnUpdate_LastChance;
 			event_durability_deplated.Raise();
 		}
 		else
@@ -241,6 +247,12 @@ public class Nut : MonoBehaviour
 			component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
 			component_rust_setter.SetRust( 1 - property_durability.DurabilityRatio );
 		}
+	}
+
+	void OnUpdate_LastChance()
+	{
+		component_movement.OnMovement();
+		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
 	}
 
 	void OnUpdate_Deceleration()
