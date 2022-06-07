@@ -10,35 +10,35 @@ using Sirenix.OdinInspector;
 public class SkillSystem : ScriptableObject
 {
 #region Fields
-  [ Title( "Currency" ) ]
+  [ BoxGroup( "Shared Variables" ) ]
+    [ SerializeField ] Currency property_currency;
+    [ SerializeField ] Durability property_durability;
+    [ SerializeField ] Velocity property_velocity;
+	[ SerializeField ] SharedFloat shared_velocity_pathSpeed;
+	[ SerializeField ] SharedFloat shared_velocity_gravity;
+
+  [ BoxGroup( "Setup" ) ]
+    [ SerializeField ] Color skill_currency_on_newBolt_color;
+    [ SerializeField ] Vector2 skill_currency_on_newBolt_size;
+
+  [ FoldoutGroup( "Currency Skills" ) ]
     [ SerializeField ] SkillData skill_currency_on_newBolt;
     [ SerializeField ] SkillData skill_currency_on_maxSpeed;
     [ SerializeField ] SkillData skill_currency_on_air;
 
-  [ Title( "Durability" ) ]
+  [ FoldoutGroup( "Durability Skills" ) ]
     [ SerializeField ] SkillData skill_durability_on_newBolt;
     [ SerializeField ] SkillData skill_durability_on_maxSpeed;
     [ SerializeField ] SkillData skill_durability_on_path;
 
-  [ Title( "Speed" ) ]
+  [ FoldoutGroup( "Speed Skills" ) ]
     [ SerializeField ] SkillData skill_velocity_on_newBolt;
     [ SerializeField ] SkillData skill_velocity_gravity;
     [ SerializeField ] SkillData skill_velocity_path;
 
-  [ Title( "Last Chance" ) ]
+  [ FoldoutGroup( "Last Chance Skills" ) ]
     [ SerializeField ] SkillData skill_lastChance_doubleJump;
     [ SerializeField ] SkillData skill_lastChance_Shatter;
-
-
-  [ Title( "Shared Variables" ) ]
-    [ SerializeField ] Currency property_currency;
-    [ SerializeField ] Durability property_durability;
-    [ SerializeField ] Velocity property_velocity;
-
-
-  [ FoldoutGroup( "Setup" ) ]
-    [ SerializeField ] Color skill_currency_on_newBolt_color;
-    [ SerializeField ] Vector2 skill_currency_on_newBolt_size;
 #endregion
 
 #region Properties
@@ -52,6 +52,17 @@ public class SkillSystem : ScriptableObject
 #endregion
 
 #region API
+	public void OnLevel_Revealed()
+	{
+		FFLogger.Log( "Revealed" );
+
+		if( skill_velocity_gravity.IsUnlocked )
+			shared_velocity_gravity.sharedValue = skill_velocity_gravity.Value;
+		
+		if( skill_velocity_path.IsUnlocked )
+			shared_velocity_pathSpeed.sharedValue = skill_velocity_path.Value;
+	}
+
     public void OnNutAttachedBolt()
     {
         if( skill_currency_on_newBolt.IsUnlocked )
