@@ -191,7 +191,7 @@ public class SkillSystem : ScriptableObject
 	{
 		if( canJump && !notif_nut_IsOnBolt.SharedValue )
 		{
-			pool_currency_ui.GetEntity().Spawn( "Jump", Color.white, skill_durability_text_size ); 
+			pool_currency_ui.GetEntity().Spawn( "Double Jump", Color.white, skill_durability_text_size ); 
 			property_velocity.OnAcceleration( skill_lastChance_doubleJump.Value );
 			canJump = false;
 		}

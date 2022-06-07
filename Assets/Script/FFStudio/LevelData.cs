@@ -23,6 +23,7 @@ namespace FFStudio
         [ LabelText( "Set Incremental" ) ] public bool incremental_set;
         [ LabelText( "Set Index of Velocity Incremental" ), ShowIf( "incremental_set" ) ] public int incremental_set_index_velocity;
         [ LabelText( "Set Index of Durability Incremental" ), ShowIf( "incremental_set" ) ] public int incremental_set_index_durability;
+		[ LabelText( "Type of Skill will be showned at the end of the Level" ) ] public SkillType skillType;
 
 #if UNITY_EDITOR
 		private static IEnumerable SceneList()
