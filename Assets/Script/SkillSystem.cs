@@ -179,7 +179,7 @@ public class SkillSystem : ScriptableObject
 
 	void Nut_PathUpdate()
 	{
-		property_durability.OnIncrease( skill_durability_on_path.Value );
+		property_durability.OnIncrease( skill_durability_on_path.Value * Time.deltaTime );
 	}
 
 	void Nut_AirUpdate()
