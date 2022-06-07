@@ -48,6 +48,7 @@ public class Nut : MonoBehaviour
 	UnityMessage onFingerUp;
 	UnityMessage onLevelProgress;
 	UnityMessage onUpdate_Air;
+	UnityMessage_Bool onNut_IsOnBoltChange;
 #endregion
 
 #region Properties
@@ -56,10 +57,12 @@ public class Nut : MonoBehaviour
 #region Unity API
 	private void Awake()
 	{
-		onUpdateMethod  = ExtensionMethods.EmptyMethod;
-		onFingerDown    = ExtensionMethods.EmptyMethod;
-		onFingerUp      = ExtensionMethods.EmptyMethod;
-		onUpdate_Air    = ExtensionMethods.EmptyMethod;
+		onUpdateMethod       = ExtensionMethods.EmptyMethod;
+		onFingerDown         = ExtensionMethods.EmptyMethod;
+		onFingerUp           = ExtensionMethods.EmptyMethod;
+		onUpdate_Air         = ExtensionMethods.EmptyMethod;
+		onNut_IsOnBoltChange = NutOnBoltChange;
+
 		onLevelProgress = UpdateLevelProgress;
 
 		OnSkin_Changed();
@@ -114,22 +117,7 @@ public class Nut : MonoBehaviour
 
 	public void OnIsNutOnBoltChange( bool value )
 	{
-		if( value )
-		{
-			onUpdate_Air = ExtensionMethods.EmptyMethod;
-			onFingerDown = OnFingerDown_StraightBolt;
-		}
-		else
-		{
-			onUpdate_Air = event_nut_air_update.Raise;
-			onFingerDown = ExtensionMethods.EmptyMethod;
-			onFingerUp   = ExtensionMethods.EmptyMethod;
-
-			if( onPath )
-				onUpdateMethod = ExtensionMethods.EmptyMethod;
-			else
-				onUpdateMethod = OnUpdate_Deceleration;
-		}
+		onNut_IsOnBoltChange( value );
 	}
 
 	public void OnFallDownPointChange( float value )
@@ -139,7 +127,6 @@ public class Nut : MonoBehaviour
 
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
-
 		particle_carving.Play( true );
 
 		onPath = true;
@@ -161,6 +148,26 @@ public class Nut : MonoBehaviour
 #endregion
 
 #region Implementation
+	void NutOnBoltChange( bool value )
+	{
+		if( value )
+		{
+			onUpdate_Air = ExtensionMethods.EmptyMethod;
+			onFingerDown = OnFingerDown_StraightBolt;
+		}
+		else
+		{
+			onUpdate_Air = event_nut_air_update.Raise;
+			onFingerDown = ExtensionMethods.EmptyMethod;
+			onFingerUp   = ExtensionMethods.EmptyMethod;
+
+			if( onPath )
+				onUpdateMethod = ExtensionMethods.EmptyMethod;
+			else
+				onUpdateMethod = OnUpdate_Deceleration;
+		}
+	}
+
 	void OnPathComplete()
 	{
 		onPath = false;
@@ -258,9 +265,11 @@ public class Nut : MonoBehaviour
 
 	void EmptyDelegates()
 	{
-		onUpdateMethod = ExtensionMethods.EmptyMethod;
-		onFingerUp     = ExtensionMethods.EmptyMethod;
-		onFingerDown   = ExtensionMethods.EmptyMethod;
+		onUpdateMethod       = ExtensionMethods.EmptyMethod;
+		onFingerDown         = ExtensionMethods.EmptyMethod;
+		onFingerUp           = ExtensionMethods.EmptyMethod;
+		onUpdate_Air         = ExtensionMethods.EmptyMethod;
+		onNut_IsOnBoltChange = ExtensionMethods.EmptyMethod;
 	}
 
 	void UpdateLevelProgress()
