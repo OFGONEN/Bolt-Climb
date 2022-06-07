@@ -17,6 +17,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] GameEvent event_level_completed;
 	[ SerializeField ] GameEvent event_curvedPath_end;
 	[ SerializeField ] GameEvent event_path_end;
+	[ SerializeField ] GameEvent event_nut_air_update;
 	[ SerializeField ] SharedFloatNotifier level_progress;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height_last;
@@ -46,6 +47,7 @@ public class Nut : MonoBehaviour
 	UnityMessage onFingerDown;
 	UnityMessage onFingerUp;
 	UnityMessage onLevelProgress;
+	UnityMessage onUpdate_Air;
 #endregion
 
 #region Properties
@@ -57,6 +59,7 @@ public class Nut : MonoBehaviour
 		onUpdateMethod  = ExtensionMethods.EmptyMethod;
 		onFingerDown    = ExtensionMethods.EmptyMethod;
 		onFingerUp      = ExtensionMethods.EmptyMethod;
+		onUpdate_Air    = ExtensionMethods.EmptyMethod;
 		onLevelProgress = UpdateLevelProgress;
 
 		OnSkin_Changed();
@@ -112,12 +115,15 @@ public class Nut : MonoBehaviour
 	public void OnIsNutOnBoltChange( bool value )
 	{
 		if( value )
+		{
+			onUpdate_Air = event_nut_air_update.Raise;
 			onFingerDown = OnFingerDown_StraightBolt;
+		}
 		else
 		{
-
-			onFingerDown   = ExtensionMethods.EmptyMethod;
-			onFingerUp     = ExtensionMethods.EmptyMethod;
+			onUpdate_Air = ExtensionMethods.EmptyMethod;
+			onFingerDown = ExtensionMethods.EmptyMethod;
+			onFingerUp   = ExtensionMethods.EmptyMethod;
 
 			if( onPath )
 				onUpdateMethod = ExtensionMethods.EmptyMethod;
@@ -226,6 +232,7 @@ public class Nut : MonoBehaviour
 
 	void OnUpdate_Deceleration()
 	{
+		onUpdate_Air();
 		property_velocity.OnDeceleration();
 		var isIdle = component_movement.OnMovement( point_fallDown );
 
