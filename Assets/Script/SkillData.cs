@@ -11,15 +11,14 @@ using Sirenix.OdinInspector;
 public class SkillData : ScriptableObject
 {
 #region Fields
-	[ BoxGroup( "Shared Variables" ), SerializeField ] Currency currency; 
-
   // Public
 	public SkillValue[] skill_value_array;
-	public float skill_value_default;
-	public Sprite skill_texture;
-	public string skill_description;
-	public string skill_key;
 
+  // Setup
+	[ FoldoutGroup( "Setup" ), SerializeField ] Currency currency; 
+	[ FoldoutGroup( "Setup" ), SerializeField ] Sprite skill_texture;
+	[ FoldoutGroup( "Setup" ), SerializeField ] string skill_description;
+	[ FoldoutGroup( "Setup" ), SerializeField ] string skill_key;
   // Private
 	int skill_index;
 
