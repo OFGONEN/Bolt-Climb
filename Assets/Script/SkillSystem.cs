@@ -18,7 +18,8 @@ public class SkillSystem : ScriptableObject
     [ BoxGroup( "Setup" ), SerializeField ] Color skill_speed_text_color;
     [ BoxGroup( "Setup" ), SerializeField ] Vector2 skill_speed_text_size;
 
-    [ BoxGroup( "Setup" ), SerializeField ] float skill_lastChange_shatter_duration;
+    [ BoxGroup( "Setup" ), LabelText( "Shatter Dash Duration" ), SerializeField ] float skill_lastChange_shatter_duration;
+    [ BoxGroup( "Setup" ), LabelText( "Cooldown for Gaining Durability on Path" ), SerializeField ] float skill_durability_on_path_cooldown;
 
     [ FoldoutGroup( "Shared Variables"), SerializeField ] Currency property_currency;
     [ FoldoutGroup( "Shared Variables"), SerializeField ] Durability property_durability;
@@ -49,7 +50,7 @@ public class SkillSystem : ScriptableObject
 	UnityMessage onFinger_Down;
 
 	[ ShowInInspector, ReadOnly ] bool canJump;
-
+	float pathDurabilityCooldown = 0;
 	StringBuilder stringBuilder = new StringBuilder( 16 );
 #endregion
 
@@ -179,7 +180,11 @@ public class SkillSystem : ScriptableObject
 
 	void Nut_PathUpdate()
 	{
-		property_durability.OnIncrease( skill_durability_on_path.Value * Time.deltaTime );
+		if( Time.time > pathDurabilityCooldown )
+		{
+			property_durability.OnIncrease( skill_durability_on_path.Value  );
+			pathDurabilityCooldown = Time.time + skill_durability_on_path_cooldown;
+		}
 	}
 
 	void Nut_AirUpdate()
