@@ -1,6 +1,6 @@
 /* Created by and for usage of FF Studios (2021). */
 
-using System.Collections;
+using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
@@ -11,19 +11,23 @@ using Sirenix.OdinInspector;
 public class SkillSystem : ScriptableObject
 {
 #region Fields
-  [ BoxGroup( "Shared Variables" ) ]
-    [ SerializeField ] Currency property_currency;
-    [ SerializeField ] Durability property_durability;
-    [ SerializeField ] Velocity property_velocity;
-	[ SerializeField ] SharedFloat shared_velocity_pathSpeed;
-	[ SerializeField ] SharedFloat shared_velocity_gravity;
-	[ SerializeField ] SharedBoolNotifier notif_nut_IsOnBolt;
-    [ SerializeField ] GameEvent event_nut_shatter;
+    [ BoxGroup( "Setup" ), SerializeField ] Color skill_currency_text_color;
+    [ BoxGroup( "Setup" ), SerializeField ] Vector2 skill_currency_text_size;
+    [ BoxGroup( "Setup" ), SerializeField ] Color skill_durability_text_color;
+    [ BoxGroup( "Setup" ), SerializeField ] Vector2 skill_durability_text_size;
+    [ BoxGroup( "Setup" ), SerializeField ] Color skill_speed_text_color;
+    [ BoxGroup( "Setup" ), SerializeField ] Vector2 skill_speed_text_size;
 
-  [ BoxGroup( "Setup" ) ]
-    [ SerializeField ] Color skill_currency_on_newBolt_color;
-    [ SerializeField ] Vector2 skill_currency_on_newBolt_size;
-    [ SerializeField ] float skill_lastChange_shatter_duration;
+    [ BoxGroup( "Setup" ), SerializeField ] float skill_lastChange_shatter_duration;
+
+    [ FoldoutGroup( "Shared Variables"), SerializeField ] Currency property_currency;
+    [ FoldoutGroup( "Shared Variables"), SerializeField ] Durability property_durability;
+    [ FoldoutGroup( "Shared Variables"), SerializeField ] Velocity property_velocity;
+	[ FoldoutGroup( "Shared Variables"), SerializeField ] SharedFloat shared_velocity_pathSpeed;
+	[ FoldoutGroup( "Shared Variables"), SerializeField ] SharedFloat shared_velocity_gravity;
+	[ FoldoutGroup( "Shared Variables"), SerializeField ] SharedBoolNotifier notif_nut_IsOnBolt;
+    [ FoldoutGroup( "Shared Variables"), SerializeField ] GameEvent event_nut_shatter;
+    [ FoldoutGroup( "Shared Variables"), SerializeField ] UICurrencyPool pool_currency_ui;
 
     [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_newBolt;
     [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_maxSpeed;
@@ -45,6 +49,8 @@ public class SkillSystem : ScriptableObject
 	UnityMessage onFinger_Down;
 
 	[ ShowInInspector, ReadOnly ] bool canJump;
+
+	StringBuilder stringBuilder = new StringBuilder( 16 );
 #endregion
 
 #region Properties
@@ -77,7 +83,7 @@ public class SkillSystem : ScriptableObject
 			shared_velocity_pathSpeed.sharedValue = skill_velocity_path.Value;
 
 		if( skill_durability_on_path.IsUnlocked )
-			onUpdate_NutPath = Nut_PathUpdate;
+			onUpdate_NutPath = Nut_PathUpdate_Start;
 
 		if( skill_currency_on_air.IsUnlocked )
 			onUpdate_NutAir = Nut_AirUpdate;
@@ -91,22 +97,34 @@ public class SkillSystem : ScriptableObject
     public void OnNutAttachedBolt()
     {
         if( skill_currency_on_newBolt.IsUnlocked )
-			property_currency.OnIncrease( skill_currency_on_newBolt.Value, skill_currency_on_newBolt_color, skill_currency_on_newBolt_size );
+			property_currency.OnIncrease( skill_currency_on_newBolt.Value, skill_currency_text_color, skill_currency_text_size );
 
         if( skill_durability_on_newBolt.IsUnlocked )
-			property_durability.OnIncreaseCapacity( skill_durability_on_newBolt.Value );
+		{
+			var value = skill_durability_on_newBolt.Value;
+			property_durability.OnIncreaseCapacity( value );
+			pool_currency_ui.GetEntity().Spawn( $"Durability +{value}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+		}
 
         if( skill_velocity_on_newBolt.IsUnlocked )
-			property_velocity.OnAcceleration( skill_velocity_on_newBolt.Value );
+		{
+			var value = skill_velocity_on_newBolt.Value;
+			property_velocity.OnAcceleration( value );
+			pool_currency_ui.GetEntity().Spawn( $"Speed +{value}", skill_speed_text_color, skill_speed_text_size, 1.5f ); 
+		}
 	}
 
     public void OnMaxSpeed()
     {
         if( skill_currency_on_maxSpeed.IsUnlocked )
-			property_currency.OnIncrease( skill_currency_on_maxSpeed.Value, skill_currency_on_newBolt_color, skill_currency_on_newBolt_size );
+			property_currency.OnIncrease( skill_currency_on_maxSpeed.Value, skill_currency_text_color, skill_currency_text_size );
 
         if( skill_durability_on_maxSpeed.IsUnlocked )
-			property_durability.OnIncreaseCapacity( skill_durability_on_maxSpeed.Value );
+		{
+			var value = skill_durability_on_maxSpeed.Value;
+			property_durability.OnIncreaseCapacity( value );
+			pool_currency_ui.GetEntity().Spawn( $"Durability +{value}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+		}
 	}
 
 	public void OnNut_PathUpdate()
@@ -134,8 +152,11 @@ public class SkillSystem : ScriptableObject
 		if( skill_lastChance_Shatter.IsUnlocked )
 		{
 			FFLogger.Log( "Delay Shatter" );
+			pool_currency_ui.GetEntity().Spawn( "Last Chance", Color.white, skill_durability_text_size ); 
+
 			property_velocity.ZeroOutVelocity();
 			property_velocity.OnAcceleration( skill_lastChance_Shatter.Value );
+
 			DOVirtual.DelayedCall( skill_lastChange_shatter_duration, event_nut_shatter.Raise );
 		}
 		else
@@ -144,6 +165,18 @@ public class SkillSystem : ScriptableObject
 #endregion
 
 #region Implementation
+	void Nut_PathUpdate_Start()
+	{
+		var durabilityValue = skill_durability_on_path.Value;
+		var speedValue = skill_velocity_path.Value;
+
+		pool_currency_ui.GetEntity().Spawn( $"Durability +{durabilityValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+		pool_currency_ui.GetEntity().Spawn( $"Speed +{speedValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+
+		property_durability.OnIncrease( durabilityValue );
+		onUpdate_NutPath = Nut_PathUpdate;
+	}
+
 	void Nut_PathUpdate()
 	{
 		property_durability.OnIncrease( skill_durability_on_path.Value );
@@ -151,13 +184,14 @@ public class SkillSystem : ScriptableObject
 
 	void Nut_AirUpdate()
 	{
-		property_currency.OnIncreaseCooldown( skill_currency_on_air.Value, skill_currency_on_newBolt_color, skill_currency_on_newBolt_size );
+		property_currency.OnIncreaseCooldown( skill_currency_on_air.Value, skill_currency_text_color, skill_currency_text_size );
 	}
 
 	void Finger_Down()
 	{
 		if( canJump && !notif_nut_IsOnBolt.SharedValue )
 		{
+			pool_currency_ui.GetEntity().Spawn( "Jump", Color.white, skill_durability_text_size ); 
 			property_velocity.OnAcceleration( skill_lastChance_doubleJump.Value );
 			canJump = false;
 		}
@@ -168,7 +202,9 @@ public class SkillSystem : ScriptableObject
 #if UNITY_EDITOR
 	private void OnValidate()
 	{
-		skill_currency_on_newBolt_color = skill_currency_on_newBolt_color.SetAlpha( 1 );
+		skill_currency_text_color   = skill_currency_text_color.SetAlpha( 1 );
+		skill_durability_text_color = skill_durability_text_color.SetAlpha( 1 );
+		skill_speed_text_color      = skill_speed_text_color.SetAlpha( 1 );
 	}
 #endif
 #endregion

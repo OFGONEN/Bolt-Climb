@@ -60,6 +60,12 @@ public class UICurrency : MonoBehaviour
 		text_currency.text = value;
 		Spawn( color, size );
 	}
+	
+	public void Spawn( string value, Color color, Vector2 size, float lateralModifier )
+	{
+		text_currency.text = value;
+		Spawn( color, size, lateralModifier );
+	}
 
 	[ Button() ]
 	public void Spawn()
@@ -97,7 +103,7 @@ public class UICurrency : MonoBehaviour
 		sequence.OnComplete( OnSpawnComplete );
 	}
 
-	public void Spawn( Color color, Vector2 size, float heightModifier = 1 )
+	public void Spawn( Color color, Vector2 size )
 	{
 		var nutTransform  = notif_nut_reference.SharedValue as Transform;
 
@@ -112,7 +118,7 @@ public class UICurrency : MonoBehaviour
 
 		var random = new Vector3(
 			Random.Range( -spawn_random_lateral, spawn_random_lateral ),
-			Random.Range( 0, spawn_random_height * heightModifier ),
+			Random.Range( 0, spawn_random_height ),
 			0
 		);
 
@@ -128,6 +134,41 @@ public class UICurrency : MonoBehaviour
 		// sequence.Join( transform.DOScale( Vector3.one * random_size_end.ReturnRandom(), spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
 		// sequence.Append( transform.DOScale( Vector3.one , spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
 		sequence.Append( text_currency.DOFade( 0, fade_duration ).SetEase( spawn_fade_ease ) );
+
+		sequence.OnComplete( OnSpawnComplete );
+	}
+
+	public void Spawn( Color color, Vector2 size, float lateralModifier )
+	{
+		var nutTransform = notif_nut_reference.SharedValue as Transform;
+
+		if( !nutTransform )
+		{
+			OnSpawnComplete();
+			return;
+		}
+
+		var nutPosition = nutTransform.position;
+		nutPosition.z = spawn_depth;
+
+		var random = new Vector3(
+			spawn_random_lateral * Mathf.Sign( lateralModifier ),
+			Random.Range( 0, -spawn_random_height ),
+			0
+		);
+
+		gameObject.SetActive( true );
+		transform.position = nutPosition + random;
+		transform.localScale = Vector3.one * size.ReturnRandom();
+
+		text_currency.color = color;
+
+		var sequence = recycledSequence.Recycle();
+
+		sequence.Append( transform.DOMove( nutPosition + Vector3.right * lateralModifier, spawn_duration ).SetEase( spawn_movement_ease ) );
+		// sequence.Join( transform.DOScale( Vector3.one * random_size_end.ReturnRandom(), spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
+		// sequence.Append( transform.DOScale( Vector3.one , spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
+		sequence.Append( text_currency.DOFade( 0, fade_duration * 2f ).SetEase( spawn_fade_ease ) );
 
 		sequence.OnComplete( OnSpawnComplete );
 	}
