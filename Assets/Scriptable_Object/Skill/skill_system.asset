@@ -17,6 +17,7 @@ MonoBehaviour:
   property_velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}
   shared_velocity_pathSpeed: {fileID: 11400000, guid: 7770dd20da92940f6912c69ab2aece50, type: 2}
   shared_velocity_gravity: {fileID: 11400000, guid: 0f5c88fc849d643aa955acb7c39f4ff5, type: 2}
+  notif_nut_IsOnBolt: {fileID: 11400000, guid: d401f21baeb4e4064a7da03f6fbb0777, type: 2}
   skill_currency_on_newBolt_color: {r: 0.7924528, g: 0.508303, b: 0, a: 1}
   skill_currency_on_newBolt_size: {x: 3, y: 5}
   skill_currency_on_newBolt: {fileID: 11400000, guid: 227b03b0befc745598e099054479b80e, type: 2}

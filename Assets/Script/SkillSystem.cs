@@ -16,6 +16,7 @@ public class SkillSystem : ScriptableObject
     [ SerializeField ] Velocity property_velocity;
 	[ SerializeField ] SharedFloat shared_velocity_pathSpeed;
 	[ SerializeField ] SharedFloat shared_velocity_gravity;
+	[ SerializeField ] SharedBoolNotifier notif_nut_IsOnBolt;
 
   [ BoxGroup( "Setup" ) ]
     [ SerializeField ] Color skill_currency_on_newBolt_color;
@@ -40,10 +41,12 @@ public class SkillSystem : ScriptableObject
     [ SerializeField ] SkillData skill_lastChance_doubleJump;
     [ SerializeField ] SkillData skill_lastChance_Shatter;
 
-
 // Delegates
 	UnityMessage onUpdate_NutPath;
 	UnityMessage onUpdate_NutAir;
+	UnityMessage onFinger_Down;
+
+	[ ShowInInspector, ReadOnly ] bool canJump;
 #endregion
 
 #region Properties
@@ -54,6 +57,7 @@ public class SkillSystem : ScriptableObject
     {
 		onUpdate_NutPath = ExtensionMethods.EmptyMethod;
 		onUpdate_NutAir  = ExtensionMethods.EmptyMethod;
+		onFinger_Down    = ExtensionMethods.EmptyMethod;
 	}
 
 #endregion
@@ -63,7 +67,7 @@ public class SkillSystem : ScriptableObject
 	{
 		onUpdate_NutPath = ExtensionMethods.EmptyMethod;
 		onUpdate_NutAir  = ExtensionMethods.EmptyMethod;
-
+		onFinger_Down    = ExtensionMethods.EmptyMethod;
 	}
 
 	public void OnLevel_Revealed()
@@ -79,6 +83,11 @@ public class SkillSystem : ScriptableObject
 
 		if( skill_currency_on_air.IsUnlocked )
 			onUpdate_NutAir = Nut_AirUpdate;
+		
+		if( skill_lastChance_doubleJump.IsUnlocked )
+			onFinger_Down = Finger_Down;
+
+		canJump = true;
 	}
 
     public void OnNutAttachedBolt()
@@ -111,6 +120,16 @@ public class SkillSystem : ScriptableObject
 	{
 		onUpdate_NutAir();
 	}
+
+	public void OnFinger_Down()
+	{
+		onFinger_Down();
+	}
+
+	public void OnIsNutOnBoltChange( bool value )
+	{
+		canJump = canJump || value;
+	}
 #endregion
 
 #region Implementation
@@ -122,6 +141,15 @@ public class SkillSystem : ScriptableObject
 	void Nut_AirUpdate()
 	{
 		property_currency.OnIncreaseCooldown( skill_currency_on_air.Value, skill_currency_on_newBolt_color, skill_currency_on_newBolt_size );
+	}
+
+	void Finger_Down()
+	{
+		if( canJump && !notif_nut_IsOnBolt.SharedValue )
+		{
+			property_velocity.OnAcceleration( skill_lastChance_doubleJump.Value );
+			canJump = false;
+		}
 	}
 #endregion
 
