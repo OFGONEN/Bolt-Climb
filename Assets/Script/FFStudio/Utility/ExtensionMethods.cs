@@ -163,6 +163,11 @@ namespace FFStudio
 		{
 			/* Intentionally empty, by definition. */
 		}
+		
+		public static void EmptyMethod( bool value )
+		{
+			/* Intentionally empty, by definition. */
+		}
 
 		public static Vector2 Clamp( this Vector2 value, Vector2 min, Vector2 max )
 		{

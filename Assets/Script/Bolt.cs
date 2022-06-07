@@ -111,7 +111,6 @@ public class Bolt : MonoBehaviour
 
     void StartTrackingNut()
     {
-		FFLogger.Log( "Start Tracking Nut", gameObject );
 		onStartTrackingNut = ExtensionMethods.EmptyMethod;
 		onUpdateMethod     = OnTrackNut;
 

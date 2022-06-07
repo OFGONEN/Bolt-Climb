@@ -25,6 +25,7 @@ namespace FFStudio
 
         [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
         [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
+        [ BoxGroup( "Movement" ) ] public float movement_pathSpeed_minumum   = 1f;
 
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force_up;
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force;

@@ -12,11 +12,15 @@ public class Velocity : ScriptableObject
 #region Fields
     // Private
 	[ SerializeField ] IncrementalVelocity velocity_incremental;
+	[ SerializeField ] SharedFloat shared_velocity_gravity;
+	[ SerializeField ] GameEvent event_velocity_maxSpeed;
 	[ ShowInInspector, ReadOnly ] IncrementalVelocityData velocity_data;
 	[ ShowInInspector, ReadOnly ] float velocity_current;
 
     // Properties
     public float CurrentVelocity => velocity_current;
+
+	bool velocity_maxSpeed;
 #endregion
 
 #region Properties
@@ -40,12 +44,29 @@ public class Velocity : ScriptableObject
 			velocity_data.incremental_velocity_max, 
 			velocity_current + Time.deltaTime * velocity_data.incremental_velocity_max / velocity_data.incremental_velocity_max_duration 
 		);
+
+		var maxSpeed = Mathf.Approximately( velocity_current, velocity_data.incremental_velocity_max );
+
+		if( maxSpeed && !velocity_maxSpeed )
+			event_velocity_maxSpeed.Raise();
+
+		velocity_maxSpeed = maxSpeed;
+	}
+
+    public void OnAcceleration( float value )
+    {
+		velocity_current = Mathf.Max( 0, velocity_current );;
+
+		velocity_current = Mathf.Min( 
+			velocity_data.incremental_velocity_max, 
+			velocity_current + value 
+		);
 	}
 
     public void OnDeceleration()
     {
 		velocity_current = Mathf.Max( 
-            velocity_current - Time.deltaTime * velocity_data.incremental_velocity_decrease,
+            velocity_current - Time.deltaTime * velocity_data.incremental_velocity_decrease * shared_velocity_gravity.sharedValue,
             velocity_data.incremental_velocity_min
         );
     }
@@ -53,6 +74,11 @@ public class Velocity : ScriptableObject
     public void SetMinimumVelocity()
     {
 		velocity_current = Mathf.Max( GameSettings.Instance.movement_launchSpeed_minumum , velocity_current );
+	}
+
+	public void ZeroOutVelocity()
+	{
+		velocity_current = 0;
 	}
 #endregion
 

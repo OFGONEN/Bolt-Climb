@@ -168,4 +168,11 @@ namespace FFStudio
 		public Mesh skin_mesh;
 		public Material skin_material;
 	}
+
+	[ Serializable ]
+	public struct SkillValue
+	{
+		public float value;
+		public float cost;
+	}
 }

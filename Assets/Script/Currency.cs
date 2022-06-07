@@ -41,6 +41,23 @@ public class Currency : SharedFloatNotifier
 		}
     }
 
+	public void OnIncrease( float value, Color color, Vector2 size )
+	{
+		SharedValue += value;
+		pool_currency_ui.GetEntity().Spawn( $"+{value}", color, size ); // Spawn currency ui
+	}
+
+    public void OnIncreaseCooldown( float value, Color color, Vector2 size )
+    {
+        if( Time.time > currency_cooldown )
+        {
+			SharedValue       += value;
+			currency_cooldown  = Time.time + currency_data.incremental_currency_rate;
+
+			pool_currency_ui.GetEntity().Spawn( $"+{value}", color, size ); // Spawn currency ui
+		}
+    }
+
     public void OnDecrease( float amount )
     {
 		SharedValue = Mathf.Max( 0, sharedValue - amount );
