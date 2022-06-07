@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using FFStudio;
+using Sirenix.OdinInspector;
 
 [ CreateAssetMenu( fileName = "skill_", menuName = "FF/Data/Skill" ) ]
 public class SkillData : ScriptableObject
 {
 #region Fields
+	[ BoxGroup( "Shared Variables" ), SerializeField ] Currency currency; 
 
   // Public
 	public SkillValue[] skill_value_array;
@@ -17,7 +19,6 @@ public class SkillData : ScriptableObject
 	public Sprite skill_texture;
 	public string skill_description;
 	public string skill_key;
-	public UnityEvent skill_OnUnlock;
 
   // Private
 	int skill_index;
@@ -35,5 +36,15 @@ public class SkillData : ScriptableObject
 	public float Index => skill_index;
 	public float Value => skill_value_array[ skill_index ].value;
 	public float Cost => skill_value_array[ skill_index ].cost;
+#endregion
+
+#region API 
+	[ Button() ]
+	public void Unlock()
+	{
+		skill_index = 0;
+		PlayerPrefsUtility.Instance.SetInt( skill_key, skill_index );
+		currency.SharedValue -= Cost;
+	}
 #endregion
 }

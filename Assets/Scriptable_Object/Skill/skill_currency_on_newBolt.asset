@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6071c5715ab604ff6a8b0fe31c5df446, type: 3}
   m_Name: skill_currency_on_newBolt
   m_EditorClassIdentifier: 
+  currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_value_array:
   - value: 100
     cost: 1
