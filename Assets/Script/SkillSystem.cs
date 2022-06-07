@@ -43,6 +43,7 @@ public class SkillSystem : ScriptableObject
 
 // Delegates
 	UnityMessage onUpdate_NutPath;
+	UnityMessage onUpdate_NutAir;
 #endregion
 
 #region Properties
@@ -52,6 +53,7 @@ public class SkillSystem : ScriptableObject
     public void OnAwake()
     {
 		onUpdate_NutPath = ExtensionMethods.EmptyMethod;
+		onUpdate_NutAir  = ExtensionMethods.EmptyMethod;
 	}
 
 #endregion
@@ -60,6 +62,8 @@ public class SkillSystem : ScriptableObject
 	public void OnLevel_Finished()
 	{
 		onUpdate_NutPath = ExtensionMethods.EmptyMethod;
+		onUpdate_NutAir  = ExtensionMethods.EmptyMethod;
+
 	}
 
 	public void OnLevel_Revealed()
@@ -72,6 +76,9 @@ public class SkillSystem : ScriptableObject
 
 		if( skill_durability_on_path.IsUnlocked )
 			onUpdate_NutPath = Nut_PathUpdate;
+
+		if( skill_currency_on_air.IsUnlocked )
+			onUpdate_NutAir = Nut_AirUpdate;
 	}
 
     public void OnNutAttachedBolt()
@@ -99,12 +106,22 @@ public class SkillSystem : ScriptableObject
 	{
 		onUpdate_NutPath();
 	}
+
+	public void OnNut_AirUpdate()
+	{
+		onUpdate_NutAir();
+	}
 #endregion
 
 #region Implementation
 	void Nut_PathUpdate()
 	{
 		property_durability.OnIncrease( skill_durability_on_path.Value );
+	}
+
+	void Nut_AirUpdate()
+	{
+		property_currency.OnIncreaseCooldown( skill_currency_on_air.Value, skill_currency_on_newBolt_color, skill_currency_on_newBolt_size );
 	}
 #endregion
 

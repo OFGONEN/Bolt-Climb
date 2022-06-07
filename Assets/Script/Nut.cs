@@ -116,12 +116,12 @@ public class Nut : MonoBehaviour
 	{
 		if( value )
 		{
-			onUpdate_Air = event_nut_air_update.Raise;
+			onUpdate_Air = ExtensionMethods.EmptyMethod;
 			onFingerDown = OnFingerDown_StraightBolt;
 		}
 		else
 		{
-			onUpdate_Air = ExtensionMethods.EmptyMethod;
+			onUpdate_Air = event_nut_air_update.Raise;
 			onFingerDown = ExtensionMethods.EmptyMethod;
 			onFingerUp   = ExtensionMethods.EmptyMethod;
 
