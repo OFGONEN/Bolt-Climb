@@ -18,6 +18,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] GameEvent event_curvedPath_end;
 	[ SerializeField ] GameEvent event_path_end;
 	[ SerializeField ] GameEvent event_nut_air_update;
+	[ SerializeField ] GameEvent event_durability_deplated;
 	[ SerializeField ] SharedFloatNotifier level_progress;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height;
 	[ SerializeField ] SharedFloatNotifier notif_nut_height_last;
@@ -230,7 +231,7 @@ public class Nut : MonoBehaviour
 		if( Mathf.Approximately( 0, property_durability.CurrentDurability ) )
 		{
 			EmptyDelegates();
-			OnShatter();
+			event_durability_deplated.Raise();
 		}
 		else
 		{

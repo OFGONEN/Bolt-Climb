@@ -96,6 +96,7 @@ MonoBehaviour:
   event_curvedPath_end: {fileID: 11400000, guid: d976dc93dd54b4bc58303ab202124686, type: 2}
   event_path_end: {fileID: 11400000, guid: 9072076031ec445cf8390f6cf25167c5, type: 2}
   event_nut_air_update: {fileID: 11400000, guid: 192bbf3c9842d459383719c130ddef12, type: 2}
+  event_durability_deplated: {fileID: 0}
   level_progress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
   notif_nut_height: {fileID: 11400000, guid: 3cfa3a506ce234608a278dcdb17f3691, type: 2}
   notif_nut_height_last: {fileID: 11400000, guid: 3f87014a0b8f84245bf040204bbf63a9, type: 2}
@@ -256,6 +257,24 @@ MonoBehaviour:
         - m_Target: {fileID: -6898695181098901142}
           m_TargetAssemblyTypeName: Nut, Assembly-CSharp
           m_MethodName: OnLevel_Failed
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: be005d3399d6c411faca1366b9ab755b, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -6898695181098901142}
+          m_TargetAssemblyTypeName: Nut, Assembly-CSharp
+          m_MethodName: OnShatter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
