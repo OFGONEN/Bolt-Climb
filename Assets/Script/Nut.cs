@@ -145,6 +145,22 @@ public class Nut : MonoBehaviour
 		notif_nut_height_last.SharedValue = 0;
 		PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, 0 );
 	}
+
+	public void OnShatter()
+	{
+		gameObject.SetActive( false );
+
+		var shatter = pool_randomShatter.GetEntity();
+		shatter.transform.position = transform.position;
+
+		shatter.DoShatter( component_rust_setter.Rust );
+
+		var height = transform.position.y;
+		notif_nut_height_last.SharedValue = height;
+		PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, height );
+
+		DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, event_level_failed.Raise );
+	}
 #endregion
 
 #region Implementation
@@ -214,18 +230,7 @@ public class Nut : MonoBehaviour
 		if( Mathf.Approximately( 0, property_durability.CurrentDurability ) )
 		{
 			EmptyDelegates();
-			gameObject.SetActive( false );
-
-			var shatter                    = pool_randomShatter.GetEntity();
-			    shatter.transform.position = transform.position;
-
-			shatter.DoShatter( component_rust_setter.Rust );
-
-			var height = transform.position.y;
-			notif_nut_height_last.SharedValue = height;
-			PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, height );
-
-			DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, event_level_failed.Raise );
+			OnShatter();
 		}
 		else
 		{
