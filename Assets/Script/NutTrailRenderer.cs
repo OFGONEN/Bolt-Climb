@@ -8,6 +8,7 @@ public class NutTrailRenderer : MonoBehaviour
 #region Fields
     [ SerializeField ] Mesh[] meshes;
 
+    [ SerializeField ] ParticleSystem particleSystem_nutTrail;
     [ SerializeField ] ParticleSystemRenderer particleSystemRenderer;
 #endregion
 
@@ -22,6 +23,18 @@ public class NutTrailRenderer : MonoBehaviour
 	public void SetMesh( int index )
 	{
 		particleSystemRenderer.mesh = meshes[ index ];
+	}
+	
+	[ Button() ]
+	public void Activate()
+	{
+		particleSystem_nutTrail.Play();
+	}
+	
+	[ Button() ]
+	public void Deactivate()
+	{
+		particleSystem_nutTrail.Stop( false, ParticleSystemStopBehavior.StopEmitting );
 	}
 #endregion
 

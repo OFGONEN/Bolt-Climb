@@ -438,6 +438,7 @@ MonoBehaviour:
   - {fileID: -1377516380700319877, guid: c93109ca6fd06704abdf70ba71b3a175, type: 3}
   - {fileID: 7537960819697063228, guid: 7dc380ee36d889a47ba9d559eaebca2f, type: 3}
   - {fileID: 7106932648503868780, guid: e2e6c870943af3e458e9e92d6110b611, type: 3}
+  particleSystem_nutTrail: {fileID: 465344297971502135}
   particleSystemRenderer: {fileID: 465344297971502134}
 --- !u!1001 &465344296530275554
 PrefabInstance:
@@ -503,6 +504,11 @@ PrefabInstance:
 --- !u!199 &465344297971502134 stripped
 ParticleSystemRenderer:
   m_CorrespondingSourceObject: {fileID: 2116591828, guid: 707d42b2fadc2401fb5e9ef7baf84cc4, type: 3}
+  m_PrefabInstance: {fileID: 465344296530275554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &465344297971502135 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2116591829, guid: 707d42b2fadc2401fb5e9ef7baf84cc4, type: 3}
   m_PrefabInstance: {fileID: 465344296530275554}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2088993669948663632 stripped
