@@ -12,11 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6071c5715ab604ff6a8b0fe31c5df446, type: 3}
   m_Name: skill_durability_on_newBolt
   m_EditorClassIdentifier: 
-  currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_value_array:
+  - value: 0.5
+    cost: 0
+  - value: 0.7
+    cost: 100
+  - value: 0.9
+    cost: 200
   - value: 1
-    cost: 1
-  skill_value_default: 0
-  skill_texture: {fileID: 0}
+    cost: 300
+  - value: 1.1
+    cost: 400
+  - value: 1.3
+    cost: 500
+  - value: 1.5
+    cost: 600
+  - value: 1.8
+    cost: 700
+  currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  skill_texture: {fileID: 21300000, guid: 22dd19c1069c84ec49363ffa40f0f3f1, type: 3}
   skill_description: 
   skill_key: skill_durability_on_newBolt

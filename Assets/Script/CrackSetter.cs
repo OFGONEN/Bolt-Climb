@@ -9,7 +9,8 @@ public class CrackSetter : MonoBehaviour
 #region Fields
     [ SerializeField ] Renderer _renderer;
 
-	static int SHADER_ID_FRAGILITY = Shader.PropertyToID( "_Fragility" );
+	static int SHADER_ID_FRAGILITY   = Shader.PropertyToID( "_Fragility" );
+	static int SHADER_ID_COLOR_CRACK = Shader.PropertyToID( "_Crack_Color" );
 	MaterialPropertyBlock propertyBlock;
 
 	float fragility;
@@ -34,6 +35,14 @@ public class CrackSetter : MonoBehaviour
 		this.fragility = GameSettings.Instance.shader_range_crack.ReturnProgress( fragility );
 		_renderer.GetPropertyBlock( propertyBlock );
 		propertyBlock.SetFloat( SHADER_ID_FRAGILITY, fragility );
+		_renderer.SetPropertyBlock( propertyBlock );
+	}
+	
+    [ Button() ]
+	public void SetCrackColor( Color color )
+	{
+		_renderer.GetPropertyBlock( propertyBlock );
+		propertyBlock.SetColor( SHADER_ID_COLOR_CRACK, color );
 		_renderer.SetPropertyBlock( propertyBlock );
 	}
 #endregion

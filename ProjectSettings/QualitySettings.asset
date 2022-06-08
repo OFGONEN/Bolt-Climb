@@ -20,7 +20,7 @@ QualitySettings:
     shadowmaskMode: 0
     skinWeights: 4
     textureQuality: 0
-    anisotropicTextures: 0
+    anisotropicTextures: 1
     antiAliasing: 0
     softParticles: 0
     softVegetation: 0
@@ -42,15 +42,4 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     customRenderPipeline: {fileID: 11400000, guid: 5cb57e056f5b8fd49b753935847a20e7, type: 2}
     excludedTargetPlatforms: []
-  m_PerPlatformDefaultQuality:
-    Android: 0
-    Lumin: 0
-    Nintendo Switch: 0
-    PS4: 0
-    Stadia: 0
-    Standalone: 0
-    WebGL: 0
-    Windows Store Apps: 0
-    XboxOne: 0
-    iPhone: 0
-    tvOS: 0
+  m_PerPlatformDefaultQuality: {}
