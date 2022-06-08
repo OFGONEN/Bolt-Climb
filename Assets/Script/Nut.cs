@@ -44,6 +44,8 @@ public class Nut : MonoBehaviour
 	float point_fallDown = 0;
 	float point_levelEnd;
 	bool onPath;
+
+	Color crackColor;
 // Delegates
 	UnityMessage onUpdateMethod;
 	UnityMessage onFingerDown;
@@ -95,10 +97,11 @@ public class Nut : MonoBehaviour
 	{
 		var skinIndex = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_skin_index, 0 );
 		var mesh = library_skin.GetMesh( skinIndex );
+		crackColor = library_skin.GetCrackColor( skinIndex );
 
 		component_mesh_filter.mesh             = library_skin.GetMesh( skinIndex );
 		component_mesh_renderer.sharedMaterial = library_skin.GetMaterial( skinIndex );
-		component_crack_setter.Setup( library_skin.GetCrackColor( skinIndex ) );
+		component_crack_setter.Setup( crackColor );
 		component_trail_renderer.SetMesh( mesh );
 	}
 
@@ -166,7 +169,7 @@ public class Nut : MonoBehaviour
 		var shatter = pool_randomShatter.GetEntity();
 		shatter.transform.position = transform.position;
 
-		shatter.DoShatter( component_crack_setter.Fragility );
+		shatter.DoShatter( component_crack_setter.Fragility, crackColor );
 
 		var height = transform.position.y;
 		notif_nut_height_last.SharedValue = height;

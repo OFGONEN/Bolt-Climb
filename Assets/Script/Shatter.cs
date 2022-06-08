@@ -31,7 +31,7 @@ public class Shatter : MonoBehaviour
 
 #region API
 	[ Button() ]
-	public void DoShatter( float rustProgress )
+	public void DoShatter( float rustProgress, Color crackColor )
 	{
 		gameObject.SetActive( true );
 
@@ -48,7 +48,10 @@ public class Shatter : MonoBehaviour
 		}
 
 		for( var i = 0; i < shatter_rust_setters.Length; i++ )
+		{
+			shatter_rust_setters[ i ].Setup( crackColor );
 			shatter_rust_setters[ i ].SetFragility( rustProgress );
+		}
 
 		recycledTween.Recycle( DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, ReturnDefault ) );
 	}
