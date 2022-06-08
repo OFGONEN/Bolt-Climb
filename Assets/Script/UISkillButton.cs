@@ -78,7 +78,7 @@ public class UISkillButton : MonoBehaviour
 		var data = skillData[ index ];
 
 		skill_image.sprite     = data.Texture;
-		skill_description.text = data.Description;
+		skill_description.text = data.Description.Replace("\\n", "\n");
 		skill_level.text       = data.NextLevel;
 		skill_cost.text        = data.NextCost;
 	}
