@@ -19,9 +19,9 @@ MonoBehaviour:
   skill_speed_text_color: {r: 1, g: 0.9990095, b: 0.2783019, a: 1}
   skill_speed_text_size: {x: 0.75, y: 1.5}
   skill_lastChange_shatter_duration: 1
-  skill_durability_on_path_cooldown: 0.2
-  skill_currency_on_maxSpeed_cooldown: 1
-  skill_durability_on_maxSpeed_cooldown: 1
+  skill_durability_on_path_cooldown: 0.5
+  skill_currency_on_maxSpeed_cooldown: 5
+  skill_durability_on_maxSpeed_cooldown: 5
   property_currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   property_durability: {fileID: 11400000, guid: 559a1ceb3fc238a4cbe24c988c1e575d, type: 2}
   property_velocity: {fileID: 11400000, guid: 749a096d47cf8c948a9319d594d0ffb2, type: 2}

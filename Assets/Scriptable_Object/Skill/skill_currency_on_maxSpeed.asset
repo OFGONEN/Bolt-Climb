@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: skill_currency_on_maxSpeed
   m_EditorClassIdentifier: 
   skill_value_array:
-  - value: 2
-    cost: 0
-  - value: 4
-    cost: 50
-  - value: 6
-    cost: 100
-  - value: 8
-    cost: 150
   - value: 10
+    cost: 0
+  - value: 20
+    cost: 50
+  - value: 30
+    cost: 100
+  - value: 50
+    cost: 150
+  - value: 70
     cost: 200
-  - value: 12
+  - value: 100
     cost: 250
-  - value: 14
+  - value: 150
     cost: 300
-  - value: 16
+  - value: 200
     cost: 350
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_texture: {fileID: 21300000, guid: 56aac681faabd45b0b368eaa05db6ee6, type: 3}
