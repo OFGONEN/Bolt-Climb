@@ -114,6 +114,7 @@ MonoBehaviour:
   particle_carving: {fileID: 4276529786295941731}
   component_mesh_filter: {fileID: 1261735751693116645}
   component_mesh_renderer: {fileID: 3919929045974044719}
+  component_trail_renderer: {fileID: 3455925769667820546}
   particle_nut_lowDurability: {fileID: 2644714413687933006}
 --- !u!114 &5320940782767535230
 MonoBehaviour:
@@ -462,13 +463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill_lastChance_doubleJump: {fileID: 11400000, guid: 77645695b2caa4aa99aee05e006f9703, type: 2}
-  meshes:
-  - {fileID: 8486832500550843029, guid: 4c8c76b95745c4746a3e6f991d26e118, type: 3}
-  - {fileID: -4588663459980578461, guid: 9b7669c63f3f402468f907372d843312, type: 3}
-  - {fileID: -604232235653665701, guid: b7b6e8eda07473a47b53ce6abb79dc59, type: 3}
-  - {fileID: -1377516380700319877, guid: c93109ca6fd06704abdf70ba71b3a175, type: 3}
-  - {fileID: 7537960819697063228, guid: 7dc380ee36d889a47ba9d559eaebca2f, type: 3}
-  - {fileID: 7106932648503868780, guid: e2e6c870943af3e458e9e92d6110b611, type: 3}
   particleSystem_nutTrail: {fileID: 465344297971502135}
   particleSystemRenderer: {fileID: 465344297971502134}
 --- !u!1001 &465344296530275554

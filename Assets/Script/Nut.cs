@@ -36,6 +36,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] ParticleSystem particle_carving;
 	[ SerializeField ] MeshFilter component_mesh_filter;
 	[ SerializeField ] MeshRenderer component_mesh_renderer;
+	[ SerializeField ] NutTrailRenderer component_trail_renderer;
 
   [ Title( "Particle" )]
 	[ SerializeField ] ParticleSystem particle_nut_lowDurability;
@@ -93,10 +94,12 @@ public class Nut : MonoBehaviour
 	public void OnSkin_Changed()
 	{
 		var skinIndex = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_skin_index, 0 );
+		var mesh = library_skin.GetMesh( skinIndex );
 
 		component_mesh_filter.mesh             = library_skin.GetMesh( skinIndex );
 		component_mesh_renderer.sharedMaterial = library_skin.GetMaterial( skinIndex );
 		component_crack_setter.Setup( library_skin.GetCrackColor( skinIndex ) );
+		component_trail_renderer.SetMesh( mesh );
 	}
 
 	public void OnLevel_Failed()

@@ -7,8 +7,6 @@ public class NutTrailRenderer : MonoBehaviour
 {
 #region Fields
 	[ SerializeField ] SkillData skill_lastChance_doubleJump;
-
-    [ SerializeField ] Mesh[] meshes;
     [ SerializeField ] ParticleSystem particleSystem_nutTrail;
     [ SerializeField ] ParticleSystemRenderer particleSystemRenderer;
 #endregion
@@ -21,9 +19,9 @@ public class NutTrailRenderer : MonoBehaviour
 
 #region API
     [ Button() ]
-	public void SetMesh( int index )
+	public void SetMesh( Mesh mesh )
 	{
-		particleSystemRenderer.mesh = meshes[ index ];
+		particleSystemRenderer.mesh = mesh;
 	}
 
 	public void OnNutOnBoltChange( bool value )
