@@ -38,7 +38,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c96cf425270879e489474a0ff8374ec6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -70,11 +70,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c96cf425270879e489474a0ff8374ec6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: 6522cdf42fe22b243b2c52f89a7c9a8a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9de179c33ffc8634691fc869974ba06d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MatCapMask:
@@ -87,6 +87,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal_Map:
+        m_Texture: {fileID: 2800000, guid: 7952962d9ed74c14bac891e466c62259, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -142,7 +146,7 @@ Material:
     - _AlphaClip: 0
     - _Blend: 0
     - _BlendOp: 0
-    - _Bloom_Power: 2.4
+    - _Bloom_Power: 2
     - _BumpScale: 1
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
@@ -206,6 +210,7 @@ Material:
     - _RimMax: 1
     - _RimMin: 0.5
     - _RustColorTextureLerp: 0.3
+    - _SampleGI: 0
     - _ShadowColorLightAtten: 1
     - _SingleIndirectColor: 0
     - _Smoothness: 0.5
@@ -220,6 +225,7 @@ Material:
     - _SpecularToonSmoothness: 0.05
     - _SpecularType: 0
     - _SrcBlend: 1
+    - _Start_After: 20
     - _Surface: 0
     - _UseAlphaTest: 0
     - _UseEmission: 0
@@ -243,11 +249,11 @@ Material:
     - _threshold: 1
     m_Colors:
     - Color_2BEA265B: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.7264151, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
-    - _Crack_Color: {r: 1, g: 0.38303566, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Crack_Color: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emission_Color: {r: 1, g: 0.09952615, b: 0, a: 0}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
