@@ -4,38 +4,36 @@ using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
 
-public class RustSetter : MonoBehaviour
+public class CrackSetter : MonoBehaviour
 {
 #region Fields
     [ SerializeField ] Renderer _renderer;
 
-// Private
-	static int SHADER_ID_COLOR = Shader.PropertyToID( "_BaseColor" );
+	static int SHADER_ID_FRAGILITY = Shader.PropertyToID( "_Fragility" );
 	MaterialPropertyBlock propertyBlock;
 
-	float rust_progress;
+	float fragility;
 #endregion
 
 #region Properties
-	public float Rust => rust_progress;
+	public float Fragility => fragility;
 #endregion
 
 #region Unity API
     private void Awake()
     {
 		propertyBlock = new MaterialPropertyBlock();
-		SetRust( 0 );
+		SetFragility( 0 );
 	}
 #endregion
 
 #region API
     [ Button() ]
-	public void SetRust( float value )
+	public void SetFragility( float fragility )
 	{
-		rust_progress = GameSettings.Instance.shader_range_rust.ReturnProgress( value );
+		this.fragility = GameSettings.Instance.shader_range_crack.ReturnProgress( fragility );
 		_renderer.GetPropertyBlock( propertyBlock );
-		propertyBlock.SetColor( SHADER_ID_COLOR, Color.Lerp( GameSettings.Instance.shader_range_color_start, GameSettings.Instance.shader_range_color_end,
-															 rust_progress ) );
+		propertyBlock.SetFloat( SHADER_ID_FRAGILITY, fragility );
 		_renderer.SetPropertyBlock( propertyBlock );
 	}
 #endregion

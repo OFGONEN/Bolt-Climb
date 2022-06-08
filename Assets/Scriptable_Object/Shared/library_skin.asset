@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: library_skin
   m_EditorClassIdentifier: 
   skinDatas:
-  - skin_mesh: {fileID: 2117424432989225524, guid: adde05155b570459eb3bd1ca1bcd0e3b, type: 3}
+  - skin_mesh: {fileID: -604232235653665701, guid: b7b6e8eda07473a47b53ce6abb79dc59, type: 3}
     skin_material: {fileID: 2100000, guid: bc3eac2f9ee5b3243bdaa2c45366c226, type: 2}
