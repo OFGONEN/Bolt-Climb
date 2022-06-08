@@ -120,6 +120,13 @@ namespace FFEditor
 			Selection.SetActiveObjectWithContext( levelCreator, levelCreator );
 		}
 
+		[ MenuItem( "FFShortcut/Select Level Environment Creator &6" ) ]
+		static private void SelectLevelEnvironmentCreator()
+		{
+			var levelEnvironmentCreator = AssetDatabase.LoadAssetAtPath( "Assets/Editor/level_creator_environment.asset", typeof( ScriptableObject ) );
+			Selection.SetActiveObjectWithContext( levelEnvironmentCreator, levelEnvironmentCreator );
+		}
+
 		[ MenuItem( "FFShortcut/Select Skin Library &7" ) ]
 		static private void SelectSkinLibrary()
 		{
