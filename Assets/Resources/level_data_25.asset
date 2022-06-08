@@ -20,3 +20,4 @@ MonoBehaviour:
   incremental_set: 1
   incremental_set_index_velocity: 24
   incremental_set_index_durability: 24
+  skillType: 0

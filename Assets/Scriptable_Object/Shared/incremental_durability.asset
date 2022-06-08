@@ -133,8 +133,28 @@ MonoBehaviour:
     incremental_durability_speed_capacity_decrease: 3.5
     incremental_durability_speed_decrease: 5
     incremental_durability_speed_increase: 5
-  - incremental_cost: 6000
-    incremental_durability_capacity: 150
-    incremental_durability_speed_capacity_decrease: 45
-    incremental_durability_speed_decrease: 50
+  - incremental_cost: 5000
+    incremental_durability_capacity: 500
+    incremental_durability_speed_capacity_decrease: 8
+    incremental_durability_speed_decrease: 10
+    incremental_durability_speed_increase: 5
+  - incremental_cost: 7500
+    incremental_durability_capacity: 750
+    incremental_durability_speed_capacity_decrease: 8
+    incremental_durability_speed_decrease: 10
+    incremental_durability_speed_increase: 5
+  - incremental_cost: 9000
+    incremental_durability_capacity: 1000
+    incremental_durability_speed_capacity_decrease: 8
+    incremental_durability_speed_decrease: 10
+    incremental_durability_speed_increase: 5
+  - incremental_cost: 12000
+    incremental_durability_capacity: 1000
+    incremental_durability_speed_capacity_decrease: 3.5
+    incremental_durability_speed_decrease: 5
+    incremental_durability_speed_increase: 5
+  - incremental_cost: 15000
+    incremental_durability_capacity: 1000
+    incremental_durability_speed_capacity_decrease: 1.5
+    incremental_durability_speed_decrease: 2.5
     incremental_durability_speed_increase: 5
