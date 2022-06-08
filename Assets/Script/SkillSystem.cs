@@ -103,7 +103,7 @@ public class SkillSystem : ScriptableObject
     public void OnNutAttachedBolt()
     {
         if( skill_currency_on_newBolt.IsUnlocked )
-			property_currency.OnIncreaseCooldown( skill_currency_on_newBolt.Value, skill_currency_text_color, skill_currency_text_size );
+			property_currency.OnIncrease( skill_currency_on_newBolt.Value, skill_currency_text_color, skill_currency_text_size );
 
         if( skill_durability_on_newBolt.IsUnlocked )
 		{
