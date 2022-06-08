@@ -83,7 +83,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/game_2_z.unity
     guid: 4a6b6705faa13f849ae9c7876ad9bbd8
-  - enabled: 1
-    path: Assets/Scenes/test.unity
-    guid: 99003f9f9eb5b0a409e7092a7a458105
   m_configObjects: {}
