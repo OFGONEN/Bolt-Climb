@@ -18,8 +18,10 @@ public class SkillSystem : ScriptableObject
     [ BoxGroup( "Setup" ), SerializeField ] Color skill_speed_text_color;
     [ BoxGroup( "Setup" ), SerializeField ] Vector2 skill_speed_text_size;
 
-    [ BoxGroup( "Setup" ), LabelText( "Shatter Dash Duration" ), SerializeField ] float skill_lastChange_shatter_duration;
-    [ BoxGroup( "Setup" ), LabelText( "Cooldown for Gaining Durability on Path" ), SerializeField ] float skill_durability_on_path_cooldown;
+    [ BoxGroup( "Settings" ), LabelText( "Shatter Dash Duration" ), SerializeField ] float skill_lastChange_shatter_duration;
+    [ BoxGroup( "Settings" ), LabelText( "Cooldown for Gaining Durability on Path" ), SerializeField ] float skill_durability_on_path_cooldown;
+    [ BoxGroup( "Settings" ), LabelText( "Cooldown for Gaining Currency on MaxSpeed" ), SerializeField ] float skill_currency_on_maxSpeed_cooldown;
+    [ BoxGroup( "Settings" ), LabelText( "Cooldown for Gaining Durability on MaxSpeed" ), SerializeField ] float skill_durability_on_maxSpeed_cooldown;
 
     [ FoldoutGroup( "Shared Variables"), SerializeField ] Currency property_currency;
     [ FoldoutGroup( "Shared Variables"), SerializeField ] Durability property_durability;
@@ -49,9 +51,11 @@ public class SkillSystem : ScriptableObject
 	UnityMessage onUpdate_NutAir;
 	UnityMessage onFinger_Down;
 
-	[ ShowInInspector, ReadOnly ] bool canJump;
-	float pathDurabilityCooldown = 0;
 	StringBuilder stringBuilder = new StringBuilder( 16 );
+	bool canJump;
+	float pathDurabilityCooldown     = 0;
+	float currencyMaxSpeedCooldown   = 0;
+	float durabilityMaxSpeedCooldown = 0;
 #endregion
 
 #region Properties
@@ -97,13 +101,16 @@ public class SkillSystem : ScriptableObject
 		if( skill_lastChance_doubleJump.IsUnlocked )
 			onFinger_Down = Finger_Down;
 
-		canJump = true;
+		canJump                    = true;
+		pathDurabilityCooldown     = 0;
+		currencyMaxSpeedCooldown   = 0;
+		durabilityMaxSpeedCooldown = 0;
 	}
 
     public void OnNutAttachedBolt()
     {
         if( skill_currency_on_newBolt.IsUnlocked )
-			property_currency.OnIncreaseCooldown( skill_currency_on_newBolt.Value, skill_currency_text_color, skill_currency_text_size );
+			property_currency.OnIncrease( skill_currency_on_newBolt.Value, skill_currency_text_color, skill_currency_text_size );
 
         if( skill_durability_on_newBolt.IsUnlocked )
 		{
@@ -122,14 +129,19 @@ public class SkillSystem : ScriptableObject
 
     public void OnMaxSpeed()
     {
-        if( skill_currency_on_maxSpeed.IsUnlocked )
+        if( skill_currency_on_maxSpeed.IsUnlocked && Time.time > currencyMaxSpeedCooldown )
+		{
 			property_currency.OnIncrease( skill_currency_on_maxSpeed.Value, skill_currency_text_color, skill_currency_text_size );
+			currencyMaxSpeedCooldown = Time.time + skill_currency_on_maxSpeed_cooldown;
+		}
 
-        if( skill_durability_on_maxSpeed.IsUnlocked )
+        if( skill_durability_on_maxSpeed.IsUnlocked && Time.time > durabilityMaxSpeedCooldown )
 		{
 			var value = skill_durability_on_maxSpeed.Value;
 			property_durability.OnIncreaseCapacity( value );
-			pool_currency_ui.GetEntity().Spawn( $"Durability +{value}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+			pool_currency_ui.GetEntity().Spawn( $"Durability +{value}", skill_durability_text_color, skill_durability_text_size, -0.75f );
+
+			durabilityMaxSpeedCooldown = Time.time + skill_durability_on_maxSpeed_cooldown;
 		}
 	}
 
