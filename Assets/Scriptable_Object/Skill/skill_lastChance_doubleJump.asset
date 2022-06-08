@@ -27,5 +27,5 @@ MonoBehaviour:
     cost: 1500
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_texture: {fileID: 21300000, guid: f265e8d5a52084bff94fd3e5c8d48903, type: 3}
-  skill_description: 
+  skill_description: Double Jump\nWhile On Air
   skill_key: skill_lastChance_doubleJump
