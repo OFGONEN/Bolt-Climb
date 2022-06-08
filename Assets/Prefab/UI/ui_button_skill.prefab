@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7800183841652942459}
   - component: {fileID: 8091194980998562764}
   - component: {fileID: 5743460675183947091}
+  - component: {fileID: 7781391512819196070}
+  - component: {fileID: 4002431565786799390}
   m_Layer: 5
   m_Name: ui_button_skill
   m_TagString: Untagged
@@ -123,7 +125,98 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8091194980998562764}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7781391512819196070}
+        m_TargetAssemblyTypeName: UISkillButton, Assembly-CSharp
+        m_MethodName: UnlockSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 4ac7f12d4ad5442dcbaa65c29c34eac8, type: 2}
+        m_TargetAssemblyTypeName: FFStudio.GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7781391512819196070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2858705615622696679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2bbb41689ba45929fe97d2e26d6c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillTypes: 
+  skillData: []
+  skill_image: {fileID: 8091194980998562764}
+  skill_level: {fileID: 7700097886155850774}
+  skill_cost: {fileID: 6601845215138405939}
+  skill_description: {fileID: 5338338960398108602}
+--- !u!114 &4002431565786799390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2858705615622696679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245dc21cc9428744fa28ad2d6ce7d327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventPairs:
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: bd6810d49cd1f4544843ad827f850244, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7781391512819196070}
+          m_TargetAssemblyTypeName: UISkillButton, Assembly-CSharp
+          m_MethodName: EnableGraphics
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: 4ac7f12d4ad5442dcbaa65c29c34eac8, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7781391512819196070}
+          m_TargetAssemblyTypeName: UISkillButton, Assembly-CSharp
+          m_MethodName: OnSkillButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3134110400652395035
 GameObject:
   m_ObjectHideFlags: 0
