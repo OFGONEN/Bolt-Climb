@@ -13,8 +13,18 @@ MonoBehaviour:
   m_Name: skill_lastChance_shatter
   m_EditorClassIdentifier: 
   skill_value_array:
-  - value: 1
-    cost: 1
+  - value: 30
+    cost: 50
+  - value: 30
+    cost: 250
+  - value: 30
+    cost: 500
+  - value: 30
+    cost: 750
+  - value: 30
+    cost: 1000
+  - value: 30
+    cost: 1500
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_texture: {fileID: 0}
   skill_description: 
