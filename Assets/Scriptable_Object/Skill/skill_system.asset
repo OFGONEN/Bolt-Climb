@@ -29,6 +29,7 @@ MonoBehaviour:
   shared_velocity_gravity: {fileID: 11400000, guid: 0f5c88fc849d643aa955acb7c39f4ff5, type: 2}
   notif_nut_IsOnBolt: {fileID: 11400000, guid: d401f21baeb4e4064a7da03f6fbb0777, type: 2}
   event_nut_shatter: {fileID: 11400000, guid: be005d3399d6c411faca1366b9ab755b, type: 2}
+  event_nut_jumped: {fileID: 11400000, guid: 0784e9209ada34453a8dcce12c9fd4a7, type: 2}
   pool_currency_ui: {fileID: 11400000, guid: af6f2fc5310f9409d9fb3a3664cff55b, type: 2}
   skill_currency_on_newBolt: {fileID: 11400000, guid: 227b03b0befc745598e099054479b80e, type: 2}
   skill_currency_on_maxSpeed: {fileID: 11400000, guid: 70cd9fe9afd3e463a96e84257e580f13, type: 2}

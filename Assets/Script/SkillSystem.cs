@@ -30,6 +30,7 @@ public class SkillSystem : ScriptableObject
 	[ FoldoutGroup( "Shared Variables"), SerializeField ] SharedFloat shared_velocity_gravity;
 	[ FoldoutGroup( "Shared Variables"), SerializeField ] SharedBoolNotifier notif_nut_IsOnBolt;
     [ FoldoutGroup( "Shared Variables"), SerializeField ] GameEvent event_nut_shatter;
+    [ FoldoutGroup( "Shared Variables"), SerializeField ] GameEvent event_nut_jumped;
     [ FoldoutGroup( "Shared Variables"), SerializeField ] UICurrencyPool pool_currency_ui;
 
     [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_newBolt;
@@ -223,6 +224,7 @@ public class SkillSystem : ScriptableObject
 			pool_currency_ui.GetEntity().Spawn( "Double Jump", Color.white, skill_durability_text_size ); 
 			property_velocity.OnAcceleration( skill_lastChance_doubleJump.Value );
 			canJump = false;
+			event_nut_jumped.Raise();
 		}
 	}
 #endregion
