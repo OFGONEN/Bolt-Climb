@@ -35,6 +35,31 @@ public class SkillData : ScriptableObject
 	public float Index => skill_index;
 	public float Value => skill_value_array[ skill_index ].value;
 	public float Cost => skill_value_array[ skill_index ].cost;
+
+	public Sprite Texture => skill_texture;
+	public string Description => skill_description;
+
+	public string NextLevel
+	{
+		get
+		{
+			if( skill_index < skill_value_array.Length - 1 )
+				return "LVL " + ( skill_index + 1 );
+			else
+				return "Max";
+		}
+	}
+
+	public string NextCost
+	{
+		get
+		{
+			if( skill_index < skill_value_array.Length - 1 )
+				return $"{skill_value_array[ skill_index + 1 ].cost}$";
+			else
+				return "Max";
+		}
+	}
 #endregion
 
 #region API 
