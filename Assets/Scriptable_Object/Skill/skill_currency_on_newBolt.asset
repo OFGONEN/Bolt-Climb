@@ -30,6 +30,6 @@ MonoBehaviour:
   - value: 16
     cost: 350
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
-  skill_texture: {fileID: 0}
+  skill_texture: {fileID: 21300000, guid: 4341c99cc72a342589962a189d5f1d8f, type: 3}
   skill_description: 
   skill_key: skill_currency_on_newBolt
