@@ -175,6 +175,7 @@ public class SkillSystem : ScriptableObject
 	{
 		var durabilityValue = skill_durability_on_path.Value;
 		pool_currency_ui.GetEntity().Spawn( $"Durability +{durabilityValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+		property_durability.OnIncrease( durabilityValue );
 
 		if( skill_velocity_path.IsUnlocked )
 		{
@@ -182,7 +183,6 @@ public class SkillSystem : ScriptableObject
 			pool_currency_ui.GetEntity().Spawn( $"Speed +{speedValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
 		}
 
-		property_durability.OnIncrease( durabilityValue );
 		onUpdate_NutPath = Nut_PathUpdate;
 	}
 
@@ -190,7 +190,11 @@ public class SkillSystem : ScriptableObject
 	{
 		if( Time.time > pathDurabilityCooldown )
 		{
-			property_durability.OnIncrease( skill_durability_on_path.Value  );
+			var durabilityValue = skill_durability_on_path.Value;
+
+			pool_currency_ui.GetEntity().Spawn( $"Durability +{durabilityValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+			property_durability.OnIncrease( durabilityValue  );
+
 			pathDurabilityCooldown = Time.time + skill_durability_on_path_cooldown;
 		}
 	}
