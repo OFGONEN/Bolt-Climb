@@ -79,9 +79,14 @@ public class SkillSystem : ScriptableObject
 	{
 		if( skill_velocity_gravity.IsUnlocked )
 			shared_velocity_gravity.sharedValue = skill_velocity_gravity.Value;
+		else 
+			shared_velocity_gravity.sharedValue = 1;
+
 		
 		if( skill_velocity_path.IsUnlocked )
 			shared_velocity_pathSpeed.sharedValue = skill_velocity_path.Value;
+		else
+			shared_velocity_pathSpeed.sharedValue = 1;
 
 		if( skill_durability_on_path.IsUnlocked )
 			onUpdate_NutPath = Nut_PathUpdate_Start;
@@ -169,10 +174,13 @@ public class SkillSystem : ScriptableObject
 	void Nut_PathUpdate_Start()
 	{
 		var durabilityValue = skill_durability_on_path.Value;
-		var speedValue = skill_velocity_path.Value;
-
 		pool_currency_ui.GetEntity().Spawn( $"Durability +{durabilityValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
-		pool_currency_ui.GetEntity().Spawn( $"Speed +{speedValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+
+		if( skill_velocity_path.IsUnlocked )
+		{
+			var speedValue = skill_velocity_path.Value;
+			pool_currency_ui.GetEntity().Spawn( $"Speed +{speedValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+		}
 
 		property_durability.OnIncrease( durabilityValue );
 		onUpdate_NutPath = Nut_PathUpdate;
