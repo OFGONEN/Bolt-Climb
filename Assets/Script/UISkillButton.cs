@@ -86,8 +86,6 @@ public class UISkillButton : MonoBehaviour
     void TweenInGraphic()
     {
 		var rectTransform = skill_image.rectTransform;
-
-		rectTransform.localScale = Vector3.one * 0.8f;
 		recycledTween.Recycle( rectTransform.DOPunchScale( Vector3.one, 0.35f ) );
 	}
 
