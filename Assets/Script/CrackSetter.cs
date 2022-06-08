@@ -21,14 +21,16 @@ public class CrackSetter : MonoBehaviour
 #endregion
 
 #region Unity API
-    private void Awake()
-    {
-		propertyBlock = new MaterialPropertyBlock();
-		SetFragility( 0 );
-	}
 #endregion
 
 #region API
+	public void Setup( Color crackColor )
+	{
+		propertyBlock = new MaterialPropertyBlock();
+		SetFragility( 0 );
+		SetCrackColor( crackColor );
+	}
+
     [ Button() ]
 	public void SetFragility( float fragility )
 	{

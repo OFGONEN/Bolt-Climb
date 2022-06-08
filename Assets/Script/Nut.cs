@@ -32,7 +32,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] Currency property_currency;
 	[ SerializeField ] Rigidbody component_rigidbody;
 	[ SerializeField ] Collider component_collider;
-	[ SerializeField ] CrackSetter component_rust_setter;
+	[ SerializeField ] CrackSetter component_crack_setter;
 	[ SerializeField ] ParticleSystem particle_carving;
 	[ SerializeField ] MeshFilter component_mesh_filter;
 	[ SerializeField ] MeshRenderer component_mesh_renderer;
@@ -96,6 +96,7 @@ public class Nut : MonoBehaviour
 
 		component_mesh_filter.mesh             = library_skin.GetMesh( skinIndex );
 		component_mesh_renderer.sharedMaterial = library_skin.GetMaterial( skinIndex );
+		component_crack_setter.Setup( library_skin.GetCrackColor( skinIndex ) );
 	}
 
 	public void OnLevel_Failed()
@@ -162,7 +163,7 @@ public class Nut : MonoBehaviour
 		var shatter = pool_randomShatter.GetEntity();
 		shatter.transform.position = transform.position;
 
-		shatter.DoShatter( component_rust_setter.Fragility );
+		shatter.DoShatter( component_crack_setter.Fragility );
 
 		var height = transform.position.y;
 		notif_nut_height_last.SharedValue = height;
@@ -231,7 +232,7 @@ public class Nut : MonoBehaviour
 	{
 		property_durability.OnIncrease();
 		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-		component_rust_setter.SetFragility( 1 - property_durability.DurabilityRatio );
+		component_crack_setter.SetFragility( 1 - property_durability.DurabilityRatio );
 	}
 
 	void OnUpdate_Acceleration()
@@ -248,7 +249,7 @@ public class Nut : MonoBehaviour
 			component_movement.OnMovement();
 			property_durability.OnDecrease();
 			component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-			component_rust_setter.SetFragility( 1 - property_durability.DurabilityRatio );
+			component_crack_setter.SetFragility( 1 - property_durability.DurabilityRatio );
 		}
 	}
 
@@ -266,7 +267,7 @@ public class Nut : MonoBehaviour
 
 		property_durability.OnIncrease();
 		component_animation.PlayAnimation( property_durability.DurabilityRatio, particle_nut_lowDurability );
-		component_rust_setter.SetFragility( 1 - property_durability.DurabilityRatio );
+		component_crack_setter.SetFragility( 1 - property_durability.DurabilityRatio );
 
 		if( isIdle )
 			onUpdateMethod = OnUpdate_Idle;

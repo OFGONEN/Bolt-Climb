@@ -167,6 +167,7 @@ namespace FFStudio
 	{
 		public Mesh skin_mesh;
 		public Material skin_material;
+		public Color skin_crack_color;
 	}
 
 	[ Serializable ]

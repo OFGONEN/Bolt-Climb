@@ -20,4 +20,9 @@ public class SkinLibrary : ScriptableObject
     {
 		return skinDatas[ index ].skin_material;
 	}
+
+	public Color GetCrackColor( int index )
+	{
+		return skinDatas[ index ].skin_crack_color;
+	}
 }

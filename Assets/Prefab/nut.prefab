@@ -110,7 +110,7 @@ MonoBehaviour:
   property_currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   component_rigidbody: {fileID: 7047402463236877961}
   component_collider: {fileID: 4430853468833506475}
-  component_rust_setter: {fileID: 1581580750663043904}
+  component_crack_setter: {fileID: 1581580750663043904}
   particle_carving: {fileID: 4276529786295941731}
   component_mesh_filter: {fileID: 1261735751693116645}
   component_mesh_renderer: {fileID: 3919929045974044719}
