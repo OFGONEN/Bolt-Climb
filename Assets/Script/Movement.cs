@@ -51,7 +51,7 @@ public class Movement : MonoBehaviour
 		.SetLookAt( 0 )
 		.SetSpeedBased()
 		// .SetRelative()
-		.OnUpdate( DoRotate )
+		.OnUpdate( OnPathUpdate )
 		.SetEase( Ease.Linear )
 		.OnComplete( onPathComplete );
 	}
@@ -72,7 +72,7 @@ public class Movement : MonoBehaviour
 		.SetLookAt( 0 )
 		.SetSpeedBased()
 		// .SetRelative()
-		.OnUpdate( OnPathUpdate )
+		.OnUpdate( DoRotate )
 		.SetEase( Ease.Linear )
 		.OnComplete( onPathComplete );
 	}
