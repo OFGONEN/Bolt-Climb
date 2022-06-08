@@ -184,7 +184,7 @@ public class SkillSystem : ScriptableObject
 			event_nut_shatter.Raise();
 	}
 
-	public void OnNutTriggersEndBolt()
+	public void OnNutStartPath()
 	{
 		recycledTween.Kill();
 	}

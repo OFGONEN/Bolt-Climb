@@ -388,12 +388,13 @@ MonoBehaviour:
   - eventListener:
       gameEvents:
       - {fileID: 11400000, guid: 34e7cbb39e3e25e49b4d19ad35c405b9, type: 2}
+      - {fileID: 11400000, guid: ac97fbe748a77ed41b02e43b9eba8d12, type: 2}
     unityEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 11400000, guid: 554c200a65c49476ba64a3d04c66b465, type: 2}
           m_TargetAssemblyTypeName: SkillSystem, Assembly-CSharp
-          m_MethodName: OnNutTriggersEndBolt
+          m_MethodName: OnNutStartPath
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
