@@ -6,8 +6,9 @@ using Sirenix.OdinInspector;
 public class NutTrailRenderer : MonoBehaviour
 {
 #region Fields
-    [ SerializeField ] Mesh[] meshes;
+	[ SerializeField ] SkillData skill_lastChance_doubleJump;
 
+    [ SerializeField ] Mesh[] meshes;
     [ SerializeField ] ParticleSystem particleSystem_nutTrail;
     [ SerializeField ] ParticleSystemRenderer particleSystemRenderer;
 #endregion
@@ -23,6 +24,14 @@ public class NutTrailRenderer : MonoBehaviour
 	public void SetMesh( int index )
 	{
 		particleSystemRenderer.mesh = meshes[ index ];
+	}
+
+	public void OnNutOnBoltChange( bool value )
+	{
+		if( value )
+			Deactivate();
+		else if( skill_lastChance_doubleJump.IsUnlocked )
+			Activate();
 	}
 	
 	[ Button() ]
