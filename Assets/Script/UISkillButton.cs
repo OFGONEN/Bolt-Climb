@@ -15,6 +15,7 @@ public class UISkillButton : MonoBehaviour
     [ BoxGroup( "Setup" ), SerializeField ] SkillType[] skillTypes;
     [ BoxGroup( "Setup" ), SerializeField ] SkillData[] skillData;
 
+    [ BoxGroup( "UI Elements" ), SerializeField ] Button skill_button;
     [ BoxGroup( "UI Elements" ), SerializeField ] Image skill_image;
     [ BoxGroup( "UI Elements" ), SerializeField ] TextMeshProUGUI skill_level;
     [ BoxGroup( "UI Elements" ), SerializeField ] TextMeshProUGUI skill_cost;
@@ -42,6 +43,8 @@ public class UISkillButton : MonoBehaviour
 		skillIndex = FindSkillIndex( levelSkillType );
 
 		if( skillIndex == -1 ) return;
+
+		skill_button.interactable = skillData[ skillIndex ].CanShow;
 
 		SetGraphics( skillIndex );
 		ToggleGraphics( true );

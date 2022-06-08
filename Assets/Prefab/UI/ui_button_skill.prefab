@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillTypes: 
   skillData: []
+  skill_button: {fileID: 5743460675183947091}
   skill_image: {fileID: 8091194980998562764}
   skill_level: {fileID: 7700097886155850774}
   skill_cost: {fileID: 6601845215138405939}
