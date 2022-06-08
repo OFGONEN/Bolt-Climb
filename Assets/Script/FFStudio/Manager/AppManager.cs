@@ -71,6 +71,7 @@ namespace FFStudio
             {
 				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.velocity_index, levelData.incremental_set_index_velocity  );
 				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.durability_index, levelData.incremental_set_index_durability );
+				PlayerPrefsUtility.Instance.SetInt( levelData.name, 1 );
 			}
 
 			// SceneManager.LoadScene( CurrentLevelData.Instance.levelData.sceneIndex, LoadSceneMode.Additive );
