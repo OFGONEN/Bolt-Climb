@@ -42,7 +42,7 @@ public class FollowLine : MonoBehaviour
 
 		stringBuilder.Clear();
 		stringBuilder.Append( notif_target_height.SharedValue.ToString( "F2" ) );
-		stringBuilder.Append( 'm' );
+		stringBuilder.Append( "ft" );
 
 		target_ui.transform.localPosition = Vector3.right * ( height + target_offset );
 		target_text.text                  = stringBuilder.ToString();
@@ -56,7 +56,7 @@ public class FollowLine : MonoBehaviour
 
 		stringBuilder.Clear();
 		stringBuilder.Append( notif_target_height.SharedValue.ToString( "F2" ) );
-		stringBuilder.Append( 'm' );
+		stringBuilder.Append( "ft" );
 
 		target_ui.transform.localPosition = Vector3.right * ( height + target_offset );
 		target_text.text                  = stringBuilder.ToString();
