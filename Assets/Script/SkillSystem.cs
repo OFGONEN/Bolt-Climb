@@ -57,6 +57,8 @@ public class SkillSystem : ScriptableObject
 	float pathDurabilityCooldown     = 0;
 	float currencyMaxSpeedCooldown   = 0;
 	float durabilityMaxSpeedCooldown = 0;
+
+	RecycledTween recycledTween = new RecycledTween();
 #endregion
 
 #region Properties
@@ -176,10 +178,15 @@ public class SkillSystem : ScriptableObject
 			property_velocity.ZeroOutVelocity();
 			property_velocity.OnAcceleration( skill_lastChance_Shatter.Value );
 
-			DOVirtual.DelayedCall( skill_lastChange_shatter_duration, event_nut_shatter.Raise );
+			recycledTween.Recycle( DOVirtual.DelayedCall( skill_lastChange_shatter_duration, event_nut_shatter.Raise ) );
 		}
 		else
 			event_nut_shatter.Raise();
+	}
+
+	public void OnNutTriggersEndBolt()
+	{
+		recycledTween.Kill();
 	}
 #endregion
 
