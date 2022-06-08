@@ -13,8 +13,22 @@ MonoBehaviour:
   m_Name: skill_velocity_path
   m_EditorClassIdentifier: 
   skill_value_array:
-  - value: 1
-    cost: 1
+  - value: 1.8
+    cost: 0
+  - value: 1.7
+    cost: 100
+  - value: 1.6
+    cost: 200
+  - value: 1.5
+    cost: 300
+  - value: 1.45
+    cost: 400
+  - value: 1.4
+    cost: 500
+  - value: 1.35
+    cost: 600
+  - value: 1.3
+    cost: 700
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_texture: {fileID: 0}
   skill_description: 
