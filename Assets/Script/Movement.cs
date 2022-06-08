@@ -51,6 +51,27 @@ public class Movement : MonoBehaviour
 		.SetLookAt( 0 )
 		.SetSpeedBased()
 		// .SetRelative()
+		.OnUpdate( DoRotate )
+		.SetEase( Ease.Linear )
+		.OnComplete( onPathComplete );
+	}
+
+	public void DoPathEnd( int index, TweenCallback onPathComplete )
+	{
+		Vector3[] pathPoints;
+		path_Set.itemDictionary.TryGetValue( index, out pathPoints );
+
+#if UNITY_EDITOR
+		if( pathPoints == null )
+		{
+			FFLogger.LogError( $"Path Index {index} is NULL" );
+			return;
+		}
+#endif
+		pathTween = transform_movement.DOPath( pathPoints, Mathf.Max( GameSettings.Instance.movement_pathSpeed_minumum, velocity.CurrentVelocity * shared_velocity_pathSpeed.sharedValue ), PathType.Linear )
+		.SetLookAt( 0 )
+		.SetSpeedBased()
+		// .SetRelative()
 		.OnUpdate( OnPathUpdate )
 		.SetEase( Ease.Linear )
 		.OnComplete( onPathComplete );

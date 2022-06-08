@@ -148,7 +148,7 @@ public class Nut : MonoBehaviour
 		onPath = true;
 		EmptyDelegates();
 		onLevelProgress = ExtensionMethods.EmptyMethod;
-		component_movement.DoPath( gameEvent.eventValue, OnLevelEndPathComplete );
+		component_movement.DoPathEnd( gameEvent.eventValue, OnLevelEndPathComplete );
 
 		notif_nut_height_last.SharedValue = 0;
 		PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, 0 );
