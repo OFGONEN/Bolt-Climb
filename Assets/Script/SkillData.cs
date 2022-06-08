@@ -44,7 +44,7 @@ public class SkillData : ScriptableObject
 		get
 		{
 			if( skill_index < skill_value_array.Length - 1 )
-				return "LVL " + ( skill_index + 1 );
+				return "LVL " + ( skill_index + 2 );
 			else
 				return "Max";
 		}
@@ -60,9 +60,12 @@ public class SkillData : ScriptableObject
 				return "Max";
 		}
 	}
-#endregion
 
-#region API 
+	public bool CanShow => skill_index < skill_value_array.Length - 1 && 
+		currency.SharedValue >= skill_value_array[ skill_index + 1 ].cost;
+	#endregion
+
+	#region API 
 	[ Button() ]
 	public void Unlock()
 	{
