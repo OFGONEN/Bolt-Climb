@@ -14,7 +14,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] ShatterRandomPool pool_randomShatter;
 	[ SerializeField ] SharedReferenceNotifier notif_bolt_end;
 	[ SerializeField ] GameEvent event_level_failed;
-	[ SerializeField ] GameEvent event_level_completed;
+	[ SerializeField ] GameEvent event_nut_EndLevel;
 	[ SerializeField ] GameEvent event_curvedPath_end;
 	[ SerializeField ] GameEvent event_path_end;
 	[ SerializeField ] GameEvent event_nut_air_update;
@@ -224,7 +224,7 @@ public class Nut : MonoBehaviour
 
 		event_path_end.Raise();
 
-		DOVirtual.DelayedCall( GameSettings.Instance.nut_levelEnd_waitDuration, event_level_completed.Raise );
+		DOVirtual.DelayedCall( GameSettings.Instance.nut_levelEnd_waitDuration, event_nut_EndLevel.Raise );
 	}
 
 	void OnUpdate_Idle()
