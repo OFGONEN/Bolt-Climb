@@ -66,7 +66,10 @@ MonoBehaviour:
   prefab_ground: {fileID: 5663965115066955436, guid: 60660323761c14013bd08a18fd1b0b64, type: 3}
   prefab_background: {fileID: 5663965115066955436, guid: cbc0d7f3277fe4698a68647f1614c7a1, type: 3}
   prefab_background_side: {fileID: 6077735760910110804, guid: aeee377f0af84478ca7373a18099112f, type: 3}
+  prefab_finishLine: {fileID: 6539738306624702624, guid: 3c3c3b2b10ac14e5889f787db8e1a823, type: 3}
   environment_offset: -1
+  prefab_finishLine_depth: 2.5
+  prefab_finishLine_height: 1.4
   prefab_background_depth: 2.5
   prefab_background_height: 2.4
   prefab_background_side_depth: 1.4

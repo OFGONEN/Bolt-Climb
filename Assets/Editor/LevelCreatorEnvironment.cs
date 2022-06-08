@@ -20,7 +20,10 @@ public class LevelCreatorEnvironment : ScriptableObject
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_ground;
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_background;
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_background_side;
+    [ FoldoutGroup( "Setup" ) ] public GameObject prefab_finishLine;
     [ FoldoutGroup( "Setup" ) ] public float environment_offset;
+    [ FoldoutGroup( "Setup" ) ] public float prefab_finishLine_depth;
+    [ FoldoutGroup( "Setup" ) ] public float prefab_finishLine_height;
     [ FoldoutGroup( "Setup" ) ] public float prefab_background_depth;
     [ FoldoutGroup( "Setup" ) ] public float prefab_background_height;
     [ FoldoutGroup( "Setup" ) ] public float prefab_background_side_depth;
@@ -35,6 +38,8 @@ public class LevelCreatorEnvironment : ScriptableObject
 #endregion
 
 #region API
+
+
     [ Button() ]
     public void CreateAllLevelEnvironment()
     {
@@ -66,8 +71,9 @@ public class LevelCreatorEnvironment : ScriptableObject
 		ground.transform.localPosition = Vector3.zero;
 
 		var backgroundCount = GameObject.Find( "finishLine" ).transform.position.y / prefab_background_height - 1;
+		GameObject lastBackground = null;
 
-        for( var i = 0; i < backgroundCount; i++ )
+		for( var i = 0; i < backgroundCount; i++ )
         {
 			var background = PrefabUtility.InstantiatePrefab( prefab_background ) as GameObject;
             background.GetComponentInChildren< Renderer >().sharedMaterial = environmentData[ index ].level_material_background;
@@ -75,6 +81,7 @@ public class LevelCreatorEnvironment : ScriptableObject
 			background.transform.SetParent( environmentParent );
 			background.transform.localPosition    = i * Vector3.up * prefab_background_height + Vector3.forward * prefab_background_depth;
 			background.transform.localEulerAngles = Vector3.zero;
+			lastBackground = background;
 
 			var sideGround_left = PrefabUtility.InstantiatePrefab( prefab_background_side ) as GameObject;
             sideGround_left.GetComponentInChildren< Renderer >().sharedMaterial = environmentData[ index ].level_material_background;
@@ -92,6 +99,10 @@ public class LevelCreatorEnvironment : ScriptableObject
 		}
 
 		environmentParent.transform.position = Vector3.up * environment_offset;
+
+		var finishLine = PrefabUtility.InstantiatePrefab( prefab_finishLine ) as GameObject;
+		finishLine.transform.position = new Vector3( 0, lastBackground.transform.position.y + prefab_background_height - prefab_finishLine_height, 2.5f );
+		finishLine.transform.SetParent( environmentParent );
 
 		EditorSceneManager.SaveOpenScenes();
 	}
