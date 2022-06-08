@@ -58,6 +58,7 @@ public class Nut : MonoBehaviour
 #region Unity API
 	private void OnDisable()
 	{
+		EmptyDelegates();
 		onLevelProgress = ExtensionMethods.EmptyMethod;
 	}
 
@@ -138,6 +139,8 @@ public class Nut : MonoBehaviour
 		onPath = true;
 		EmptyDelegates();
 		component_movement.DoPath( gameEvent.eventValue, OnPathComplete );
+
+		onNut_IsOnBoltChange = NutOnBoltChange;
 	}
 
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
