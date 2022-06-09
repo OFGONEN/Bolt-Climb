@@ -20,10 +20,7 @@ public class LevelCreatorEnvironment : ScriptableObject
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_ground;
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_background;
     [ FoldoutGroup( "Setup" ) ] public GameObject prefab_background_side;
-    [ FoldoutGroup( "Setup" ) ] public GameObject prefab_finishLine;
     [ FoldoutGroup( "Setup" ) ] public float environment_offset;
-    [ FoldoutGroup( "Setup" ) ] public float prefab_finishLine_depth;
-    [ FoldoutGroup( "Setup" ) ] public float prefab_finishLine_height;
     [ FoldoutGroup( "Setup" ) ] public float prefab_background_depth;
     [ FoldoutGroup( "Setup" ) ] public float prefab_background_height;
     [ FoldoutGroup( "Setup" ) ] public float prefab_background_side_depth;
@@ -99,11 +96,6 @@ public class LevelCreatorEnvironment : ScriptableObject
 		}
 
 		environmentParent.transform.position = Vector3.up * environment_offset;
-
-		var finishLine = PrefabUtility.InstantiatePrefab( prefab_finishLine ) as GameObject;
-		finishLine.transform.position = new Vector3( 0, lastBackground.transform.position.y + prefab_background_height - prefab_finishLine_height, 2.5f );
-		finishLine.transform.SetParent( environmentParent );
-
 		EditorSceneManager.SaveOpenScenes();
 	}
 #endregion
