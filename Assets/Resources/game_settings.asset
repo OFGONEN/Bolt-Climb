@@ -23,6 +23,7 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 7ccec5bb74450f147b13db9fbe3883da, type: 3}
   - {fileID: 919132149155446097, guid: 99634178dff5d45939b3ef613ea1af77, type: 3}
   - {fileID: 919132149155446097, guid: c7ec7de8b11304c78a74445c39ffbbfa, type: 3}
+  - {fileID: 919132149155446097, guid: 536fcf27584cd4641b6ad77133482c8b, type: 3}
   game_icon_progressionBar:
   - {fileID: 21300000, guid: 41fc1346da21bb84b81d97a4da91b272, type: 3}
   - {fileID: 21300000, guid: 3efe596d650fd9842afe630b5957ee6d, type: 3}
@@ -31,6 +32,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bf535ab45646b2a47b13bbb892fe141e, type: 3}
   - {fileID: 21300000, guid: 8ebeee363c6e6154fb02c26b1caea164, type: 3}
   - {fileID: 21300000, guid: 0a413ff99c0aa4ef6a2ecc20424e92e4, type: 3}
+  - {fileID: 21300000, guid: 6076352e5d2b39b499dbcec31ad69502, type: 3}
   game_icon_nut_background:
   - {fileID: 21300000, guid: 79d70d57c099ddd4cb891f24fdefd0c3, type: 3}
   - {fileID: 21300000, guid: 890b58a128d9855408a5233e1bead011, type: 3}
