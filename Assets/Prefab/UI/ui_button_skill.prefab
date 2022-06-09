@@ -215,6 +215,7 @@ MonoBehaviour:
   - eventListener:
       gameEvents:
       - {fileID: 11400000, guid: 4ac7f12d4ad5442dcbaa65c29c34eac8, type: 2}
+      - {fileID: 11400000, guid: 93e8e68aa17a04b06ba2d543d724e179, type: 2}
     unityEvent:
       m_PersistentCalls:
         m_Calls:
