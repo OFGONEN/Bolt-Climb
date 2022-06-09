@@ -49,6 +49,9 @@ namespace FFStudio
 
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_height;
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_duration;
+
+
+        public GameObject FinishLine => game_finishLine[ Mathf.Clamp( CurrentLevelData.Instance.levelData.finishLineIndex, 0, game_finishLine.Length - 1 ) ];
 #endregion
 
 #region Fields (Singleton Related)

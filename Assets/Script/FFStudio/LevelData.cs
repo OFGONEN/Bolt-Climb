@@ -19,11 +19,13 @@ namespace FFStudio
 		[ LabelText( "Velocity Incremental Cap" ) ] public int incremental_cap_velocity = 100;
 		[ LabelText( "Durability Incremental Cap" ) ] public int incremental_cap_durability = 100;
 		[ LabelText( "Currency Incremental Cap" ) ] public int incremental_cap_currency = 100;
-
         [ LabelText( "Set Incremental" ) ] public bool incremental_set;
         [ LabelText( "Set Index of Velocity Incremental" ), ShowIf( "incremental_set" ) ] public int incremental_set_index_velocity;
         [ LabelText( "Set Index of Durability Incremental" ), ShowIf( "incremental_set" ) ] public int incremental_set_index_durability;
+
+	[ Title( "Level Related" ) ]
 		[ LabelText( "Type of Skill will be showned at the end of the Level" ) ] public SkillType skillType;
+		[ LabelText( "Finish Line index to spawn" ) ] public int finishLineIndex;
 
 #if UNITY_EDITOR
 		private static IEnumerable SceneList()
