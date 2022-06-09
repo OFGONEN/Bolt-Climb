@@ -17,6 +17,9 @@ namespace FFStudio
         private static ReturnCurrentLevel returnInstance = LoadInstance;
 
         public static CurrentLevelData Instance => returnInstance();
+
+        public float BaseProgression => levelData.levelProgress_base;
+        public float TargetProgression => levelData.levelProgress_base + levelData.levelProgress_current;
 #endregion
 
 #region API

@@ -25,6 +25,8 @@ namespace FFStudio
         public Image foreGroundImage;
         public Image level_progress_icon_start;
         public Image level_progress_icon_end;
+        public Image level_progress_nut_icon_background;
+        public Image level_progress_nut_icon_foreground;
         public RectTransform tutorialObjects;
 		public IncrementalButton[] incrementalButtons;
 
@@ -61,7 +63,10 @@ namespace FFStudio
             tapInputListener.response      = ExtensionMethods.EmptyMethod;
 
 			level_information_text.text = "Tap to Start";
-        }
+
+			level_progress_nut_icon_background.enabled = false;
+			level_progress_nut_icon_foreground.enabled = false;
+		}
 #endregion
 
 #region API
@@ -118,14 +123,13 @@ namespace FFStudio
 
         private void LevelCompleteResponse()
         {
-            var sequence = DOTween.Sequence();
-
-			// Tween tween = null;
-
+			var sequence = DOTween.Sequence();
 			level_information_text.text = "Completed \n\n Tap to Continue";
 
 			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
+					.AppendCallback( EnableNutProgressIcon )
+                    .Append( level_progress_nut_icon_foreground.DOFillAmount( CurrentLevelData.Instance.TargetProgression, GameSettings.Instance.ui_Entity_Filling_TweenDuration ))
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.AppendCallback( () => tapInputListener.response = LoadNewLevel );
 
@@ -172,6 +176,9 @@ namespace FFStudio
 		private void LoadNewLevel()
 		{
 			tapInputListener.response = ExtensionMethods.EmptyMethod;
+
+			level_progress_nut_icon_background.enabled = false;
+			level_progress_nut_icon_foreground.enabled = false;
 
 			var sequence = DOTween.Sequence();
 
@@ -225,6 +232,17 @@ namespace FFStudio
 			}
 
 			return available;
+		}
+
+        private void EnableNutProgressIcon()
+        {
+			level_progress_nut_icon_background.sprite = GameSettings.Instance.LevelNutIconBackground;
+			level_progress_nut_icon_foreground.sprite = GameSettings.Instance.LevelNutIconForeGround;
+
+			level_progress_nut_icon_background.enabled = true;
+			level_progress_nut_icon_foreground.enabled = true;
+
+			level_progress_nut_icon_foreground.fillAmount = CurrentLevelData.Instance.BaseProgression;
 		}
 #endregion
     }
