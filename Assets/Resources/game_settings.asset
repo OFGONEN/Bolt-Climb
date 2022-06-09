@@ -12,19 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  game_level_count: 100
-  movement_rotation_cofactor: 3
+  game_level_count: 24
+  game_tutorial_timeScale: 0.05
+  postProcess_vignette_intencity: {x: 0, y: 0.3}
+  shader_range_crack: {x: 0, y: 1}
+  game_finishLine:
+  - {fileID: 919132149155446097, guid: b15969578373e42008195bc1bc79763a, type: 3}
+  - {fileID: 919132149155446097, guid: 950599f4f0db24c2093fb07135b3ef1e, type: 3}
+  - {fileID: 919132149155446097, guid: cb44e4b19ab58417e847b56649434760, type: 3}
+  - {fileID: 919132149155446097, guid: 7ccec5bb74450f147b13db9fbe3883da, type: 3}
+  - {fileID: 919132149155446097, guid: 99634178dff5d45939b3ef613ea1af77, type: 3}
+  - {fileID: 919132149155446097, guid: c7ec7de8b11304c78a74445c39ffbbfa, type: 3}
+  bolt_batch: 10
+  bolt_height: 0.5
+  bolt_detach_waitTime: 3
+  bolt_detach_force: {x: 3, y: 7}
+  movement_rotation_cofactor: 80
   movement_launchSpeed_minumum: 1
+  movement_pathSpeed_minumum: 1
+  nut_shatter_force_up: {x: 0, y: 0}
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
   nut_shatter_torque: {x: 6.6980996, y: 15.23205}
-  nut_shatter_waitDuration: 2
+  nut_shatter_waitDuration: 0.75
+  nut_levelEnd_force: {x: 5, y: 9}
+  nut_levelEnd_waitDuration: 1
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
-  maxLevelCount: 1
-  ui_Entity_Move_TweenDuration: 0.5
-  ui_Entity_Fade_TweenDuration: 0.5
-  ui_Entity_Scale_TweenDuration: 0.5
-  ui_Entity_FloatingMove_TweenDuration: 0.5
+  maxLevelCount: 25
+  ui_Entity_Move_TweenDuration: 0.35
+  ui_Entity_Fade_TweenDuration: 0.35
+  ui_Entity_Scale_TweenDuration: 0.35
+  ui_Entity_FloatingMove_TweenDuration: 0.35
   ui_Entity_JoyStick_Gap: 50
   ui_PopUp_height: 1
   ui_PopUp_duration: 0.75

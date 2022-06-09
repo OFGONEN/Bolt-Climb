@@ -3,6 +3,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using FFStudio;
 using Sirenix.OdinInspector;
 
@@ -11,15 +13,20 @@ public class Durability : ScriptableObject
 {
 #region Fields
     [ SerializeField ] IncrementalDurability durability_incremental;
+    [ SerializeField ] SharedReferenceNotifier notif_reference_volume;
     [ ShowInInspector, ReadOnly ] IncrementalDurabilityData durability_data;
     [ ShowInInspector, ReadOnly ] float durability_current_capacity;
     [ ShowInInspector, ReadOnly ] float durability_current;
+
+    [ ShowInInspector, ReadOnly ] Volume volume;
+    [ ShowInInspector, ReadOnly ] Vignette volume_vignette;
 #endregion
 
 #region Properties
     // Properties
     public float CurrentDurability => durability_current;
-    public float DurabilityRatio => durability_current / durability_data.incremental_durability_capacity;
+    public float DurabilityRatio => durability_current / durability_current_capacity;
+    public float DurabilityRatioRead => durability_current / durability_data.incremental_durability_capacity;
 #endregion
 
 #region Unity API
@@ -28,9 +35,12 @@ public class Durability : ScriptableObject
 #region API
     public void SetDurabilityData()
     {
-		durability_data             = durability_incremental.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.durability_index, 0 ) );
+		volume                      = notif_reference_volume.SharedValue as Volume;
+		durability_data             = durability_incremental.ReturnIncremental( PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.durability_index, 0 ) );
 		durability_current_capacity = durability_data.incremental_durability_capacity;
 		durability_current          = durability_data.incremental_durability_capacity;
+
+        volume.profile.TryGet< Vignette >( out volume_vignette );
 	}
 
     public void OnIncrease()
@@ -38,6 +48,25 @@ public class Durability : ScriptableObject
 		durability_current = Mathf.Min( 
             durability_current + Time.deltaTime * durability_data.incremental_durability_speed_increase, 
             durability_current_capacity );
+
+		UpdateVignette();
+	}
+
+    public void OnIncrease( float value )
+    {
+		durability_current = Mathf.Min( 
+            durability_current + value, 
+            durability_current_capacity );
+
+		UpdateVignette();
+	}
+
+    public void OnIncreaseCapacity( float value )
+    {
+		durability_current          += value;
+		durability_current_capacity += value;
+
+		UpdateVignette();
 	}
 
     public void OnDecrease()
@@ -50,10 +79,27 @@ public class Durability : ScriptableObject
 			durability_current_capacity - Time.deltaTime * durability_data.incremental_durability_speed_capacity_decrease,
 			0
 		);
+
+		UpdateVignette();
+	}
+
+    public void DisableVignette()
+    {
+        FFLogger.Log( "Disable Vignette" );
+		UpdateVignette( 0 );
 	}
 #endregion
 
 #region Implementation
+    void UpdateVignette()
+    {
+		volume_vignette.intensity.value = GameSettings.Instance.postProcess_vignette_intencity.ReturnProgressInverse( DurabilityRatio );
+    }
+
+    void UpdateVignette( float value )
+    {
+		volume_vignette.intensity.value = value;
+	}
 #endregion
 
 #region Editor Only

@@ -11,11 +11,14 @@ namespace FFStudio
 	public static class ExtensionMethods
 	{
 		//PlayerPrefs
-		public static string currency         = "currency";
-		public static string currency_index   = "currency_index";
-		public static string durability_index = "durability_index";
-		public static string velocity_index   = "velocity_index";
-		public static string nut_height       = "height";
+		public static string currency                = "currency";
+		public static string currency_index          = "currency_index";
+		public static string durability_index        = "durability_index";
+		public static string durability_index_visual = "durability_index_visual";
+		public static string velocity_index          = "velocity_index";
+		public static string velocity_index_visual   = "velocity_index_visual";
+		public static string nut_height              = "height";
+		public static string nut_skin_index          = "skin";
 
 		//Static Variables
 		private static List< Transform > baseModelBones = new List< Transform >( 96 );
@@ -157,6 +160,11 @@ namespace FFStudio
 		}
 
 		public static void EmptyMethod()
+		{
+			/* Intentionally empty, by definition. */
+		}
+		
+		public static void EmptyMethod( bool value )
 		{
 			/* Intentionally empty, by definition. */
 		}
@@ -325,6 +333,16 @@ namespace FFStudio
                 {
 				    fieldInfo.SetValue( source, value );
                 }
+				else if( fieldType == typeof( bool ) )
+                {
+				    fieldInfo.SetValue( source, bool.Parse( value ) );
+					FFLogger.Log( "Setting Bool: " + fieldName + " Value: " + value );
+                }
+				else
+				{
+					fieldInfo.SetValue( source, JsonUtility.FromJson( value, fieldType ));
+					FFLogger.Log( "Setting Json: " + fieldName + " Value: " + value );
+				}
 		}
 
 		public static DG.Tweening.Sequence KillProper( this DG.Tweening.Sequence sequence )
@@ -387,6 +405,16 @@ namespace FFStudio
 			return Random.Range( vector.x, vector.y );
 		}
 
+		public static float ReturnProgress( this Vector2 vector, float progress )
+		{
+			return Mathf.Lerp( vector.x, vector.y, progress );
+		}
+
+		public static float ReturnProgressInverse( this Vector2 vector, float progress )
+		{
+			return Mathf.Lerp( vector.y, vector.x, progress );
+		}
+
 		public static void DestoryAllChildren( this Transform transform )
 		{
 			var childCount = transform.childCount;
@@ -401,6 +429,17 @@ namespace FFStudio
 			{
 				GameObject.DestroyImmediate( childs[ i ].gameObject );
 			}
+		}
+
+		public static void ToggleKinematic( this Rigidbody rb, bool value )
+		{
+			rb.isKinematic = value;
+			rb.useGravity  = !value;
+		}
+
+		public static float ReturnClamped( this Vector2 vector, float value )
+		{
+			return Mathf.Clamp( value, vector.x, vector.y );
 		}
 	}
 }

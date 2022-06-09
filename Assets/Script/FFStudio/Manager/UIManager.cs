@@ -86,7 +86,7 @@ namespace FFStudio
 
 			IncrementalButtons_SetUp();
 			float fade = IncrementalButtons_Available() ? 0 : 0.5f;
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+			sequence.Append( foreGroundImage.DOFade( fade, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) );
                     IncrementalButtons_GoUp( sequence );
 					sequence.AppendCallback( () => tapInputListener.response = StartLevel );
@@ -169,10 +169,6 @@ namespace FFStudio
 			sequence.Append( foreGroundImage.DOFade( 1f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 			        .Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 			        .AppendCallback( resetLevelEvent.Raise );
-
-			elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
-			elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
-			elephantLevelEvent.Raise();
 		}
 
         private void IncrementalButtons_SetUp()

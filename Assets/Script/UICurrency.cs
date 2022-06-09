@@ -26,25 +26,60 @@ public class UICurrency : MonoBehaviour
     [ BoxGroup( "Scale" ), SerializeField ] Ease spawn_scale_ease;
     [ BoxGroup( "Fade" ), SerializeField ] float fade_duration;
     [ BoxGroup( "Fade" ), SerializeField ] Ease spawn_fade_ease;
-
 // Private
 	Transform nut_transform;
-
 	RecycledSequence recycledSequence = new RecycledSequence();
+
+	Color color_start;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		recycledSequence.Kill();
+	}
+
+	private void OnEnable()
+	{
+		color_start = text_currency.color;
+	}
 #endregion
 
 #region API
+	public void Spawn( string value )
+	{
+		text_currency.text = value;
+		Spawn();
+	}
+
+	public void Spawn( string value, Color color, Vector2 size )
+	{
+		text_currency.text = value;
+		Spawn( color, size );
+	}
+	
+	public void Spawn( string value, Color color, Vector2 size, float lateralModifier )
+	{
+		text_currency.text = value;
+		Spawn( color, size, lateralModifier );
+	}
+
 	[ Button() ]
 	public void Spawn()
 	{
-		var nutPosition = ( notif_nut_reference.SharedValue as Transform ).position;
-		nutPosition.z = spawn_depth;
+		var nutTransform  = notif_nut_reference.SharedValue as Transform;
+
+		if( !nutTransform )
+		{
+			OnSpawnComplete();
+			return;
+		}
+
+		var nutPosition   = nutTransform.position;
+		    nutPosition.z = spawn_depth;
 
 		var random = new Vector3(
 			Random.Range( -spawn_random_lateral, spawn_random_lateral ),
@@ -67,11 +102,82 @@ public class UICurrency : MonoBehaviour
 
 		sequence.OnComplete( OnSpawnComplete );
 	}
+
+	public void Spawn( Color color, Vector2 size )
+	{
+		var nutTransform  = notif_nut_reference.SharedValue as Transform;
+
+		if( !nutTransform )
+		{
+			OnSpawnComplete();
+			return;
+		}
+
+		var nutPosition   = nutTransform.position;
+		    nutPosition.z = spawn_depth;
+
+		var random = new Vector3(
+			Random.Range( -spawn_random_lateral, spawn_random_lateral ),
+			Random.Range( 0, spawn_random_height ),
+			0
+		);
+
+		gameObject.SetActive( true );
+		transform.position = nutPosition + random;
+		transform.localScale = Vector3.one * size.ReturnRandom();
+
+		text_currency.color = color;
+
+		var sequence = recycledSequence.Recycle();
+
+		sequence.Append( transform.DOMove( nutPosition, spawn_duration ).SetEase( spawn_movement_ease ) );
+		// sequence.Join( transform.DOScale( Vector3.one * random_size_end.ReturnRandom(), spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
+		// sequence.Append( transform.DOScale( Vector3.one , spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
+		sequence.Append( text_currency.DOFade( 0, fade_duration ).SetEase( spawn_fade_ease ) );
+
+		sequence.OnComplete( OnSpawnComplete );
+	}
+
+	public void Spawn( Color color, Vector2 size, float lateralModifier )
+	{
+		var nutTransform = notif_nut_reference.SharedValue as Transform;
+
+		if( !nutTransform )
+		{
+			OnSpawnComplete();
+			return;
+		}
+
+		var nutPosition = nutTransform.position;
+		nutPosition.z = spawn_depth;
+
+		var random = new Vector3(
+			spawn_random_lateral * Mathf.Sign( lateralModifier ),
+			Random.Range( 0, -spawn_random_height ),
+			0
+		);
+
+		gameObject.SetActive( true );
+		transform.position = nutPosition + random;
+		transform.localScale = Vector3.one * size.ReturnRandom();
+
+		text_currency.color = color;
+
+		var sequence = recycledSequence.Recycle();
+
+		sequence.Append( transform.DOMove( nutPosition + Vector3.right * lateralModifier, spawn_duration ).SetEase( spawn_movement_ease ) );
+		// sequence.Join( transform.DOScale( Vector3.one * random_size_end.ReturnRandom(), spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
+		// sequence.Append( transform.DOScale( Vector3.one , spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
+		sequence.Append( text_currency.DOFade( 0, fade_duration * 2f ).SetEase( spawn_fade_ease ) );
+
+		sequence.OnComplete( OnSpawnComplete );
+	}
 #endregion
 
 #region Implementation
 	void OnSpawnComplete()
 	{
+		text_currency.color = color_start;
 		recycledSequence.Kill();
 		pool_ui_currency.ReturnEntity( this );
 	}

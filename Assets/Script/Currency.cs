@@ -25,7 +25,7 @@ public class Currency : SharedFloatNotifier
 #region API
     public void SetCurrencyData()
     {
-		currency_data     = currency_incremental.ReturnIncremental( PlayerPrefs.GetInt( ExtensionMethods.currency_index, 0 ) );
+		currency_data     = currency_incremental.ReturnIncremental( PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.currency_index, 0 ) );
 		currency_cooldown = 0;
 	}
 
@@ -36,7 +36,25 @@ public class Currency : SharedFloatNotifier
 			SharedValue       += currency_data.incremental_currency_value;
 			currency_cooldown  = Time.time + currency_data.incremental_currency_rate;
 
-			pool_currency_ui.GetEntity().Spawn(); // Spawn currency ui
+			pool_currency_ui.GetEntity().Spawn( $"+{currency_data.incremental_currency_value}"); // Spawn currency ui
+			// pool_currency_ui.GetEntity().Spawn( $"+${currency_data.incremental_currency_value}"); // Spawn currency ui
+		}
+    }
+
+	public void OnIncrease( float value, Color color, Vector2 size )
+	{
+		SharedValue += value;
+		pool_currency_ui.GetEntity().Spawn( $"+{value}", color, size ); // Spawn currency ui
+	}
+
+    public void OnIncreaseCooldown( float value, Color color, Vector2 size )
+    {
+        if( Time.time > currency_cooldown )
+        {
+			SharedValue       += value;
+			currency_cooldown  = Time.time + currency_data.incremental_currency_rate;
+
+			pool_currency_ui.GetEntity().Spawn( $"+{value}", color, size ); // Spawn currency ui
 		}
     }
 
@@ -47,12 +65,12 @@ public class Currency : SharedFloatNotifier
 
     public void SaveCurrency()
     {
-		PlayerPrefs.SetFloat( ExtensionMethods.currency, SharedValue );
+		PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.currency, SharedValue );
     }
 
     public void LoadCurrency()
     {
-		SharedValue =  PlayerPrefs.GetFloat( ExtensionMethods.currency, 0 );
+		SharedValue =  PlayerPrefsUtility.Instance.GetFloat( ExtensionMethods.currency, 0 );
     }
 #endregion
 

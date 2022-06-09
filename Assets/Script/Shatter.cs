@@ -15,6 +15,7 @@ public class Shatter : MonoBehaviour
 
   [ Title( "Info" ) ]
 	[ SerializeField, ReadOnly ] public Rigidbody[] shatter_rigidbodies;
+	[ SerializeField, ReadOnly ] public CrackSetter[] shatter_rust_setters;
     [ SerializeField, ReadOnly ] public Vector3[] shatter_positions;
     [ SerializeField, ReadOnly ] public Vector3[] shatter_rotations;
 
@@ -30,7 +31,7 @@ public class Shatter : MonoBehaviour
 
 #region API
 	[ Button() ]
-	public void DoShatter()
+	public void DoShatter( float rustProgress, Color crackColor )
 	{
 		gameObject.SetActive( true );
 
@@ -41,8 +42,15 @@ public class Shatter : MonoBehaviour
 			rb.isKinematic = false;
 			rb.useGravity  = true;
 
-			rb.AddForce( GameSettings.Instance.nut_shatter_force.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
-			// rb.AddTorque( GameSettings.Instance.nut_shatter_torque.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
+			rb.AddForce( GameSettings.Instance.nut_shatter_force_up.ReturnRandom() * Vector3.up + GameSettings.Instance.nut_shatter_force.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
+			// Info: Shatter objects pivots must be on their on center, Enable this if models are correct
+			rb.AddTorque( GameSettings.Instance.nut_shatter_torque.ReturnRandom() * Random.onUnitSphere, ForceMode.Impulse );
+		}
+
+		for( var i = 0; i < shatter_rust_setters.Length; i++ )
+		{
+			shatter_rust_setters[ i ].Setup( crackColor );
+			shatter_rust_setters[ i ].SetFragility( rustProgress );
 		}
 
 		recycledTween.Recycle( DOVirtual.DelayedCall( GameSettings.Instance.nut_shatter_waitDuration, ReturnDefault ) );
@@ -69,10 +77,11 @@ public class Shatter : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
-    // [ Button() ]
-    private void CacheRigidbodies()
+    [ Button() ]
+    private void CacheComponents()
     {
-        shatter_rigidbodies = GetComponentsInChildren< Rigidbody >();
+        shatter_rigidbodies  = GetComponentsInChildren< Rigidbody >();
+        shatter_rust_setters = GetComponentsInChildren< CrackSetter >();
 
 		shatter_positions = new Vector3[ shatter_rigidbodies.Length ];
 		shatter_rotations = new Vector3[ shatter_rigidbodies.Length ];

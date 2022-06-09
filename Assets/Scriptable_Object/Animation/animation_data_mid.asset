@@ -12,16 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbad96fc6bd749b09424fc470ad14a5, type: 3}
   m_Name: animation_data_mid
   m_EditorClassIdentifier: 
-  data_percentage: 35
-  data_scale_out: 1.3
-  data_scale_duration_out: 1
-  data_scale_ease_out: 1
-  data_scale_in: 0.9
-  data_scale_duration_in: 1
+  data_percentage: 50
+  data_scale_out: 1.4
+  data_scale_duration_out: 0.3
+  data_scale_ease_out: 18
+  data_scale_in: 0.85
+  data_scale_duration_in: 0.3
   data_scale_ease_in: 1
-  data_color_out: {r: 1, g: 0.69803923, b: 0.69803923, a: 1}
-  data_color_duration_out: 1
-  data_color_ease_out: 1
-  data_color_in: {r: 1, g: 0.5019608, b: 0.5019608, a: 1}
-  data_color_duration_in: 1
-  data_color_ease_in: 1

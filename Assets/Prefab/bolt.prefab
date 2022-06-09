@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750695881455111646}
   - component: {fileID: 1498656901261213332}
+  - component: {fileID: 8047300004414928700}
   m_Layer: 30
   m_Name: bolt
   m_TagString: Untagged
@@ -80,12 +81,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notifier_nut_reference: {fileID: 11400000, guid: 6de5a72449482470fa3b8e24c6185d8b, type: 2}
+  notifier_particle_reference: {fileID: 11400000, guid: 52f275fdff9964b47893bba726967f7b, type: 2}
   notifier_nut_fallDown: {fileID: 11400000, guid: 12edf675dad2448698c28fa586941867, type: 2}
+  property_currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   transform_gfx: {fileID: 8103919501080544271}
+  rb: {fileID: 8047300004414928700}
   collider_upper_out: {fileID: 3159180893542725272}
   collider_upper_in: {fileID: 8243835881855154954}
   collider_bottom: {fileID: 2593507616941417416}
   bolt_renderers: []
+  bolt_connected: {fileID: 0}
+  bolt_count: 0
+  bolt_height: 0.5
+--- !u!54 &8047300004414928700
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224905004853089646}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6761190257432760986
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +174,7 @@ MonoBehaviour:
       - m_Target: {fileID: 11400000, guid: d401f21baeb4e4064a7da03f6fbb0777, type: 2}
         m_TargetAssemblyTypeName: FFStudio.SharedDataNotifier`1[[System.Boolean,
           mscorlib
-        m_MethodName: set_SharedValue
+        m_MethodName: SetValue_NotifyAlways
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -176,6 +199,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1498656901261213332}
         m_TargetAssemblyTypeName: Bolt, Assembly-CSharp
         m_MethodName: OnStartTrackingNut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: f7864fa8541dd4d05a1e4f26a31e6526, type: 2}
+        m_TargetAssemblyTypeName: FFStudio.GameEvent, Assembly-CSharp
+        m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
