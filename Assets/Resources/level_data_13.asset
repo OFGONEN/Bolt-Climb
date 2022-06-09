@@ -20,3 +20,10 @@ MonoBehaviour:
   incremental_set: 1
   incremental_set_index_velocity: 12
   incremental_set_index_durability: 12
+  skillType: 0
+  finishLineIndex: 2
+  levelProgress_levelIcon_start_index: 2
+  levelProgress_levelIcon_end_index: 5
+  levelProgress_nutIcon_index: 0
+  levelProgress_base: 0
+  levelProgress_current: 0.25

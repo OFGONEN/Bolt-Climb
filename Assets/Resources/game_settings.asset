@@ -23,6 +23,28 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 7ccec5bb74450f147b13db9fbe3883da, type: 3}
   - {fileID: 919132149155446097, guid: 99634178dff5d45939b3ef613ea1af77, type: 3}
   - {fileID: 919132149155446097, guid: c7ec7de8b11304c78a74445c39ffbbfa, type: 3}
+  game_icon_progressionBar:
+  - {fileID: 21300000, guid: 41fc1346da21bb84b81d97a4da91b272, type: 3}
+  - {fileID: 21300000, guid: 3efe596d650fd9842afe630b5957ee6d, type: 3}
+  - {fileID: 21300000, guid: b04df539a30bb54499a40ba88125fe84, type: 3}
+  - {fileID: 21300000, guid: 678c8350d878e1e478efda1a8c15032f, type: 3}
+  - {fileID: 21300000, guid: bf535ab45646b2a47b13bbb892fe141e, type: 3}
+  - {fileID: 21300000, guid: 8ebeee363c6e6154fb02c26b1caea164, type: 3}
+  - {fileID: 21300000, guid: 0a413ff99c0aa4ef6a2ecc20424e92e4, type: 3}
+  game_icon_nut_background:
+  - {fileID: 21300000, guid: 79d70d57c099ddd4cb891f24fdefd0c3, type: 3}
+  - {fileID: 21300000, guid: 890b58a128d9855408a5233e1bead011, type: 3}
+  - {fileID: 21300000, guid: f57637587b2a7914293f73b96634d66c, type: 3}
+  - {fileID: 21300000, guid: 7f822a5d0e22b90498b74011c2aa3e1a, type: 3}
+  - {fileID: 21300000, guid: 196ef3cf3b47c1449b83e8cbf9f87799, type: 3}
+  - {fileID: 21300000, guid: 2a804bebb50228246886701f13d9078c, type: 3}
+  game_icon_nut_foreground:
+  - {fileID: 21300000, guid: 67af4e50a97180a4fb671999ea82b4eb, type: 3}
+  - {fileID: 21300000, guid: bd0e09012f9da9c43acad8cb3079cadb, type: 3}
+  - {fileID: 21300000, guid: f1c53442f66412e419195c86fcb0f55d, type: 3}
+  - {fileID: 21300000, guid: 343d698763f335a4e909aea8c4c4781d, type: 3}
+  - {fileID: 21300000, guid: b9fc3f899162b5d46a28dc526aca1211, type: 3}
+  - {fileID: 21300000, guid: d02ec59d2530a7243ae07903bf724cb7, type: 3}
   bolt_batch: 10
   bolt_height: 0.5
   bolt_detach_waitTime: 3
