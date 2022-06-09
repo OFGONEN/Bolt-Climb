@@ -3209,6 +3209,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7700097886155850774, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.02363711
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700097886155850774, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.011764709
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700097886155850774, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.20784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700097886155850774, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278584117
+      objectReference: {fileID: 0}
     - target: {fileID: 7781391512819196070, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
       propertyPath: skillData.Array.size
       value: 1
@@ -4058,6 +4074,22 @@ PrefabInstance:
     - target: {fileID: 4781051721585040292, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700097886155850774, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.02363711
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700097886155850774, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.011764709
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700097886155850774, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.20784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700097886155850774, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278584117
       objectReference: {fileID: 0}
     - target: {fileID: 7781391512819196070, guid: 47babfea374b643e8a81c78aeb94aa91, type: 3}
       propertyPath: skillData.Array.size
