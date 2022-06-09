@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: nut_durability
   m_EditorClassIdentifier: 
   durability_incremental: {fileID: 11400000, guid: 75067c71baed4df4eb69e96378f2bf95, type: 2}
+  notif_reference_volume: {fileID: 11400000, guid: 6c5749375a8457640a8c257cc326b836, type: 2}

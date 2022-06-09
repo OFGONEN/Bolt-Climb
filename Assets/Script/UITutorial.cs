@@ -45,8 +45,8 @@ public class UITutorial : MonoBehaviour
     {
 		var targetTransform = ui_target.SharedValue as Transform;
 
-		if( PlayerPrefs.GetInt( targetTransform.name , 0 ) == 0 )
-			PlayerPrefs.SetInt( targetTransform.name, 1 );
+		if( PlayerPrefsUtility.Instance.GetInt( targetTransform.name , 0 ) == 0 )
+			PlayerPrefsUtility.Instance.SetInt( targetTransform.name, 1 );
 		else
 			return;
 

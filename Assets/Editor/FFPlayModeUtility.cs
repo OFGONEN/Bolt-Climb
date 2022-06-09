@@ -1,6 +1,7 @@
 /* Created by and for usage of FF Studios (2021). */
 
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -51,13 +52,20 @@ namespace FFEditor
 		{
 			switch( change )
 			{
-				case PlayModeStateChange.EnteredPlayMode:
+				case PlayModeStateChange.ExitingEditMode:
 					if( PlayModeUtilitySettings.useDefaultScene )
 					{
-						var loadedScene = SceneManager.GetActiveScene();
-
-						if( loadedScene.buildIndex != PlayModeUtilitySettings.defaultSceneIndex )
-							SceneManager.LoadScene( PlayModeUtilitySettings.defaultSceneIndex, LoadSceneMode.Single );
+						if( EditorSceneManager.GetActiveScene().buildIndex != PlayModeUtilitySettings.defaultSceneIndex )
+						{
+							PlayModeUtilitySettings.lastSceneIndex = EditorSceneManager.GetActiveScene().path;
+							EditorSceneManager.OpenScene( SceneUtility.GetScenePathByBuildIndex( PlayModeUtilitySettings.defaultSceneIndex ), OpenSceneMode.Single );
+						}
+					}
+					break;
+				case PlayModeStateChange.EnteredEditMode:
+					if( PlayModeUtilitySettings.useDefaultScene )
+					{
+						EditorSceneManager.OpenScene( PlayModeUtilitySettings.lastSceneIndex, OpenSceneMode.Single );
 					}
 					break;
 

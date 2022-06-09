@@ -16,13 +16,7 @@ namespace FFStudio
         private delegate CurrentLevelData ReturnCurrentLevel();
         private static ReturnCurrentLevel returnInstance = LoadInstance;
 
-        public static CurrentLevelData Instance
-        {
-            get
-            {
-                return returnInstance();
-            }
-        }
+        public static CurrentLevelData Instance => returnInstance();
 #endregion
 
 #region API
@@ -31,7 +25,9 @@ namespace FFStudio
 			if( currentLevel_Real > GameSettings.Instance.maxLevelCount )
 				currentLevel_Real = Random.Range( 1, GameSettings.Instance.maxLevelCount );
 
-			levelData = Resources.Load<LevelData>( "level_data_" + currentLevel_Real );
+			levelData = Resources.Load< LevelData >( "level_data_" + currentLevel_Real );
+
+			levelData.incremental_set = levelData.incremental_set && PlayerPrefsUtility.Instance.GetInt( levelData.name, 0 ) == 0;
 		}
 #endregion
 
@@ -39,7 +35,7 @@ namespace FFStudio
         static CurrentLevelData LoadInstance()
 		{
 			if( instance == null )
-				instance = Resources.Load<CurrentLevelData>( "level_current" );
+				instance = Resources.Load< CurrentLevelData >( "level_current" );
 
 			returnInstance = ReturnInstance;
 

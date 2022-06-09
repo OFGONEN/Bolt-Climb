@@ -127,7 +127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 745345803405484073, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: path_points.Array.size
-      value: 121
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 745345803405484073, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: path_points.Array.data[58].x
@@ -635,11 +635,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 745345803405484073, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: path_points.Array.data[121].x
-      value: 0.00088468194
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 745345803405484073, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: path_points.Array.data[121].y
-      value: 22.567524
+      value: 23.1
       objectReference: {fileID: 0}
     - target: {fileID: 745345803405484073, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: path_points.Array.data[122].x
@@ -651,7 +651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2233694452233181731, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.5
+      value: 22.75
       objectReference: {fileID: 0}
     - target: {fileID: 4889640906557740358, guid: 9bf2b7e336d9c4049b970972dba22a62, type: 3}
       propertyPath: bolt_renderers.Array.size

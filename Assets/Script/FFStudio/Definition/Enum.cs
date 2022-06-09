@@ -22,4 +22,12 @@ namespace FFStudio
 		Int,
 		Float
 	}
+
+    public enum SkillType
+    {
+        Currency,
+        Durability,
+        Speed,
+        LastChance
+    }
 }

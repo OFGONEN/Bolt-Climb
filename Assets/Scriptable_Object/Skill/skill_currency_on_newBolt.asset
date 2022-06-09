@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6071c5715ab604ff6a8b0fe31c5df446, type: 3}
+  m_Name: skill_currency_on_newBolt
+  m_EditorClassIdentifier: 
+  skill_value_array:
+  - value: 2
+    cost: 0
+  - value: 4
+    cost: 50
+  - value: 6
+    cost: 100
+  - value: 8
+    cost: 150
+  - value: 10
+    cost: 200
+  - value: 12
+    cost: 250
+  - value: 14
+    cost: 300
+  - value: 16
+    cost: 350
+  currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  skill_texture: {fileID: 21300000, guid: 4341c99cc72a342589962a189d5f1d8f, type: 3}
+  skill_description: Gain Money\nOn New Bolts
+  skill_key: skill_currency_on_newBolt

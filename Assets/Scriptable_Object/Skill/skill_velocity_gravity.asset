@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6071c5715ab604ff6a8b0fe31c5df446, type: 3}
+  m_Name: skill_velocity_gravity
+  m_EditorClassIdentifier: 
+  skill_value_array:
+  - value: 0.97
+    cost: 0
+  - value: 0.94
+    cost: 100
+  - value: 0.91
+    cost: 200
+  - value: 0.87
+    cost: 300
+  - value: 0.84
+    cost: 400
+  - value: 0.81
+    cost: 500
+  - value: 0.78
+    cost: 600
+  - value: 0.75
+    cost: 700
+  currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  skill_texture: {fileID: 21300000, guid: ffacd4a9ce63b418f915447b1267a583, type: 3}
+  skill_description: Decrease Gravity Modifier
+  skill_key: skill_velocity_gravity

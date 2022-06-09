@@ -52,13 +52,14 @@ namespace FFStudio
 #region Implementation
         private void LevelLoadedResponse()
         {
+            // Reset level related variables
 			levelProgress.SetValue_NotifyAlways( 0 );
 			notif_nut_is_onBolt.SetValue_DontNotify( true );
 			notif_nut_point_fallDown.SetValue_DontNotify( 0 );
 
 			var levelData = CurrentLevelData.Instance.levelData;
 
-            // Set Active Scene
+            // Set Active Scene.
 			if( levelData.scene_overrideAsActiveScene )
 				SceneManager.SetActiveScene( SceneManager.GetSceneAt( 1 ) );
             else

@@ -6,26 +6,34 @@ using UnityEngine;
 using FFStudio;
 using UnityEditor;
 using Sirenix.OdinInspector;
+using DG.Tweening;
 
 public class Bolt : MonoBehaviour
 {
 #region Fields
   [ Title( "Shared Variables" ) ]
     [ SerializeField ] SharedReferenceNotifier notifier_nut_reference;
+    [ SerializeField ] SharedReferenceNotifier notifier_particle_reference;
     [ SerializeField ] SharedFloatNotifier notifier_nut_fallDown;
+    [ SerializeField ] Currency property_currency;
 
   [ Title( "Setup" ) ]
     [ SerializeField ] Transform transform_gfx;
+    [ SerializeField ] Rigidbody rb;
     [ SerializeField ] BoxCollider collider_upper_out;
     [ SerializeField ] BoxCollider collider_upper_in;
     [ SerializeField ] BoxCollider collider_bottom;
-    [ SerializeField ] ParticleSystem particle_nut_carving;
 
     [ SerializeField, ReadOnly, FoldoutGroup( "Info" ) ] SkinnedMeshRenderer[] bolt_renderers;
     [ ShowInInspector, ReadOnly, ProgressBar( 0, 1 ), FoldoutGroup( "Info" ) ] float bolt_carve_progress;
 
 	// Private
+	[ SerializeField, ReadOnly ] Bolt bolt_connected;
+
 	Transform transform_nut;
+    ParticleSystem particle_nut_carving;
+	RecycledTween recycledTween = new RecycledTween();
+
 	float point_bottom;
 	float point_up;
 	float point_gap;
@@ -39,6 +47,12 @@ public class Bolt : MonoBehaviour
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		onUpdateMethod = ExtensionMethods.EmptyMethod;
+		recycledTween.Kill();
+	}
+
     private void Awake()
     {
 		point_bottom        = transform.position.y;
@@ -48,6 +62,8 @@ public class Bolt : MonoBehaviour
 
 		onStartTrackingNut = StartTrackingNut;
 		onUpdateMethod     = ExtensionMethods.EmptyMethod;
+
+		rb.ToggleKinematic( true );
 	}
 
 	private void Update()
@@ -59,6 +75,7 @@ public class Bolt : MonoBehaviour
 #region API
     public void OnStartTrackingNut()
     {
+		particle_nut_carving = notifier_particle_reference.SharedValue as ParticleSystem;
 		onStartTrackingNut();
 	}
 
@@ -67,14 +84,37 @@ public class Bolt : MonoBehaviour
 		particle_nut_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
 		onUpdateMethod = ExtensionMethods.EmptyMethod;
 	}
+
+	public void Detach()
+	{
+		OnStopTrackingNut();
+
+		var length = bolt_renderers.Length * GameSettings.Instance.bolt_height;
+		var position = transform.position + Vector3.up * length;
+
+		rb.ToggleKinematic( false );
+
+		// rb.AddForceAtPosition( Random.insideUnitCircle * GameSettings.Instance.bolt_detach_force.ReturnRandom(), position, ForceMode.Impulse );
+		rb.AddForce( Random.insideUnitCircle * GameSettings.Instance.bolt_detach_force.ReturnRandom(), ForceMode.Impulse );
+		rb.AddTorque( Random.insideUnitCircle * GameSettings.Instance.bolt_detach_force.ReturnRandom(), ForceMode.Impulse );
+
+		recycledTween.Recycle( DOVirtual.DelayedCall( GameSettings.Instance.bolt_detach_waitTime, OnDetachComplete ) );
+	}
 #endregion
 
 #region Implementation
+	void OnDetachComplete()
+	{
+		rb.ToggleKinematic( true );
+		gameObject.SetActive( false );
+	}
+
     void StartTrackingNut()
     {
-		FFLogger.Log( "Start Tracking Nut", gameObject );
 		onStartTrackingNut = ExtensionMethods.EmptyMethod;
 		onUpdateMethod     = OnTrackNut;
+
+		bolt_connected?.Detach();
 
 		notifier_nut_fallDown.SharedValue = transform.position.y;
 		transform_nut                     = notifier_nut_reference.SharedValue as Transform;
@@ -90,6 +130,7 @@ public class Bolt : MonoBehaviour
 		{
 			particle_nut_carving.Play( true );
 			particle_nut_carving.transform.position = particle_nut_carving.transform.position.SetY( Mathf.Lerp( point_bottom, point_up, bolt_carve_progress ) );
+			property_currency.OnIncrease();
 		}
 		else
 			particle_nut_carving.Stop( true, ParticleSystemStopBehavior.StopEmitting );
@@ -124,6 +165,21 @@ public class Bolt : MonoBehaviour
     [ ShowInInspector, BoxGroup( "EditorOnly" ), AssetSelector( Paths = "Assets/Prefab/GFX"  ) ] private GameObject bolt_prefab;
     [ ShowInInspector, BoxGroup( "EditorOnly" ) ] public int bolt_count;
     [ ShowInInspector, BoxGroup( "EditorOnly" ) ] public float bolt_height = 0.5f;
+
+    public void ConnectBolt( Bolt value, bool consecutive )
+	{
+		bolt_connected = value;
+
+		if( consecutive )
+			value?.DisableUpperColliders();
+	}
+
+	public void DisableUpperColliders()
+	{
+		collider_upper_in.gameObject.SetActive( false );
+		collider_upper_out.gameObject.SetActive( false );
+
+	}
 
     private void CacheRenderers()
     {
