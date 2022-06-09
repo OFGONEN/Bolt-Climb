@@ -16,19 +16,19 @@ MonoBehaviour:
   - value: 2
     cost: 0
   - value: 4
-    cost: 50
-  - value: 6
     cost: 100
-  - value: 8
-    cost: 150
-  - value: 10
+  - value: 6
     cost: 200
-  - value: 12
-    cost: 250
-  - value: 14
+  - value: 8
     cost: 300
+  - value: 10
+    cost: 400
+  - value: 12
+    cost: 500
+  - value: 14
+    cost: 600
   - value: 16
-    cost: 350
+    cost: 700
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_texture: {fileID: 21300000, guid: 4341c99cc72a342589962a189d5f1d8f, type: 3}
   skill_description: Gain Money\nOn New Bolts

@@ -16,19 +16,19 @@ MonoBehaviour:
   - value: 0.97
     cost: 0
   - value: 0.94
-    cost: 100
-  - value: 0.91
     cost: 200
+  - value: 0.91
+    cost: 250
   - value: 0.87
-    cost: 300
+    cost: 350
   - value: 0.84
-    cost: 400
+    cost: 450
   - value: 0.81
-    cost: 500
+    cost: 550
   - value: 0.78
-    cost: 600
+    cost: 650
   - value: 0.75
-    cost: 700
+    cost: 750
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_texture: {fileID: 21300000, guid: ffacd4a9ce63b418f915447b1267a583, type: 3}
   skill_description: Decrease Gravity Modifier
