@@ -21,7 +21,7 @@ MonoBehaviour:
   incremental_set_index_velocity: 20
   incremental_set_index_durability: 20
   skillType: 3
-  finishLineIndex: 4
+  finishLineIndex: 6
   levelProgress_levelIcon_start_index: 4
   levelProgress_levelIcon_end_index: 7
   levelProgress_nutIcon_index: 0
