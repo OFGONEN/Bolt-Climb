@@ -27,6 +27,13 @@ namespace FFStudio
 		[ LabelText( "Type of Skill will be showned at the end of the Level" ) ] public SkillType skillType;
 		[ LabelText( "Finish Line index to spawn" ) ] public int finishLineIndex;
 
+	[ Title( "Progression" ) ]
+		[ LabelText( "Level Progress Start Icon index" ) ] public int levelProgress_levelIcon_start_index;
+		[ LabelText( "Level Progress End Icon index" ) ] public int levelProgress_levelIcon_end_index;
+		[ LabelText( "Level Progress Nut Icon index" ) ] public int levelProgress_nutIcon_index;
+		[ LabelText( "Base Level Progression" ) ] public float levelProgress_base;
+		[ LabelText( "Current Level Progression" ) ] public float levelProgress_current = 0.25f;
+
 #if UNITY_EDITOR
 		private static IEnumerable SceneList()
         {

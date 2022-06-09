@@ -16,6 +16,9 @@ namespace FFStudio
         [ BoxGroup( "Game" ) ] public Vector2 postProcess_vignette_intencity;
         [ BoxGroup( "Game" ) ] public Vector2 shader_range_crack = new Vector2( 0, 1 );
         [ BoxGroup( "Game" ) ] public GameObject[] game_finishLine;
+        [ BoxGroup( "Game" ) ] public Sprite[] game_icon_progressionBar;
+        [ BoxGroup( "Game" ) ] public Sprite[] game_icon_nut_background;
+        [ BoxGroup( "Game" ) ] public Sprite[] game_icon_nut_foreground;
 
         [ BoxGroup( "Bolt" ) ] public int bolt_batch = 3;
         [ BoxGroup( "Bolt" ) ] public float bolt_height = 0.5f;
