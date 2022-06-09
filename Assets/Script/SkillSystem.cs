@@ -11,6 +11,9 @@ using Sirenix.OdinInspector;
 public class SkillSystem : ScriptableObject
 {
 #region Fields
+[ Title( "Fired Events" ) ]
+	[ SerializeField ] ParticleSpawnEvent particleSpawnEvent;
+	
     [ BoxGroup( "Setup" ), SerializeField ] Color skill_currency_text_color;
     [ BoxGroup( "Setup" ), SerializeField ] Vector2 skill_currency_text_size;
     [ BoxGroup( "Setup" ), SerializeField ] Color skill_durability_text_color;
@@ -32,6 +35,7 @@ public class SkillSystem : ScriptableObject
     [ FoldoutGroup( "Shared Variables"), SerializeField ] GameEvent event_nut_shatter;
     [ FoldoutGroup( "Shared Variables"), SerializeField ] GameEvent event_nut_jumped;
     [ FoldoutGroup( "Shared Variables"), SerializeField ] UICurrencyPool pool_currency_ui;
+    [ FoldoutGroup( "Shared Variables"), SerializeField ] SharedReferenceNotifier notifier_reference_nut;
 
     [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_newBolt;
     [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_maxSpeed;
@@ -47,6 +51,7 @@ public class SkillSystem : ScriptableObject
 
     [ FoldoutGroup( "Last Chance Skills" ), SerializeField ] SkillData skill_lastChance_doubleJump;
     [ FoldoutGroup( "Last Chance Skills" ), SerializeField ] SkillData skill_lastChance_Shatter;
+
 // Delegates
 	UnityMessage onUpdate_NutPath;
 	UnityMessage onUpdate_NutAir;
@@ -57,6 +62,8 @@ public class SkillSystem : ScriptableObject
 	float pathDurabilityCooldown     = 0;
 	float currencyMaxSpeedCooldown   = 0;
 	float durabilityMaxSpeedCooldown = 0;
+
+	Transform transform_nut;
 
 	RecycledTween recycledTween = new RecycledTween();
 #endregion
@@ -108,6 +115,8 @@ public class SkillSystem : ScriptableObject
 		pathDurabilityCooldown     = 0;
 		currencyMaxSpeedCooldown   = 0;
 		durabilityMaxSpeedCooldown = 0;
+
+		transform_nut = notifier_reference_nut.SharedValue as Transform;
 	}
 
     public void OnNutAttachedBolt()
@@ -119,14 +128,16 @@ public class SkillSystem : ScriptableObject
 		{
 			var value = skill_durability_on_newBolt.Value;
 			property_durability.OnIncreaseCapacity( value );
-			pool_currency_ui.GetEntity().Spawn( $"Durability +{value}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+			// pool_currency_ui.GetEntity().Spawn( $"Durability +{value}", skill_durability_text_color, skill_durability_text_size, -0.75f );
+			particleSpawnEvent.Raise( "skill_durability", transform_nut.position.SetX( -1 ) ); 
 		}
 
         if( skill_velocity_on_newBolt.IsUnlocked )
 		{
 			var value = skill_velocity_on_newBolt.Value;
 			property_velocity.OnAcceleration( value );
-			pool_currency_ui.GetEntity().Spawn( $"Speed +{value}", skill_speed_text_color, skill_speed_text_size, 1.5f ); 
+			// pool_currency_ui.GetEntity().Spawn( $"Speed +{value}", skill_speed_text_color, skill_speed_text_size, 1.5f );
+			particleSpawnEvent.Raise( "skill_velocity", transform_nut.position.SetX( +1 ) );
 		}
 	}
 
@@ -142,7 +153,8 @@ public class SkillSystem : ScriptableObject
 		{
 			var value = skill_durability_on_maxSpeed.Value;
 			property_durability.OnIncreaseCapacity( value );
-			pool_currency_ui.GetEntity().Spawn( $"Durability +{value}", skill_durability_text_color, skill_durability_text_size, -0.75f );
+			// pool_currency_ui.GetEntity().Spawn( $"Durability +{value}", skill_durability_text_color, skill_durability_text_size, -0.75f );
+			particleSpawnEvent.Raise( "skill_durability", transform_nut.position.SetX( -1 ) );
 
 			durabilityMaxSpeedCooldown = Time.time + skill_durability_on_maxSpeed_cooldown;
 		}
@@ -194,13 +206,15 @@ public class SkillSystem : ScriptableObject
 	void Nut_PathUpdate_Start()
 	{
 		var durabilityValue = skill_durability_on_path.Value;
-		pool_currency_ui.GetEntity().Spawn( $"Durability +{durabilityValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+		// pool_currency_ui.GetEntity().Spawn( $"Durability +{durabilityValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+		particleSpawnEvent.Raise( "skill_durability", transform_nut.position.SetX( -1 ) );
 		property_durability.OnIncrease( durabilityValue );
 
 		if( skill_velocity_path.IsUnlocked )
 		{
 			var speedValue = skill_velocity_path.Value;
-			pool_currency_ui.GetEntity().Spawn( $"Speed +{speedValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+			// pool_currency_ui.GetEntity().Spawn( $"Speed +{speedValue}", skill_durability_text_color, skill_durability_text_size, -0.75f );
+			particleSpawnEvent.Raise( "skill_speed", transform_nut.position.SetX( +1 ) );
 		}
 
 		onUpdate_NutPath = Nut_PathUpdate;
@@ -212,8 +226,9 @@ public class SkillSystem : ScriptableObject
 		{
 			var durabilityValue = skill_durability_on_path.Value;
 
-			pool_currency_ui.GetEntity().Spawn( $"Durability +{durabilityValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
-			property_durability.OnIncrease( durabilityValue  );
+			// pool_currency_ui.GetEntity().Spawn( $"Durability +{durabilityValue}", skill_durability_text_color, skill_durability_text_size, -0.75f ); 
+			property_durability.OnIncrease( durabilityValue );
+			particleSpawnEvent.Raise( "skill_durability", transform_nut.position.SetX( -1 ) );
 
 			pathDurabilityCooldown = Time.time + skill_durability_on_path_cooldown;
 		}
