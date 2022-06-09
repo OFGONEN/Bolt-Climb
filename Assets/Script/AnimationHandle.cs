@@ -32,6 +32,11 @@ public class AnimationHandle : MonoBehaviour
 #endregion
 
 #region API
+	public void Pause()
+	{
+		animation_sequence_scale.Sequence.Pause();
+	}
+
     public void PlayAnimation( float progress, ParticleSystem particle )
     {
         var index = -1;
