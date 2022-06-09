@@ -25,6 +25,16 @@ namespace FFStudio
 #endregion
 
 #region API
+		public void GoTargetPosition()
+		{
+			recycledTween.Recycle( uiTransform.DOMove( destinationTransform.position, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) );
+		}
+
+		public void GoStartPosition()
+		{
+			recycledTween.Recycle( uiTransform.DOMove( startPosition, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) );
+		}
+
 		public virtual Tween GoToTargetPosition()
 		{
 			recycledTween.Recycle( uiTransform.DOMove( destinationTransform.position, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) );
