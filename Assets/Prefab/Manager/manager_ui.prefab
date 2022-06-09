@@ -1238,10 +1238,10 @@ RectTransform:
   m_Father: {fileID: 124199663488762607}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -304, y: -4}
-  m_SizeDelta: {x: 92, y: 92}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -21}
+  m_SizeDelta: {x: 80, y: 85}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7712211925513848370
 CanvasRenderer:
@@ -1600,7 +1600,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 89, y: -124.5}
+  m_AnchoredPosition: {x: 89, y: -168.5}
   m_SizeDelta: {x: 178, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8898655912075701511
@@ -1766,7 +1766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110, y: -104}
+  m_AnchoredPosition: {x: -110, y: -168.5}
   m_SizeDelta: {x: 220, y: 104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7197694887961491885
@@ -2387,7 +2387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453416092374961833, guid: 1caa7843707589a4496bb5c848924651, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -215
+      value: -297.5
       objectReference: {fileID: 0}
     - target: {fileID: 453416092374961833, guid: 1caa7843707589a4496bb5c848924651, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
