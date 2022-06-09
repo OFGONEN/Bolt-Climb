@@ -139,22 +139,62 @@ MonoBehaviour:
     incremental_velocity_min: -11
     incremental_velocity_decrease: 10
   - incremental_cost: 7500
-    incremental_velocity_max: 12
+    incremental_velocity_max: 11.25
     incremental_velocity_max_duration: 3.1
+    incremental_velocity_min: -11.25
+    incremental_velocity_decrease: 10.25
+  - incremental_cost: 9000
+    incremental_velocity_max: 11.5
+    incremental_velocity_max_duration: 3.4
+    incremental_velocity_min: -11.5
+    incremental_velocity_decrease: 10.5
+  - incremental_cost: 12000
+    incremental_velocity_max: 11.75
+    incremental_velocity_max_duration: 3.7
+    incremental_velocity_min: -11.75
+    incremental_velocity_decrease: 10.75
+  - incremental_cost: 15000
+    incremental_velocity_max: 12
+    incremental_velocity_max_duration: 4
     incremental_velocity_min: -12
     incremental_velocity_decrease: 11
-  - incremental_cost: 9000
+  - incremental_cost: 17250
+    incremental_velocity_max: 12.25
+    incremental_velocity_max_duration: 4.2
+    incremental_velocity_min: -12.25
+    incremental_velocity_decrease: 11.25
+  - incremental_cost: 20000
+    incremental_velocity_max: 12.5
+    incremental_velocity_max_duration: 4.4
+    incremental_velocity_min: -12.5
+    incremental_velocity_decrease: 11.5
+  - incremental_cost: 22500
+    incremental_velocity_max: 12.75
+    incremental_velocity_max_duration: 4.6
+    incremental_velocity_min: -12.75
+    incremental_velocity_decrease: 11.75
+  - incremental_cost: 25000
     incremental_velocity_max: 13
-    incremental_velocity_max_duration: 3.4
+    incremental_velocity_max_duration: 4.8
     incremental_velocity_min: -13
     incremental_velocity_decrease: 12
-  - incremental_cost: 12000
+  - incremental_cost: 27500
+    incremental_velocity_max: 13.25
+    incremental_velocity_max_duration: 4.9
+    incremental_velocity_min: -13.25
+    incremental_velocity_decrease: 12.25
+  - incremental_cost: 30000
+    incremental_velocity_max: 13.5
+    incremental_velocity_max_duration: 4.95
+    incremental_velocity_min: -13.5
+    incremental_velocity_decrease: 12.5
+  - incremental_cost: 32500
+    incremental_velocity_max: 13.75
+    incremental_velocity_max_duration: 5
+    incremental_velocity_min: -13.75
+    incremental_velocity_decrease: 12.75
+  - incremental_cost: 50000
     incremental_velocity_max: 14
-    incremental_velocity_max_duration: 3.7
+    incremental_velocity_max_duration: 5.1
     incremental_velocity_min: -14
     incremental_velocity_decrease: 13
-  - incremental_cost: 15000
-    incremental_velocity_max: 15
-    incremental_velocity_max_duration: 4
-    incremental_velocity_min: -15
-    incremental_velocity_decrease: 14
