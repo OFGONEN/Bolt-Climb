@@ -43,6 +43,7 @@ namespace FFStudio
         public int maxLevelCount;
         [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the movement for ui element"          ) ] public float ui_Entity_Move_TweenDuration;
         [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the fading for ui element"            ) ] public float ui_Entity_Fade_TweenDuration;
+        [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the filling for ui element"            ) ] public float ui_Entity_Filling_TweenDuration;
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the scaling for ui element"           ) ] public float ui_Entity_Scale_TweenDuration;
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the movement for floating ui element" ) ] public float ui_Entity_FloatingMove_TweenDuration;
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Joy Stick"                                        ) ] public float ui_Entity_JoyStick_Gap;
@@ -55,6 +56,26 @@ namespace FFStudio
 
 
         public GameObject FinishLine => game_finishLine[ Mathf.Clamp( CurrentLevelData.Instance.levelData.finishLineIndex, 0, game_finishLine.Length - 1 ) ];
+
+        public Sprite LevelNutIconBackground => game_icon_nut_background[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_nutIcon_index, 
+            0, 
+            game_icon_nut_background.Length - 1 ) ];
+
+        public Sprite LevelNutIconForeGround => game_icon_nut_foreground[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_nutIcon_index, 
+            0, 
+            game_icon_nut_foreground.Length - 1 ) ];
+
+         public Sprite LevelProgressIconStart => game_icon_progressionBar[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_levelIcon_start_index, 
+            0, 
+            game_icon_progressionBar.Length - 1 ) ];
+
+         public Sprite LevelProgressIconEnd => game_icon_progressionBar[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_levelIcon_end_index, 
+            0, 
+            game_icon_progressionBar.Length - 1 ) ];
 #endregion
 
 #region Fields (Singleton Related)

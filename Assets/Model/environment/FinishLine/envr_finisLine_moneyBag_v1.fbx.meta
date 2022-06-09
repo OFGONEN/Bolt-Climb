@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 06e68e681c2e54c578a3bc1dd4ee80ed
+guid: 536fcf27584cd4641b6ad77133482c8b
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: mat_atlas
     second: {fileID: 2100000, guid: a2829df0bfae7214390d3aa9dcc77c64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: texture_prop
+    second: {fileID: 2100000, guid: 02119729d4cd7f1479ab0bcc8daac174, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

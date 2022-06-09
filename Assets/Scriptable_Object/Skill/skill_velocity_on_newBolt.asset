@@ -16,19 +16,19 @@ MonoBehaviour:
   - value: 10
     cost: 0
   - value: 12
-    cost: 100
-  - value: 14
     cost: 200
+  - value: 14
+    cost: 250
   - value: 16
-    cost: 300
+    cost: 350
   - value: 18
-    cost: 400
+    cost: 450
   - value: 20
-    cost: 500
+    cost: 550
   - value: 22
-    cost: 600
+    cost: 650
   - value: 24
-    cost: 700
+    cost: 750
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_texture: {fileID: 21300000, guid: 6e09a3129ed4f4e30a581ff3dfe3f0e8, type: 3}
   skill_description: Gain Velocity\nOn New Bolts
