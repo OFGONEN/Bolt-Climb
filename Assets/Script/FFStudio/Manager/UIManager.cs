@@ -32,6 +32,7 @@ namespace FFStudio
         public GameEvent levelRevealedEvent;
         public GameEvent loadNewLevelEvent;
         public GameEvent resetLevelEvent;
+        public GameEvent event_shop_close;
         public ElephantLevelEvent elephantLevelEvent;
 #endregion
 
@@ -61,6 +62,20 @@ namespace FFStudio
 
 			level_information_text.text = "Tap to Start";
         }
+#endregion
+
+#region API
+        public void OnShopOpen()
+        {
+			tapInputListener.response = event_shop_close.Raise;
+			level_information_text.text = "Tap To Close Shop";
+		}
+
+        public void OnShopClose()
+        {
+			DOVirtual.DelayedCall( 0.25f, () => tapInputListener.response = StartLevel );
+			level_information_text.text = "Tap to Start";
+		}
 #endregion
 
 #region Implementation
