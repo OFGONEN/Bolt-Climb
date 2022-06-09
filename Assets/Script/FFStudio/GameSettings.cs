@@ -55,6 +55,26 @@ namespace FFStudio
 
 
         public GameObject FinishLine => game_finishLine[ Mathf.Clamp( CurrentLevelData.Instance.levelData.finishLineIndex, 0, game_finishLine.Length - 1 ) ];
+
+        public Sprite LevelNutIconBackground => game_icon_nut_background[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_nutIcon_index, 
+            0, 
+            game_icon_nut_background.Length - 1 ) ];
+
+        public Sprite LevelNutIconForeGround => game_icon_nut_foreground[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_nutIcon_index, 
+            0, 
+            game_icon_nut_foreground.Length - 1 ) ];
+
+         public Sprite LevelProgressIconStart => game_icon_progressionBar[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_levelIcon_start_index, 
+            0, 
+            game_icon_progressionBar.Length - 1 ) ];
+
+         public Sprite LevelProgressIconEnd => game_icon_progressionBar[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_levelIcon_end_index, 
+            0, 
+            game_icon_progressionBar.Length - 1 ) ];
 #endregion
 
 #region Fields (Singleton Related)

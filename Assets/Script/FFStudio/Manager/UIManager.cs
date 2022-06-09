@@ -23,6 +23,8 @@ namespace FFStudio
         public UI_Patrol_Scale level_information_text_Scale;
         public Image loadingScreenImage;
         public Image foreGroundImage;
+        public Image level_progress_icon_start;
+        public Image level_progress_icon_end;
         public RectTransform tutorialObjects;
 		public IncrementalButton[] incrementalButtons;
 
@@ -75,7 +77,10 @@ namespace FFStudio
 
 			level_count_text.text        = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
 			levelLoadedResponse.response = NewLevelLoaded;
-        }
+
+			level_progress_icon_start.sprite = GameSettings.Instance.LevelProgressIconStart;
+			level_progress_icon_end.sprite   = GameSettings.Instance.LevelProgressIconEnd;
+		}
 
         private void NewLevelLoaded()
         {
