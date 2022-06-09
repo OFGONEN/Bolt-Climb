@@ -23,11 +23,14 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 7ccec5bb74450f147b13db9fbe3883da, type: 3}
   - {fileID: 919132149155446097, guid: 99634178dff5d45939b3ef613ea1af77, type: 3}
   - {fileID: 919132149155446097, guid: c7ec7de8b11304c78a74445c39ffbbfa, type: 3}
+  game_icon_progressionBar: []
+  game_icon_nut_background: []
+  game_icon_nut_foreground: []
   bolt_batch: 10
   bolt_height: 0.5
   bolt_detach_waitTime: 3
   bolt_detach_force: {x: 3, y: 7}
-  movement_rotation_cofactor: 80
+  movement_rotation_cofactor: -80
   movement_launchSpeed_minumum: 1
   movement_pathSpeed_minumum: 1
   nut_shatter_force_up: {x: 0, y: 0}
