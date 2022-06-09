@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d764a1d95d540a182654f7fd1c0bf2, type: 3}
   m_Name: skill_system
   m_EditorClassIdentifier: 
+  particleSpawnEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   skill_currency_text_color: {r: 0.3726415, g: 1, b: 0.42532802, a: 1}
   skill_currency_text_size: {x: 1.5, y: 3}
   skill_durability_text_color: {r: 0, g: 0.48648107, b: 0.7924528, a: 1}
@@ -31,6 +32,8 @@ MonoBehaviour:
   event_nut_shatter: {fileID: 11400000, guid: be005d3399d6c411faca1366b9ab755b, type: 2}
   event_nut_jumped: {fileID: 11400000, guid: 0784e9209ada34453a8dcce12c9fd4a7, type: 2}
   pool_currency_ui: {fileID: 11400000, guid: af6f2fc5310f9409d9fb3a3664cff55b, type: 2}
+  notifier_reference_nut: {fileID: 11400000, guid: 6de5a72449482470fa3b8e24c6185d8b, type: 2}
+  notifier_reference_wings: {fileID: 11400000, guid: a1b1bd9b6cda7b64aab154d10102486d, type: 2}
   skill_currency_on_newBolt: {fileID: 11400000, guid: 227b03b0befc745598e099054479b80e, type: 2}
   skill_currency_on_maxSpeed: {fileID: 11400000, guid: 70cd9fe9afd3e463a96e84257e580f13, type: 2}
   skill_currency_on_air: {fileID: 11400000, guid: f3167c20e4ad14275a51a0432d1f8610, type: 2}

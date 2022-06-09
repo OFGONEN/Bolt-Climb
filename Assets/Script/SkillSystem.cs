@@ -36,6 +36,7 @@ public class SkillSystem : ScriptableObject
     [ FoldoutGroup( "Shared Variables"), SerializeField ] GameEvent event_nut_jumped;
     [ FoldoutGroup( "Shared Variables"), SerializeField ] UICurrencyPool pool_currency_ui;
     [ FoldoutGroup( "Shared Variables"), SerializeField ] SharedReferenceNotifier notifier_reference_nut;
+    [ FoldoutGroup( "Shared Variables"), SerializeField ] SharedReferenceNotifier notifier_reference_wings;
 
     [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_newBolt;
     [ FoldoutGroup( "Currency Skills" ), SerializeField ] SkillData skill_currency_on_maxSpeed;
@@ -64,8 +65,10 @@ public class SkillSystem : ScriptableObject
 	float durabilityMaxSpeedCooldown = 0;
 
 	Transform transform_nut;
+	SkinnedMeshRenderer renderer_wings;
 
 	RecycledTween recycledTween = new RecycledTween();
+	RecycledTween recycledTween_showWings = new RecycledTween();
 #endregion
 
 #region Properties
@@ -116,7 +119,8 @@ public class SkillSystem : ScriptableObject
 		currencyMaxSpeedCooldown   = 0;
 		durabilityMaxSpeedCooldown = 0;
 
-		transform_nut = notifier_reference_nut.SharedValue as Transform;
+		transform_nut  = notifier_reference_nut.SharedValue as Transform;
+		renderer_wings = notifier_reference_wings.SharedValue as SkinnedMeshRenderer;
 	}
 
     public void OnNutAttachedBolt()
@@ -185,7 +189,9 @@ public class SkillSystem : ScriptableObject
 		if( skill_lastChance_Shatter.IsUnlocked )
 		{
 			FFLogger.Log( "Delay Shatter" );
-			pool_currency_ui.GetEntity().Spawn( "Last Chance", Color.white, skill_durability_text_size ); 
+			pool_currency_ui.GetEntity().Spawn( "Last Chance", Color.white, skill_durability_text_size );
+			renderer_wings.enabled = true;
+			recycledTween_showWings.Recycle( DOVirtual.DelayedCall( 0.75f, () => renderer_wings.enabled = false ) );
 
 			property_velocity.ZeroOutVelocity();
 			property_velocity.OnAcceleration( skill_lastChance_Shatter.Value );
@@ -199,6 +205,7 @@ public class SkillSystem : ScriptableObject
 	public void OnNutStartPath()
 	{
 		recycledTween.Kill();
+		recycledTween_showWings.Kill();
 	}
 #endregion
 
