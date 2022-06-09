@@ -16,19 +16,19 @@ MonoBehaviour:
   - value: 0.5
     cost: 0
   - value: 0.75
-    cost: 100
-  - value: 1
     cost: 200
+  - value: 1
+    cost: 250
   - value: 1.25
-    cost: 300
+    cost: 350
   - value: 1.5
-    cost: 400
+    cost: 450
   - value: 2
-    cost: 500
+    cost: 550
   - value: 2.5
-    cost: 600
+    cost: 650
   - value: 3
-    cost: 700
+    cost: 750
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
   skill_texture: {fileID: 21300000, guid: e2f3e00b7e5364343bd78d6d98e0569b, type: 3}
   skill_description: Gain Durability\nOn Curved Bolts
