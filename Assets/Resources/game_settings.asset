@@ -30,6 +30,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 678c8350d878e1e478efda1a8c15032f, type: 3}
   - {fileID: 21300000, guid: bf535ab45646b2a47b13bbb892fe141e, type: 3}
   - {fileID: 21300000, guid: 8ebeee363c6e6154fb02c26b1caea164, type: 3}
+  - {fileID: 21300000, guid: 0a413ff99c0aa4ef6a2ecc20424e92e4, type: 3}
   game_icon_nut_background:
   - {fileID: 21300000, guid: 79d70d57c099ddd4cb891f24fdefd0c3, type: 3}
   - {fileID: 21300000, guid: 890b58a128d9855408a5233e1bead011, type: 3}
