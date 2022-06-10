@@ -10,13 +10,13 @@ namespace FFStudio
     public class UIManager : MonoBehaviour
     {
 #region Fields
-        [ Header( "Event Listeners" ) ]
+    [ Header( "Event Listeners" ) ]
         public EventListenerDelegateResponse levelLoadedResponse;
         public EventListenerDelegateResponse levelCompleteResponse;
         public EventListenerDelegateResponse levelFailResponse;
         public EventListenerDelegateResponse tapInputListener;
 
-        [ Header( "UI Elements" ) ]
+    [ Header( "UI Elements" ) ]
         public UI_Patrol_Scale level_loadingBar_Scale;
         public TextMeshProUGUI level_count_text;
         public TextMeshProUGUI level_information_text;
@@ -32,12 +32,19 @@ namespace FFStudio
         public RectTransform tutorialObjects;
 		public IncrementalButton[] incrementalButtons;
 
-		[ Header( "Fired Events" ) ]
+	[ Header( "Nut Unlocked" ) ]
+	 	public SkinLibrary skinLibrary;
+		public TextMeshProUGUI nut_unlock_text;
+		public TextMeshProUGUI nut_unlock_input_text;
+		public Image nut_unlock_header;
+
+	[ Header( "Fired Events" ) ]
         public GameEvent levelRevealedEvent;
         public GameEvent loadNewLevelEvent;
         public GameEvent resetLevelEvent;
         public GameEvent event_shop_close;
         public GameEvent event_nut_unlocked_start;
+        public GameEvent event_nut_unlocked_end;
         public ElephantLevelEvent elephantLevelEvent;
 
 		int level_progress_nut;
@@ -73,6 +80,10 @@ namespace FFStudio
 			level_progress_nut_icon_foreground_base.enabled = false;
 			level_progress_nut_icon_foreground_fill.enabled = false;
 			level_progress_nut_progress.enabled             = false;
+
+			nut_unlock_header.enabled     = false;
+			nut_unlock_text.enabled       = false;
+			nut_unlock_input_text.enabled = false;
 		}
 #endregion
 
@@ -88,9 +99,30 @@ namespace FFStudio
 			DOVirtual.DelayedCall( 0.25f, () => tapInputListener.response = StartLevel );
 			level_information_text.text = "Tap to Start";
 		}
+
+		public void OnNutUnlockRotateStop()
+		{
+			nut_unlock_header.enabled     = true;
+			nut_unlock_text.enabled       = true;
+			nut_unlock_input_text.enabled = true;
+
+			nut_unlock_text.text = $"{skinLibrary.GetGeometryName()} Nut Unlocked";
+
+			nut_unlock_header.transform.DOPunchScale( Vector3.one, 0.35f )
+				.OnComplete( () => tapInputListener.response = OnNutUnlockComplete );
+		}
 #endregion
 
 #region Implementation
+		void OnNutUnlockComplete()
+		{
+			nut_unlock_header.enabled     = false;
+			nut_unlock_text.enabled       = false;
+			nut_unlock_input_text.enabled = false;
+
+			event_nut_unlocked_end.Raise();
+		}
+
         private void LevelLoadedResponse()
         {
 			IncrementalButtons_SetUp();
