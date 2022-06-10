@@ -207,6 +207,12 @@ public class SkillSystem : ScriptableObject
 		recycledTween.Kill();
 		recycledTween_showWings.Kill();
 	}
+
+	public void OnNewNutUnlocked()
+	{
+		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_geometry_index, CurrentLevelData.Instance.levelData.nut_geometry_index );
+		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_skin_index, 0 );
+	}
 #endregion
 
 #region Implementation
