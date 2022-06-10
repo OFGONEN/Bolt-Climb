@@ -95,12 +95,11 @@ public class Nut : MonoBehaviour
 	[ Button() ]
 	public void OnSkin_Changed()
 	{
-		var skinIndex = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_skin_index, 0 );
-		var mesh = library_skin.GetMesh( skinIndex );
-		crackColor = library_skin.GetCrackColor( skinIndex );
+		var mesh = library_skin.GetMesh();
+		crackColor = library_skin.GetCrackColor();
 
-		component_mesh_filter.mesh             = library_skin.GetMesh( skinIndex );
-		component_mesh_renderer.sharedMaterial = library_skin.GetMaterial( skinIndex );
+		component_mesh_filter.mesh             = mesh;
+		component_mesh_renderer.sharedMaterial = library_skin.GetMaterial();
 		component_crack_setter.Setup( crackColor );
 		component_trail_renderer.SetMesh( mesh );
 	}

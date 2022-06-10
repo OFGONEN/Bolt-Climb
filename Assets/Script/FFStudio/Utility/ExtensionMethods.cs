@@ -18,6 +18,7 @@ namespace FFStudio
 		public static string velocity_index          = "velocity_index";
 		public static string velocity_index_visual   = "velocity_index_visual";
 		public static string nut_height              = "height";
+		public static string nut_geometry_index      = "geometry";
 		public static string nut_skin_index          = "skin";
 
 		//Static Variables

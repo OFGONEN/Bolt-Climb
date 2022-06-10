@@ -5,24 +5,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
 
-[ CreateAssetMenu( fileName = "library_skin", menuName = "FF/Data/Skin Library" ) ]
+[ CreateAssetMenu( fileName = "skin_library", menuName = "FF/Data/Skin Library" ) ]
 public class SkinLibrary : ScriptableObject
 {
-    [ SerializeField ] SkinData[] skinDatas;
+    [ SerializeField ] Skin[] skin_datas;
 
-
-    public Mesh GetMesh( int index )
+    public Mesh GetMesh()
     {
-		return skinDatas[ index ].skin_mesh;
+		return GetSkinData().skin_mesh;
 	}
 
-    public Material GetMaterial( int index )
+    public Material GetMaterial()
     {
-		return skinDatas[ index ].skin_material;
+		return GetSkinData().skin_material;
 	}
 
-	public Color GetCrackColor( int index )
+	public Color GetCrackColor()
 	{
-		return skinDatas[ index ].skin_crack_color;
+		return GetSkinData().skin_crack_color;
+	}
+
+	SkinData GetSkinData()
+	{
+		var index_geometry = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_geometry_index, 0 );
+		var index_skin     = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_skin_index, 0 );
+		return skin_datas[ index_geometry ].GetData( index_skin );
 	}
 }
