@@ -12,7 +12,7 @@ public class SkinLibrary : ScriptableObject
 
     public Mesh GetMesh()
     {
-		return GetSkinData().skin_mesh;
+		return skin_datas[ PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_geometry_index, 0 ) ].SkinMesh;
 	}
 
     public Material GetMaterial()
