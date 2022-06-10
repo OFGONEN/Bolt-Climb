@@ -26,7 +26,8 @@ namespace FFStudio
         public Image level_progress_icon_start;
         public Image level_progress_icon_end;
         public Image level_progress_nut_icon_background;
-        public Image level_progress_nut_icon_foreground;
+        public Image level_progress_nut_icon_foreground_base;
+        public Image level_progress_nut_icon_foreground_fill;
         public RectTransform tutorialObjects;
 		public IncrementalButton[] incrementalButtons;
 
@@ -64,8 +65,9 @@ namespace FFStudio
 
 			level_information_text.text = "Tap to Start";
 
-			level_progress_nut_icon_background.enabled = false;
-			level_progress_nut_icon_foreground.enabled = false;
+			level_progress_nut_icon_background.enabled      = false;
+			level_progress_nut_icon_foreground_base.enabled = false;
+			level_progress_nut_icon_foreground_fill.enabled = false;
 		}
 #endregion
 
@@ -129,7 +131,7 @@ namespace FFStudio
 			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.AppendCallback( EnableNutProgressIcon )
-                    .Append( level_progress_nut_icon_foreground.DOFillAmount( CurrentLevelData.Instance.TargetProgression, GameSettings.Instance.ui_Entity_Filling_TweenDuration ))
+                    .Append( level_progress_nut_icon_foreground_fill.DOFillAmount( CurrentLevelData.Instance.TargetProgression, GameSettings.Instance.ui_Entity_Filling_TweenDuration ))
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.AppendCallback( () => tapInputListener.response = LoadNewLevel );
 
@@ -178,7 +180,8 @@ namespace FFStudio
 			tapInputListener.response = ExtensionMethods.EmptyMethod;
 
 			level_progress_nut_icon_background.enabled = false;
-			level_progress_nut_icon_foreground.enabled = false;
+			level_progress_nut_icon_foreground_base.enabled = false;
+			level_progress_nut_icon_foreground_fill.enabled = false;
 
 			var sequence = DOTween.Sequence();
 
@@ -237,12 +240,13 @@ namespace FFStudio
         private void EnableNutProgressIcon()
         {
 			level_progress_nut_icon_background.sprite = GameSettings.Instance.LevelNutIconBackground;
-			level_progress_nut_icon_foreground.sprite = GameSettings.Instance.LevelNutIconForeGround;
+			level_progress_nut_icon_foreground_base.sprite = GameSettings.Instance.LevelNutIconForeGround;
+			level_progress_nut_icon_foreground_fill.sprite = GameSettings.Instance.LevelNutIconForeGround;
 
 			level_progress_nut_icon_background.enabled = true;
-			level_progress_nut_icon_foreground.enabled = true;
+			level_progress_nut_icon_foreground_fill.enabled = true;
 
-			level_progress_nut_icon_foreground.fillAmount = CurrentLevelData.Instance.BaseProgression;
+			level_progress_nut_icon_foreground_fill.fillAmount = CurrentLevelData.Instance.BaseProgression;
 		}
 #endregion
     }
