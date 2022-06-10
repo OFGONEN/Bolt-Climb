@@ -35,6 +35,8 @@ namespace FFStudio
         [ BoxGroup( "Nut" ) ] public float nut_shatter_waitDuration = 2f;
         [ BoxGroup( "Nut" ) ] public Vector2 nut_levelEnd_force;
         [ BoxGroup( "Nut" ) ] public float nut_levelEnd_waitDuration = 2f;
+        [ BoxGroup( "Nut" ) ] public float nut_unlock_rotate_speed = 1f;
+        [ BoxGroup( "Nut" ) ] public float nut_unlock_rotate_speed_target = 20f;
 
     // Info: 3 groups below (coming from template project) are foldout by design: They should remain hidden.
 		[ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
