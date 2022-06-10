@@ -26,6 +26,7 @@ namespace FFStudio
 	[ Title( "Level Related" ) ]
 		[ LabelText( "Type of Skill will be showned at the end of the Level" ) ] public SkillType skillType;
 		[ LabelText( "Finish Line index to spawn" ) ] public int finishLineIndex;
+		[ LabelText( "Finish Line index to spawn" ) ] public int nut_geometry_index;
 
 	[ Title( "Progression" ) ]
 		[ LabelText( "Level Progress Start Icon index" ) ] public int levelProgress_levelIcon_start_index;

@@ -72,6 +72,8 @@ namespace FFStudio
 				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.velocity_index, levelData.incremental_set_index_velocity  );
 				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.durability_index, levelData.incremental_set_index_durability );
 				PlayerPrefsUtility.Instance.SetInt( levelData.name, 1 );
+				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_geometry_index, levelData.nut_geometry_index );
+				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_skin_index, 0 );
 			}
 
 			// SceneManager.LoadScene( CurrentLevelData.Instance.levelData.sceneIndex, LoadSceneMode.Additive );
