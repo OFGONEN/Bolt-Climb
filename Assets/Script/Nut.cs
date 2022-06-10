@@ -95,12 +95,13 @@ public class Nut : MonoBehaviour
 	[ Button() ]
 	public void OnSkin_Changed()
 	{
-		var mesh = library_skin.GetMesh();
-		crackColor = library_skin.GetCrackColor();
+		var mesh       = library_skin.GetMesh();
+		var skinData   = library_skin.GetSkinData();
+		   crackColor = skinData.skin_crack_color;
 
 		component_mesh_filter.mesh             = mesh;
-		component_mesh_renderer.sharedMaterial = library_skin.GetMaterial();
-		component_crack_setter.Setup( crackColor );
+		component_mesh_renderer.sharedMaterial = skinData.skin_material;
+		component_crack_setter.Setup( skinData.skin_crack_color );
 		component_trail_renderer.SetMesh( mesh );
 	}
 

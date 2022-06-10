@@ -9,14 +9,6 @@ using FFStudio;
 public class Skin : ScriptableObject
 {
 #region Fields
-	[ SerializeField ] Mesh skin_mesh;
-    [ SerializeField ] SkinData[] skin_data_array;
-
-	public Mesh SkinMesh => skin_mesh;
-
-	public SkinData GetData( int index )
-    {
-		return skin_data_array[ Mathf.Clamp( index, 0, skin_data_array.Length - 1 ) ];
-	}
+	public Sprite skin_store_texture;
 #endregion
 }
