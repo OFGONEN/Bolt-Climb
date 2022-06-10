@@ -3213,6 +3213,7 @@ MonoBehaviour:
   - eventListener:
       gameEvents:
       - {fileID: 11400000, guid: 6cfb61c8942dd4b519d5cc19413663be, type: 2}
+      - {fileID: 11400000, guid: f5736b57bcf7243cfb1b295a0f200768, type: 2}
     unityEvent:
       m_PersistentCalls:
         m_Calls:
@@ -3227,6 +3228,24 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+  - eventListener:
+      gameEvents:
+      - {fileID: 11400000, guid: aec4ad8b354db427182f84397c8c65d0, type: 2}
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1382012851383731421}
+          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &9004623459799490322
 MonoBehaviour:
