@@ -179,7 +179,7 @@ namespace FFStudio
 			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.AppendCallback( EnableNutProgressIcon )
-                    .Append( level_progress_nut_icon_foreground_fill.DOFillAmount( targetProgression, GameSettings.Instance.ui_Entity_Filling_TweenDuration ))
+                    .Append( level_progress_nut_icon_foreground_fill.DOFillAmount( targetProgression, GameSettings.Instance.ui_Entity_Filling_TweenDuration ).SetEase( Ease.Linear ) )
 					.Join( DOTween.To( GetNutProgression, SetNutProgression, (int)( targetProgression * 100 ), GameSettings.Instance.ui_Entity_Filling_TweenDuration ).SetEase( Ease.Linear ))
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.AppendCallback( () => tapInputListener.response = LoadNewLevel );
