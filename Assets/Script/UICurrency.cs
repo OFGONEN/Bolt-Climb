@@ -118,7 +118,7 @@ public class UICurrency : MonoBehaviour
 
 		var random = new Vector3(
 			Random.Range( -spawn_random_lateral, spawn_random_lateral ),
-			Random.Range( 0, spawn_random_height ),
+			Random.Range( 0, spawn_random_height * 6f ),
 			0
 		);
 
@@ -130,7 +130,7 @@ public class UICurrency : MonoBehaviour
 
 		var sequence = recycledSequence.Recycle();
 
-		sequence.Append( transform.DOMove( nutPosition, spawn_duration ).SetEase( spawn_movement_ease ) );
+		sequence.Append( transform.DOMove( nutPosition, spawn_duration * 2f ).SetEase( spawn_movement_ease ) );
 		// sequence.Join( transform.DOScale( Vector3.one * random_size_end.ReturnRandom(), spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
 		// sequence.Append( transform.DOScale( Vector3.one , spawn_duration / 2f ).SetEase( spawn_scale_ease ) );
 		sequence.Append( text_currency.DOFade( 0, fade_duration ).SetEase( spawn_fade_ease ) );

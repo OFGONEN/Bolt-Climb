@@ -145,6 +145,7 @@ public class Nut : MonoBehaviour
 
 		onPath = true;
 		EmptyDelegates();
+		property_velocity.SetMinimumPathVelocity();
 		component_movement.DoPath( gameEvent.eventValue, OnPathComplete );
 
 		onNut_IsOnBoltChange = NutOnBoltChange;
@@ -155,7 +156,11 @@ public class Nut : MonoBehaviour
 		onPath = true;
 		EmptyDelegates();
 		onLevelProgress = ExtensionMethods.EmptyMethod;
+
+		property_velocity.SetMinimumPathVelocity();
 		component_movement.DoPathEnd( gameEvent.eventValue, OnLevelEndPathComplete );
+		component_animation.Pause();
+		particle_nut_lowDurability.Pause( true );
 
 		notif_nut_height_last.SharedValue = 0;
 		PlayerPrefsUtility.Instance.SetFloat( ExtensionMethods.nut_height, 0 );
