@@ -244,6 +244,7 @@ namespace FFStudio
 			level_progress_nut_icon_foreground_fill.sprite = GameSettings.Instance.LevelNutIconForeGround;
 
 			level_progress_nut_icon_background.enabled = true;
+			level_progress_nut_icon_foreground_base.enabled = true;
 			level_progress_nut_icon_foreground_fill.enabled = true;
 
 			level_progress_nut_icon_foreground_fill.fillAmount = CurrentLevelData.Instance.BaseProgression;
