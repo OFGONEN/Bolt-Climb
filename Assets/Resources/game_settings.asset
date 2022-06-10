@@ -60,6 +60,8 @@ MonoBehaviour:
   nut_shatter_waitDuration: 0.75
   nut_levelEnd_force: {x: 5, y: 9}
   nut_levelEnd_waitDuration: 1
+  nut_unlock_rotate_speed: 300
+  nut_unlock_rotate_speed_target: 900
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
   maxLevelCount: 25
