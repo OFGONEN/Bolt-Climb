@@ -37,6 +37,7 @@ namespace FFStudio
         public GameEvent loadNewLevelEvent;
         public GameEvent resetLevelEvent;
         public GameEvent event_shop_close;
+        public GameEvent event_nut_unlocked_start;
         public ElephantLevelEvent elephantLevelEvent;
 
 		int level_progress_nut;
@@ -112,20 +113,29 @@ namespace FFStudio
         {
 			level_count_text.text       = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
 			level_information_text.text = "Tap to Start";
-
-			var sequence = DOTween.Sequence();
-
 			IncrementalButtons_SetUp();
+
+			if( CurrentLevelData.Instance.levelData.incremental_set )
+			{
+				var sequence = DOTween.Sequence();
+				sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+						.AppendCallback( event_nut_unlocked_start.Raise );
+			}
+			else
+				NewLevelLoaded_Sequence();
+		}
+
+		public void NewLevelLoaded_Sequence()
+		{
+			level_information_text.text = "Tap to Start";
+
 			float fade = IncrementalButtons_Available() ? 0 : 0.5f;
+			var sequence = DOTween.Sequence();
 			sequence.Append( foreGroundImage.DOFade( fade, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) );
                     IncrementalButtons_GoUp( sequence );
 					sequence.AppendCallback( () => tapInputListener.response = StartLevel );
-
-            // elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
-            // elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
-            // elephantLevelEvent.Raise();
-        }
+		}
 
         private void LevelCompleteResponse()
         {
@@ -209,7 +219,7 @@ namespace FFStudio
 			        .AppendCallback( resetLevelEvent.Raise );
 		}
 
-        private void IncrementalButtons_SetUp()
+        public void IncrementalButtons_SetUp()
         {
             for( var i = 0; i < incrementalButtons.Length; i++ )
             {
