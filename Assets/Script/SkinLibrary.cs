@@ -9,6 +9,7 @@ using FFStudio;
 public class SkinLibrary : ScriptableObject
 {
 	[ SerializeField ] Mesh[] skin_meshes;
+	[ SerializeField ] string[] skin_geometry_name;
 	[ SerializeField ] SkinData[] skin_data_array;
     [ SerializeField ] Skin[] skin_store_datas;
 
@@ -20,5 +21,10 @@ public class SkinLibrary : ScriptableObject
     public SkinData GetSkinData()
     {
 		return skin_data_array[ PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_skin_index, 0 ) ];
+	}
+
+	public string GetGeometryName()
+	{
+		return skin_geometry_name[ PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_geometry_index, 0 ) ];
 	}
 }

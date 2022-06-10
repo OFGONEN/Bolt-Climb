@@ -19,6 +19,13 @@ MonoBehaviour:
   - {fileID: -604232235653665701, guid: b7b6e8eda07473a47b53ce6abb79dc59, type: 3}
   - {fileID: -4588663459980578461, guid: 9b7669c63f3f402468f907372d843312, type: 3}
   - {fileID: 8486832500550843029, guid: 4c8c76b95745c4746a3e6f991d26e118, type: 3}
+  skin_geometry_name:
+  - Triangle
+  - Square
+  - Pentagon
+  - Hexagon
+  - Helicylinder
+  - Cylinder
   skin_data_array:
   - skin_material: {fileID: 2100000, guid: bc3eac2f9ee5b3243bdaa2c45366c226, type: 2}
     skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
