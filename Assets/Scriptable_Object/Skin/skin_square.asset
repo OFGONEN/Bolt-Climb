@@ -12,4 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042e497894ac34fc3a830b1fb87439bb, type: 3}
   m_Name: skin_square
   m_EditorClassIdentifier: 
-  skin_data_array: []
+  skin_store_texture:
+  - {fileID: 21300000, guid: c43e5573a163d47f89490630e58d210b, type: 3}
+  - {fileID: 21300000, guid: 7e5ecf358c9c64aef8671d1b8c79046e, type: 3}
+  - {fileID: 21300000, guid: e6ef048292f4741cbb5c1ff9ea80e76f, type: 3}
+  - {fileID: 21300000, guid: a5e4e0002f31344579dffb36add940ce, type: 3}
+  - {fileID: 21300000, guid: 94748b703ddc74249831c739f33a3340, type: 3}
+  - {fileID: 21300000, guid: 9c3d5eb8922754cc993e549cb0154c57, type: 3}
+  - {fileID: 21300000, guid: e2d3d61838fb14cec97d1e263d86012b, type: 3}
+  - {fileID: 21300000, guid: 97a5b4c58fc8e461c99914e812035269, type: 3}
+  - {fileID: 21300000, guid: a1b3f484586a74e61b6dd0dd3127851a, type: 3}
+  - {fileID: 21300000, guid: 3e3ef6560193446a0922a4d17e3e2c55, type: 3}
+  - {fileID: 21300000, guid: eebe4e2f714c2482bb550edd53a15dd6, type: 3}
