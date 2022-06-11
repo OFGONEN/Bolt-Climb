@@ -307,11 +307,9 @@ public class Nut : MonoBehaviour
 
 	void UpdateLevelProgress()
 	{
-		var height          = transform.position.y;
-		var baseProgress    = ( CurrentLevelData.Instance.currentLevel_Shown - 1 ) / ( float )GameSettings.Instance.game_level_count;
-		var currentProgress = height / point_levelEnd;
+		var height = transform.position.y;
 
-		level_progress.SharedValue   = baseProgress + currentProgress / GameSettings.Instance.game_level_count;
+		level_progress.SharedValue   = CurrentLevelData.Instance.levelData.levelProgress_base + CurrentLevelData.Instance.levelData.levelProgress_current * height / point_levelEnd;
 		notif_nut_height.SharedValue = height;
 	}
 #endregion
