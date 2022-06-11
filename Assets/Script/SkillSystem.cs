@@ -85,6 +85,14 @@ public class SkillSystem : ScriptableObject
 #endregion
 
 #region API
+	public void KillTweens()
+	{
+		renderer_wings.enabled = false;
+
+		recycledTween.Kill();
+		recycledTween_showWings.Kill();
+	}
+
 	public void OnLevel_Finished()
 	{
 		onUpdate_NutPath = ExtensionMethods.EmptyMethod;
