@@ -9,6 +9,6 @@ using FFStudio;
 public class Skin : ScriptableObject
 {
 #region Fields
-	public Sprite skin_store_texture;
+	public Sprite[] skin_store_texture;
 #endregion
 }

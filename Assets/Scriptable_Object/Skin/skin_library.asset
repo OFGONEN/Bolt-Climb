@@ -51,4 +51,10 @@ MonoBehaviour:
     skin_crack_color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
   - skin_material: {fileID: 2100000, guid: 7a443f39845384019af2acc5e1243d4f, type: 2}
     skin_crack_color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
-  skin_store_datas: []
+  skin_store_datas:
+  - {fileID: 11400000, guid: 89b855bb921f0405b996d3703d39a62c, type: 2}
+  - {fileID: 11400000, guid: c645fce3d8d0540c08fea973f6f3e3d5, type: 2}
+  - {fileID: 11400000, guid: ad72ff406ace146d09ff03928e130fcf, type: 2}
+  - {fileID: 11400000, guid: 98d3a1444cd26450da451221c8aeb76a, type: 2}
+  - {fileID: 11400000, guid: 8c44d44e56e2b4b57b7a3944fc5f3fbb, type: 2}
+  - {fileID: 11400000, guid: df47b80e7c7b0473c953e397c9e784fd, type: 2}
