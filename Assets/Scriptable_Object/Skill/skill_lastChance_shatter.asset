@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6071c5715ab604ff6a8b0fe31c5df446, type: 3}
+  m_Name: skill_lastChance_shatter
+  m_EditorClassIdentifier: 
+  skill_value_array:
+  - value: 30
+    cost: 50
+  - value: 30
+    cost: 250
+  - value: 30
+    cost: 500
+  - value: 30
+    cost: 750
+  - value: 30
+    cost: 1000
+  - value: 30
+    cost: 1500
+  currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  skill_texture: {fileID: 21300000, guid: 87725c2c41c164deaa89d2261d342b5e, type: 3}
+  skill_description: Dash Forward\nJust Before Shattering
+  skill_key: skill_lastChance_shatter

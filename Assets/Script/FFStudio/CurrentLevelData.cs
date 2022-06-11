@@ -17,6 +17,9 @@ namespace FFStudio
         private static ReturnCurrentLevel returnInstance = LoadInstance;
 
         public static CurrentLevelData Instance => returnInstance();
+
+        public float BaseProgression => levelData.levelProgress_base;
+        public float TargetProgression => levelData.levelProgress_base + levelData.levelProgress_current;
 #endregion
 
 #region API
@@ -26,6 +29,8 @@ namespace FFStudio
 				currentLevel_Real = Random.Range( 1, GameSettings.Instance.maxLevelCount );
 
 			levelData = Resources.Load< LevelData >( "level_data_" + currentLevel_Real );
+
+			levelData.incremental_set = levelData.incremental_set && PlayerPrefsUtility.Instance.GetInt( levelData.name, 0 ) == 0;
 		}
 #endregion
 

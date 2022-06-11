@@ -38,6 +38,15 @@ namespace FFStudio
 			PlayerPrefs.SetInt( key, value );
 		}
 
+		public void AddInt( string key, int value )
+		{
+			var baseValue = PlayerPrefs.GetInt( key, 0 );
+#if UNITY_EDITOR
+			PlayerPrefsTracker.SetInt( key, baseValue + value );
+#endif
+			PlayerPrefs.SetInt( key, baseValue + value );
+		}
+
 		public int GetInt( string key, int defaultValue )
 		{
 			return PlayerPrefs.GetInt( key, defaultValue );

@@ -72,6 +72,16 @@ namespace FFStudio
 
 			CurrentLevelData.Instance.LoadCurrentLevelData();
 
+			var levelData = CurrentLevelData.Instance.levelData;
+			
+            // Reset incrementals
+            if( levelData.incremental_set && CurrentLevelData.Instance.currentLevel_Shown <= CurrentLevelData.Instance.currentLevel_Real )
+            {
+				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.velocity_index, levelData.incremental_set_index_velocity  );
+				PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.durability_index, levelData.incremental_set_index_durability );
+				PlayerPrefsUtility.Instance.SetInt( levelData.name, 1 );
+			}
+
 			// SceneManager.LoadScene( CurrentLevelData.Instance.levelData.sceneIndex, LoadSceneMode.Additive );
 			var operation = SceneManager.LoadSceneAsync( CurrentLevelData.Instance.levelData.scene_index, LoadSceneMode.Additive );
 

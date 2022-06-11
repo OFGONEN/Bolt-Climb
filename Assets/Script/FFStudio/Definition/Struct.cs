@@ -161,4 +161,25 @@ namespace FFStudio
 			FFLogger.Log( $"PlayerPrefs: Saved value \"{value}\" for key \"{key}\"." );
 		}
 	}
+
+	[ Serializable ]
+	public struct SkinData
+	{
+		public Material skin_material;
+		public Color skin_crack_color;
+		public int skin_cost;
+	}
+
+	[ Serializable ]
+	public struct SkinData_Store
+	{
+		public Sprite skin_texture;
+	}
+
+	[ Serializable ]
+	public struct SkillValue
+	{
+		public float value;
+		public float cost;
+	}
 }

@@ -14,9 +14,11 @@ namespace FFStudio
         [ BoxGroup( "Game" ) ] public int game_level_count = 20;
         [ BoxGroup( "Game" ) ] public float game_tutorial_timeScale = 0.25f;
         [ BoxGroup( "Game" ) ] public Vector2 postProcess_vignette_intencity;
-        [ BoxGroup( "Game" ) ] public Vector2 shader_range_rust;
-        [ BoxGroup( "Game" ) ] public Color shader_range_color_start;
-        [ BoxGroup( "Game" ) ] public Color shader_range_color_end;
+        [ BoxGroup( "Game" ) ] public Vector2 shader_range_crack = new Vector2( 0, 1 );
+        [ BoxGroup( "Game" ) ] public GameObject[] game_finishLine;
+        [ BoxGroup( "Game" ) ] public Sprite[] game_icon_progressionBar;
+        [ BoxGroup( "Game" ) ] public Sprite[] game_icon_nut_background;
+        [ BoxGroup( "Game" ) ] public Sprite[] game_icon_nut_foreground;
 
         [ BoxGroup( "Bolt" ) ] public int bolt_batch = 3;
         [ BoxGroup( "Bolt" ) ] public float bolt_height = 0.5f;
@@ -25,6 +27,7 @@ namespace FFStudio
 
         [ BoxGroup( "Movement" ) ] public float movement_rotation_cofactor   = 1f;
         [ BoxGroup( "Movement" ) ] public float movement_launchSpeed_minumum = 1f;
+        [ BoxGroup( "Movement" ) ] public float movement_pathSpeed_minumum   = 1f;
 
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force_up;
         [ BoxGroup( "Nut" ), MinMaxSlider( 0, 50 ) ] public Vector2 nut_shatter_force;
@@ -32,6 +35,8 @@ namespace FFStudio
         [ BoxGroup( "Nut" ) ] public float nut_shatter_waitDuration = 2f;
         [ BoxGroup( "Nut" ) ] public Vector2 nut_levelEnd_force;
         [ BoxGroup( "Nut" ) ] public float nut_levelEnd_waitDuration = 2f;
+        [ BoxGroup( "Nut" ) ] public float nut_unlock_rotate_speed = 1f;
+        [ BoxGroup( "Nut" ) ] public float nut_unlock_rotate_speed_target = 20f;
 
     // Info: 3 groups below (coming from template project) are foldout by design: They should remain hidden.
 		[ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
@@ -40,6 +45,7 @@ namespace FFStudio
         public int maxLevelCount;
         [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the movement for ui element"          ) ] public float ui_Entity_Move_TweenDuration;
         [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the fading for ui element"            ) ] public float ui_Entity_Fade_TweenDuration;
+        [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the filling for ui element"            ) ] public float ui_Entity_Filling_TweenDuration;
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the scaling for ui element"           ) ] public float ui_Entity_Scale_TweenDuration;
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the movement for floating ui element" ) ] public float ui_Entity_FloatingMove_TweenDuration;
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Joy Stick"                                        ) ] public float ui_Entity_JoyStick_Gap;
@@ -49,6 +55,29 @@ namespace FFStudio
 
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_height;
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_duration;
+
+
+        public GameObject FinishLine => game_finishLine[ Mathf.Clamp( CurrentLevelData.Instance.levelData.finishLineIndex, 0, game_finishLine.Length - 1 ) ];
+
+        public Sprite LevelNutIconBackground => game_icon_nut_background[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_nutIcon_index, 
+            0, 
+            game_icon_nut_background.Length - 1 ) ];
+
+        public Sprite LevelNutIconForeGround => game_icon_nut_foreground[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_nutIcon_index, 
+            0, 
+            game_icon_nut_foreground.Length - 1 ) ];
+
+         public Sprite LevelProgressIconStart => game_icon_progressionBar[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_levelIcon_start_index, 
+            0, 
+            game_icon_progressionBar.Length - 1 ) ];
+
+         public Sprite LevelProgressIconEnd => game_icon_progressionBar[ Mathf.Clamp( 
+            CurrentLevelData.Instance.levelData.levelProgress_levelIcon_end_index, 
+            0, 
+            game_icon_progressionBar.Length - 1 ) ];
 #endregion
 
 #region Fields (Singleton Related)

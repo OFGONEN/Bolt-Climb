@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: animation_data_high
   m_EditorClassIdentifier: 
   data_percentage: 90
-  data_scale_out: 1.2
-  data_scale_duration_out: 0.75
-  data_scale_ease_out: 1
-  data_scale_in: 1
-  data_scale_duration_in: 1
+  data_scale_out: 1.25
+  data_scale_duration_out: 0.65
+  data_scale_ease_out: 18
+  data_scale_in: 0.9
+  data_scale_duration_in: 0.65
   data_scale_ease_in: 1

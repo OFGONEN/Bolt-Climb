@@ -49,7 +49,10 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   listener_pfx_spawn_random:
     gameEvent: {fileID: 11400000, guid: 0e566b9988b734020893e6b1049f50df, type: 2}
-  pools_pfx: []
+  pools_pfx:
+  - {fileID: 11400000, guid: 545fb9c8c157755488312548486b22d7, type: 2}
+  - {fileID: 11400000, guid: 48e0557133b6611428e7aab6f873bc8d, type: 2}
+  - {fileID: 11400000, guid: 4c421dd906815c04391d5a0f4dae4a17, type: 2}
   pools_pfx_random: []
 --- !u!1001 &6670808544504435973
 PrefabInstance:

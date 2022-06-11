@@ -32,6 +32,11 @@ public class AnimationHandle : MonoBehaviour
 #endregion
 
 #region API
+	public void Pause()
+	{
+		animation_sequence_scale.Sequence.Pause();
+	}
+
     public void PlayAnimation( float progress, ParticleSystem particle )
     {
         var index = -1;
@@ -68,7 +73,7 @@ public class AnimationHandle : MonoBehaviour
 
 		animation_scale.Append( transform_animation.DOScale( data.data_scale_out, data.data_scale_duration_out ).SetEase( data.data_scale_ease_out ) );
 		animation_scale.Append( transform_animation.DOScale( data.data_scale_in, data.data_scale_duration_in ).SetEase( data.data_scale_ease_in ) );
-		animation_scale.SetLoops( -1, LoopType.Yoyo );
+		animation_scale.SetLoops( -1, LoopType.Restart );
 	}
 
     void ReturnDefault()

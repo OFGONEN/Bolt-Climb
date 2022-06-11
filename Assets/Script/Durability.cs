@@ -49,7 +49,24 @@ public class Durability : ScriptableObject
             durability_current + Time.deltaTime * durability_data.incremental_durability_speed_increase, 
             durability_current_capacity );
 
-		volume_vignette.intensity.value = GameSettings.Instance.postProcess_vignette_intencity.ReturnProgressInverse( DurabilityRatio );
+		UpdateVignette();
+	}
+
+    public void OnIncrease( float value )
+    {
+		durability_current = Mathf.Min( 
+            durability_current + value, 
+            durability_current_capacity );
+
+		UpdateVignette();
+	}
+
+    public void OnIncreaseCapacity( float value )
+    {
+		durability_current          += value;
+		durability_current_capacity += value;
+
+		UpdateVignette();
 	}
 
     public void OnDecrease()
@@ -63,17 +80,26 @@ public class Durability : ScriptableObject
 			0
 		);
 
-		volume_vignette.intensity.value = GameSettings.Instance.postProcess_vignette_intencity.ReturnProgressInverse( DurabilityRatio );
+		UpdateVignette();
 	}
 
     public void DisableVignette()
     {
         FFLogger.Log( "Disable Vignette" );
-		volume_vignette.intensity.value = 0;
+		UpdateVignette( 0 );
 	}
 #endregion
 
 #region Implementation
+    void UpdateVignette()
+    {
+		volume_vignette.intensity.value = GameSettings.Instance.postProcess_vignette_intencity.ReturnProgressInverse( DurabilityRatio );
+    }
+
+    void UpdateVignette( float value )
+    {
+		volume_vignette.intensity.value = value;
+	}
 #endregion
 
 #region Editor Only

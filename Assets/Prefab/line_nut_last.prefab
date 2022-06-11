@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Meter
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a2a0eac20462392448130bfd1e995e86, type: 2}
-  m_sharedMaterial: {fileID: -279046927834550113, guid: a2a0eac20462392448130bfd1e995e86, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d07354b931378480ab7f2e9081bad0e0, type: 2}
+  m_sharedMaterial: {fileID: -4482814972709713646, guid: d07354b931378480ab7f2e9081bad0e0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.5, y: 0.15, z: 0, w: 0}
+  m_margin: {x: 0.5, y: 0.15, z: 0, w: 0.15}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

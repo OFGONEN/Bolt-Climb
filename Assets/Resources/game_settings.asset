@@ -12,29 +12,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  game_level_count: 5
+  game_level_count: 24
   game_tutorial_timeScale: 0.05
   postProcess_vignette_intencity: {x: 0, y: 0.3}
-  shader_range_rust: {x: 0, y: 1}
-  shader_range_color_start: {r: 0.33333334, g: 0.36078432, b: 0.40000004, a: 1}
-  shader_range_color_end: {r: 0.7254902, g: 0, b: 0, a: 1}
+  shader_range_crack: {x: 0, y: 1}
+  game_finishLine:
+  - {fileID: 6539738306624702624, guid: 9d5b0f8940d004be0896b705b783068a, type: 3}
+  - {fileID: 6539738306624702624, guid: 3c3c3b2b10ac14e5889f787db8e1a823, type: 3}
+  - {fileID: 6539738306624702624, guid: b400713881c204cd48c120dd5e99aad2, type: 3}
+  - {fileID: 6539738306624702624, guid: 53bab2d8d07ca40f69be014cdb98edfe, type: 3}
+  - {fileID: 6539738306624702624, guid: 6315a56c8ae3541529afa27bf04b7e29, type: 3}
+  - {fileID: 6539738306624702624, guid: 800e818c278b64ef891ae508890105ec, type: 3}
+  - {fileID: 6539738306624702624, guid: bd6f296b2c83b43988b8a9ffb59e7d0e, type: 3}
+  game_icon_progressionBar:
+  - {fileID: 21300000, guid: 41fc1346da21bb84b81d97a4da91b272, type: 3}
+  - {fileID: 21300000, guid: 678c8350d878e1e478efda1a8c15032f, type: 3}
+  - {fileID: 21300000, guid: 3efe596d650fd9842afe630b5957ee6d, type: 3}
+  - {fileID: 21300000, guid: b04df539a30bb54499a40ba88125fe84, type: 3}
+  - {fileID: 21300000, guid: 8ebeee363c6e6154fb02c26b1caea164, type: 3}
+  - {fileID: 21300000, guid: bf535ab45646b2a47b13bbb892fe141e, type: 3}
+  - {fileID: 21300000, guid: 6076352e5d2b39b499dbcec31ad69502, type: 3}
+  - {fileID: 21300000, guid: 0a413ff99c0aa4ef6a2ecc20424e92e4, type: 3}
+  game_icon_nut_background:
+  - {fileID: 21300000, guid: 2a804bebb50228246886701f13d9078c, type: 3}
+  - {fileID: 21300000, guid: 196ef3cf3b47c1449b83e8cbf9f87799, type: 3}
+  - {fileID: 21300000, guid: 7f822a5d0e22b90498b74011c2aa3e1a, type: 3}
+  - {fileID: 21300000, guid: f57637587b2a7914293f73b96634d66c, type: 3}
+  - {fileID: 21300000, guid: 890b58a128d9855408a5233e1bead011, type: 3}
+  - {fileID: 21300000, guid: 79d70d57c099ddd4cb891f24fdefd0c3, type: 3}
+  game_icon_nut_foreground:
+  - {fileID: 21300000, guid: d02ec59d2530a7243ae07903bf724cb7, type: 3}
+  - {fileID: 21300000, guid: b9fc3f899162b5d46a28dc526aca1211, type: 3}
+  - {fileID: 21300000, guid: 343d698763f335a4e909aea8c4c4781d, type: 3}
+  - {fileID: 21300000, guid: f1c53442f66412e419195c86fcb0f55d, type: 3}
+  - {fileID: 21300000, guid: bd0e09012f9da9c43acad8cb3079cadb, type: 3}
+  - {fileID: 21300000, guid: 67af4e50a97180a4fb671999ea82b4eb, type: 3}
   bolt_batch: 10
   bolt_height: 0.5
   bolt_detach_waitTime: 3
   bolt_detach_force: {x: 3, y: 7}
-  movement_rotation_cofactor: 80
+  movement_rotation_cofactor: -80
   movement_launchSpeed_minumum: 1
+  movement_pathSpeed_minumum: 1
   nut_shatter_force_up: {x: 0, y: 0}
   nut_shatter_force: {x: 6.2766695, y: 20.394564}
   nut_shatter_torque: {x: 6.6980996, y: 15.23205}
   nut_shatter_waitDuration: 0.75
   nut_levelEnd_force: {x: 5, y: 9}
   nut_levelEnd_waitDuration: 1
+  nut_unlock_rotate_speed: 300
+  nut_unlock_rotate_speed_target: 900
   useRemoteConfig_GameSettings: 0
   useRemoteConfig_Components: 0
-  maxLevelCount: 15
+  maxLevelCount: 25
   ui_Entity_Move_TweenDuration: 0.35
   ui_Entity_Fade_TweenDuration: 0.35
+  ui_Entity_Filling_TweenDuration: 1
   ui_Entity_Scale_TweenDuration: 0.35
   ui_Entity_FloatingMove_TweenDuration: 0.35
   ui_Entity_JoyStick_Gap: 50

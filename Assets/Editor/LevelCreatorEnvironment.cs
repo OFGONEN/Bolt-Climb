@@ -35,6 +35,8 @@ public class LevelCreatorEnvironment : ScriptableObject
 #endregion
 
 #region API
+
+
     [ Button() ]
     public void CreateAllLevelEnvironment()
     {
@@ -66,8 +68,9 @@ public class LevelCreatorEnvironment : ScriptableObject
 		ground.transform.localPosition = Vector3.zero;
 
 		var backgroundCount = GameObject.Find( "finishLine" ).transform.position.y / prefab_background_height - 1;
+		GameObject lastBackground = null;
 
-        for( var i = 0; i < backgroundCount; i++ )
+		for( var i = 0; i < backgroundCount; i++ )
         {
 			var background = PrefabUtility.InstantiatePrefab( prefab_background ) as GameObject;
             background.GetComponentInChildren< Renderer >().sharedMaterial = environmentData[ index ].level_material_background;
@@ -75,6 +78,7 @@ public class LevelCreatorEnvironment : ScriptableObject
 			background.transform.SetParent( environmentParent );
 			background.transform.localPosition    = i * Vector3.up * prefab_background_height + Vector3.forward * prefab_background_depth;
 			background.transform.localEulerAngles = Vector3.zero;
+			lastBackground = background;
 
 			var sideGround_left = PrefabUtility.InstantiatePrefab( prefab_background_side ) as GameObject;
             sideGround_left.GetComponentInChildren< Renderer >().sharedMaterial = environmentData[ index ].level_material_background;
@@ -92,7 +96,6 @@ public class LevelCreatorEnvironment : ScriptableObject
 		}
 
 		environmentParent.transform.position = Vector3.up * environment_offset;
-
 		EditorSceneManager.SaveOpenScenes();
 	}
 #endregion

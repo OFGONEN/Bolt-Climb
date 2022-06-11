@@ -11,11 +11,17 @@ namespace FFStudio
 	public static class ExtensionMethods
 	{
 		//PlayerPrefs
-		public static string currency         = "currency";
-		public static string currency_index   = "currency_index";
-		public static string durability_index = "durability_index";
-		public static string velocity_index   = "velocity_index";
-		public static string nut_height       = "height";
+		public static string currency                = "currency";
+		public static string currency_index          = "currency_index";
+		public static string durability_index        = "durability_index";
+		public static string durability_index_visual = "durability_index_visual";
+		public static string velocity_index          = "velocity_index";
+		public static string velocity_index_visual   = "velocity_index_visual";
+		public static string nut_height              = "height";
+		public static string nut_geometry_index      = "geometry";
+		public static string nut_skin_index          = "skin";
+		public static string nut_skin_owned_index    = "skin_";
+		public static int ui_shop_slot_count         = 6;
 
 		//Static Variables
 		private static List< Transform > baseModelBones = new List< Transform >( 96 );
@@ -157,6 +163,11 @@ namespace FFStudio
 		}
 
 		public static void EmptyMethod()
+		{
+			/* Intentionally empty, by definition. */
+		}
+		
+		public static void EmptyMethod( bool value )
 		{
 			/* Intentionally empty, by definition. */
 		}

@@ -120,11 +120,18 @@ namespace FFEditor
 			Selection.SetActiveObjectWithContext( levelCreator, levelCreator );
 		}
 
-		[ MenuItem( "FFShortcut/Select Level Environment &6" ) ]
+		[ MenuItem( "FFShortcut/Select Level Environment Creator &6" ) ]
 		static private void SelectLevelEnvironmentCreator()
 		{
 			var levelEnvironmentCreator = AssetDatabase.LoadAssetAtPath( "Assets/Editor/level_creator_environment.asset", typeof( ScriptableObject ) );
 			Selection.SetActiveObjectWithContext( levelEnvironmentCreator, levelEnvironmentCreator );
+		}
+
+		[ MenuItem( "FFShortcut/Select Skin Library &7" ) ]
+		static private void SelectSkinLibrary()
+		{
+			var skinLibrary = AssetDatabase.LoadAssetAtPath( "Assets/Scriptable_Object/Shared/library_skin.asset", typeof( ScriptableObject ) );
+			Selection.SetActiveObjectWithContext( skinLibrary, skinLibrary );
 		}
 
 		[ MenuItem( "FFShortcut/Copy Global Transform &c" ) ]
