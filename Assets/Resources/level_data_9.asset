@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene_index: 9
   scene_overrideAsActiveScene: 0
-  incremental_cap_velocity: 100
-  incremental_cap_durability: 100
+  incremental_cap_velocity: 12
+  incremental_cap_durability: 12
   incremental_cap_currency: 100
   incremental_set: 1
   incremental_set_index_velocity: 8
   incremental_set_index_durability: 8
   skillType: 0
-  finishLineIndex: 1
+  finishLineIndex: 2
   nut_geometry_index: 2
-  levelProgress_levelIcon_start_index: 1
-  levelProgress_levelIcon_end_index: 2
+  levelProgress_levelIcon_start_index: 2
+  levelProgress_levelIcon_end_index: 3
   levelProgress_nutIcon_index: 0
   levelProgress_base: 0
   levelProgress_current: 0.25

@@ -16,14 +16,15 @@ MonoBehaviour:
   scene_overrideAsActiveScene: 0
   incremental_cap_velocity: 4
   incremental_cap_durability: 4
-  incremental_cap_currency: 4
+  incremental_cap_currency: 100
   incremental_set: 0
   incremental_set_index_velocity: 0
   incremental_set_index_durability: 0
   skillType: 1
   finishLineIndex: 0
+  nut_geometry_index: 0
   levelProgress_levelIcon_start_index: 0
-  levelProgress_levelIcon_end_index: 3
+  levelProgress_levelIcon_end_index: 1
   levelProgress_nutIcon_index: 0
   levelProgress_base: 0.25
   levelProgress_current: 0.25
