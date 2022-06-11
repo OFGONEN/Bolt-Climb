@@ -210,6 +210,8 @@ namespace FFStudio
 
         private void LevelFailResponse()
         {
+			foreGroundImage_Skill.enabled = false;
+
             var sequence = DOTween.Sequence();
 
 			// Tween tween = null;
