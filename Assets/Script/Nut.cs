@@ -45,7 +45,6 @@ public class Nut : MonoBehaviour
 	float point_fallDown = 0;
 	float point_levelEnd;
 	bool onPath;
-	bool onLastChance;
 
 	Vector3 gfx_start_position;
 	Vector3 gfx_start_rotation;
@@ -79,7 +78,6 @@ public class Nut : MonoBehaviour
 		onNut_IsOnBoltChange = NutOnBoltChange;
 
 		onLevelProgress = UpdateLevelProgress;
-		onLastChance = false;
 
 		OnSkin_Changed();
 	}
@@ -162,12 +160,6 @@ public class Nut : MonoBehaviour
 
 	public void OnShapedBolt( IntGameEvent gameEvent )
 	{
-		if( onLastChance )
-		{
-			OnShatter();
-			return;
-		}
-
 		particle_carving.Play( true );
 
 		onPath = true;
@@ -180,12 +172,6 @@ public class Nut : MonoBehaviour
 
 	public void OnLevelEndBolt( IntGameEvent gameEvent )
 	{
-		if( onLastChance )
-		{
-			OnShatter();
-			return;
-		}
-
 		onPath = true;
 		EmptyDelegates();
 		onLevelProgress = ExtensionMethods.EmptyMethod;
@@ -286,7 +272,6 @@ public class Nut : MonoBehaviour
 			EmptyDelegates();
 			onUpdateMethod = OnUpdate_LastChance;
 			event_durability_deplated.Raise();
-			onLastChance = true;
 		}
 		else
 		{

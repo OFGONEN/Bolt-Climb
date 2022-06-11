@@ -69,6 +69,8 @@ public class SkillSystem : ScriptableObject
 
 	RecycledTween recycledTween = new RecycledTween();
 	RecycledTween recycledTween_showWings = new RecycledTween();
+
+	bool onLastChance;
 #endregion
 
 #region Properties
@@ -85,14 +87,6 @@ public class SkillSystem : ScriptableObject
 #endregion
 
 #region API
-	public void KillTweens()
-	{
-		renderer_wings.enabled = false;
-
-		recycledTween.Kill();
-		recycledTween_showWings.Kill();
-	}
-
 	public void OnLevel_Finished()
 	{
 		onUpdate_NutPath = ExtensionMethods.EmptyMethod;
@@ -197,9 +191,14 @@ public class SkillSystem : ScriptableObject
 		if( skill_lastChance_Shatter.IsUnlocked )
 		{
 			FFLogger.Log( "Delay Shatter" );
+			onLastChance = true;
 			pool_currency_ui.GetEntity().Spawn( "Last Chance", Color.white, skill_durability_text_size );
 			renderer_wings.enabled = true;
-			recycledTween_showWings.Recycle( DOVirtual.DelayedCall( 0.75f, () => renderer_wings.enabled = false ) );
+			recycledTween_showWings.Recycle( DOVirtual.DelayedCall( 0.75f, () => 
+			{
+				renderer_wings.enabled = false;
+				onLastChance = false;
+			} ) );
 
 			property_velocity.ZeroOutVelocity();
 			property_velocity.OnAcceleration( skill_lastChance_Shatter.Value );
@@ -212,6 +211,9 @@ public class SkillSystem : ScriptableObject
 
 	public void OnNutStartPath()
 	{
+		if( onLastChance )
+			property_durability.OnIncrease( 1 );
+
 		recycledTween.Kill();
 		recycledTween_showWings.Kill();
 	}
