@@ -23,8 +23,18 @@ public class SkinLibrary : ScriptableObject
 		return skin_data_array[ PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_skin_index, 0 ) ];
 	}
 
+    public SkinData GetSkinData( int index )
+    {
+		return skin_data_array[ Mathf.Clamp( index, 0, skin_data_array.Length - 1 ) ];
+	}
+
 	public string GetGeometryName()
 	{
 		return skin_geometry_name[ PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_geometry_index, 0 ) ];
+	}
+
+	public Skin GetSkin()
+	{
+		return skin_store_datas[ PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_geometry_index, 0 ) ];
 	}
 }
