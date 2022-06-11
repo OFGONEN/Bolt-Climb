@@ -20,6 +20,8 @@ namespace FFStudio
 		public static string nut_height              = "height";
 		public static string nut_geometry_index      = "geometry";
 		public static string nut_skin_index          = "skin";
+		public static string nut_skin_owned_index    = "skin_";
+		public static int ui_shop_slot_count         = 6;
 
 		//Static Variables
 		private static List< Transform > baseModelBones = new List< Transform >( 96 );
