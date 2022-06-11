@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f04cba3b35664f0290b548cb3a6f95e, type: 3}
-  m_Name: library_skin
+  m_Script: {fileID: 11500000, guid: a2c4e783e43fe4f4fa08e6785f264a60, type: 3}
+  m_Name: event_nut_unlocked_end
   m_EditorClassIdentifier: 
-  skinDatas:
-  - skin_mesh: {fileID: -604232235653665701, guid: b7b6e8eda07473a47b53ce6abb79dc59, type: 3}
-    skin_material: {fileID: 2100000, guid: bc3eac2f9ee5b3243bdaa2c45366c226, type: 2}
+  canRaiseOtherEvents: 0
+  eventsThatWillAlsoBeRaised: []

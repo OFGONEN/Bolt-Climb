@@ -10,13 +10,13 @@ namespace FFStudio
     public class UIManager : MonoBehaviour
     {
 #region Fields
-        [ Header( "Event Listeners" ) ]
+    [ Header( "Event Listeners" ) ]
         public EventListenerDelegateResponse levelLoadedResponse;
         public EventListenerDelegateResponse levelCompleteResponse;
         public EventListenerDelegateResponse levelFailResponse;
         public EventListenerDelegateResponse tapInputListener;
 
-        [ Header( "UI Elements" ) ]
+    [ Header( "UI Elements" ) ]
         public UI_Patrol_Scale level_loadingBar_Scale;
         public TextMeshProUGUI level_count_text;
         public TextMeshProUGUI level_information_text;
@@ -26,16 +26,28 @@ namespace FFStudio
         public Image level_progress_icon_start;
         public Image level_progress_icon_end;
         public Image level_progress_nut_icon_background;
-        public Image level_progress_nut_icon_foreground;
+        public Image level_progress_nut_icon_foreground_base;
+        public Image level_progress_nut_icon_foreground_fill;
+        public TextMeshProUGUI level_progress_nut_progress;
         public RectTransform tutorialObjects;
 		public IncrementalButton[] incrementalButtons;
 
-		[ Header( "Fired Events" ) ]
+	[ Header( "Nut Unlocked" ) ]
+	 	public SkinLibrary skinLibrary;
+		public TextMeshProUGUI nut_unlock_text;
+		public TextMeshProUGUI nut_unlock_input_text;
+		public Image nut_unlock_header;
+
+	[ Header( "Fired Events" ) ]
         public GameEvent levelRevealedEvent;
         public GameEvent loadNewLevelEvent;
         public GameEvent resetLevelEvent;
         public GameEvent event_shop_close;
+        public GameEvent event_nut_unlocked_start;
+        public GameEvent event_nut_unlocked_end;
         public ElephantLevelEvent elephantLevelEvent;
+
+		int level_progress_nut;
 #endregion
 
 #region Unity API
@@ -64,8 +76,14 @@ namespace FFStudio
 
 			level_information_text.text = "Tap to Start";
 
-			level_progress_nut_icon_background.enabled = false;
-			level_progress_nut_icon_foreground.enabled = false;
+			level_progress_nut_icon_background.enabled      = false;
+			level_progress_nut_icon_foreground_base.enabled = false;
+			level_progress_nut_icon_foreground_fill.enabled = false;
+			level_progress_nut_progress.enabled             = false;
+
+			nut_unlock_header.enabled     = false;
+			nut_unlock_text.enabled       = false;
+			nut_unlock_input_text.enabled = false;
 		}
 #endregion
 
@@ -74,6 +92,7 @@ namespace FFStudio
         {
 			tapInputListener.response = event_shop_close.Raise;
 			level_information_text.text = "Tap To Close Shop";
+			foreGroundImage.color = foreGroundImage.color.SetAlpha( 0 );
 		}
 
         public void OnShopClose()
@@ -81,9 +100,30 @@ namespace FFStudio
 			DOVirtual.DelayedCall( 0.25f, () => tapInputListener.response = StartLevel );
 			level_information_text.text = "Tap to Start";
 		}
+
+		public void OnNutUnlockRotateStop()
+		{
+			nut_unlock_header.enabled     = true;
+			nut_unlock_text.enabled       = true;
+			nut_unlock_input_text.enabled = true;
+
+			nut_unlock_text.text = $"{skinLibrary.GetGeometryName()} Nut Unlocked";
+
+			nut_unlock_header.transform.DOPunchScale( Vector3.one, 0.35f )
+				.OnComplete( () => tapInputListener.response = OnNutUnlockComplete );
+		}
 #endregion
 
 #region Implementation
+		void OnNutUnlockComplete()
+		{
+			nut_unlock_header.enabled     = false;
+			nut_unlock_text.enabled       = false;
+			nut_unlock_input_text.enabled = false;
+
+			event_nut_unlocked_end.Raise();
+		}
+
         private void LevelLoadedResponse()
         {
 			IncrementalButtons_SetUp();
@@ -106,30 +146,42 @@ namespace FFStudio
         {
 			level_count_text.text       = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
 			level_information_text.text = "Tap to Start";
-
-			var sequence = DOTween.Sequence();
-
 			IncrementalButtons_SetUp();
+
+			if( CurrentLevelData.Instance.levelData.incremental_set )
+			{
+				var sequence = DOTween.Sequence();
+				sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+						.AppendCallback( event_nut_unlocked_start.Raise );
+			}
+			else
+				NewLevelLoaded_Sequence();
+		}
+
+		public void NewLevelLoaded_Sequence()
+		{
+			level_information_text.text = "Tap to Start";
+
 			float fade = IncrementalButtons_Available() ? 0 : 0.5f;
+			var sequence = DOTween.Sequence();
 			sequence.Append( foreGroundImage.DOFade( fade, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) );
                     IncrementalButtons_GoUp( sequence );
 					sequence.AppendCallback( () => tapInputListener.response = StartLevel );
-
-            // elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
-            // elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
-            // elephantLevelEvent.Raise();
-        }
+		}
 
         private void LevelCompleteResponse()
         {
 			var sequence = DOTween.Sequence();
 			level_information_text.text = "Completed \n\n Tap to Continue";
 
+			var targetProgression = CurrentLevelData.Instance.TargetProgression;
+
 			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.AppendCallback( EnableNutProgressIcon )
-                    .Append( level_progress_nut_icon_foreground.DOFillAmount( CurrentLevelData.Instance.TargetProgression, GameSettings.Instance.ui_Entity_Filling_TweenDuration ))
+                    .Append( level_progress_nut_icon_foreground_fill.DOFillAmount( targetProgression, GameSettings.Instance.ui_Entity_Filling_TweenDuration ).SetEase( Ease.Linear ) )
+					.Join( DOTween.To( GetNutProgression, SetNutProgression, (int)( targetProgression * 100 ), GameSettings.Instance.ui_Entity_Filling_TweenDuration ).SetEase( Ease.Linear ))
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.AppendCallback( () => tapInputListener.response = LoadNewLevel );
 
@@ -177,8 +229,10 @@ namespace FFStudio
 		{
 			tapInputListener.response = ExtensionMethods.EmptyMethod;
 
-			level_progress_nut_icon_background.enabled = false;
-			level_progress_nut_icon_foreground.enabled = false;
+			level_progress_nut_icon_background.enabled      = false;
+			level_progress_nut_icon_foreground_base.enabled = false;
+			level_progress_nut_icon_foreground_fill.enabled = false;
+			level_progress_nut_progress.enabled             = false;
 
 			var sequence = DOTween.Sequence();
 
@@ -198,7 +252,7 @@ namespace FFStudio
 			        .AppendCallback( resetLevelEvent.Raise );
 		}
 
-        private void IncrementalButtons_SetUp()
+        public void IncrementalButtons_SetUp()
         {
             for( var i = 0; i < incrementalButtons.Length; i++ )
             {
@@ -237,12 +291,28 @@ namespace FFStudio
         private void EnableNutProgressIcon()
         {
 			level_progress_nut_icon_background.sprite = GameSettings.Instance.LevelNutIconBackground;
-			level_progress_nut_icon_foreground.sprite = GameSettings.Instance.LevelNutIconForeGround;
+			level_progress_nut_icon_foreground_base.sprite = GameSettings.Instance.LevelNutIconForeGround;
+			level_progress_nut_icon_foreground_fill.sprite = GameSettings.Instance.LevelNutIconForeGround;
 
-			level_progress_nut_icon_background.enabled = true;
-			level_progress_nut_icon_foreground.enabled = true;
+			level_progress_nut_icon_background.enabled      = true;
+			level_progress_nut_icon_foreground_base.enabled = true;
+			level_progress_nut_icon_foreground_fill.enabled = true;
+			level_progress_nut_progress.enabled             = true;
 
-			level_progress_nut_icon_foreground.fillAmount = CurrentLevelData.Instance.BaseProgression;
+			level_progress_nut = ( int )( CurrentLevelData.Instance.BaseProgression * 100 );
+			level_progress_nut_progress.text = $"%{level_progress_nut}";
+			level_progress_nut_icon_foreground_fill.fillAmount = CurrentLevelData.Instance.BaseProgression;
+		}
+
+		private int GetNutProgression()
+		{
+			return level_progress_nut;
+		}
+
+		private void SetNutProgression( int value )
+		{
+			level_progress_nut = value;
+			level_progress_nut_progress.text = $"%{level_progress_nut}";
 		}
 #endregion
     }

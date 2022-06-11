@@ -22,8 +22,9 @@ MonoBehaviour:
   incremental_set_index_durability: 24
   skillType: 0
   finishLineIndex: 6
-  levelProgress_levelIcon_start_index: 7
-  levelProgress_levelIcon_end_index: 6
+  nut_geometry_index: 5
+  levelProgress_levelIcon_start_index: 6
+  levelProgress_levelIcon_end_index: 7
   levelProgress_nutIcon_index: 0
   levelProgress_base: 0
   levelProgress_current: 100

@@ -165,9 +165,15 @@ namespace FFStudio
 	[ Serializable ]
 	public struct SkinData
 	{
-		public Mesh skin_mesh;
 		public Material skin_material;
 		public Color skin_crack_color;
+		public int skin_cost;
+	}
+
+	[ Serializable ]
+	public struct SkinData_Store
+	{
+		public Sprite skin_texture;
 	}
 
 	[ Serializable ]

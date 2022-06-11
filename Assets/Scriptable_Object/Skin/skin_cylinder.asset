@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042e497894ac34fc3a830b1fb87439bb, type: 3}
+  m_Name: skin_cylinder
+  m_EditorClassIdentifier: 
+  skin_data_store:
+  - skin_texture: {fileID: 21300000, guid: 2881db173b650482e845411b5392c063, type: 3}
+  - skin_texture: {fileID: 21300000, guid: f56a803aa90364231a8957020e8ec616, type: 3}
+  - skin_texture: {fileID: 21300000, guid: b8deb3aae629540d18e00d8bdb5d8dab, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 9bd7893ff2ded465e8d0da78b3c9ec42, type: 3}
+  - skin_texture: {fileID: 21300000, guid: a3f6ff59e9c87484fa3f12f3195179ec, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 28caf56d43b804865ad5664d282a2222, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 96c54cc204030461b99ea7720bc27338, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 4e20760c694974798a45004568e4aa96, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 56ebf31694d724f79a64586dcc802b9d, type: 3}
+  - skin_texture: {fileID: 21300000, guid: b7f8f6c11f8334d7a96185ac2c0478ed, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 4ab7f6784abe74ee9a1150fa49b1fce2, type: 3}
