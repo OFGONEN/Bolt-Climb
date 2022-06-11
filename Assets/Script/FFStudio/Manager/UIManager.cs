@@ -164,6 +164,9 @@ namespace FFStudio
 			}
 			else
 				NewLevelLoaded_Sequence();
+			
+			level_progress_icon_start.sprite = GameSettings.Instance.LevelProgressIconStart;
+			level_progress_icon_end.sprite   = GameSettings.Instance.LevelProgressIconEnd;
 		}
 
 		public void NewLevelLoaded_Sequence()
