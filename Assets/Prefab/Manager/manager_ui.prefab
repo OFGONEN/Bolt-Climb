@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad448989fe5b406f8409799a18e7a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shop_index: 0
+  shop_index: 3
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
@@ -2586,18 +2586,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 04fc090469eb04aabb3c1c66c45176a3, type: 2}
-        m_TargetAssemblyTypeName: FFStudio.GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
         m_TargetAssemblyTypeName: FFStudio.SharedIntNotifier, Assembly-CSharp
         m_MethodName: Add
@@ -2606,6 +2594,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 04fc090469eb04aabb3c1c66c45176a3, type: 2}
+        m_TargetAssemblyTypeName: FFStudio.GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5547,7 +5547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad448989fe5b406f8409799a18e7a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shop_index: 0
+  shop_index: 1
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
@@ -5721,6 +5721,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
         m_MethodName: set_interactable
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
+        m_TargetAssemblyTypeName: FFStudio.SharedDataNotifier`1[[System.Int32, mscorlib
+        m_MethodName: set_SharedValue
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7472,18 +7484,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: b58f76470ee1e4dfbb91d53616cf2720, type: 2}
-        m_TargetAssemblyTypeName: FFStudio.GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
         m_TargetAssemblyTypeName: FFStudio.SharedIntNotifier, Assembly-CSharp
         m_MethodName: Subtract
@@ -7492,6 +7492,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: b58f76470ee1e4dfbb91d53616cf2720, type: 2}
+        m_TargetAssemblyTypeName: FFStudio.GameEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8196,7 +8208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad448989fe5b406f8409799a18e7a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shop_index: 0
+  shop_index: 5
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
@@ -8618,7 +8630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad448989fe5b406f8409799a18e7a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shop_index: 0
+  shop_index: 4
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
@@ -9057,7 +9069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad448989fe5b406f8409799a18e7a6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shop_index: 0
+  shop_index: 2
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}

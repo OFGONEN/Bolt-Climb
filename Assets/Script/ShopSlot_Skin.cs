@@ -52,7 +52,7 @@ public class ShopSlot_Skin : MonoBehaviour
 		    slot_owned       = PlayerPrefsUtility.Instance.GetInt( ExtensionMethods.nut_skin_owned_index + slot_index, 0 ) == 1; // skin_0
 		    slot_selected    = index_skin == slot_index + 1;
 			slot_cost        = skin_library.GetSkinData( slot_index + 1 ).skin_cost;
-			slot_purchasable = slot_cost >= currency.SharedValue;
+			slot_purchasable = slot_cost < currency.SharedValue;
 
 			Configure( skin );
         }
@@ -61,22 +61,22 @@ public class ShopSlot_Skin : MonoBehaviour
     public void OnSelect()
     {
         if( slot_owned )
-			SelectSlot();
+		{
+			PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_skin_index, slot_index + 1 );
+			slot_background_outline.enabled = true;
+		}
 		else if( slot_purchasable )
         {
 			currency.SharedValue -= slot_cost;
-			SelectSlot();
+
+			PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_skin_owned_index + slot_index, 1 );
+			PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_skin_index, slot_index + 1 );
+			slot_background_outline.enabled = true;
 		}
     }
 #endregion
 
 #region Implementation
-    void SelectSlot()
-    {
-		PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_skin_index, slot_index + 1 );
-		slot_background_outline.enabled = true;
-    }
-
     void Disable()
     {
 		slot_button.interactable        = false;
