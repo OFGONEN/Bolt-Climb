@@ -92,6 +92,7 @@ namespace FFStudio
         {
 			tapInputListener.response = event_shop_close.Raise;
 			level_information_text.text = "Tap To Close Shop";
+			foreGroundImage.color = foreGroundImage.color.SetAlpha( 0 );
 		}
 
         public void OnShopClose()
