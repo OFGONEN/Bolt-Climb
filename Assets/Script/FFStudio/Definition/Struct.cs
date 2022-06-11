@@ -170,6 +170,13 @@ namespace FFStudio
 	}
 
 	[ Serializable ]
+	public struct SkinData_Store
+	{
+		public Sprite skin_texture;
+		public int skin_cost;
+	}
+
+	[ Serializable ]
 	public struct SkillValue
 	{
 		public float value;
