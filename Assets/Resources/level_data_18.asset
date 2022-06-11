@@ -25,6 +25,6 @@ MonoBehaviour:
   nut_geometry_index: 0
   levelProgress_levelIcon_start_index: 4
   levelProgress_levelIcon_end_index: 5
-  levelProgress_nutIcon_index: 4
+  levelProgress_nutIcon_index: 5
   levelProgress_base: 0.25
   levelProgress_current: 0.25
