@@ -14,24 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skin_data_store:
   - skin_texture: {fileID: 21300000, guid: 8d4ba1f7ad6da422aaf1613483b5b6b5, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: d80af5d7128a34c6298ae79cb194eeee, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: b71028c997d4246fb98ee3bdfb50c416, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: 85024717b57a549d5847e6ad067f611e, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: 1dac70048c06e418c9183c1e77522b1e, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: f349856364caf4760b6464095cb99050, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: 5849f6b955e974f33bda4a6b4d847925, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: c75c51e286433476c8a56418207d5b50, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: 9b884c4b833ba442793691388bf3ebc9, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: 1286e51f9b9bc48afa6c32df498e5b05, type: 3}
-    skin_cost: 100
   - skin_texture: {fileID: 21300000, guid: cc8ede640ee6c4e42bf7f0818691a5ca, type: 3}
-    skin_cost: 100

@@ -167,13 +167,13 @@ namespace FFStudio
 	{
 		public Material skin_material;
 		public Color skin_crack_color;
+		public int skin_cost;
 	}
 
 	[ Serializable ]
 	public struct SkinData_Store
 	{
 		public Sprite skin_texture;
-		public int skin_cost;
 	}
 
 	[ Serializable ]
