@@ -29,28 +29,40 @@ MonoBehaviour:
   skin_data_array:
   - skin_material: {fileID: 2100000, guid: bc3eac2f9ee5b3243bdaa2c45366c226, type: 2}
     skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
-  - skin_material: {fileID: 2100000, guid: 12011181c0a1944f28f9f4ffca391f67, type: 2}
-    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
-  - skin_material: {fileID: 2100000, guid: a4cc8fc56479d4764b5295239245db20, type: 2}
-    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
-  - skin_material: {fileID: 2100000, guid: f60e02cf81633484c9a08bb5df282fc2, type: 2}
-    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
-  - skin_material: {fileID: 2100000, guid: f2bd7d6326c2644a885495bbd74bee98, type: 2}
-    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
-  - skin_material: {fileID: 2100000, guid: d40d4e9d6b16c4ce6a224ea15fbf5a51, type: 2}
-    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
-  - skin_material: {fileID: 2100000, guid: 50d8844fe34204ad1b79bc7520680cdb, type: 2}
-    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
+    skin_cost: 0
   - skin_material: {fileID: 2100000, guid: b9afd0ad5726e40879bff816e30c80bc, type: 2}
     skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
-  - skin_material: {fileID: 2100000, guid: 0645dcbf2434447feb555e971d79b769, type: 2}
-    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
+    skin_cost: 200
   - skin_material: {fileID: 2100000, guid: b600d4944427049789949a3949fd71b1, type: 2}
     skin_crack_color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
+    skin_cost: 200
   - skin_material: {fileID: 2100000, guid: ebf99a66bc49c48378ad4cdcfb80d362, type: 2}
     skin_crack_color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
+    skin_cost: 200
+  - skin_material: {fileID: 2100000, guid: f2bd7d6326c2644a885495bbd74bee98, type: 2}
+    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
+    skin_cost: 500
+  - skin_material: {fileID: 2100000, guid: 50d8844fe34204ad1b79bc7520680cdb, type: 2}
+    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
+    skin_cost: 500
+  - skin_material: {fileID: 2100000, guid: 0645dcbf2434447feb555e971d79b769, type: 2}
+    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
+    skin_cost: 500
+  - skin_material: {fileID: 2100000, guid: a4cc8fc56479d4764b5295239245db20, type: 2}
+    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
+    skin_cost: 750
   - skin_material: {fileID: 2100000, guid: 7a443f39845384019af2acc5e1243d4f, type: 2}
     skin_crack_color: {r: 0.1254902, g: 0.1254902, b: 0.1254902, a: 1}
+    skin_cost: 750
+  - skin_material: {fileID: 2100000, guid: d40d4e9d6b16c4ce6a224ea15fbf5a51, type: 2}
+    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
+    skin_cost: 750
+  - skin_material: {fileID: 2100000, guid: f60e02cf81633484c9a08bb5df282fc2, type: 2}
+    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
+    skin_cost: 1000
+  - skin_material: {fileID: 2100000, guid: 12011181c0a1944f28f9f4ffca391f67, type: 2}
+    skin_crack_color: {r: 0.76862746, g: 0.10980392, b: 0.105882354, a: 1}
+    skin_cost: 1000
   skin_store_datas:
   - {fileID: 11400000, guid: 89b855bb921f0405b996d3703d39a62c, type: 2}
   - {fileID: 11400000, guid: c645fce3d8d0540c08fea973f6f3e3d5, type: 2}

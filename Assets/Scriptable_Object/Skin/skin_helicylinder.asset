@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: skin_helicylinder
   m_EditorClassIdentifier: 
   skin_data_store:
-  - skin_texture: {fileID: 21300000, guid: 96763ba9ff97541be9fc72643918d251, type: 3}
-  - skin_texture: {fileID: 21300000, guid: c91959d8941344bbda2f0da631cf59f5, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 386705ad7d33c4223a66ceef81604300, type: 3}
   - skin_texture: {fileID: 21300000, guid: 0ac4bb931972547539960645e116d6b1, type: 3}
-  - skin_texture: {fileID: 21300000, guid: 7417fbd2736744ed6bd901e44d0e344f, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 8d38e0146883e463baf75059f5a409da, type: 3}
   - skin_texture: {fileID: 21300000, guid: 47da4cff222ca421faf7d725aa1f8738, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 5070923bd3a924d3088b36837e45c7bc, type: 3}
+  - skin_texture: {fileID: 21300000, guid: cf8035c82229944f2b19f23f4f8912af, type: 3}
+  - skin_texture: {fileID: 21300000, guid: c91959d8941344bbda2f0da631cf59f5, type: 3}
   - skin_texture: {fileID: 21300000, guid: 159491ea241624d2cade6c91481880f2, type: 3}
   - skin_texture: {fileID: 21300000, guid: 8da0741d4f3ea41e6b1624801cf14129, type: 3}
-  - skin_texture: {fileID: 21300000, guid: 5070923bd3a924d3088b36837e45c7bc, type: 3}
-  - skin_texture: {fileID: 21300000, guid: 8d38e0146883e463baf75059f5a409da, type: 3}
-  - skin_texture: {fileID: 21300000, guid: 386705ad7d33c4223a66ceef81604300, type: 3}
-  - skin_texture: {fileID: 21300000, guid: cf8035c82229944f2b19f23f4f8912af, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 7417fbd2736744ed6bd901e44d0e344f, type: 3}
+  - skin_texture: {fileID: 21300000, guid: 96763ba9ff97541be9fc72643918d251, type: 3}
