@@ -37,6 +37,7 @@ public class Nut : MonoBehaviour
 	[ SerializeField ] MeshFilter component_mesh_filter;
 	[ SerializeField ] MeshRenderer component_mesh_renderer;
 	[ SerializeField ] NutTrailRenderer component_trail_renderer;
+	[ SerializeField ] Transform gfx_transform;
 
   [ Title( "Particle" )]
 	[ SerializeField ] ParticleSystem particle_nut_lowDurability;
@@ -44,6 +45,9 @@ public class Nut : MonoBehaviour
 	float point_fallDown = 0;
 	float point_levelEnd;
 	bool onPath;
+
+	Vector3 gfx_start_position;
+	Vector3 gfx_start_rotation;
 
 	Color crackColor;
 // Delegates
@@ -82,6 +86,9 @@ public class Nut : MonoBehaviour
 	{
 		point_levelEnd = ( notif_bolt_end.SharedValue as Transform ).position.y;
 		UpdateLevelProgress();
+
+		gfx_start_position = gfx_transform.localPosition;
+		gfx_start_rotation = gfx_transform.localEulerAngles;
 	}
 
 	private void Update()
@@ -92,6 +99,18 @@ public class Nut : MonoBehaviour
 #endregion
 
 #region API
+	public void OnShopOpen()
+	{
+		gfx_transform.localPosition = new Vector3( 0, -4.8f, 1.9f );
+		gfx_transform.localEulerAngles = new Vector3( 50f, -190f, 163 );
+	}
+
+	public void OnShopClose()
+	{
+		gfx_transform.localPosition    = gfx_start_position;
+		gfx_transform.localEulerAngles = gfx_start_rotation;
+	}
+
 	[ Button() ]
 	public void OnSkin_Changed()
 	{

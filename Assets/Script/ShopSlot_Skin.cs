@@ -16,6 +16,7 @@ public class ShopSlot_Skin : MonoBehaviour
     [ SerializeField ] SharedIntNotifier notif_shop_page; 
     [ SerializeField ] SkinLibrary skin_library; 
     [ SerializeField ] Currency currency; 
+    [ SerializeField ] GameEvent event_skin_unlocked; 
 
   [ Title( "UI Elements" ) ]
     [ SerializeField ] Button slot_button; 
@@ -68,6 +69,7 @@ public class ShopSlot_Skin : MonoBehaviour
 		else if( slot_purchasable )
         {
 			currency.SharedValue -= slot_cost;
+			event_skin_unlocked.Raise();
 
 			PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_skin_owned_index + slot_index, 1 );
 			PlayerPrefsUtility.Instance.SetInt( ExtensionMethods.nut_skin_index, slot_index + 1 );

@@ -801,6 +801,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 124199663512924948}
+  - {fileID: 2054626252516628165}
   m_Father: {fileID: 124199665187945366}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -951,6 +952,7 @@ MonoBehaviour:
   level_progress_nut_icon_foreground_fill: {fileID: 2351359137962066605}
   level_progress_nut_progress: {fileID: 414547269971256181}
   tutorialObjects: {fileID: 124199664260450679}
+  target_information_text: {fileID: 2054626252516628165}
   incrementalButtons:
   - {fileID: 4850540471887482463}
   - {fileID: 7417414561757883733}
@@ -1578,6 +1580,7 @@ MonoBehaviour:
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  event_skin_unlocked: {fileID: 11400000, guid: ed37e012aec7645b2a86ef29698e5cee, type: 2}
   slot_button: {fileID: 1990451455139472611}
   slot_background: {fileID: 4249834256849492186}
   slot_background_outline: {fileID: 877883573130881137}
@@ -5073,6 +5076,42 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4638648950290329641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2054626252516628165}
+  m_Layer: 5
+  m_Name: text_information_target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2054626252516628165
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4638648950290329641}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 124199664845690298}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 400}
+  m_SizeDelta: {x: 828, y: 597.3333}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4660533801378738298
 GameObject:
   m_ObjectHideFlags: 0
@@ -5646,6 +5685,7 @@ MonoBehaviour:
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  event_skin_unlocked: {fileID: 11400000, guid: ed37e012aec7645b2a86ef29698e5cee, type: 2}
   slot_button: {fileID: 736226359583862997}
   slot_background: {fileID: 2896442743810547728}
   slot_background_outline: {fileID: 1296412266040645234}
@@ -7300,6 +7340,7 @@ MonoBehaviour:
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  event_skin_unlocked: {fileID: 11400000, guid: ed37e012aec7645b2a86ef29698e5cee, type: 2}
   slot_button: {fileID: 6190846516118972946}
   slot_background: {fileID: 2865994051730683152}
   slot_background_outline: {fileID: 1158502050850048894}
@@ -8308,6 +8349,7 @@ MonoBehaviour:
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  event_skin_unlocked: {fileID: 11400000, guid: ed37e012aec7645b2a86ef29698e5cee, type: 2}
   slot_button: {fileID: 8557926390754575022}
   slot_background: {fileID: 2973427816647657856}
   slot_background_outline: {fileID: 4673365583263325292}
@@ -8730,6 +8772,7 @@ MonoBehaviour:
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  event_skin_unlocked: {fileID: 11400000, guid: ed37e012aec7645b2a86ef29698e5cee, type: 2}
   slot_button: {fileID: 2724490509317100161}
   slot_background: {fileID: 462830264341282605}
   slot_background_outline: {fileID: 6657217351020043504}
@@ -9169,6 +9212,7 @@ MonoBehaviour:
   notif_shop_page: {fileID: 11400000, guid: abbb9163131af47ebbab2526a318e87b, type: 2}
   skin_library: {fileID: 11400000, guid: 6260dca6b40c24c0d98c86740f3ccbd6, type: 2}
   currency: {fileID: 11400000, guid: 23682107591b6489b868877a42ea2eed, type: 2}
+  event_skin_unlocked: {fileID: 11400000, guid: ed37e012aec7645b2a86ef29698e5cee, type: 2}
   slot_button: {fileID: 3537160917973549068}
   slot_background: {fileID: 5261686691297636686}
   slot_background_outline: {fileID: 4878501512578777457}

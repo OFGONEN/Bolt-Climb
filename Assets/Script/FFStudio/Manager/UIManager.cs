@@ -31,6 +31,7 @@ namespace FFStudio
         public Image level_progress_nut_icon_foreground_fill;
         public TextMeshProUGUI level_progress_nut_progress;
         public RectTransform tutorialObjects;
+        public RectTransform target_information_text;
 		public IncrementalButton[] incrementalButtons;
 
 	[ Header( "Nut Unlocked" ) ]
@@ -49,6 +50,7 @@ namespace FFStudio
         public ElephantLevelEvent elephantLevelEvent;
 
 		int level_progress_nut;
+		Vector3 level_information_text_start;
 #endregion
 
 #region Unity API
@@ -91,6 +93,9 @@ namespace FFStudio
 #region API
         public void OnShopOpen()
         {
+			level_information_text_start                  = level_information_text.rectTransform.position;
+			level_information_text.rectTransform.position = target_information_text.position;
+
 			tapInputListener.response = event_shop_close.Raise;
 			level_information_text.text = "Tap To Close Shop";
 			foreGroundImage.color = foreGroundImage.color.SetAlpha( 0 );
@@ -98,6 +103,7 @@ namespace FFStudio
 
         public void OnShopClose()
         {
+			level_information_text.rectTransform.position = level_information_text_start;
 			DOVirtual.DelayedCall( 0.25f, () => tapInputListener.response = StartLevel );
 			level_information_text.text = "Tap to Start";
 		}
