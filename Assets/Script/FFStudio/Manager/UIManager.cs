@@ -23,7 +23,8 @@ namespace FFStudio
         public UI_Patrol_Scale level_information_text_Scale;
         public Image loadingScreenImage;
         public Image foreGroundImage;
-        public Image level_progress_icon_start;
+		public Image foreGroundImage_Skill;
+		public Image level_progress_icon_start;
         public Image level_progress_icon_end;
         public Image level_progress_nut_icon_background;
         public Image level_progress_nut_icon_foreground_base;
@@ -112,6 +113,13 @@ namespace FFStudio
 			nut_unlock_header.transform.DOPunchScale( Vector3.one, 0.35f )
 				.OnComplete( () => tapInputListener.response = OnNutUnlockComplete );
 		}
+
+		public void OnNutEndLevel()
+		{
+			foreGroundImage_Skill.enabled = true;
+			foreGroundImage_Skill.color = Color.white.SetAlpha( 0.5f );
+			foreGroundImage_Skill.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
+		}
 #endregion
 
 #region Implementation
@@ -172,6 +180,7 @@ namespace FFStudio
 
         private void LevelCompleteResponse()
         {
+			foreGroundImage_Skill.enabled = false;
 			var sequence = DOTween.Sequence();
 			level_information_text.text = "Completed \n\n Tap to Continue";
 
